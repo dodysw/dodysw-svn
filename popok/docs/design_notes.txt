@@ -1,0 +1,66 @@
+pop3/webmail gateway (PWG)
+23-08-2003 11:29 by dsw
+=======================
+Note: this implementiation is specific to plasa.com
+
++ POP3 Client normal flow:
+	1. connect to pop3 server port 110
+	2. USER $username, send username
+	3. PASS $pass, send password
+	4. STAT, to get 1 line desribing: total email count, total email size
+	5. LIST, to get each email's size
+	6. RETR $num, to get email indiciated by the index (repeated until STAT email count)
+	7. DELE $num, delete email indicated by the index (following RETR)
+	8. back to 6 until last email
+	9. QUIT, to send indication that pop3 client will immediately disconnect
+	10. disconnect
+
++ Webmail flow:
+	1. AUTHENTICATE, do HTTP post username/pass, Receive:
+		- failed response
+		- success response, with a cookie string
+	2. GET LIST, do HTTP get (with cookie) to inbox file, parse to receive:
+		- total email count
+		- size
+		- url to email content (in case plasa.com, we will use specific url to display email's raw format, and the url format is predictable and only depends on a number, parseable from each <input> variable.
+		Also if more email is available, go the next page and do the same
+	3. GET EMAIL, do HTTP get (with cookie) to each url collected previously
+		this url pointed to raw version of email, which require no parsing and can be piped directly to pop3 client
+	4. DELETE EMAIL, do HTTP get/post (with cookie) using list of email index previously received
+	5. LOGOUT, do HTTP get (with cookie) to specific URL to logout
+	
+
++ PWG (single thread, single user solution):
+	1. client connect to pop3 server port 110
+		- PWG receive, and wait for client sending USER
+	2. USER $username, send username
+		- PWG receive, store the username, and send +OK
+	3. PASS $pass, send password
+		- PWG receive, store the password, and:
+			- do HTTP post with the username/password
+			- parse response to indicate whether success/fail
+			- if success, store cookies string, and send +OK
+			- if fail, send +ERR
+	4. STAT, to get 1 line desribing: total email count, total email size
+		- PWG receive, and do GET LIST, store the email list information into dictionary, and return +OK with the email count, and their total size
+	5. LIST, to get each email's size
+		- PWG receive, and directly return +OK with email list from dictionary
+	6. RETR $num, to get email indiciated by the index (repeated until STAT email count)
+		- PWG receive, and do GET EMAIL. Response with +OK with raw email content
+	7. DELE $num, delete email indicated by the index (following RETR)
+		- PWG receive, and tag the indicated email index in the dictionary, for deleting. Response with +OK
+	8. back to 6 until last email
+	9. QUIT, to send indication that pop3 client will immediately disconnect
+		- PWG receive, and do DELETE EMAIL for the previously tagged email, 
+		- and do LOGOUT, and response with +OK --> not mandatory
+	10. disconnect
+		- PWG also disconnect, ready for new connection
+
++ URLs
+	- login: http://webmail.plasa.com/
+	- inbox: http://webmail.plasa.com/Session/57150-oFhoa5oAg14GnJw8s7dP-kmbcuww/Mailbox/INBOX.html
+		- get the max count email
+	- normal msg view: http://webmail.plasa.com/Account/Message/INBOX/8.html?SID=57150-oFhoa5oAg14GnJw8s7dP-kmbcuww&
+	- raw msg view: http://webmail.plasa.com/Session/57150-oFhoa5oAg14GnJw8s7dP-kmbcuww/Message/INBOX/8-P.txt
+	- compose form: http://webmail.plasa.com/Session/57150-oFhoa5oAg14GnJw8s7dP-kmbcuww/Compose.html?SID=57150-oFhoa5oAg14GnJw8s7dP-kmbcuww&
+	- logout: http://webmail.plasa.com/Session/57150-oFhoa5oAg14GnJw8s7dP-kmbcuww/Bye.html?SID=57150-oFhoa5oAg14GnJw8s7dP-kmbcuww&

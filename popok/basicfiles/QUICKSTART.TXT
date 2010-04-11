@@ -1,0 +1,23 @@
+popok - a webmail to pop3/smtp gateway 
+by dsw software house
+(http://dsw.gesit.com)
+
+
+=====================================
+
+--This README refers to popok version 0.9--
+
+QUICK START
+==========
+Setup a new account in your pop3 mail using this information (ie for plasa.com):
+- pop3 
+    server: localhost
+    port: 110
+    email address: yourusername@plasa.com
+    username: yourusername@plasa.com
+    password: your password
+- smtp 
+    server: localhost
+    port: 25
+    email address: yourusername@plasa.com
+    authentication: "pop before smtp" (if any)
