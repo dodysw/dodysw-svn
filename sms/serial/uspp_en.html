@@ -1,0 +1,386 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="KeyWords" content="USPP, Python, Serial Port">
+   <meta name="Author" content="Isaac Barona">
+   <meta name="Description" content="Documentation">
+   <title>USPP - Universal Serial Port Python Library</title>
+<!--
+/*********************************************************************
+ *  File:       uspp.html
+ *
+ *  Version:    0.1
+ *
+ *  Original:   30/08/2001
+ *  Revised:    
+ *
+ *********************************************************************
+ *
+ *  Copyright 2001 Isaac Barona.  All rights reserved.
+ *
+ *********************************************************************
+ */
+-->
+</head>
+<body text="#000000" bgcolor="#000080" link="#0000EE" vlink="#551A8B" alink="#FF00FF">
+&nbsp;
+<center><table BORDER=0 CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="90%" >
+<tr>
+<td BGCOLOR="#3333FF">
+<center><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=+2>USPP</font></font></font></b></center>
+</td>
+</tr>
+
+<tr>
+<td BGCOLOR="#FFFFFF">
+<center><font face="Arial,Helvetica"><font color="#000000"><font size=+1>
+Universal Serial Port Python Library</font></font></font>
+<br><font face="Arial,Helvetica"><font color="#000000"><font size=-1>Copyright
+2001 Isaac Barona</font></font></font>
+<br><font face="Arial,Helvetica"><font color="#000000"><font size=-1>ibarona@tid.es</font></font></font></center>
+</td>
+</tr>
+
+<tr>
+<td HEIGHT="32"></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#3333FF"><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=+1>Contents</font></font></font></b></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#FFFFFF">
+<ol>
+<li>
+<font color="#000000"><a href="#Section1">Introduction</a></font></li>
+
+<li>
+<font color="#000000"><a href="#Section2">Motivation</a></font></li>
+
+<li>
+<font color="#000000"><a href="#Section3">Features</a></font></li>
+
+<li>
+<font color="#000000"><a href="#Section4">Prerequisites</a></font></li>
+
+<li>
+<font color="#000000"><a href="#Section5">Usage and documentation</a></font></li>
+
+<li>
+<font color="#000000"><a href="#Section6">Where does it works</a></font></li>
+
+<li>
+<font color="#000000"><a href="#Section7">Porting to other platforms</a></font></li>
+
+<li>
+<font color="#000000"><a href="#Section8">License</a></font></li>
+
+<li>
+<font color="#000000"><a href="#Section9">Author</a></font></li>
+
+<li>
+<font color="#000000"><a href="#Section10">Versions</a></font></li>
+
+</ol>
+</td>
+</tr>
+
+<tr>
+<td HEIGHT="16"></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#3333FF"><a NAME="Section1"></a><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=+1>Introduction</font></font></font></b></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#FFFFFF">
+<ol>
+<i>USPP Library </i>is a multi-platform Python module to access serial ports.
+At the moment, it only works in Windows and Linux (the platforms I have
+access to) but as it is written entirely in Python (doesn't wrap any C/C++ 
+library) I hope you can extend it to support any other platforms.
+</ol>
+</td>
+</tr>
+
+<tr>
+<td HEIGHT="16"></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#3333FF"><a NAME="Section2"></a><b><font
+face="Arial,Helvetica"><font color="#FFFFFF"><font size=+1>Motivation</font></font></font></b></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#FFFFFF">
+<ol>
+I like very much to make electronic widgets with microcontrollers, specially
+those that can be connected to the computer to send and receive data.
+<p>Some months ago, I discovered Python and inmediatelly liked it a lot. 
+I started playing with it and saw that I could use it to make prototypes of
+comunication protocols between computer and microcontrollers really
+fast and easily than using C. At the same time, I was interested in
+working over different platforms.
+<p>I started looking for Python modules to access serial port and I found
+the following projects:
+<ul>
+<li><i>win32comport_demo</i> from the win32 extension module</li>
+<li><i>win32comm</i> module of wheineman@uconect.net</li>
+<li><i>Sio Module </i>of Roger Rurnham (rburnham@cri-inc.com)</li>
+<li><i>pyxal (Python X10 Abstraction Layer) </i>of Les Smithson (lsmithson@open-networks.co.uk)</li>
+</ul>
+
+<p>but they were not multi-platform, were just a wrap of propietary libraries or 
+were just simple examples of serial port access.
+<p>For these reasons and also for learning more Python, I decided to start
+this project. Of course, I have used all this projects as reference to
+my module and so, I want to thanks the authors for their excellent work and
+for allowing us to study the code.
+I hope you enjoy using the uspp module as much as I am enjoying doing it.
+</ol>
+</td>
+</tr>
+
+<tr>
+<td HEIGHT="16"></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#3333FF"><a NAME="Section3"></a><b><font
+face="Arial,Helvetica"><font color="#FFFFFF"><font size=+1>Features</font></font></font></b></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#FFFFFF">
+<blockquote>
+This module has the following features:
+<ul>
+<li>hight level access to serial port under several platforms.</li>
+<li>autodetects the platform in which it is working and exports the correct 
+classes for that platform.</li>
+<li>object oriented approach.</li>
+<li>file object semantic operations over the ports.</li>
+<li>allows using the serial port with different speeds and
+characteristics.</li>
+<li>RS-232 and RS-485 modes (now only RS-232). In RS-485 mode the communication
+is half-duplex and uses the RTS line to control the direction of the 
+transference.</li>
+<li>blocking, non-blocking or configurable timeout reads.</li>
+</ul>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td HEIGHT="16"></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#3333FF"><a NAME="Section4"></a><b><font
+face="Arial,Helvetica"><font color="#FFFFFF"><font size=+1>Prerequisites</font></font></font></b></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#FFFFFF">
+<blockquote>You need the following to use the library:
+<ul>
+<li>Python 1.5.2 or better</li>
+<li>In windows you need the win32 extension modules</li>
+</ul>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td HEIGHT="16"></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#3333FF"><a NAME="Section5"></a><b><font
+face="Arial,Helvetica"><font color="#FFFFFF"><font size=+1>Usage and documentation</font></font></font></b></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#FFFFFF">
+<blockquote>You only have to import in your program the <i>uspp</i> module and automatically
+it loads the correct classes for the platform in which you are running
+the program.
+
+<p>First of all you have to create a <i>SerialPort</i> object with the settings you
+want. If a <i>SerialPortException</i> is not generated then you just can
+use the read and write methods of the object to read and write to
+the serial port.
+
+<p>Example:
+
+<pre><tt>
+>>> from uspp import *
+>>> tty=SerialPort("COM2", 1000, 9600)  
+>>> # Opens COM2 at 9600 bps and with a read timeout of 1 second.
+>>> tty.write("a")  # Writes a character to the COM2 port
+>>> # Now suppose we receive the string "abc"
+>>> tty.inWaiting()
+3
+>>> tty.read()
+'a'
+>>> tty.inWaiting()
+2
+>>> tty.read(2)
+'bc'
+</tt></pre>
+
+<p>Documentation of the different classes and methods can be found on
+uspp module docstring.
+
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td HEIGHT="16"></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#3333FF"><a NAME="Section6"></a><b><font
+face="Arial,Helvetica"><font color="#FFFFFF"><font size=+1>Where does it works</font></font></font></b></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#FFFFFF">
+<blockquote>
+The library has been tested in a Windows 95 machine with Python 2.0
+and in a Linux (2.0.34 kernel) machine with Python 1.5.2 and 
+Python 2.0.1.
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td HEIGHT="16"></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#3333FF"><a NAME="Section7"></a><b><font
+face="Arial,Helvetica"><font color="#FFFFFF"><font size=+1>Porting to other
+platforms</font></font></font></b></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#FFFFFF">
+<blockquote>
+If you want to port the library to other platforms you only have to follow
+these steps:
+<ul>
+<li>Create a new python file called <i>SerialPort_XXXX.py </i>in which you 
+implement the same public classes and methods found in the
+<i>SerialPort_win</i>
+and <i>SerialPort_linux</i> modules.</li>
+<li>Append the new platform to the <i>uspp.py</i> file.</li>
+</ul>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td HEIGHT="16"></td>
+</tr>
+
+
+<tr>
+<td BGCOLOR="#3333FF"><a NAME="Section8"></a><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=+1>License</font></font></font></b></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#FFFFFF">
+<blockquote>
+This code is released under the "GPL" that can be found in
+<a href="http://www.gnu.org/copyleft/gpl.html">
+http://www.gnu.org/copyleft/gpl.html</a> or in the GPL.txt file that 
+is with the library.
+<p>If you use this software, I'd like to know about it.
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td HEIGHT="16"></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#3333FF"><a NAME="Section9"></a><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=+1>Author</font></font></font></b></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#FFFFFF">
+<blockquote>
+This library has been created by Isaac Barona Martínez 
+<a href="mailto:ibarona@tid.es">(ibarona@tid.es)</a>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td HEIGHT="16"></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#3333FF"><a NAME="Section10"></a><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=+1>Versions</font></font></font></b></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#FFFFFF">
+<ul>
+<li>
+<h2>Version 0.1 - 09/01/2001 (September 2001)</h2>
+</li>
+<h3>Files:</h3>
+<ul>
+<li>Zip file: <a href="uspp-0_1.zip"> uspp-0_1.zip</a></li>
+<li>tar.gz file: <a href="uspp-0_1.tar.gz"> uspp-0_1.tar.gz</a></li>
+</ul>
+<h3>Known problems</h3>
+In Linux, I get the following error when the inWaiting method is called:
+<pre><tt>
+>>> tty.inWaiting()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in ?
+  File "SerialPort_linux.py", line 179, in inWaiting
+    n=fcntl.ioctl(self.__handle, TERMIOS.TIOCINQ)
+IOError: [Errno 14] Bad address
+</tt></pre>
+
+<p>I have used this ioctl call in previous C programs and it has worked ok.
+Please, help!!!!!
+
+<p>If you like to submit a bug report, or a feature request, send me 
+a mail to <a href="mailto:ibarona@tid.es">ibarona@tid.es.</a>
+
+<h3>To-do list</h3>
+This is the to-do list:
+<ul>
+<li>correct the error in the linux version of the inWaiting method.</li>
+<li>implement RS-485 mode.</li>
+<li>port the library to other platforms so that it can be really 
+multi-platform.</li>
+</ul>
+
+</ul>
+</td>
+</tr>
+
+<tr>
+<td HEIGHT="16"></td>
+</tr>
+
+
+<tr>
+<td><i><font color="#FFFFFF">Copyright 2001 Isaac Barona</font></i></td>
+</tr>
+</table></center>
+
+</body>
+</html>

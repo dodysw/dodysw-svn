@@ -1,0 +1,396 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="KeyWords" content="USPP, Python, Serial Port">
+   <meta name="Author" content="Isaac Barona">
+   <meta name="Description" content="Documentation">
+   <title>USPP - Universal Serial Port Python Library</title>
+<!--
+/*********************************************************************
+ *  File:       uspp_es.html
+ *
+ *  Version:    0.1
+ *
+ *  Original:   30/08/2001
+ *  Revised:    
+ *
+ *********************************************************************
+ *
+ *  Copyright 2001 Isaac Barona.  All rights reserved.
+ *
+ *********************************************************************
+ */
+-->
+</head>
+<body text="#000000" bgcolor="#000080" link="#0000EE" vlink="#551A8B" alink="#FF00FF">
+&nbsp;
+<center><table BORDER=0 CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="90%" >
+<tr>
+<td BGCOLOR="#3333FF">
+<center><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=+2>USPP</font></font></font></b></center>
+</td>
+</tr>
+
+<tr>
+<td BGCOLOR="#FFFFFF">
+<center><font face="Arial,Helvetica"><font color="#000000"><font size=+1>
+Universal Serial Port Python Library</font></font></font>
+<center><font face="Arial,Helvetica"><font color="#000000">
+(Librería en Python para el acceso universal al puerto serie)</font></font>
+<br><font face="Arial,Helvetica"><font color="#000000"><font size=-1>Copyright
+2001 Isaac Barona</font></font></font>
+<br><font face="Arial,Helvetica"><font color="#000000"><font size=-1>ibarona@tid.es</font></font></font></center>
+</td>
+</tr>
+
+<tr>
+<td HEIGHT="32"></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#3333FF"><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=+1>Indice</font></font></font></b></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#FFFFFF">
+<ol>
+<li>
+<font color="#000000"><a href="#Section1">Introducción</a></font></li>
+
+<li>
+<font color="#000000"><a href="#Section2">Motivación</a></font></li>
+
+<li>
+<font color="#000000"><a href="#Section3">Características</a></font></li>
+
+<li>
+<font color="#000000"><a href="#Section4">Pre-requisitos</a></font></li>
+
+<li>
+<font color="#000000"><a href="#Section5">Utilización y documentación</a></font></li>
+
+<li>
+<font color="#000000"><a href="#Section6">Dónde funciona</a></font></li>
+
+<li>
+<font color="#000000"><a href="#Section7">Portado a otras plataformas</a></font></li>
+
+<li>
+<font color="#000000"><a href="#Section8">Licencia</a></font></li>
+
+<li>
+<font color="#000000"><a href="#Section9">Autor</a></font></li>
+
+<li>
+<font color="#000000"><a href="#Section10">Versiones</a></font></li>
+
+</ol>
+</td>
+</tr>
+
+<tr>
+<td HEIGHT="16"></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#3333FF"><a NAME="Section1"></a><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=+1>Introducción</font></font></font></b></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#FFFFFF">
+<ol>
+La librería <i>USPP</i> es un módulo desarrollado en Python para el acceso
+multiplataforma al puerto serie. En el momento, sólo funciona en Linux
+y en Windows (las plataformas a las que tengo acceso), pero como está
+escrita completamente en Python (no es únicamente un recubrimiento
+en Python de una librería desarrollada en C/C++) espero que pueda
+ser ampliada para que soporte otras plataformas.
+</ol>
+</td>
+</tr>
+
+<tr>
+<td HEIGHT="16"></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#3333FF"><a NAME="Section2"></a><b><font
+face="Arial,Helvetica"><font color="#FFFFFF"><font size=+1>Motivación</font></font></font></b></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#FFFFFF">
+<ol>
+<p>A mí me gusta mucho hacer pequeños cacharros electrónicos con 
+microcontroladores, especialmente aquellos que pueden ser conectados a
+un ordenador para enviar y recibir datos.</p>
+<p>Hace un par de meses descubrí Python y realmente me encantó.
+Empezé a jugar con él y ví que podía utilizarlo para hacer prototipos
+de protocolos de comunicación entre el ordenador y los microcontroladores 
+de manera mucho más fácil y rápida que utilizando C (que era el lenguaje
+que solía utilizar). Al mismo tiempo, estaba interesado en poder utilizar
+los desarrollos bajo diferentes arquitecturas.</p>
+<p>Empezé a buscar en la red módulos de Python que accedieran al puerto serie
+y encontré los siguientes:</p>
+<ul>
+<li><i>win32comport_demo</i> que viene junto a la extensión win32.</li>
+<li>Módulo <i>win32comm</i> de wheineman@uconect.net.</li>
+<li><i>Sio Module</i> de Roger Rurnham (rburnham@cri-inc.com).</li>
+<li><i> pyxal (Python X10 Abstraction Layer)</i> de Les Smithson 
+(lsmithson@open-networks.co.uk).</li>
+</ul>
+
+<p>pero no eran multiplataforma, eran únicamente un recubrimiento de una librería
+propietaria o eran simples ejemplos de acceso al puerto serie bajo una 
+determinada plataforma.</p>
+<p>Por estas razones, y también por supuesto, por aprender más Python, decidí
+empezar este proyecto. Por supuesto, he utilizado los módulos indicados
+anteriormente como referencia para realizar mi librería y por tanto, me
+creo en la obligación de felicitar a sus autores por su excelente trabajo y
+por haberlo compartido con los demás.</p>
+
+<p>Espero que disfrutes utilizándo el módulo uspp tanto como yo lo 
+he hecho haciéndolo.</p>
+</ol>
+</td>
+</tr>
+
+<tr>
+<td HEIGHT="16"></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#3333FF"><a NAME="Section3"></a><b><font
+face="Arial,Helvetica"><font color="#FFFFFF"><font size=+1>Características</font></font></font></b></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#FFFFFF">
+<blockquote>
+Este módulo tiene las siguientes características destacadas:
+<ul>
+<li>acceso de alto nivel al puerto serie bajo diversas plataformas.</li>
+<li>autodetecta la plataforma en la que se está ejecutando y carga las clases
+adecuadas para esa plataforma.</li>
+<li>Orientado a objetos.</li>
+<li>Las operaciones sobre el puerto serie tienen la misma semántica
+que las operaciones sobre objetos de tipo fichero.</li>
+<li>permite utilizar el puerto serie con diferentes velocidades y
+características.</li>
+<li>permite la utilización del puerto bajo dos modos de funcionamiento:
+RS-232 y RS-485 (de momento, sólo RS-232). En modo 485 la comunicación es 
+half-duplex y se utiliza la línea RTS para controlar la dirección de la
+transferencia.</li>
+<li>lecturas en modo bloqueante, no bloqueante o con timeout.</li>
+</ul>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td HEIGHT="16"></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#3333FF"><a NAME="Section4"></a><b><font
+face="Arial,Helvetica"><font color="#FFFFFF"><font size=+1>Pre-requisitos</font></font></font></b></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#FFFFFF">
+<blockquote>Se necesita lo siguiente para utilizar la librería:
+<ul>
+<li>Python 1.5.2 o superior.</li>
+<li>En windows los módulos <i>win32</i></li>
+</ul>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td HEIGHT="16"></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#3333FF"><a NAME="Section5"></a><b><font
+face="Arial,Helvetica"><font color="#FFFFFF"><font size=+1>Utilización y 
+documentación</font></font></font></b></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#FFFFFF">
+<blockquote>Únicamente tienes que importar en tu programa el módulo <i>uspp</i>
+y automáticamente él se encarga de cargar las clases adecuadas para la 
+plataforma en la que se está ejecutando el programa.
+
+<p>Lo primero de todo, tendrás que crear un objeto de tipo <i>SerialPort</i>
+con las características que desees. Si no se genera ninguna excepción del tipo
+<i>SerialPortException</i>, puedes utilizar los métodos de lectura y escritura
+del objeto para leer y escibir en el puerto serie.</p>
+
+<p>Ejemplo:
+
+<pre><tt>
+>>> from uspp import *
+>>> tty=SerialPort("COM2", 1000, 9600)  
+>>> # Abre el puerto serie COM2 a 9600 bps y con un timeout de 1 segundo.
+>>> tty.write("a")  # Envía el carácter 'a' al puerto serie.
+>>> # Ahora suponemos que recibimos el string 'abc'
+>>> tty.inWaiting()
+3
+>>> tty.read()
+'a'
+>>> tty.inWaiting()
+2
+>>> tty.read(2)
+'bc'
+</tt></pre>
+
+<p>La documentación de las diferentes clases y métodos que componen el módulo
+puede encontrarse en el string de documentación del módulo uspp.</p>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td HEIGHT="16"></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#3333FF"><a NAME="Section6"></a><b><font
+face="Arial,Helvetica"><font color="#FFFFFF"><font size=+1>Dónde funciona</font></font></font></b></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#FFFFFF">
+<blockquote>
+La librería ha sido probada en una máquina con Windows 95 y Python 2.0 y 
+en un Linux (con el kernel 2.0.34) con Python 1.5.2 y Python 2.0.1.
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td HEIGHT="16"></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#3333FF"><a NAME="Section7"></a><b><font
+face="Arial,Helvetica"><font color="#FFFFFF"><font size=+1>Portado a otras
+plataformas</font></font></font></b></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#FFFFFF">
+<blockquote>
+Si quieres portar la librería a otras plataformas sólo tienes que seguir
+los siguientes pasos:
+<ul>
+<li>Crear un nuevo fichero en python llamado <i>SerialPort_XXX.py</i>en el que
+implementes las mismas clases y métodos públicos que aparecen en los 
+módulos <i>SerialPort_win</i> y <i>SerialPort_linux</i>.
+<li>Añadir la nueva plataforma en el fichero <i>uspp.py</i>.
+</ul>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td HEIGHT="16"></td>
+</tr>
+
+
+<tr>
+<td BGCOLOR="#3333FF"><a NAME="Section8"></a><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=+1>Licencia</font></font></font></b></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#FFFFFF">
+<blockquote>
+Este código se libera bajo la licencia "GPL" que puedes encontrar en <a href="http://www.gnu.org/copyleft/gpl.html">
+http://www.gnu.org/copyleft/gpl.html</a> o en el fichero GPL.txt que 
+acompaña a la librería.
+<p>Si utilizas este software estaría muy agradecido de saberlo.</p>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td HEIGHT="16"></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#3333FF"><a NAME="Section9"></a><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=+1>Autor</font></font></font></b></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#FFFFFF">
+<blockquote>
+Esta librería ha sido creada por Isaac Barona Martínez
+<a href="mailto:ibarona@tid.es">(ibarona@tid.es)</a>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td HEIGHT="16"></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#3333FF"><a NAME="Section10"></a><b><font face="Arial,Helvetica"><font color="#FFFFFF"><font size=+1>Versiones</font></font></font></b></td>
+</tr>
+
+<tr>
+<td BGCOLOR="#FFFFFF">
+<ul>
+<li>
+<h2>Versión 0.1 - 01/09/2001</h2>
+</li>
+<h3>Ficheros:</h3>
+<ul>
+<li>Fichero Zip: <a href="uspp-0_1.zip"> uspp-0_1.zip</a></li>
+<li>Fichero tar.gz: <a href="uspp-0_1.tar.gz"> uspp-0_1.tar.gz</a></li>
+</ul>
+<h3>Problemas pendientes</h3>
+Bajo Linux, obtengo el siguiente error cuando llamo al método inWaiting:
+<pre><tt>
+>>> tty.inWaiting()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in ?
+  File "SerialPort_linux.py", line 179, in inWaiting
+    n=fcntl.ioctl(self.__handle, TERMIOS.TIOCINQ)
+IOError: [Errno 14] Bad address
+</tt></pre>
+
+<p>Yo he utilizado esta llamada ioctl en programas previos desarrollados en C
+y me funcionó perfectamente. Por favor, ¡¡¡¡necesito ayuda!!!!!</p>
+
+<p>Si quieres informar sobre algún error o indicar alguna sugerencia, 
+envíame un mail a <a href="mailto:ibarona@tid.es">ibarona@tid.es.</a>
+
+<h3>Tareas pendientes</h3>
+Esta es la lista de tareas pendientes:
+<ul>
+<li>corregir el error en la versión de Linux del método inWaiting.</li>
+<li>implementar el modo RS-485.</li>
+<li>portar la librería a otras plataformas de forma que sea realmente 
+multiplataforma.</li>
+</ul>
+
+</ul>
+</td>
+</tr>
+
+<tr>
+<td HEIGHT="16"></td>
+</tr>
+
+
+<tr>
+<td><i><font color="#FFFFFF">Copyright 2001 Isaac Barona</font></i></td>
+</tr>
+</table></center>
+
+</body>
+</html>

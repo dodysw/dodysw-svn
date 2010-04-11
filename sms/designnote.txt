@@ -1,0 +1,72 @@
+SMS Design Note
+by dsw
+===============
+
+Short 
+-----
+mo = mobile originating
+mt = mobile terminating
+sc = service center (di operator)
+ms = mobile station/subscriber? (handphone, etc, yg berinteraksi dgn sc)
+smsc = short messaging service center
+pdu = protocol data unit
+sm-mt = short message - mobile terminating, kemampuan gsm system pd service_center-->mobile_station
+sm-mo = short message - mobile originating, kemampuan gsm system pd service_center<--mobile_station
+
+Tipe-tipe SMS:
+--------------
+SMS-DELIVER = service_center-->mobile_station (incoming)
+SMS-DELIVER-REPORT = service_center<--mobile_station, reply error (outgoing)
+SMS-SUBMIT = mobile_station-->service_center (outgoing)
+SMS-SUBMIT-REPORT = mobile_station<--service_center, reply error dari sc (incoming)
+SMS-STATUS-REPORT = mobile_station<--service_center, reply status report dari sc (incoming)
+	= ini sering disebut "delivery status", dikirim oleh operator ke pelanggan apabila sms yg dikirim telah diterima.
+SMS-COMMAND = mobile_station-->service_center (outgoing)
+
+Kelas-kelas SMS-DELIVER:
+------------------------
+Class 0: display immediately, no neet to save, "flash sms"
+Class 1: store in memory
+Class 2: sim card data
+Class 3: forward message to external device
+
+
+SMS Related AT Command
+----------------------
+- AT+CMGF?
+	= get sms mode 
+	- 0: sms in text mode
+	- 1: sms in pdu mode
+- AT+CMGF=0/1
+	= set sms mode (see above)
+- AT+CMGC
+	= send command
+- AT+CMGL
+	= 
+- AT+CMGD=<sms_index>
+	= delete sms
+	
+Decode PDU
+----------
+
++ Contoh 1: 059126181642040C912618958694810000309001618554828345A3D10582C540D322940A92C1603390B02865069755D0B2482D3AA9D5A013240C4AABA02A75090A0E87D26A90F9921689C526949A7C3A4147A3F1E52C5E41C5610BCAAC4E41CB22D50562169DC765100A425685A0A3D1081A169D5469F1350C3299A061D149951641301CEC16A3C96EB8990C
+	- 05 | 91 | 26181642 | 04 | 0C | 91| 261895869481 | 00| 00| 309001618554| 82 | 8345A3D10582C540D322940A92C1603390B02865069755D0B2482D3AA9D5A013240C4AABA02A75090A0E87D26A90F9921689C526949A7C3A4147A3F1E52C5E41C5610BCAAC4E41CB22D50562169DC765100A425685A0A3D1081A169D5469F1350C3299A061D149951641301CEC16A3C96EB8990C
+	  |<--  smsc     --->|
+	- 05: smsc number length, 5 pasang (tidak termasuk "05" ini)
+		- 91: type-of-address, nomornya berikut ini berformat international..ada +62-nya/kode negara (81 = national). note: pd kenyataannya, 91 selalu digunakan.
+		- 26181642: 62816124, nomor smsc (sms center)
+	- 04: SMS-DELIVER type
+	- 0C: sender number length, 0C = 12dec (tidak termasuk "OC" ini, dan type-of-address)
+		- 91: type-of-address, nomornya berikut ini berformat international
+		- 261895869481: 628159684918, nomor sender
+		- 00: TP-PID, protocol identifier
+		- 00: TP-DCS, data coding scheme
+		- 30900161855482: 03-09-10 16:58:45, time stamp
+		- 83: TP-UDL, user data length, panjang body, normalnya dalam 7-bit (septet). kecuali TP-DCS mengindikasikan data 8-bit/unicode, berarti dalam 8-bit (octet)
+		- 8345A3D10582C540D322940A92C1603390B02865069755D0B2482D3AA9D5A013240C4AABA02A75090A0E87D26A90F9921689C526949A7C3A4147A3F1E52C5E41C5610BCAAC4E41CB22D50562169DC765100A425685A0A3D1081A169D5469F1350C3299A061D149951641301CEC16A3C96EB8990C
+			: TP-UD, user data, body.
+			
++ Contoh 2: 0021000B982618187124F0000030E437390F9AD7E5E930E89E5687F36117481D5E87E5F43028ED26BFDDE5793A0C9287F36110FC3DA783DE
+	- 00 | 21000B982618187124F0000030E437390F9AD7E5E930E89E5687F36117481D5E87E5F43028ED26BFDDE5793A0C9287F36110FC3DA783DE
+	- 00: smsc number length, 0, berarti type-of-address dan nomor smsc tdk diberikan, which akan mengambil default dari ms (mobile station)
+	- 02: SMS-SUBMIT

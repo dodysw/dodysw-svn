@@ -1,0 +1,11 @@
+smscenter
+---------
+
+Telkomsel = +62811009075 (sms "anda punya pesan veronica")
+Telkomsel = +6281100000
+Singapore? = +6596845909
+Satelikndo = +62816124
+
+mami: 0812-7118601
+
+menu 6 3 1 2
