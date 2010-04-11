@@ -1,0 +1,81 @@
+Schedule Advanced:
+
+- [edit/new] Edit/New form
+- [(edit/new ->canbeclosed)/view] Calender
+- [view+datemode] button bar: prevday, nextday, curr dayname+date, curr mo+year bt, curr week bt
+- [view+moyearmode+weekmode] Weekly schedule
+- [edit/new] edit/new form 2 (starttime, duration, repeat, repeat_duration)
+- [edit/new] button bar: cancel, update/create, reset,
+- [view] button bar: new btn, current time, curr dayname+date br, curr mo+year bt, curr week bt
+
+
+Global._view_month = ClassViewMonth(tooltips)
+vbox.pack_start(Global._view_month.get_widget())
+Global._view_week = ClassViewWeek(tooltips)
+vbox.pack_start(Global._view_week.get_widget())
+Global._view_day = ClassViewDay(tooltips)
+vbox.pack_start(Global._view_day.get_widget())
+Global._edit = ClassEditCalendarRecord(tooltips)
+vbox.pack_start( Global._edit.get_widget())
+Global._header = CreateHeaderWidget(tooltips)
+vbox.pack_start(Global._header,0,0)
+
+Global._current_view -> ref to current _view_XXX
+
+SwitchMainWindow("Month",date_now())  -> hide/show window given mode (with additional data)
+    date_now() -> return number of (days,hour,mintes) from 1/jan/1990 to current date/time
+        date_from_y_m_d_H_M -> given year/moon/day/hour/minute, return number of (days,hour,mintes) from 1/jan/ofthatyear to given date/time
+            days_to_jan_first -> return number of days from 1-1-1900 to 1-1-X
+            days_in_month -> given month/year, return number of days
+            date_normalize -> given timedelta day/hour/minute (accept hour>23 minute>59), return day/hour/minute seq with hour <=23 minute <=59
+    Global._view_month.update_time( data, 0) -> given d/h/m, add with offset (0)
+        self.set_interval(start, length) -> just setting variable
+            date_add -> (d1,h1,m1) + (d2,h2,m3), add length to start, return new start
+            self._interval_begin = start
+            self._interval_end = new_start
+        self.update_head()
+            get_interval_begin -> return _interval_begin
+            date_to_y_m_d_H_M( date ) -> convert start date to y,m,d,h,m
+            old = self._calendar.get_date() # uses gtk format (y,m,d+1)
+            _calendar -> ref to gtk.Calendar
+        self.update_body()
+            self.clear_events() -> self._events = []
+            ._events -> list yg dimodif add_events()
+                add_events() dipakai add_week_markers(), add_day_markers(), add_hour_markers(), add_raw_filtered_events()
+            self.add_raw_filtered_events() -> dipanggil update_body()-nya ClassViewWeek+ClassViewDay+ClassViewMonth
+                -> convert database row ke display event pd interval time _interval_begin s/d _interval_end
+                Global._raw_events: -> return dr read_database( Global._database )
+                    list of ClassAbstractEvent() object, initialized to each row. decorates simple row data with methods
+                        ._start -> start sched: 2005/04/17 08:59
+                        ._duration -> duration of schedule: "2:05:00" day/hour/mint
+                        ._length -> length of repetition: "1:00:00" day/hour/mint
+                    self.add_events( e.translate_to_display_events(self._interval_begin,self._interval_end,Global._category) )
+                        e -> object ClassAbstractEvent() yg sudah didecorate
+                        translate_to_display_events -> given by start/end time range, convert schedule database row into real schedule,
+                                                        considering "repeat" type and repeat "length".
+                            -> for each converted result, pass startsched+dur+text to new object "ClassConcreteEvent", then return as list of those objects back.
+                            => convert to simple dict, and create function to do the same (Save memory)
+            self.add_week_markers() -> put "marker" rows (ie: Week 15, Week 16,...) between _interval_begin s/d _interval_end di panel week
+                date_to_beginning_of_week() -> given day/h/m, return that week's monday day/h/m
+                date_to_string_week() -> return "Week X" given date
+                add_events()
+            self.sort_events() -> sort "concrete event" (display event), based on date_compare(a._s,b._s) (defined on ClassConcreteEvent object)
+                .events.sort() -> sort it
+                    date_compare(a._s,b._s) -> based on start schedule
+            self.redraw_events()
+                self._model.clear() -> clean list control storage data
+                self._model -> ref to gtk.ListStore(gtk.gdk.Color, int, [gobject.TYPE_STRING] * len(titles))
+                    ListStore seems to be a storage defined for all columns in a list control, so that
+                    titles -> ref to like [" Beg "," End "," Description "]
+                for event in self._events: -> for each display event
+                    -> build "fields" list containing:
+                        1. ref to listcontrol gtk object's style (depending on event)
+                        2. an integer (400/700) -> what's this for?
+
+
+
+
+            self.sort_events()
+            self.redraw_events()
+
+
