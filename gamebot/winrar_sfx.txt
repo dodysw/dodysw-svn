@@ -1,0 +1,28 @@
+;The comment below contains SFX script commands
+
+Path=cs_player
+SavePath
+Overwrite=1
+Title=CS Player 1.9.0
+Text
+{
+CS Player Alaram
+by Dody Suria Wijaya <dodysw@gmail.com>
+2005
+}
+License=License Agreement
+{
+By using this software, you agree for this term of use:
+
+This software is provided by the copyright holders and contributors "as is" and
+any express or implied warranties, including, but not limited to, the implied
+warranties of merchantability and fitness for a particular purpose are
+disclaimed. in no event shall Dody Suria Wijaya's Software House or contributors
+be liable for any direct, indirect, incidental, special, exemplary, or
+consequential damages (including, but not limited to, procurement of substitute
+goods or services; loss of use, data, or profits; or business interruption)
+however caused and on any theory of liability, whether in contract, strict
+liability, or tort (including negligence or otherwise) arising in any way out of
+the use of this software, even if advised of the possibility of such damage.
+}
+Shortcut=D, "cs_player.exe", "", "", "CS Player"
