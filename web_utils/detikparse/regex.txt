@@ -1,0 +1,35 @@
+
+<font class="subjudulberita">(.*?)</font>.*?<font class="judulberita">(.*?)</font><br>.*?<font class="textreporter">(.*?)</font>.*?<font class="textberita">(.*?)</font>
+
+news regex:
+<font class="subjudulberita">(.*?)</font>.*?<font class="judulberita">(.*?)</font><br>.*?<font class="textreporter">(.*?)<br></font>.*?<font class="textberita">.*?(<b>.*?)</font>
+
+food regex:
+<font class="subjudulberita">(.*?)</font>.*?<font class="judulberita">(.*?)</font><br>.*?<font class="textreporter">(.*?)</font>.*?<font class="textberita">.*?(<b>.*?)</font>
+
+foto regex:
+<BR><FONT size=5>(.*?)</FONT>.*?<BR><FONT color=#ff0000 size=2>(.*?)</FONT>.*?<P align="Justify">(.*?)</center>
+
+news2 regex:
+<font class=subjudulberita>(.*?)</font>.*?<font class=judulberita>(.*?)</font><br>.*?<font class=textreporter>(.*?)<br></font>.*?<font class=textberita>.*?(<b>.*?)</font>
+
+news3 regex (pre 2002 news):
+<FONT size=5>(.*?)</FONT>.*?<FONT color=#ff0000 size=2>(.*?)</FONT>.*?(<B>.*?)</font>
+
+food2 regex:
+<font size="5" color="#F00000">(.*?)</font>.*?<font size="2">(.*?)</font>.*?<font color="black">(.*?)</font><p>
+
+hot regex:
+<font size="5" color="red">(.*?)</font>.*?<font color="red" size="2">(.*?)</font>.*?<p><font color="black">(.*?)</font></p>
+
+kolom amin regex:
+<FONT size=5><B>(.*?)</B>.*?(<B>.*?)<!--
+
+inet regex:
+<FONT size="4" color="Black">(.*?)</FONT>.*?<FONT size="5" color="Black">(.*?)</FONT>.*?<FONT color="#ff0000" size="2">(.*?)<BR>.*?<FONT color="#000000">.*?(<B>.*?)</b></font>
+
+food3 regex:
+<font size="5" color="#F00000">(.*?)</font>.*<font size="2">(.*?)</font>.*?<font color="black">(.*?)</font>
+
+food4 regex:
+<font size="3" color="#009700">(.*?)</font>.*<font size="5" color="#F00000">(.*?)</font>.*?<font color="black">(.*?)<font color="black">

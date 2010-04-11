@@ -1,0 +1,20 @@
+ajax uses:
+- reduce/eliminate whole content refreshing
+    - restructure page, ie:
+        - update (add,delete,edit) row(s) on a table/grid without reloading page
+    - display manipulation, change dom style/value etc
+        - login form sidebar in content. if fail would show message above the form, without reloading page    
+        - on product lists/rows, button can be pressed to check latest discount price, without reloading page
+- background+periodic refresh done on to check server-side events:
+    - gmail's email checking, new email automatically insert the row
+- stabilize url on web interaction: ajax done on separate "thread" and don't change the web browser's url if not needed
+- allow "widget" style web-component: each widget can be used without conflicting other widgets on the same page, since page reloading is not needed
+- more responsive/local interaction: interaction can be responded locally instantly without the overhead of doing page refresh
+
+Note of drawback:
+- unchanging url, since url doesnt point to current state...
+    - page must not be designed to be logically "bookmarkable" at the exact state
+    - back button must still be logically useable, to point to previous "big state"
+- bigger byte size, for...
+    - javascript "library" to handle basic ajax interaction or framework
+    - hidden UI to handle possible local interaction (wasted if unused)

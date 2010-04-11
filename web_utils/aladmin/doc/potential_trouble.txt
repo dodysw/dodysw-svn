@@ -1,0 +1,40 @@
+potential trouble:
+$_REQUEST['num_row']
+    -
+$_REQUEST['m']
+    - if final_init() called, this is used to determine which module is POST or GET-ing, and if equal to myown module name, then call post/get_handler()
+    -
+$this->action = ($_REQUEST['act'] == '')? 'browse': $_REQUEST['act'];
+    - if final_init() is called, and $_REQUEST['m'] == this module, it will be used by post_handler() to handle post
+    - if $this->action != edit/new, it will execute any function called act_{$this->action}
+    - if go() called then basic_handler() is called, will be used to show brose/edit/new form
+$this->_go = $_REQUEST['go'];
+    - decides where to go after edit-save, new-save
+$this->_query = $_REQUEST['query'] and $_REQUEST['qf']
+    - if go()--->basic_handler() called, and $_REQUEST['act'] == 'browse' or '', it will modify db_where query to that specific field+value
+$this->_rowid = $_REQUEST['rowid'];
+    - this can be array of numbers, depending coming from show_form or show_grid
+    - if final_init() called + POST + $_REQUEST['m'] == this_module + $_REQUEST['act'] == 'edit', it will decide which rowid to edit
+    - if final_init() called + POST + $_REQUEST['m'] == this_module + $_REQUEST['act'] == 'edit' + $_REQUEST['save'] == 1, it will decide which rowid the given $_REQUEST['field[x][x]'] will be SAVED
+    - todo: add $this->allow_X check on post_handler
+$this->_save = $_REQUEST['save'];   # int, 1 if this is a posted update/new form and should be save. -1 to show preview page first.
+    - i think this quite save, since when edit/new-form is showed it's assumed that user is allowed to do the save
+$this->_orderby = $_REQUEST['orderby']; #browse: order by chosen column
+    - this must not be imported by default on frontend since it will change create_sql_select() generated SQL!
+    * todo: FIX THIS
+$this->_sortdir = $_REQUEST['sortdir']; #browse: ASC or DESC
+    * quite save, since this assumed that used is allowed to change SQL orderby
+$this->_rowstart = ($_REQUEST['row'] == '')? 0: $_REQUEST['row'];    #browse: row index to start page browsing
+    - if browse_rows > 0, _rowstart will decide which row the create_sql_query start (limit _rowstart, browse_rows) which is used by all ->populate()
+    - todo: this must be disabled by default on frontpage, except explicitly required for front-end paging
+$this->_cursor = ($_REQUEST['cursor'] == '')? 0: $_REQUEST['cursor'];     # used for browse-form, integer pointing to datasource's current row index
+    - this variable modifies which row to show/edit/delete on show_form
+    - this should be quite save since cursor cannot show more rows than is available via query, though care must be taken to limit the return to (0,1) if you're really expecting user to only edit/delete 1 row
+
+Later, i should enforce a mambo-like permission:
+    - public
+        - registered
+    - backend
+        - user
+            - admin
+                - supervisor

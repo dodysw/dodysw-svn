@@ -1,0 +1,10 @@
+#detikcom's to help file strategy
+
+1. retrieve list of url pointing news
+  - get index per day per channel
+  - parse it to get url
+  - save to url.list
+2. - special for photo: parse it to get more url
+  - append to url.list
+3. 
+for each channel, get 
