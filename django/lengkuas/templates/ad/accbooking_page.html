@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Accommodation booking by TA containing "{{tano}}"</h1>
+
+{% if rows %}
+
+    {% for row in rows %}
+        <li>TA# {{row.8}}. Reservation Id: <a href="http://pppintranet/AccBooking/DesktopModules/ApproveAccBooking.aspx?moduleId=0&ItemId={{row.0}}">{{row.0}}</a>. Sponsor: <a href="mailto:{{row.2}}">{{row.1}}</a>. Visitor: {{row.3}}. Sponsor auth: {{row.4}} ({{row.5|date:"d-M-Y"}}). TAS auth: {{row.6}} ({{row.7|date:"d-M-Y"}}).
+        </li>
+    {% endfor %}
+
+
+{% else %}
+No booking found that contains this TA number
+{% endif %}
+
+
+{% endblock content %}

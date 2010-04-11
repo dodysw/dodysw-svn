@@ -1,0 +1,13 @@
+[OPTIONS]
+Binary TOC=Yes
+Compatibility=1.1 or later
+Compiled file=%(compiled_file)s
+Contents file=toc.hhc
+Default Font=,8,0
+Default topic=main.html
+Display compile notes=No
+Display compile progress=No
+Full-text search=Yes
+Language=0x409 English (United States)
+Title=%(title)s
+[INFOTYPES]

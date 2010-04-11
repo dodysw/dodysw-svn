@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Laporan Data Kuisioner (TABULAR)</h1>
+<h2>Global Report</h2>
+<ul>
+    <li>Wilayah: {{resp.wilayah}}</li>
+    <li>Balai: {{resp.balai}}</li>
+    <li>Propinsi: {{resp.propinsi}}</li>
+    <li>SNVT: {{resp.snvt}}</li>
+    <li>Proyek: {{resp.proyek}}</li>
+    <li>Tahun: {{resp.tahun}}</li>
+    <li>Posisi: {{resp.posisi}}</li>
+    <li>Nama: {{resp.name}}</li>
+</ul>
+
+<form name="main" method="POST">
+
+<input type="radio" name="filter" value="all">All
+<input type="radio" name="filter" value="wilayah">Wilayah
+<input type="radio" name="filter" value="balai">Balai 
+<input type="radio" name="filter" value="propinsi">Propinsi
+
+<select name="divisi" onChange='javascript:document.main.submit()'>
+{% for divisi in divisis %}
+    <option value="{{divisi.id}}" {% ifequal divisi.id.__str__ div_key %} selected {% endifequal %}>{{divisi.name}}</option>
+{% endfor %}
+</select>
+<input type="submit" value="Go"/>
+
+<table border="1">
+<tr><th>No</th><th>NSPK</th><th>Kode NSPK</th><th>Informasi</th><th>Kepemilikan</th><th>Akses Kepemilikan</th><th>Mudah Dipahami</th><th>Sudah tepat guna</th><th>Tingkat pemahaman</th><th>Sudah diterapkan</th></tr>
+{% for jawab in jawabans %}
+
+    {% ifchanged %}
+    <tr bgcolor="green">
+    <td>&nbsp;</td>
+    <td colspan="9">{{jawab.judul.seksi.divisi.name}}</td>
+    <tr>
+    {% endifchanged %}
+
+
+    {% ifchanged %}
+    <tr bgcolor="orange">
+    <td>&nbsp;</td>
+    <td colspan="9">{{jawab.judul.seksi.name}}</td>
+    <tr>
+    {% endifchanged %}
+
+    <input type="hidden" name="jawabkeys" value="{{jawab.id}}">
+
+    <tr>
+    <td>{{jawab.judul.no}}</td>
+    <td>{{jawab.judul.name}}</td>
+    <td>{{jawab.judul.code}}</td>
+    <td>
+        <select name="row_{{jawab.id}}_1"><option></option>
+        {% for opt in tahu_tidaktahu %}
+            <option value="{{ opt.0 }}" {% ifequal jawab.jawab1 opt.0 %} selected {% endifequal %}>{{ opt.1 }}</option>
+        {% endfor %}
+        </select>
+    </td>
+    <td>
+        <select name="row_{{jawab.id}}_2"><option></option>
+        {% for opt in sudah_belum %}
+            <option value="{{ opt.0 }}" {% ifequal jawab.jawab2 opt.0 %} selected {% endifequal %}>{{ opt.1 }}</option>
+        {% endfor %}
+        </select>
+    </td>
+    <td>
+        <select name="row_{{jawab.id}}_3"><option></option>
+        {% for opt in mudah_sedang_sulit %}
+            <option value="{{ opt.0 }}" {% ifequal jawab.jawab3 opt.0 %} selected {% endifequal %}>{{ opt.1 }}</option>
+        {% endfor %}
+        </select>
+    </td>
+    <td>
+        <select name="row_{{jawab.id}}_4"><option></option>
+        {% for opt in mudah_sedang_sulit %}
+            <option value="{{ opt.0 }}" {% ifequal jawab.jawab4 opt.0 %} selected {% endifequal %}>{{ opt.1 }}</option>
+        {% endfor %}
+        </select>
+    </td>
+    <td>
+        <select name="row_{{jawab.id}}_5"><option></option>
+        {% for opt in sudah_sedang_belum %}
+            <option value="{{ opt.0 }}" {% ifequal jawab.jawab5 opt.0 %} selected {% endifequal %}>{{ opt.1 }}</option>
+        {% endfor %}
+        </select>
+    </td>
+    <td>
+        <select name="row_{{jawab.id}}_6"><option></option>
+        {% for opt in paham_cukup_kurang %}
+            <option value="{{ opt.0 }}" {% ifequal jawab.jawab6 opt.0 %} selected {% endifequal %}>{{ opt.1 }}</option>
+        {% endfor %}
+        </select>
+    </td>
+    <td>
+        <select name="row_{{jawab.id}}_7"><option></option>
+        {% for opt in sudah_belum %}
+            <option value="{{ opt.0 }}" {% ifequal jawab.jawab7 opt.0 %} selected {% endifequal %}>{{ opt.1 }}</option>
+        {% endfor %}
+        </select>
+    </td>
+    </tr>
+{% endfor %}
+
+</table>
+<p><input type="submit" value="Simpan Kuisioner"/>
+
+</form>
+
+{% endblock content %}

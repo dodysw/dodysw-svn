@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Lengkuas</h1>
+<img src="/static/180px-Maranta_galanga_Ypey51.jpg" align="right" caption="klinik-sehat.com"><small><i>Alpinia galanga</i>, a plant in the ginger family, is an herb used in cooking, especially in Indonesian cuisine and Thai cuisine (wikipedia)</small>
+<hr>
+
+<h2>What is it for</h2>
+<p>An extendable general purpose recipe to investigate recurring problems within ppp custom applications. Explore all the features to get to know what it offers.</p>
+
+<h2>How to start using</h2>
+<p>In general, Lengkuas is used by directly typing a custom URL. Follow examples listed here:
+<ul>
+<li>By <b>active directory username</b>. E.g.: <a href="/ad/user/Afriani/">/ad/user/<b>Afriani</b>/</a>
+<li>By a word in a person's name, using Active directory. E.g.: <a href="/ad/search/name/dody">/ad/search/name/<b>dody</b>/</a>. Or <a href="/ad/search/name/">visit the form</a>.
+<li>By a word in a person's name, using Ellipse. E.g.: <a href="/ell/search/name/arief">/ell/search/name/<b>arief</b>/</a>. Or <a href="/ell/search/name/">visit the form</a>.
+<li>By <b>employee's badge number</b>. E.g.: <a href="/ell/emp/0000007955/">/ell/emp/<b>0000007955</b>/</a>
+<li>By a part of employee's badge number. E.g.: <a href="/ell/emp/7955/">/ell/emp/<b>7955</b>/</a>
+<li>By Ellipse's position code. E.g.: <a href="/ell/pos/EIISYA/">/ell/pos/<b>EIISYA</b>/</a>
+<li>Catering Meal requests (CRS). By employee's badge number. E.g.: <a href="/request/0000007955/crs/">/request/<b>0000007955</b>/crs/</a>
+<li>Expense claims (OnlineCA). By employee's badge number. E.g.: <a href="/request/0000007955/ec/">/request/<b>0000007955</b>/ec/</a>
+<li>Expense claims (OnlineCA). By partial Expense claim Id. E.g.: <a href="/ec/364/">/ec/<b>364</b>/</a>
+<li>Cash advances (OnlineCA). By employee's badge number. E.g.: <a href="/request/0000007955/ca/">/request/<b>0000007955</b>/ca/</a>
+<li>Online TA (Flight). By employee's badge number. E.g.: <a href="/request/0000007955/flight/">/request/<b>0000007955</b>/flight/</a>
+<li>Online TA (Flight). By TA number. E.g.: <a href="/ta/B000001/">/ta/<b>B000001</b>/</a>
+<li>Online TA (Flight). By partial TA number. E.g.: <a href="/ta/B0000/">/ta/<b>B0000</b>/</a>
+<li>Accommodation booking. By TA number. E.g.: <a href="/ab/by/ta/B000001/">/ab/by/ta/<b>B000001</b>/</a>
+<li>@ppp.com email to @Valeppp.com. E.g.: <a href="/vale/email/irmantob@ppp.com/">/vale/email/<b>irmantob@ppp.com</b>/</a>
+</ul>
+
+<h2>Available data inside Lengkuas</h2>
+<ul>
+<li>Active directory: Mapping ad user to Badge number/Employee id, Ad user's membership to groups, Ad Group's list of members, Email address (according to ad)
+<li>Ellipse: Employee's Current position (primary), Employee's Current position (secondary/acting), Employee's Position history (primary), Employee's Position history (secondary/acting),
+    Employee's ad username, Employee's Email address (according to ellipse), Employee's subordinate positions, Employee's superiors trace to top level
+<li>Other systems: Employee's current DoA according to ppp Intranet, both delegate from, and delegate to, Employee's list of business cash advances request (online ca system),
+    Employee's list of personal cash advances request (online ca system), Employee's list of expense claim request (online ca system), Employee's list of catering requests (CRS),
+    list of flight TA created by Employee (OnlineTA), list of flight TA approved by Employee (OnlineTA), list of flight TA for this Employee (OnlineTA), Accommodation reservation by TA (Accommodation booking)
+</ul>
+{% endblock content %}

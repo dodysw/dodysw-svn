@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Aplikasi Kuisioner NSPK</h1>
+
+<p>Untuk membuat kuisioner baru, lengkapi form di bawah ini, dan tekan Lanjut. Untuk membuka kuisioner anda sebelumnya, masukkan lagi detil anda sama persis sebelumnya, lalu tekan Lanjut.</p>
+
+<form name="main" method="POST">
+<table>
+{{respform.as_table}}
+</table>
+
+<p><input type="submit" name="save" value="Lanjut"/>
+</form>
+
+<!--onchange wilayah, auto-submit -->
+<script>
+function updateCombo()
+{
+	document.main.submit();
+}
+document.main.tahun.onchange = updateCombo;
+document.main.wilayah.onchange = updateCombo;
+document.main.balai.onchange = updateCombo;
+document.main.proyek.onchange = updateCombo;
+document.main.snvt.onchange = updateCombo;
+
+
+</script>
+
+{% endblock content %}

@@ -1,0 +1,1 @@
+print ''.join([(i & 7 in (0,5) and "%s*" or "%s") % i for i in range(1,1001)])

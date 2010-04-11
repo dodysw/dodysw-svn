@@ -1,0 +1,22 @@
+score = average(skoring)
+skoring = ["1" | "2" | "3"]
+    "1" if max(bobot kriteria) = jawaban ke-1
+    "2" if max(bobot kriteria) = jawaban ke-2
+    "3" if max(bobot kriteria) = jawaban ke-3
+
+persen = average(persen bobot)
+persen bobot = skoring/3 * 100
+
+nilai mutu = ["A" | "B" | "C"]
+    "A" if 0 <= skore <= 1.5
+    "B" if 1.5 < skore <= 2.5
+    "C" if skore > 2.5
+    
+bobot kriteria = eigen vector ke-n / sum(eigen vectors)
+eigen vector ke-n = (kriteria row ke-n field-ke-1 *  kriteria row ke-n field-ke-3 * ... kriteria row ke-n field-ke-7)^(1/3)
+kriteria row ke-n field-ke-m = 
+
+
+
+pertanyaan ke-n jawaban ke-m = jawaban m dari pertanyaan ke-m, 1 <= m <=7
+

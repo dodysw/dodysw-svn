@@ -1,0 +1,1 @@
+kalkun.py d:\_py\landak\detik\web\2008-08-22\*.htm

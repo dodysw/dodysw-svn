@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Expense claim requests for this employee</h2>
+{% if rows  %}
+
+    {% for row in rows %}
+        <li>{{row.1}} <a href="http://pppintranet/onlineca/ExpenseClaim/ExpenseClaimView.aspx?ExpenseNo={{ row.0}}">{{row.0}}</a>. Status: {{row.4}}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+<p>This employee does not have expense claim requests.</p>
+{% endif %}
+{% endblock content %}

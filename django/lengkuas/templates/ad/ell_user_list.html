@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if users  %}
+<p>Please select the right employee from the following list:</p>
+    {% for emp in users %}
+        <li><a href="/ell/emp/{{emp.1}}">{{emp.1}}</a> ({{emp.0}})</li>
+    {% endfor %}
+    </ul>
+{% else %}
+<form method="POST">
+<p>Type in part of a person's name: <input type="text" name="name">
+<input type="submit" value="search"> Search will go through Ellipse database.
+</form>
+{% endif %}
+{% endblock content %}

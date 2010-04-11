@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if user %}
+
+<h1>{{ user.displayName}}</h1>
+{% if user.employeeId %}
+    <img src="file://///ppp-ctx03a/Photos/E{{user.employeeId}}.jpg" align="right" border="1"/>
+{% endif %}
+{% ifequal user.sAMAccountName "Suriad" %}
+    <img src="/static/suriad.jpg" align="right" border="1"/>
+{% endifequal %}
+<ul>
+<li>User Id: {{ user.sAMAccountName }}</li>
+<li>Distinguished name: {{ user.distinguishedName}}</li>
+<li>Object cat/class: {{ user.objectCategory}} / {{ user.objectClass}}</li>
+<li>Email address: <a href="mailto:{{ user.mail }}">{{ user.mail }}</a></li>
+<li>Valeppp address: <a href="mailto:{{ vale_email }}">{{ vale_email }}</a></li>
+<li>Employee id: {% if user.employeeId %} <a href="/ell/emp/{{user.employeeId}}">{{ user.employeeId}}</a></li> {% endif %}
+<li>Title: {{ user.title}}</li>
+<li>Company: {{ user.company}}</li>
+<li>Department: {{ user.department}}</li>
+<li>Description: {{ user.description}}</li>
+<li>Office: {{ user.physicalDeliveryOfficeName}}</li>
+<li>Account create date: {{ user.whenCreated}}</li>
+<li>Logon count: {{ user.logonCount}}</li>
+<li>Last logon: {{ user.lastLogon}}</li>
+<li>Account expires: {{ user.accountExpires}}</li>
+</ul>
+
+<h3>Member of:</h3>
+<ul>
+{% for group in user.memberOf %}
+    <li><a href="/ad/group/{{ group.cn }}">{{ group.cn }}</a></li>
+{% endfor %}
+</ul>
+
+{% else %}
+    <p>Account not found</p>
+{% endif %}
+{% endblock content %}

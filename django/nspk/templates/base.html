@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>{% block title %}NSPK{% endblock %}</title>
+        <!--<link type="text/css" rel="stylesheet" href="/media/style.css" />-->
+    <style>
+body, th, td { font:12px Verdana,sans-serif;}
+body { background: #aaeeaa}
+
+/* COPYRIGHT */
+#copyright {
+    font-family:'Trebuchet MS',Tahoma,sans-serif;
+    color:#999;
+    text-align:right;
+    background-color:white;
+}
+
+    </style>
+</head>
+<body>
+    <div id="header">
+    <a href="/">Beranda</a> | <a href="/admin/">Penataan</a> | <a href="/analisis/">Hasil Analisis</a>
+    </div>
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+
+    <div id="copyright">
+        NSPK, Copyright &copy; 2008 PT. Blantickindo Aneka for Departement Pekerjaan Umum Dirjen Binamarga | Powered by <a href="mailto:dodysw@gmail.com">Django Python</a>
+    </div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,108 @@
+rule:
+- y start (z time) after x done (StartDone)
+    - y early start = x early finish
+    - x late finish = y late start
+
+- y start (z time) after x start (StartStart)
+    - y early start = x early start
+    - x late start =
+
+- y done (z time) after x done (DoneDone)
+- y done (z time) after x start (DoneStart)
+
+Other way to say the same thing:
+1. start constraints
+    - StartDone
+    - StartStart
+2. done constraints
+    - DoneDone
+    - DoneStart =>
+    - DoneNoMoreJob => done because all duration-effort has been spent
+
+task A must start after task B start
+    task A's start depends on task B start
+    A    [S      ]---[D]
+    B   [S]---[D]
+task A must start before task B start
+    task B's start depends on task A start
+    A   [S   ]---[D]
+    B        [S]---[D]
+task A must start after task B done
+    task A's start depends on task B done
+    A            [S   ]---[D]
+    B   [S]---[D]
+task A must start before task B done
+    task B's done depends on task A start
+    A  [S       ]---[D]
+    B     [S]---[D]
+task A must done after task B start
+    A  [S]---[D      ]
+    B       [S]---[D]
+task A must done before task B start
+    A  [S]---[D   ]
+    B              [S]---[D]
+task A must done after task B done
+    A  [S]----[D            ]
+    B  [S]---[D]
+task A must done before task B done
+    A  [S]---[D    ]
+    B       [S]---[D]
+
+
+start SRS-02 0 day after SRS-01 done => after
+
+eVacs("SRS-02").after("SRS-01")
+eVacs.StartDone("SRS-02", "SRS-01")
+
+eVacs("SRS-03").done_before("SRS-04")
+eVacs.DoneDone("SRS-03", "SRS-04")
+
+start/done | after/before | start/done
+
+eVacs("SRS-03").start_after_start("SRS-01")
+eVacs("SRS-03").start_after_done("SRS-01")
+eVacs("SRS-03").start_before_start("SRS-01")
+eVacs("SRS-03").start_before_done("SRS-01")
+
+
+    eVacs("SRS-02").after("SRS-01")
+    eVacs("SRS-04").after("SRS-01")
+    eVacs("SRS-05").after("SRS-02")
+    eVacs("SRS-03").done_before("SRS-04")
+    eVacs("SRS-04").done_after("SRS-02")
+    eVacs("SRS-04").done_after("SRS-05")
+    eVacs("SRS-06").after("SRS-05")
+    eVacs("SRS-07").after("SRS-06")
+    eVacs("SRS-08").done_after("SRS-07")
+    eVacs("SRS-08").done_before("SRS-07", plus=2)
+    eVacs("SRS-09").after("SRS-07")
+    eVacs("SRS-10").after("SRS-09")
+    eVacs("SRS-11").done_after("SRS-10")
+    eVacs("SRS-12").after("SRS-11")
+
+eVacs("SRS-03", STARTS, AFTER, "SRS-01", DONE)
+eVacs("SRS-04", STARTS, AFTER, "SRS-01", DONE)
+eVacs("SRS-04", DONE, AFTER, "SRS-02", DONE)
+eVacs("SRS-04", DONE, AFTER, "SRS-05", DONE)
+
+eVacs("SRS-08", DONE, BEFORE, "SRS-07", DONE, 2)
+
+
+
+
+eVacs("SDD-04", STARTS, AFTER, "SDD-02", STARTS)
+
+
+
+
+
+simulation step, 1st try (blind first take first):
+- start with early start = 0 tasks
+- for each of that tasks:
+    - determine its people type
+    - pull all available people of that type
+    - if there is none
+        - add this task to list of pending task
+    - otherwise
+        - calculate the task's duration (dureff/eff) and its early finish
+

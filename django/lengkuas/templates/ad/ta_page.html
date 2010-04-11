@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>TA containing "{{query}}"</h1>
+
+{% if ta %}
+
+    {% for row in ta %}
+        <li><a href="http://pppintranet/NewFlight/DesktopModules/ta_request.aspx?viewType=user&sessionID={{row.8}}">{{row.0}}</a>. Status: <b>{{row.5}}</b>. <a href="/ta/{{row.0}}/edit/">Edit approver</a>.
+        <br>Approver 1: {{row.6}} (<a href="http://ppp-appsupp-01:8989/ell/emp/{{row.3}}">{{row.3}}</a>) | Approver 2: {{row.7}} (<a href="http://ppp-appsupp-01:8989/ell/emp/{{row.4}}">{{row.4}}</a>)
+        <br>Approved by 1: {{row.1}} Approved by 2: {{row.2}}. <a href="/ab/by/ta/{{row.0}}">Show accommodation booking of this TA</a>.
+        </li>
+    {% endfor %}
+
+
+{% else %}
+TA not found
+{% endif %}
+
+
+{% endblock content %}

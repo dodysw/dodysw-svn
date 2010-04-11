@@ -1,0 +1,9 @@
+1. multiply uni id digit position 1 to 6 with this number consequently: 1, 2, 1, 2, 1, 2
+2. if the result >= 10, add the first digit to the last digit, e.g.: 23 -> 2 + 3 = 5
+3. sum all the resulting multiplication
+4. get its final digit
+e.g.: u123456? (? = check digit)
+1. 1*1 + 2*2 + 3*1 + 4*2 + 5*1 + 6*2
+2. 1 + 4 + 3 + 8 + 5 + 12 where 12 -> 1 + 2 = 3 thus,
+3. 1 + 4 + 3 + 8 + 5 + 3 = 24
+4. 4, thus complete uni id = u1234564

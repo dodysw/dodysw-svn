@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Personal Cash advance requests for this employee:</h2>
+{% if prows  %}
+    {% for row in prows %}
+        <li>{{row.1}} <a href="http://pppintranet/onlineca/CA/CAPersonalView.aspx?CANo={{ row.0}}">{{row.0}}</a>. Status: {{row.4}}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+<p>This employee does not have personal cash advances requests.</p>
+{% endif %}
+
+<h2>Business cash advance requests for this employee</h2>
+{% if brows  %}
+
+    {% for row in brows %}
+        <li>{{row.1}} <a href="http://pppintranet/onlineca/CA/CABusinessView.aspx?CANo={{ row.0}}">{{row.0}}</a>. Status: {{row.4}}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+<p>This employee does not have business cash advances requests.</p>
+{% endif %}
+
+{% endblock content %}

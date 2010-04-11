@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p>Please select the right employee id from the following list:</p>
+    {% for emp in emps %}
+        <li><a href="/ell/emp/{{emp.1}}">{{emp.1}}</a> ({{emp.0}})</li>
+    {% endfor %}
+    </ul>
+{% endblock content %}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if pos %}
+<h1>{{ pos.1 }}</h1>
+<p>Position id: {{ pos.0 }}</p>
+<p>Occupancy: {{ pos.2 }}</p>
+<p>Status: {{ pos.5 }} (as of {{ pos.4 }})</p>
+
+<h2>Current occupants</h2>
+{% if currpos %}
+    <ul>
+    {% for pos in currpos %}
+        <li><a href="/ell/emp/{{pos.0}}">{{pos.0}}</a> ({{pos.1}})<br/>Primary pos code: {{pos.2}}. Start: {{pos.3}} End: {{pos.4}}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+<p>No one currently occupies this position.</p>
+{% endif %}
+
+<h2>Occupancy history</h2>
+{% if poshist %}
+    <p>Primary:</p>
+    <ul>
+    {% for pos in poshist %}
+        {% ifequal pos.2 "0" %}
+        <li><a href="/ell/emp/{{pos.0}}">{{pos.0}}</a> ({{pos.1}})<br/>Primary pos code: {{pos.2}}. Start: {{pos.3}} End: {{pos.4}}</li>
+        {% endifequal %}
+    {% endfor %}
+    </ul>
+    <p>Secondary:</p>
+    <ul>
+    {% for pos in poshist %}
+        {% ifnotequal pos.2 "0" %}
+        <li><a href="/ell/emp/{{pos.0}}">{{pos.0}}</a> ({{pos.1}})<br/>Primary pos code: {{pos.2}}. Start: {{pos.3}} End: {{pos.4}}</li>
+        {% endifnotequal %}
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No previous occupancy found for this position.</p>
+{% endif %}
+
+<h2>Superiors structure</h2>
+<ul>
+{% for pos in posstruct %}
+    <li>{{pos.0}}. <a href="/ell/pos/{{pos.1}}">{{pos.1}}</a> ({{pos.2}})</li>
+{% endfor %}
+</ul>
+
+<h2>Subordinates</h2>
+{% if possubordinate %}
+    <ul>
+    {% for pos in possubordinate %}
+        <li><a href="/ell/pos/{{pos.0}}">{{pos.0}}</a> ({{pos.1}})</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>This position does not have subordinates.</p>
+{% endif %}
+
+
+{% else %}
+    <p>Position not found</p>
+{% endif %}
+{% endblock content %}

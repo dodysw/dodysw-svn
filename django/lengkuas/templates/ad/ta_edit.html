@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if ta %}
+
+<h1>TA {{ta.0}}</h1>
+<form action="/ta/{{ta.0}}/update/" method="post">
+<p>Status: {{status}}
+<p>Approver 1:
+<br>Planned approver: BN: <input type="text" name="approver_1_badgeno" value="{{ta.3|default_if_none:""}}" size="12"> Name: <input type="text" value="{{ta.6|default_if_none:""}}" disabled size="35"> email: <input type="text" value="{{ta.11|default_if_none:""}}" disabled size="25">
+<br>Approved by:<input type="text" name="approver_1" value="{{ta.1|default_if_none:""}}"> if filled, TA is approved by this user. DO NOT CHANGE THIS UNLESS YOU WANT TO APPROVE ON BEHALF OF SOMEONE ELSE.
+<p>Approver 2:
+<br>Planned approver: BN: <input type="text" name="approver_2_badgeno" value="{{ta.4|default_if_none:""}}" size="12"> Name: <input type="text" value="{{ta.7|default_if_none:""}}" disabled size="35"> email: <input type="text" value="{{ta.12|default_if_none:""}}" disabled size="25">
+<br>Approved by:<input type="text" name="approver_2" value="{{ta.2|default_if_none:""}}"> if filled, TA is approved by this user. DO NOT CHANGE THIS UNLESS YOU WANT TO APPROVE ON BEHALF OF SOMEONE ELSE.
+
+<p>Remark: <input type="text" size="60" name="remark" value="{{ta.9|default_if_none:""}}"> Auto fill with "Waiting for..." <input type="checkbox" name="autoupdateremark" value="1" checked>
+<p>Last changed user: <input type="text" name="last_changed_user" value="{{ta.10|default_if_none:""}}">
+
+{% if submitenabled %}
+<p><input type="submit" value="Update"/>
+{% else %}
+<p><b>Approved TA may not be editted</b>
+{% endif %}
+
+</form>
+
+{% else %}
+TA not found
+{% endif %}
+
+<h3>How to use</h3>
+<ul>
+<li>Edit planned approver bn-nya. BN akan dicari di AD. Name dan email akan otomatis diresolve saat ditekan update.
+<li>Jangan edit "approved by"-nya tanpa seizin user yg mengapprove.  Kalau harus diedit, masukkan ppp\username
+<li>Checkbox autofill kl conteng, akan diisi waiting for xxx yang sesuai
+</ul>
+
+{% endblock content %}

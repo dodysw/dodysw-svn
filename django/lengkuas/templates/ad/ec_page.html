@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Expense claims containing "{{query}}"</h1>
+
+{% if rows %}
+
+    {% for row in rows %}
+        <li><a href="http://pppintranet/onlineca/ExpenseClaim/ExpenseClaimView.aspx?ExpenseNo={{row.0}}">{{row.0}}</a>. Status: <b>{{row.1}}. </b>
+
+        {% if row.2 %}
+        Supervisor approval BNs:
+        {% for row2 in row.2 %}
+            <a href="http://ppp-appsupp-01:8989/ell/emp/{{row2.0}}">{{row2.0}}</a>. Status: {{row2.1}} |
+        {% endfor %}
+        {% endif %}
+
+        </li>
+
+
+    {% endfor %}
+
+
+{% else %}
+<p>No expense claim found</p>
+{% endif %}
+
+
+{% endblock content %}

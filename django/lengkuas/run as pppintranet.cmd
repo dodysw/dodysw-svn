@@ -1,0 +1,1 @@
+runas /noprofile /env /user:ppp\pppintranet "c:\python25\python.exe manage.py runserver ppp-appsupp-01:8989"

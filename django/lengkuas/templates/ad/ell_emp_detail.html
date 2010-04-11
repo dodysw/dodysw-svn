@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if emp %}
+    <h1>{{ emp.0 }}</h1>
+    <img src="\\ppp-ctx03a\Photos\E{{emp.1}}.jpg" align="right" border="1">
+    <ul>
+    <li>Employee id: {{ emp.1 }}</li>
+    <li>Employee status: {{emp.8}}</li>
+    <li>Email address: <a href="mailto:{{ emp.2}}">{{ emp.2 }}</a></li>
+    <li>Home phone#: {{ emp.3 }}</li>
+    <li>Mobile phone#: {{ emp.4 }}</li>
+    <li>Work location: {{emp.6}}</li>
+    <li>Expat status: {{emp.7}}</li>
+    <li>AD User (according to ellipse): <a href="/ad/user/{{ emp.5 }}">{{ emp.5 }}</a></li>
+    </ul>
+    <h2>Current position</h2>
+    <ul>
+    {% for pos in currpos %}
+        <li><a href="/ell/pos/{{pos.0}}">{{pos.0}}</a> ({{pos.1}})<br/>Primary pos code: {{pos.2}}. Start: {{pos.3}} End: {{pos.4}}</li>
+    {% endfor %}
+    </ul>
+
+    <h2>DoA Intranet</h1>
+    <h3>Currently delegated to</h3>
+    {% if currdelegateto %}
+        <ul>
+        {% for pos in currdelegateto %}
+            <li><a href="/ell/emp/{{pos.3}}">{{pos.3}}</a> ({{pos.2}})<br/>Start: {{pos.4}} End: {{pos.5}}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>This employee currently is not delegating his position.</p>
+    {% endif %}
+
+    <h3>Currently delegating</h3>
+    {% if currdelegating %}
+        <ul>
+        {% for pos in currdelegating %}
+            <li><a href="/ell/emp/{{pos.1}}">{{pos.1}}</a> ({{pos.0}})<br/>Start: {{pos.4}} End: {{pos.5}}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>This employee currently is not delegating some one elses position.</p>
+    {% endif %}
+
+
+    <h2>Position history</h2>
+    {% if poshist %}
+        <p>Primary:</p>
+        <ul>
+        {% for pos in poshist %}
+            {% ifequal pos.2 "0" %}
+            <li><a href="/ell/pos/{{pos.0}}">{{pos.0}}</a> ({{pos.1}})<br/>Primary pos code: {{pos.2}}. Start: {{pos.3}} End: {{pos.4}}</li>
+            {% endifequal %}
+        {% endfor %}
+        </ul>
+        <p>Secondary:</p>
+        <ul>
+        {% for pos in poshist %}
+            {% ifnotequal pos.2 "0" %}
+            <li><a href="/ell/pos/{{pos.0}}">{{pos.0}}</a> ({{pos.1}})<br/>Primary pos code: {{pos.2}}. Start: {{pos.3}} End: {{pos.4}}</li>
+            {% endifnotequal %}
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No previous position found for this employee.</p>
+    {% endif %}
+
+    <h2>Requests</h2>
+    <ul>
+    <li><a href="/request/{{emp.1}}/ec/">OnlineCA - Expense claims</a></li>
+    <li><a href="/request/{{emp.1}}/ca/">OnlineCA - Personal and Business cash advances</a></li>
+    <li><a href="/request/{{emp.1}}/crs/">CRS - Meal request</a></li>
+    <li><a href="/request/{{emp.1}}/flight/">Flight - TA request</a></li>
+    <!--<li><a href="/request/{{emp.1}}/accbooking/">Accommodation Reservation Request</a></li>-->
+
+{% else %}
+    <p>Employee not found</p>
+{% endif %}
+
+{% endblock content %}

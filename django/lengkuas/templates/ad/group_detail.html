@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if group %}
+
+<h1>{{ group.cn}}</h1>
+<ul>
+<li>Description: {{ group.description}}</li>
+<li>Created: {{ group.whenCreated}}</li>
+<li>Member count: {{ group.member|length}}</li>
+</ul>
+
+<p>Members:</p>
+<ul>
+{% for user in group.member %}
+    <li><a href="/ad/user/{{ user.sAMAccountName }}/">{{ user.displayName }}</a></li>
+{% endfor %}
+</ul>
+
+{% else %}
+    <p>Group not found</p>
+{% endif %}
+{% endblock content %}

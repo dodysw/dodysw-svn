@@ -1,0 +1,1 @@
+PYTHONPATH=/home/dodysw/django-nspk:. python manage.py runserver --settings=settings 127.0.0.1:62257 --adminmedia=/home/dodysw/nspk/media/admin

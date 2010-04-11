@@ -1,0 +1,18 @@
+<body>
+{% if user %}
+
+<h1>{{ user.displayName}}</h1>
+<p>User Id: {{ user.sAMAccountName }}</p>
+<p>Email address: <a href="mailto:{{ user.mail }}">{{ user.mail }}</a></p>
+<p>Employee id: {{ user.employeeId}}</p>
+<p>Member of:</p>
+<ul>
+{% for group in user.memberOf %}
+    <li>{{ group.cn }}</li>
+{% endfor %}
+</ul>
+
+{% else %}
+    <p>Account not found</p>
+{% endif %}
+</body>

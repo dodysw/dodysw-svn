@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Meal requests for this employee</h2>
+{% if rows  %}
+
+    {% for row in rows %}
+        <li>{{row.1}} <a href="http://pppintranet/crs/RequestView.aspx?RequestNo={{ row.0}}">{{row.0}}</a>. Type: {{row.4}}. Status: {{row.4}}.</li>
+    {% endfor %}
+    </ul>
+{% else %}
+<p>This employee does not have meal requests.</p>
+{% endif %}
+{% endblock content %}

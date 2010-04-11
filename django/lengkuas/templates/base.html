@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>{% block title %}Lengkuas - ppp Application support tool{% endblock %}</title>
+    <style type="text/css">
+body, th, td { font:12px Verdana,sans-serif; }
+    </style>
+</head>
+<body>
+    <div id="header">
+    <a href="/">Home</a> | <a href="/accounts/logout/">Logout</a> | <a href="/clear_cache/">Clear cache</a>
+    </div>
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+<hr>
+<small><b>WARNING: This page must only be used by member of ppp application support team</b>. This page together with any attachments is confidential, may be subject tolegal privilege and may contain proprietary information, including information protected by copyright. If you are not the intended viewer, please do not copy, use or disclose this page; please <a href="mailto:suriad@ppp.com">notify us</a> immediately and then delete this page from your browser.</small>
+</body>
+</html>

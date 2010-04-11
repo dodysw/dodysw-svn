@@ -1,0 +1,14 @@
+body, th, td { font:12px Verdana,sans-serif;}
+body { background: #aaeeaa}
+
+
+/* COPYRIGHT */
+#copyright {
+    font-family:'Trebuchet MS',Tahoma,sans-serif;
+    color:#999;
+    padding:1.818em;
+    font-size:1.1em;
+    text-align:right;
+    background-color:white;
+    margin-top:4em;
+}

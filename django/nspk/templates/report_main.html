@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Laporan Data Kuisioner (TABULAR)</h1>
+
+<form name="main" method="POST">
+<h2>Report Type</h2>
+<select name="report_type">
+<option value="global" {% ifequal report_type "global" %} selected {% endifequal %}>Global report</option>
+<option value="detail" {% ifequal report_type "detail" %} selected {% endifequal %}>Detail report</option>
+</select>
+
+<h2>Filter</h2>
+<ul>
+<li><input type="radio" name="filter" value="all" {% ifequal filter "all" %} checked {% endifequal %}>All</li>
+<li><input type="radio" name="filter" value="wilayah" {% ifequal filter "wilayah" %} checked {% endifequal %}>Wilayah <select name="wilayah">
+{% for wilayah in wilayahs %}
+    <option value="{{wilayah.id}}" {% ifequal wilayah.id.__str__ wilayah_key %} selected {% endifequal %}>{{wilayah.name}}</option>
+{% endfor %}
+</select>
+</li>
+<li><input type="radio" name="filter" value="balai" {% ifequal filter "balai" %} checked {% endifequal %}>Balai  <select name="balai">
+{% for balai in balais %}
+    <option value="{{balai.id}}" {% ifequal balai.id.__str__ balai_key %} selected {% endifequal %}>{{balai.name}}</option>
+{% endfor %}
+</select>
+</li>
+<li><input type="radio" name="filter" value="propinsi" {% ifequal filter "propinsi" %} checked {% endifequal %}>Propinsi <select name="propinsi">
+{% for propinsi in propinsis %}
+    <option value="{{propinsi.id}}" {% ifequal propinsi.id.__str__ propinsi_key %} selected {% endifequal %}>{{propinsi.name}}</option>
+{% endfor %}
+</select>
+</li>
+</ul>
+
+<h2>Group NSPK</h2>
+<select name="group">
+<option value="divisi" {% ifequal group "divisi" %} selected {% endifequal %}>Divisi</option>
+<option value="seksi" {% ifequal group "seksi" %} selected {% endifequal %}>Seksi</option>
+<option value="judul" {% ifequal group "judul" %} selected {% endifequal %}>Judul</option>
+</select>
+
+<p><input type="submit" value="Keluarkan Laporan"/>
+
+{% ifequal report_type "global"%}
+<table border="1">
+    {% ifequal group "judul"%}
+    <tr><th>No Judul</th><th>Kode Judul</th><th>Judul</th><th>Skor</th><th>Persen (%)</th><th>Nilai Mutu</th></tr>
+        {% for row in jawabs %}
+        <tr><td>{{row.row.0}}</td><td>{{row.row.1}}</td><td>{{row.row.2}}</td><td>{{row.row.3|default:""|floatformat:2}}</td><td>{{row.row.4|default:""|floatformat:2}}</td><td>{{row.mutu}}</td></tr>
+        {% endfor %}
+    {% endifequal %}
+
+    {% ifequal group "seksi"%}
+    <tr><th>No Seksi</th><th>Seksi</th><th>Skor</th><th>Persen (%)</th><th>Nilai Mutu</th></tr>
+        {% for row in jawabs %}
+        <tr><td>{{row.row.0}}</td><td>{{row.row.1}}</td><td>{{row.row.2|default:""|floatformat:2}}</td><td>{{row.row.3|default:""|floatformat:2}}</td><td>{{row.mutu}}</td></tr>
+        {% endfor %}
+
+    {% endifequal %}
+
+    {% ifequal group "divisi"%}
+    <tr><th>No Divisi</th><th>Divisi</th><th>Skor</th><th>Persen (%)</th><th>Nilai Mutu</th></tr>
+        {% for row in jawabs %}
+        <tr><td>{{row.row.0}}</td><td>{{row.row.1}}</td><td>{{row.row.2|default:""|floatformat:2}}</td><td>{{row.row.3|default:""|floatformat:2}}</td><td>{{row.mutu}}</td></tr>
+        {% endfor %}
+    {% endifequal %}
+</table>
+{% endifequal %}
+
+{% ifequal report_type "detail"%}
+<table border="1">
+    {% ifequal group "judul"%}
+    <tr><th rowspan="2">No Judul</th><th rowspan="2">Kode Judul</th><th rowspan="2">Judul</th><th colspan="3">Informasi</th><th colspan="3">Kepemilikan</th><th colspan="4">Akses Kepemilikan</th><th colspan="4">Mudah Dipahami</th><th colspan="4">Sudah Tepat Guna</th><th colspan="4">Tingkat Pemahaman</th><th colspan="3">Sudah Diterapkan</th></tr>
+    <tr><th>Tahu</th><th>Tidak Tahu</th><th>Abstain</th><th>Sudah</th><th>Belum</th><th>Abstain</th><th>Mudah</th><th>Sedang</th><th>Sulit</th><th>Abstain</th><th>Mudah</th><th>Sedang</th><th>Sulit</th><th>Abstain</th><th>Sudah</th><th>Sedang</th><th>Belum</th><th>Abstain</th><th>Paham</th><th>Cukup</th><th>Kurang</th><th>Abstain</th><th>Sudah</th><th>Belum</th><th>Abstain</th></tr>
+        {% for row in jawabs %}
+        <tr><td>{{row.0}}</td><td>{{row.1}}</td><td>{{row.2}}</td>
+            {% for f in row|slice:"3:" %}
+                <td>{{f|default:""|floatformat}}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    {% endifequal %}
+
+    {% ifequal group "seksi"%}
+    <tr><th rowspan="2">No Seksi</th><th rowspan="2">Seksi</th><th colspan="3">Informasi</th><th colspan="3">Kepemilikan</th><th colspan="4">Akses Kepemilikan</th><th colspan="4">Mudah Dipahami</th><th colspan="4">Sudah Tepat Guna</th><th colspan="4">Tingkat Pemahaman</th><th colspan="3">Sudah Diterapkan</th></tr>
+    <tr><th>Tahu</th><th>Tidak Tahu</th><th>Abstain</th><th>Sudah</th><th>Belum</th><th>Abstain</th><th>Mudah</th><th>Sedang</th><th>Sulit</th><th>Abstain</th><th>Mudah</th><th>Sedang</th><th>Sulit</th><th>Abstain</th><th>Sudah</th><th>Sedang</th><th>Belum</th><th>Abstain</th><th>Paham</th><th>Cukup</th><th>Kurang</th><th>Abstain</th><th>Sudah</th><th>Belum</th><th>Abstain</th></tr>
+
+        {% for row in jawabs %}
+        <tr><td>{{row.0}}</td><td>{{row.1}}</td>
+            {% for f in row|slice:"2:" %}
+                <td>{{f|default:""|floatformat}}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+
+    {% endifequal %}
+
+    {% ifequal group "divisi"%}
+    <tr><th rowspan="2">No Divisi</th><th rowspan="2">Divisi</th><th colspan="3">Informasi</th><th colspan="3">Kepemilikan</th><th colspan="4">Akses Kepemilikan</th><th colspan="4">Mudah Dipahami</th><th colspan="4">Sudah Tepat Guna</th><th colspan="4">Tingkat Pemahaman</th><th colspan="3">Sudah Diterapkan</th></tr>
+    <tr><th>Tahu</th><th>Tidak Tahu</th><th>Abstain</th><th>Sudah</th><th>Belum</th><th>Abstain</th><th>Mudah</th><th>Sedang</th><th>Sulit</th><th>Abstain</th><th>Mudah</th><th>Sedang</th><th>Sulit</th><th>Abstain</th><th>Sudah</th><th>Sedang</th><th>Belum</th><th>Abstain</th><th>Paham</th><th>Cukup</th><th>Kurang</th><th>Abstain</th><th>Sudah</th><th>Belum</th><th>Abstain</th></tr>
+
+        {% for row in jawabs %}
+        <tr><td>{{row.0}}</td><td>{{row.1}}</td>
+            {% for f in row|slice:"2:" %}
+                <td>{{f|default:""|floatformat}}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    {% endifequal %}
+</table>
+{% endifequal %}
+
+
+</form>
+
+{% endblock content %}

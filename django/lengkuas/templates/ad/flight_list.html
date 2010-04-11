@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Flight TA created by this employee</h2>
+{% if flight_created  %}
+    {% for row in flight_created %}
+        <li>{{row.4}} <a href="http://pppintranet/NewFlight/DesktopModules/ta_request.aspx?viewType=user&sessionID={{row.8}}">{{row.0}}</a>. Name: {{row.1}} ({{row.2}}). Approval: {{row.3}}. {{row.5}}=>{{row.6}}. Status: {{row.7}}. Reason: {{row.9}}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+<p>This employee has not created any flight TA.</p>
+{% endif %}
+
+<h2>Flight TA approved by this employee.</h2>
+{% if flight_approved  %}
+
+    {% for row in flight_approved %}
+        <li>{{row.4}} <a href="http://pppintranet/NewFlight/DesktopModules/ta_request.aspx?viewType=user&sessionID={{row.8}}">{{row.0}}</a>. Name: {{row.1}} ({{row.2}}). Approval: {{row.3}}. {{row.5}}=>{{row.6}}. Status: {{row.7}}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+<p>This employee has not approve any flight TA</p>
+{% endif %}
+
+<h2>Flight TA for this employee.</h2>
+{% if myflight  %}
+
+    {% for row in myflight %}
+        <li>{{row.4}} <a href="http://pppintranet/NewFlight/DesktopModules/ta_request.aspx?viewType=user&sessionID={{row.8}}">{{row.0}}</a>. Name: {{row.1}} ({{row.2}}). Approval: {{row.3}}. {{row.5}}=>{{row.6}}. Status: {{row.7}}. Reason: {{row.9}}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+<p>No flight TA is used for this employee.</p>
+{% endif %}
+
+
+{% endblock content %}
