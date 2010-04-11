@@ -1,0 +1,44 @@
+learning
+========
+- buka file 1
+    - parse file into html? htmldom.py->parsefile
+    - instantiate "HTML parser?".
+        p = HTMLParser3(HTMLDocumentBuilder(basehref=basehref), charset=charset, debug=debug)
+
+        - HTMLDocumentBuilder subclass dari HTMLHandler
+                  """
+          HTMLHandler class receive All text data and SGML entities
+          are converted to Unicode strings and passed to handle_data
+          method.  Comments are also converted to Unicode strings and
+          passed to handle_comment method. At every occurrence of TAG,
+          start_TAG and end_TAG are called. If there is no such a method,
+          start_unknown and end_unknown are called at the beginning tag and
+          the end tag respectively.
+          """
+        - di dalam initnya:
+            self.root = HTMLRootElement(basehref=basehref)
+        - HTMLParser3?, subclass dari SGMLParser3
+    - feed pointer file 1 to instance of HTMLParser3 (feedfile)
+        - read each block (4096) to buffer
+        - feed buffer ke self.feed sampai semua block habis
+        - feed '' ke self.feed (eof?)
+            - look up EOL inside buffer, if not found, copy to new buffer "linebuf". ?= berarti block memotong "suppose to be line" dan langkah logis berikutnya adalah menunda pengolahan baris, merequest block berikutnya, lalu mengappend "linebuf" ke awal block tsb. bila pd request berikutnya, buffer tetap kosong, maka linebuf berisi line s/d EOF, dan proses "line" tsb.
+            - what proses/feedline() does is :
+                - convert line ke unicode ?= most likely because the author is japanese and he tested everything on japanese HTML :D
+                - call SGMLParser3.feed()
+                    - while "cursor" does not exceed the length of text, call parse1(), which is a reference to function representing the "state". currently, it points to parse_pcdata(). ?= smartidea. maybe this is called proxy pattern? nope. proxypattern is a full fledge object taking the place of proxied object, while this is a mere "reference", used as a indirection, so that process can operated transparantly on the state. Seems this is a "State object behavioral pattern", but operates on indirection to different functions inside the same class, as oppose to indirection to different object representing the state.
+                        - cek apakah ada karakter & atau <
+                        - if none exist, call handle_characters on strings started on "cursor" then return
+                        - if exists, and if there is string between between current cursor and the &/<, call handle_characeters first
+                        - if it's "&", setup "function pointer"s to represent this state:
+                              self.feed_entity = self.handle_characters
+                              self.parse0 = self.parse_pcdata
+                              self.parse1 = self.parse_entity_0
+                        - if it's "<", setup parse1 "function pointer" to parse_Tag_0:
+                            self.parse1 = self.parse_tag_0
+                        - return founded character's position
+                    - set previous found character position as current cursor
+                    -
+
+        - finish
+

@@ -1,0 +1,19 @@
+- du
+    - statis/ajax selector via cookie
+    STATIS
+    * default ke ajax page
+    * fix link to rumah
+    * fix link to tentang
+    * move header/footer to function
+    * fix link to anynews
+    * fix page check versi
+    * fix page lihat cache
+    * fix page delete cache
+    * fix page anynews
+    * fix page tentang
+    * fix page detail
+    - fix anynews list
+    - fix anynews detail
+    AJAX
+    - asynch-kan xmlhttp
+    - pop please wait on xmlhttp event

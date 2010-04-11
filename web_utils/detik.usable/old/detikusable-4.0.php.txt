@@ -1,0 +1,1296 @@
+<?
+$app['name'] = "detik.usable";
+$app['version'] = "4.0";
+$app['version_description'] = <<<__END__
+- OOP code refactoring (see source code)
+- new class DetikUsable, simple to use. eg (news list):
+  $du = new DetikUsable(); $du->SetModeList(); $du->GetBuffer(); $du->Parse(); $du->Render();
+- new class Logify, useful log and error messaging
+- smaller file and memory footprint
+- remove gmail renderer (too hard to use)
+- new 100% dependable anchor link parser, would kick in to retrieve missing news element in case parser got throwed up
+- bug fix 1apr05 detikcom redesign
+__END__;
+/*
+    detik.usable: a fast-download detik.com
+    Author: dody suria wijaya <dodysw@gmail.com>
+    License: THIS IS A PUBLIC DOMAIN CODE (you may even change the author)
+    Term of Usage: BY USING THIS SCRIPT, YOU TAKE FULL RESPONSIBILITY OF ANY LEGAL ACTION THAT MAY BE TAKEN.
+*/
+// MODIFIABLE CONFIGURATION
+$app['proxy_mode'] = False;                             // TRUE to get data from other detik.usable, FALSE to get it directly from detikcom
+$app['proxy_url'] = '';                                 // Hostname/IP Address of other detik.usable node. Ie: http://myhostname.com/detik.php
+$app['ads'] = TRUE;                                     // TRUE to display advertisement (please be fair to detikcom, they need it)
+$app['cache'] = TRUE;                                   //TRUE to cache retrieved news detail content to filesystem
+$app['http_proxy']['enable'] = FALSE;                   // TRUE to enable using http proxy to connect to detikcom website
+$app['http_proxy']['hostname'] = 'proxy.myoffice.com';  // Hostname/IP address of http proxy (if you must use one)
+$app['http_proxy']['port'] = '8080';                    // port number of above http proxy hostname
+$app['http_proxy']['user'] = 'myproxyusername';         // username for http proxy authentication, keep this empty if no authentication is needed
+$app['http_proxy']['pass'] = 'myproxypassword';         // password for http proxy authentication. you can put this in config.inc.php (see below)
+$app['timediff'] = '+0';                                // time difference between detikcom's timezone (+7) and server timezone.  Not with UTC/GMT.
+
+// RARELY MODIFIED CONFIGURATION
+$app['update_url'] = 'http://miaw.tcom.ou.edu/~dody/du/detikusable-latest.php.txt';
+$author_email = 'dodysw@gmail.com';
+$author_name = 'Dody Suria Wijaya';
+$author_website = 'http://miaw.tcom.ou.edu/~dody/';
+$app['hosted_by'] = get_current_user();
+$contributors = array(
+    array('Mico Wendy','mico@konsep.net','Bug fix: php'),
+    array('rudych@gmail.com','rudych@gmail.com','Bug fix: rss'),
+    array('Ronny Haryanto','ronny@haryan.to','Bug fix: rss'),
+    array('Reno S. Anwari','sireno@gmail.com','Timezone'),
+    );
+
+// SHOULD BE UNMODIFIABLE CONFIGURATION
+$app['zlib_support'] = extension_loaded('zlib');
+$hari = array('Minggu','Senin','Selasa','Rabu','Kamis','Jum\'at','Sabtu');
+$bulan = array('','Januari','Februari','Maret','April','Mei','Juni','July','Agustus','September','Oktober','November','Desember');
+
+/* New: create a file called config.inc.php with your own configuration that overrides all above parameters. for instance:
+    <?
+        $app['ads'] = FALSE;    //set this to TRUE to display advertisement
+        $app['http_proxy']['enable'] = TRUE; // TRUE to enable using http proxy to connect to detikcom website
+        $app['http_proxy']['hostname'] = 'proxy.myoffice.com';    // Hostname/IP address of http proxy (if you must use one)
+        $app['http_proxy']['port'] = '8080';    // port number of above http proxy hostname
+        $app['http_proxy']['user'] = 'myproxyusername';    // username for http proxy authentication, keep this empty if no authentication is needed
+        $app['http_proxy']['pass'] = 'myproxypassword';    // password for http proxy authentication. you can put this in config.inc.php (see below)
+    ?>
+*/
+if (file_exists('config.inc.php')) include 'config.inc.php';
+
+//    VARIABLE DEFINITIONS
+$ctime	= strtotime($app['timediff']." hours");
+$timezone_sign = ((7+$app['timediff']) >= 0)? '+':'-';
+$tgl_lengkap = $hari[date('w',$ctime)].',&nbsp;'.date('j',$ctime).'&nbsp;'.$bulan[date('n',$ctime)].date(' Y',$ctime).'&mdash;'.date('H:i',$ctime).' GMT'.$timezone_sign.($app['timediff']+7);
+$x = $_REQUEST['x'];
+$url = $_REQUEST['url'];
+$as_node = $_REQUEST['as_node'];    //client request 1 to ask for serialized news array (default: compressed)
+$no = $_REQUEST['no'];
+
+function merge_query($newquery) {   // merge new key/val array with query string to a new array copy and return the copy in an url ready format
+    foreach (array_merge($_GET,$newquery) as $k=>$v) $temparr[] = urlencode($k).'='.urlencode($v);
+    return implode('&amp;',$temparr);
+}
+
+$doctype = '<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">';
+$header_ouput = "$doctype<html><head><title>detik.usable ($tgl_lengkap)</title><style>body{font-family:verdana;}.o{font-size:11pt;}.p{font-size:13pt;}h1{font-family:georgia;font-size:18pt;align:center;margin-bottom:0;}.s{color:#991111;font-weight:bold;}</style></head><body bgcolor=#ffffff>";
+$list_header_output = "$doctype<html><head><title>detik.usable ($tgl_lengkap)</title><style>body{font-family:verdana,arial;}.i{font-size:10pt;font-weight:bold;font-family:verdana;}.j{font-family:arial;font-size:12pt;font-weight:bold;}.u{font-size:10pt;}.s{color:#991111;font-weight:bold;}a{text-decoration:none;}a:hover{text-decoration:underline;} .button {font-size:10pt;background:#D6E7EF;border-bottom:1px solid #104A7B;border-right:1px solid #104A7B;border-left: 1px solid #AFC4D5;border-top:1px solid #AFC4D5;color:#000066;margin:2;}.d{font-size:smaller;color:#555}#footer {font-size:smaller;clear:both;border:none;background:#e3ebe2;margin-top:20px;padding-left:30px;padding-top:10px;padding-bottom: 10px;}#footer a:link{color:#666666;} #footer a:active,.footer a:hover{color:#006486;}#footer a:visited{color:#949494;}h3{margin-top:0;}</style></head><body bgcolor=#ffffff>";
+$list_top_output2 = "<p style='margin-bottom:0;'><b><a href='$author_website' title=Home target=_top><span style=color:#991111;>detik</span>.<span style=color:#119911;>usable</span></a></b> // ";
+$list_top_output = '<p align=center style="margin-bottom:0;"><b><a href="'.$author_website.'" title="Home" target="_top"><span style="color:#991111;">detik</span>.<span style="color:#119911;">usable</span></a><br><small>'.$tgl_lengkap.'</small></b> <a href="'.$_SERVER['PHP_SELF'].'?'.merge_query(array('cache_reload'=>1)).'" class="button">Reload</a>';
+$temp_pm = 'DU Proxy: '.($app['proxy_mode']? 'Yeah': 'Nope');
+$temp_htp = 'HTTP Proxy: '.($app['http_proxy']['enable']? 'Yeah': 'Nope');
+$temp_zlib = "Compression Support: "; if ($app['zlib_support']) $temp_zlib .= 'Yeah'; else $temp_zlib .= 'Nope';
+$list_footer = "<div id=footer><a href=mailto:$author_email target=_top>author</a> | <a href=\$temp_orig target=_top>Original page</a> | Generated by <a href='$author_website' target=_top>{$app['name']} v{$app['version']}</a><BR><small>Host: {$app['hosted_by']} | $temp_pm | $temp_htp | \$temp_stream</small></div></body></html>";
+$frameset_output = "$doctype<html><head><title>detik.usable ($tgl_lengkap)</title></head> <frameset cols=\"50%,*\"> <frame name=c target=m src=\"{$_SERVER['PHP_SELF']}?x=i\"> <frame name=m target=_top src=\"{$_SERVER['PHP_SELF']}?x=w\"> <noframes> <body>Looks like u need the <a href=\"{$_SERVER['PHP_SELF']}?no=frame\">non-frame version</a>.</body> </noframes> </frameset></html>";
+
+$welcomepage_output = '<center><h1><a href="'.$author_website.'" title="detik.usable, version '.$app['version'].' ('.$app['version_description'].')" target="_top" style="text-decoration:none;"><span style= "color:#991111;">detik</span>.<span style= "color:#119911;">usable</span></a></h1><br><small>v'.$app['version'].'</small></center><br><br> <p align="center"><b>Lihat:</b><br><a href="'.$_SERVER['PHP_SELF'].'?x=i" target="c" title="Refresh">Normal</a> | <a href="'.$_SERVER['PHP_SELF'].'?no=frame" target="_top" title="Untuk pembenci frame">Tanpa frame</a><br><a href="'.$_SERVER['PHP_SELF'].'?pda=1" target="_top" title="Untuk PDA/Handphone yang tidak mendukung javascript">Small Screen</a> | <a href="'.$_SERVER['PHP_SELF'].'?no=wap" target="_top" title="WAP mode buat handphone jadul">WAP</a> <small>New!</small><br><a href="'.$_SERVER['PHP_SELF'].'?no=rss2" target="_top" title="Use any rss reader!">RSS2 feed</a> | <a href="'.$_SERVER['PHP_SELF'].'?no=rss2&complete=1" target="_top" title="Note: could be much slower">RSS2 feed w/ body</a><br><a href="'.$_SERVER['PHP_SELF'].'?no=bcache" target="c">Browse cache</a> | <a href="'.$_SERVER['PHP_SELF'].'?x=s" target="_top">Source code</a> <br><p align="center"><b>Atur:</b><br> <a href="'.$_SERVER['PHP_SELF'].'?au=1">Check update</a> | <a href="'.$_SERVER['PHP_SELF'].'?cm=1">Reset Cache</a> | <a href="'.$app['update_url'].'" target="_top" title="Get latest detik.usable  direct from repository">Download</a></p> <br><br><br><p align="center"><!--info--><br><br><br><a href="'.$_SERVER['PHP_SELF'].'?x=w&page=2">Next &gt;</a><br><hr width="200"><center><small><a href="mailto:'.$author_email.'">'.$author_name.'</a>, dari <a href="mailto:dodysw@gmail.com">dsw s/h</a></small></center>
+</body>
+</html>';
+
+$con = '<ul>';
+foreach ($contributors as $c) $con .= '<li><a href="mailto:'.$c[1].'">'.$c[0].'</a>, '.$c[2].'</li>';
+$con .= '</ul>';
+
+$welcomepage_output_2 = '<center><h1><a href="'.$author_website.'" title="detik.usable, version '.$app['version'].' ('.$app['version_description'].')" target="_top" style="text-decoration:none;"><span style= "color:#991111;">detik</span>.<span style= "color:#119911;">usable</span></a></h1></center><h3>Purpose</h3><p>Situs ini ditujukan untuk mendemonstrasikan <i>look and feel</i> dari potensi sebuah situs berita yg usable: cepat, bersih, dan mudah digunakan.<p>Bagi yang ingin nge-detik.usable, bisa copy and paste <a href="'.$_SERVER['PHP_SELF'].'?x=s" target="_top">source code situs ini</a> (public domain dan hanya satu file), pasang di hosting yg mendukung php, <b>untuk keperluan anda sendiri</b>.
+<h3>Resources</h3>
+<p><a href="http://groups-beta.google.com/group/detikusable/subscribe"> Daftar milis detik.usable</a> (announcement release baru)
+<p>View <a href="http://miaw.tcom.ou.edu/~dody/du/images/DetikScreen1.png">screenshot in PDA</a> (<a href="mailto:pursena@advokasi.com">Bagus Pursena</a>). Seems like old Windows Pocket PC + IE.
+<h3>Kontributor</h3>Sorry kalau ada yang kelewat :)'.$con.'<p align="center"><br><br><a href="'.$_SERVER['PHP_SELF'].'?x=w&page=1">&lt; Back</a><br><hr width="200"><center><small><a href="mailto:'.$author_email.'">'.$author_name.'</a>, dari <a href="mailto:dodysw@gmail.com">dsw s/h</a></small></center>
+</body>
+</html>';
+
+@set_time_limit(60*5);
+ob_end_flush();
+
+// start libdetikusable
+class Logify {
+    var $log = array();
+    function add ($line_number,$string) {
+        $this->log[] = array($line_number,$string);
+    }
+    function write_error ($title,$description='<p>This is an expected error. Check your configuration and internet connection</p>') {
+        global $error; $error = TRUE;
+        echo '<div style="border:thin solid #ffaaaa;background-color:#ffcccc;margin:10;text-align:center;"><h3>'.$title.'</h3>'.$description.'</div>';
+        echo '<h4>Log history</h4>';
+        echo $this->dump();
+        echo '<h4>Debug traceback</h4>';
+        $this->print_debug_backtrace();
+    }
+    function dump () {
+        echo '<pre>';
+        foreach ($this->log as $temp_arr) echo '#'.$temp_arr[0].': '.htmlspecialchars($temp_arr[1])."\r\n";
+        echo '</pre>';
+    }
+    function print_debug_backtrace () {
+		if (PHP_VERSION >= 4.3) {
+			$MAXSTRLEN = 128;
+			echo '<pre>';
+			$traceArr = debug_backtrace();
+			array_shift($traceArr);
+			$tabs = sizeof($traceArr)-1;
+			foreach ($traceArr as $arr) {
+				$args = array();
+				for ($i=0; $i < $tabs; $i++) $s .= ' &nbsp; ';
+				$tabs -= 1;
+				if (isset($arr['class'])) $s .= $arr['class'].'.';
+				if (isset($arr['args']))
+				 foreach($arr['args'] as $v) {
+					if (is_null($v)) $args[] = 'null';
+					else if (is_array($v)) $args[] = 'Array['.sizeof($v).']';
+					else if (is_object($v)) $args[] = 'Object:'.get_class($v);
+					else if (is_bool($v)) $args[] = $v ? 'true' : 'false';
+					else {
+						$v = (string) @$v;
+						$str = htmlspecialchars(substr($v,0,$MAXSTRLEN));
+						if (strlen($v) > $MAXSTRLEN) $str .= '...';
+						$args[] = $str;
+					}
+				}
+				echo '<b>'.$arr['function']."</b>\t".'('.implode(', ',$args).')';
+				echo @sprintf('<font color="#808080" size="-1"> # line %4d, file: <a href="file:/%s">%s</a></font>', $arr['line'],$arr['file'],$arr['file']);
+				echo  "\r\n";
+			}
+			echo  '</pre>';
+		}
+    }
+}
+$log = new Logify();
+
+function assert_callback( $script, $line, $message ) {
+    global $author_email,$log;
+    echo $log->write_error('Assertion error at line# '.$line, '<p>Send this whole page to <a href="mailto:'.$author_email.'">author</a> to help improve the next version.</p>');
+    exit;
+}
+assert_options(ASSERT_CALLBACK,assert_callback);
+
+function str_time_delta ($date_c,$compressed=FALSE) {
+    global $ctime;
+    $delta = $ctime - $date_c;
+    if ($delta < 60) {
+        $satuan = $compressed? 'dtk':' detik';
+        $tgl = $delta;
+    }
+    elseif ($delta < 3600) {
+        $satuan = $compressed? 'mnt':' menit';
+        $tgl = floor($delta/60);
+    }
+    elseif ($delta < 86400) {
+        $satuan = $compressed? 'j':' jam';
+        $tgl = sprintf('%01.1f',$delta/3600);
+    }
+    else {
+        $hari = floor($delta/86400);
+        $jam = floor(($delta - $hari*86400) /3600);
+        if ($jam == 0) return $hari.($compressed? 'hr':' hari');
+        else return $hari.($compressed? 'hr':' hari').' '.$jam.($compressed? 'j':' jam');
+    }
+    return $tgl.$satuan;
+}
+
+class MySocket {
+    var $user_agent = 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1) ';
+    function MySocket($host,$port=80) {
+        global $app,$log;
+        $this->host = $host;
+        $this->port = $port == ''? 80: $port;
+        $this->timeout = 30; //seconds
+        $this->error_cant_open = '';
+        $this->http_proxy_enable = $app['http_proxy']['enable'];
+        $this->http_proxy_host = $app['http_proxy']['hostname'];
+        $this->http_proxy_port = $app['http_proxy']['port'];
+        $this->http_proxy_user = $app['http_proxy']['user'];
+        $this->http_proxy_pass = $app['http_proxy']['pass'];
+        assert($this->host != '');
+        $this->log = &$log;
+    }
+    function socket_open () {
+        if ($this->http_proxy_enable) {
+            $this->log->add(__LINE__, "sock_open, {$this->http_proxy_host}/{$this->http_proxy_port}, {$this->timeout} sec timeout");
+            $this->fp = @fsockopen ($this->http_proxy_host,$this->http_proxy_port,$errno,$errstr,$this->timeout);
+        }
+        else {
+            $this->log->add(__LINE__, "sock_open, [{$this->host}]/[{$this->port}], {$this->timeout} sec timeout");
+            $this->fp = @fsockopen ($this->host,$this->port,$errno,$errstr,$this->timeout);
+        }
+        if (!$this->fp) {
+            $this->log->add(__LINE__, 'sock_open: can\'t connect');
+            if ($errno == 0) {
+                $this->log->add(__LINE__, 'sock_open: problem before connect (dns/socket)');
+            }
+            else {
+                $this->log->add(__LINE__, 'sock_open: problem trying to connect (hostname notfound, blocked, downed, busy, or timeout)');
+                $this->log->write_error("$errno \"$errstr\".");
+            }
+            return FALSE;
+        }
+        else {
+            $this->log->add(__LINE__, 'sock_open: connected');
+            return TRUE;
+        }
+    }
+    function sock_send_request ($location) {
+        if ($this->http_proxy_enable) {
+            $header_auth = '';
+            if ($this->http_proxy_user != '') {
+                $header_auth = 'Proxy-Authorization: Basic '.base64_encode($this->http_proxy_user.':'.$this->http_proxy_pass)."\r\n";
+            }
+            $http_req = "GET http://{$this->host}:{$this->port}{$location} HTTP/1.0\r\nHost: {$this->host}:{$this->port}\r\nReferer: http://{$this->host}/\r\nUser-Agent: {$this->user_agent}\r\n{$header_auth}Connection:close\r\n\r\n";
+        }
+        else {
+            $http_req = "GET $location HTTP/1.0\r\nHost: {$this->host}:{$this->port}\r\nReferer: http://{$this->host}/\r\nUser-Agent: {$this->user_agent}\r\nConnection:close\r\n\r\n";
+        }
+        $this->log->add(__LINE__, 'http_req: '.$http_req);
+        $return = fputs ($this->fp, $http_req);
+        if ($return == -1) {
+            $this->log->add(__LINE__, 'http_req: can\'t send');
+            return FALSE;
+        }
+        else {
+            $this->log->add(__LINE__, 'http_req: sent');
+            return TRUE;
+        }
+    }
+    function sock_recv_header () {  //return HTTP response header
+        $buffers = '';
+        $this->log->add(__LINE__, 'http_resp_header: receiving...');
+        while (!feof ($this->fp)) {
+            $buffer = fgets($this->fp, 65536 );
+            if ($buffer == "\r\n") break;
+            $buffers .= $buffer;
+        }
+        $this->log->add(__LINE__, 'http_resp_header: '.$buffers);
+        if (!preg_match('/200 OK/',$buffers)) {  //validate buffer
+            $this->log->write_error('Invalid HTTP Response');
+            return false;
+        }
+        else {
+            $this->log->add(__LINE__, 'http_resp_header: 200 OK');
+        }
+        return $buffers;
+    }
+    function sock_recv_all () { //receive the rest of the data, then close
+        $buffers = '';
+        do {    // recv all response body
+           $data = fread($this->fp, 8192); #use fread as body may be binary (fget is not binary safe)
+           if (strlen($data) == 0) break;
+           $buffers .= $data;
+        } while(true);
+
+        $this->close();
+        return $buffers;
+    }
+    function close() {
+        fclose($this->fp);
+    }
+}
+
+class DetikUsable {
+    var $nodeserver_url = '';
+    var $source = '';
+    var $already_parsed = False;
+    var $proxy_url = '';
+    var $url_list = 'http://jkt1.detik.com/index.php';   # note: if you got "access forbidden" error and your hosting server is located outside indonesia, use "jkt2.detik.com" instead
+    #~ var $url_list = 'http://localhost/index.html';
+    var $newslist_cache_revalidate = 300; // time in seconds in which news list become invalidated, and automatically reload fresh data from original source
+    # -------- <REGEX> --------
+    #~ var $regex_list_prevnews = "|=.nmkanal(.*?)<IMG(.*)|s";
+    var $regex_list_prevnews = "|=.nmkanal(.*?)indeks berita(.*)|is";
+    //parser utk tanggal+jam, hyperlink, dan judul
+    #~ $regex_list_prevnews_all = "/(\d+\/\d+\/\d+.*?) WIB.*?<A href=\"([^\"]*)\"[^>]*>(.*?)<\/A>/is";
+    #~ $regex_list_prevnews_all = '/(\d+\/\d+\/\d+.*?)<.*?<a href="([^"]+)"[^>]*>(.*?)<\/A>/is';
+    #~ $regex_list_prevnews_all = '/(\d+\/\d+\/\d+.*?)<.*?<a href="([^"]+url=[^"]+)" class=[^>]*>(.*?)<\/A>/is';
+    var $regex_list_prevnews_all = '|(\d+/\d+/\d+.*?)<.*?<a href="([^"]+url=[^"]+)" class=[^>]*>(.*?<span class="nonhlJudul">.*?)</A>|is';
+    #~ var $regex_list_prevnews_subtitle = '/nonhlsubJudul.>(.{5,}?)<\/span>/';
+    var $regex_list_prevnews_subtitle = '|><span class=.nonhlSubJudul.>(.+?)</span>|';
+    var $regex_list_prevnews_title = '|nonhlJudul.>(.*)|';
+    var $regex_list_headline = '|(<span class="tanggal">.*?)</td>\s+<td valign="top"(.*)|is';
+    #~ $regex_list_headline_all = '|tanggal.>[^,]*,(.*?) WIB<.*?<A href="([^"]+)".*?parent.>(.*?<span class="summary">.*?</span>)|is';
+    var $regex_list_headline_all = '|tanggal.>[^,]*,(.*?) WIB<.*?<A href="([^"]+url=[^"]+)" class=[^>]*>(.*?<span class="summary">.*?</span>)|is';
+    var $regex_list_headline_subtitle = '|subjudul.>(.*?)</span|is';
+    var $regex_list_headline_title = '|strJudul.>(.+?)</span|is';
+    var $regex_list_headline_summary = '|summary.>(.*?)</span|s';
+    #~ var $regex_list_topic_all = '|<td width="100%" align="left" colspan="2">(.*?)</tr>(.*?)<table|si';
+    var $regex_list_topic_all = '|(<h\d>[^<]*?)</h\d>\s+<ul>(.*?)</ul>|si';
+    #~ $regex_list_topic_detail = '|90%">(.*?)<a.*?</a><a href="([^"]+)"[^>]*>.*?"judulhlbawah">(.*?)</font>|is';
+    #~ var $regex_list_topic_detail = '|90%">(.*?)<a href="([^"]+tahun/[^"]+)"[^>]*>.*?"judulhlbawah">(.+?)</font>|is';
+    var $regex_list_topic_detail = '|<a href="([^"]+tahun/[^"]+)"[^>]*>.*?"judulhlbawah">(.+?)</span>|is';
+    // http://www.detiknews.com/index.php/detik.read/tahun/2004/bulan/04/tgl/15/time/1298/idnews/127625/idkanal/10
+    // http://jkt1.detiksport.com/index.php/detik.read/tahun/2004/bulan/10/tgl/27/time/715/idnews/231219/idkanal/75
+    #~ $regex_list_headline_date = '|/tahun/(\d*)/bulan/(\d*)/tgl/(\d*)/time/(\d\d)(\d\d)|i';
+    var $regex_list_headline_date = '|/tahun/(\d*)/bulan/(\d*)/tgl/(\d*)/|i';   # skip the time. too unpredictable.
+    var $regex_detail = "|<blockquote>(.*?)<!-- FORM|is";
+    # -------- <REGEX> --------
+    function DetikUsable ($url='') {
+        global $app,$log;
+        $this->log = &$log;
+        $this->SetSourceFast();
+        $this->SetUrl($url);
+        $this->proxy_url = $app['proxy_url'];
+        $this->zlib_support = extension_loaded('zlib');
+        $this->enable_cache = $app['cache'];
+        $this->unxdt = $_REQUEST['unxdt'];
+    }
+    function GetSourceMode () {
+        return $this->source;
+    }
+    function SetSourceNode ($url='') {
+        $this->log->add(__LINE__, 'set source node');
+        if ($url != '') $this->url = $url;
+        $this->source = 'node';
+        return $this;
+    }
+    function SetSourceCache ($url='') {
+        $this->log->add(__LINE__, 'set source cache');
+        if ($url != '') $this->url = $url;
+        $this->source = 'cache';
+        return $this;
+    }
+    function SetSourceOrig ($url='') {
+        $this->log->add(__LINE__, 'set source original');
+        if ($url != '') $this->url = $url;
+        $this->source = 'orig';
+        return $this;
+    }
+    function SetSourceFast ($url='') {
+        $this->log->add(__LINE__, 'set source fast');
+        if ($url != '') $this->url = $url;
+        $this->source = 'fast';
+        return $this;
+    }
+    function SetUrl ($url) {
+        $this->url = $url;
+        return $this;
+    }
+    function SetNodeServerUrl ($url) {
+        $this->nodeserver_url = $url;
+        return $this;
+    }
+    function GetDataMode () {
+        return $this->data_mode;
+    }
+    function SetModeDetail () {
+        $this->data_mode = 'detail';
+        return $this;
+    }
+    function SetModeList () {
+        $this->data_mode = 'list';
+        $this->url = $this->url_list;
+        return $this;
+    }
+    function SetDetailDate ($dt) {
+        $this->unxdt = $dt;
+    }
+    function GetBufferNode ($url) {
+    /* return buffer taken from other du node
+    @url: the original detikcom url
+    @mode: 'list'=take list, 'detail'=take detail
+    */
+        if ($this->data_mode == 'list') $this->proxy_url .= "?url=$url&amp;as_node=1";
+        elseif ($this->data_mode == 'detail') $this->proxy_url .= "?x=i&amp;as_node=1";
+        else die('Invalid mode');
+        if (!$this->zlib_support) $this->proxy_url .= '&amp;uc=1';    //ask uncompressed stream if i don't support zlib library
+        $url_parsed = parse_url($this->proxy_url);
+        $this->log->add(__LINE__, 'getting from node...');
+        $sock = new MySocket($url_parsed['host'],$url_parsed['port']!=''? $url_parsed['port'] : 80);
+        if (!$sock->socket_open()) die('Cannot contact repository at '.$this->proxy_url);
+        $sock->sock_send_request($url_parsed['path'].'?'.$url_parsed['query']);
+        $sock->sock_recv_header();
+        $buffer = $sock->sock_recv_all();
+        if ($buffer=='') { $this->log->write_error('getter_node: unable to download node data'); exit; }
+        $this->buffer = &$buffer;
+        return $this;
+    }
+    function GetBufferCache($force_reload=False,$although_expired=False) {
+    /*
+    @force_reload:
+        False = take from cache if not expired (if any, and app configured to cache)
+        True = always take from original
+    @although_expired: False=invalidate cache if expired, True=use cache although expired
+    */
+        if (!$this->enable_cache) return $this;
+        if ($this->GetDataMode() == 'list') $this->url = $this->url_list;
+        elseif ($this->GetDataMode() == 'detail') $although_expired = True; # detail is considered stable
+        $this->log->add(__LINE__, 'getting from cache...');
+        $urls = parse_url($this->url);
+        $filename = 'cache/'.md5($urls['path']);
+        if (!file_exists($filename) or $force_reload) {         # check if already in cache
+            $this->log->add(__LINE__, 'cache not exist or forced to reload');
+            $this->SetGetBufferOK(False);
+            return $this;
+        }
+        $buffer = '';
+        $fp = fopen($filename,'r');
+        while(!feof($fp)) $buffer .= fread($fp,1024);
+        fclose($fp);
+        $this->news = unserialize($buffer);
+        if (!$although_expired and (time() - $this->news['cache']) > $this->newslist_cache_revalidate ) {$this->log->add(__LINE__, 'cache expired');$this->SetGetBufferOK(False);return;} # check whether cache is expired
+        $this->already_parsed = True;   # cache buffer already contain parsed news
+        $this->SetGetBufferOK(True);
+        $this->log->add(__LINE__, 'got from cache...');
+        return $this;
+    }
+    function SaveCache () {
+    /* save serialized array to file
+    */
+        if (!$this->enable_cache or !$this->news) return $this;
+        if (!file_exists('cache')) mkdir('cache',0755);
+        $urls = parse_url($this->url);
+        $filename = 'cache/'.md5($urls['path']);
+        $this->news['cache'] = time();    # record the time of cache last updated
+        $buffer = serialize($this->news);
+        unset($this->news['cache']);      # remove back our modification
+        $fp = fopen($filename,'w');
+        fwrite($fp,$buffer);
+        fclose($fp);
+        return $this;
+    }
+    function GetBufferOrig () {
+        if ($this->GetDataMode() == 'list') $this->url = &$this->url_list;
+        elseif ($this->GetDataMode() == 'detail') {
+            assert($this->url != '');
+        }
+        $url_parsed = parse_url($this->url);
+        $this->log->add(__LINE__, 'getting from original');
+        $sock = new MySocket($url_parsed['host'],$url_parsed['port']);
+        if (!$sock->socket_open()) {
+            $this->log->write_error('Unable to create connection to ['.$sock->host.']:['.$sock->port.']');
+            exit;
+        }
+        $sock->sock_send_request($url_parsed['path'].$url_parsed['query']);
+        $header_buffer = $sock->sock_recv_header();
+        $this->buffer = $sock->sock_recv_all();
+        if (preg_match('|Content-Encoding:\s*gzip|i',$header_buffer)) { // if Content-Encoding: gzip, then body is gzipped. Unzipped first.
+            $this->buffer = gzinflate(substr($this->buffer, 10,-4));  //skip the first 10 characters,as they are GZIP header, and php's gzinflate only need the data
+        }
+        $this->log->add(__LINE__, 'got from original');
+        $this->ParseAnchor();
+        $this->Parse(); $this->SaveCache();
+        return $this;
+    }
+    function IsGetBufferOK () {
+        return $this->getbuffer_ok;
+    }
+    function SetGetBufferOK ($ok=True) {
+        assert(is_bool($ok));
+        $this->getbuffer_ok = $ok;
+        return $this;
+    }
+    function GetBuffer () {
+        if ($this->GetSourceMode() == 'node')
+            return $this->GetBufferNode();
+        elseif ($this->GetSourceMode() == 'orig')
+            return $this->GetBufferOrig();
+        elseif ($this->GetSourceMode() == 'cache')
+            return $this->GetBufferCache();
+        elseif ($this->GetSourceMode() == 'fast') {
+            # try fastest source first
+            $this->GetBufferCache();
+            if ($this->IsGetBufferOK()) return $this;
+            if ($this->nodeserver_url != '') {
+                $this->GetBufferNode();
+                if ($this->IsGetBufferOK()) return $this;
+            }
+            return $this->GetBufferOrig();
+        }
+        return $this;
+    }
+    function ParseNode () {
+    /* return $news array from node buffer. support both list and detail.
+    @buffer: reference to buffer taken from other node to be parsed
+    */
+        if ($this->zlib_support) {
+            $buffer2 = @gzuncompress($buffer);   // try to uncompress
+            if (!$buffer2 or is_bool($buffer2)) {    //it's probably not gzcompressed
+                $this->log->add(__LINE__, 'newslist: from node: cant uncompress data');
+            }
+            else {
+                $buffer = &$buffer2;  // change to new buffer
+                $stream_compress = TRUE;
+            }
+        }
+        $news = unserialize($buffer);
+        if (!$news) {
+            $this->log->write_error('newslist: from node: Unable to unserialize data'); exit;
+        }
+        if (!is_array($news)) {
+            $this->log->write_error("newslist: from node: Data was not formatted correctly"); exit;
+        }
+        # todo: write news to cache
+        $this->news = &$news;
+        $this->already_parsed = True;
+        return $this;
+    }
+    function ParseList () {
+        $this->ParseAds();
+        # narrowing-in to "prevnews" content
+        if (preg_match($this->regex_list_prevnews,$this->buffer,$result)) {
+            $narrow_buffer = $result[1];
+            $remaining_buffer = $result[2];
+            $this->log->add(__LINE__, "ParseList: prevnews1: ok");
+        }
+        else {
+            $this->log->add(__LINE__, "ParseList: prevnews1: fail");
+            $narrow_buffer = $this->buffer;   # continue anyway
+        }
+        if (preg_match_all($this->regex_list_prevnews_all,$narrow_buffer,$result)) {
+            unset($narrow_buffer);
+            $this->log->add(__LINE__, "ParseList: prevnews2: ok");
+            $total_prev_news = count($result[2]);
+            for ($i = 0; $i < $total_prev_news; $i++) {
+                $url = $result[2][$i];
+                $date = $result[1][$i];
+                $title_temp = $result[3][$i];   # contain title and possibily subtitle
+                //    prevnews->date
+                $date = preg_replace('/([0-9]*)\/([0-9]*)\//','\\2/\\1/', $date);
+                $this->news['prevnews'][$i]['date'] = strtotime($date);
+                //    prevnews->url
+                if (!preg_match('/http:\/\//',$url)) {   //  makeit absolute url
+                    $this->log->add(__LINE__, "ParseList: prevnews: add absolute url");
+                    $url = 'http://www.detik.com'.$url;
+                }
+                if (preg_match('/\?url=(.*)/',$url,$url_res)) {  // if link formatted like ...?url=http://.... retrieve the param value instead
+                    $this->log->add(__LINE__, "ParseList: prevnews: url from param");
+                    $url = $url_res[1];
+                }
+                $this->news['prevnews'][$i]['url'] = $url;
+                //    prevnews->subtitle
+                $this->log->add(__LINE__, "parser: prevnews($i): tt".$title_temp);
+                if (preg_match($this->regex_list_prevnews_subtitle,$title_temp,$subtitle_res)) {
+                    $this->log->add(__LINE__, "ParseList: prevnews#$i: subtitled");
+                    $this->news['prevnews'][$i]['subtitle'] = $subtitle_res[1];
+                }
+                //    prevnews->title
+                if (preg_match($this->regex_list_prevnews_title,$title_temp,$title_res)) {
+                    $this->log->add(__LINE__, "ParseList: prevnews#$i: titled");
+                    $this->news['prevnews'][$i]['title'] = $title_res[1];
+                }
+                if (trim($this->news['prevnews'][$i]['title']) == '') $this->news['prevnews'][$i]['title'] = $this->GetAnchorText($this->news['prevnews'][$i]['url']);
+            }
+        }
+
+        //    narrowing-in to headline news content
+        #~ echo 'XX'.$remaining_buffer.'YY';
+        $this->log->add(__LINE__, "ParseList: headline");
+        if (preg_match($this->regex_list_headline,$remaining_buffer,$result)) {
+            $this->log->add(__LINE__, 'parser: headline: success');
+            $narrow_buffer = $result[1];
+            $remaining_buffer = $result[2];
+            assert(preg_match_all($this->regex_list_headline_all,$narrow_buffer,$result));
+            unset($narrow_buffer);
+            $this->log->add(__LINE__, 'parser: headline: all: success');
+            $total_news = count($result[2]);
+            for ($i = 0; $i < $total_news; $i++) {
+                $date = $result[1][$i];
+                $url = $result[2][$i];
+                $title = $result[3][$i];
+                //    headline->url
+                if (!preg_match('/http:\/\//',$url)) { //        makeit absolute url
+                    $url = 'http://www.detik.com'.$url;
+                }
+                if (preg_match('/\?url=(.*)/',$url,$url_res)) { // if link formatted like ...?url=http://.... retrieve the param value instead
+                    $url = $url_res[1];
+                }
+                $this->news['headline'][$i]['url'] = $url;
+                //    headline->subtitle
+                if (preg_match($this->regex_list_headline_subtitle,$title,$subtitle_res)) {
+                    $this->news['headline'][$i]['subtitle'] = $subtitle_res[1];
+                }
+                //    headline->title
+                if (preg_match($this->regex_list_headline_title,$title,$title_res)) {
+                    $this->news['headline'][$i]['title'] = $title_res[1];
+                }
+                if (trim($this->news['headline'][$i]['title']) == '') $this->news['headline'][$i]['title'] = $this->GetAnchorText($this->news['headline'][$i]['url']);
+                //    headline->summary
+                if (preg_match($this->regex_list_headline_summary,$title,$summary_res)) {
+                    $this->news['headline'][$i]['summary'] = $summary_res[1];
+                }
+                //    headline->date
+                $date = preg_replace('|([0-9]*)/([0-9]*)/|','\\2/\\1/', $date);
+                $this->news['headline'][$i]['date'] = strtotime($date);
+            }
+        }
+        else {
+            $this->log->add(__LINE__, 'parser: headline: regex fail');
+        }
+
+        //    narrowing-in to topic news content
+        #~ echo 'YYY'.$remaining_buffer.'XXX';
+        $this->log->add(__LINE__, "ParseList: topic");
+        if (preg_match_all($this->regex_list_topic_all,$remaining_buffer,$result)) {
+            $this->log->add(__LINE__, "ParseList: topic: success");
+            $tp_buff = $result;
+            $count_topic = count($tp_buff[1]);  # daftar topik
+            for ($i = 0; $i < $count_topic; $i++) {
+                $title = trim(strip_tags($tp_buff[1][$i]));
+                if ($title == '') continue; // 9nov04, skip if topic has no title
+                $this->news['topic'][$i]['title'] = $title;  // topic->title
+                if (!preg_match_all($this->regex_list_topic_detail,$tp_buff[2][$i],$tpdetail_buff)) continue;   # skip if can't parse it
+                $titles = $tpdetail_buff[2];
+                $urls = $tpdetail_buff[1];
+                $dates = $urls; //date will be parsed from url
+                $count_news = count($tpdetail_buff[1]);
+                for ($j = 0; $j < $count_news; $j++) {
+                    $this->news['topic'][$i]['news'][$j]['title'] = $titles[$j];  //    topic->title->title
+                    //    topic->title->url
+                    $regex_topic_url = '|\?url=(.*)|';
+                    if (!preg_match($regex_topic_url,$urls[$j],$urls_res)) {
+                        //try apakah ini http biasa
+                        $regex_topic_url = '|^http://|';
+                        if (preg_match($regex_topic_url,$urls[$j],$urls_res)) $this->news['topic'][$i]['news'][$j]['url'] = $urls[$j];
+                    }
+                    else {
+                        $this->news['topic'][$i]['news'][$j]['url'] = $urls_res[1];
+                    }
+                    //    topic->title->date
+                    if (preg_match($this->regex_list_headline_date,$dates[$j],$tgl)) {
+                        $this->news['topic'][$i]['news'][$j]['date'] = mktime(0,0,0,$tgl[2],$tgl[3],$tgl[1]);
+                    }
+                    if (trim($this->news['topic'][$i]['news'][$j]['title']) == '') $this->news['topic'][$i]['news'][$j]['title'] = $this->GetAnchorText($this->news['topic'][$i]['news'][$j]['title']);
+                }
+            }
+        }
+        else {
+            $this->log->add(__LINE__, "ParseList: topic: regex fail");
+        }
+
+        return $this;
+    }
+    function ParseDetail () {
+        $this->ParseAds();
+        if (preg_match($this->regex_detail,$this->buffer,$result)) {
+            $this->log->add(__LINE__, 'parser: newsdetail: 1: success');
+            $narrow_buffer = $result[1];
+        }
+        else {
+            $this->log->add(__LINE__, "parser: newsdetail: 1: fail ($regex_1)");
+            $narrow_buffer = $this->buffer;
+        }
+        if (strpos($url,'berita-foto') !== False) { // this channel is different enough, that need specific pregmathicng
+            //        title
+            $regex = "|<FONT size=5>(.*?)</font>|is";
+            if (preg_match($regex,$narrow_buffer,$res)) $this->news['title'] = $res[1];
+            //        reporter
+            $regex = "|<BR><FONT color=#ff0000 size=2>(.*?)</font>|is";
+            if (preg_match($regex,$narrow_buffer,$res)) $this->news['reporter'] = $res[1];
+            //        content
+            $regex = '|<P align="Justify">(.*)|is';
+            if (preg_match($regex,$narrow_buffer,$res)) $this->news['content'] = $res[1];
+            //        'recondition' urls in content
+            $this->news['content'] = preg_replace('|<a href=(.?)http://www.detik.com/|',"<a href=\\1{$_SERVER['PHP_SELF']}?url=http://www.detik.com/",$this->news['content']);
+        }
+        elseif (strpos($url,'detikhot') !== False) { // this channel is different enough, that need specific pregmathicng
+            //        sub-title
+            $regex = "|<font class=.?subjudulberita.?>(.*?)</font>|is";
+            if (preg_match($regex,$narrow_buffer,$res)) $this->news['subtitle'] = $res[1];
+            //        title
+            $regex = '|<font color="#669900" size="4" face="Arial, Helvetica, sans-serif">(.*?)</font>.*$|is';
+            if (preg_match($regex,$narrow_buffer,$res)) $this->news['title'] = $res[1];
+            //        reporter
+            $regex = "|<td valign=\"top\"><strong> (.*?)</strong>|is";
+            if (preg_match($regex,$narrow_buffer,$res)) $this->news['reporter'] = $res[1];
+            //        content
+            $regex = '|<tr valign="top" width="525">.*?<td valign="top">(.*?)(?:<\/td>|$)|is';
+            if (preg_match($regex,$narrow_buffer,$res)) $this->news['content'] = $res[1];
+            //        clean html
+            $this->news['reporter'] = strip_tags($this->news['reporter'],'<b></b><i></i>');
+            $this->news['content'] = strip_tags($this->news['content'],'<b></b><i></i><a></a><p></p><br>');
+        }
+        else {
+            //        sub-title
+            $regex = '|<font class=.?subjudulberita.?>(.*?)</font>|is';
+            if (preg_match($regex,$narrow_buffer,$res)) $this->news['subtitle'] = $res[1];
+            //        title
+            $regex = '|<font class=.?judulberita.?>(.*?)</font>.*$|is';
+            if (preg_match($regex,$narrow_buffer,$res)) $this->news['title'] = $res[1];
+            //        reporter
+            $regex = '|<font class=.?textreporter.?>(.*?)</font>|is';
+            if (preg_match($regex,$narrow_buffer,$res)) $this->news['reporter'] = $res[1];
+            //        content
+            $regex = '/<font class=.?textberita.?>(.{300,}?)(?:<\/font>|$)/is';
+            #~ $regex = "/$regex_start(.*?detikcom.*?)$regex_end/is";   # siap siap
+            if (preg_match($regex,$narrow_buffer,$res)) $this->news['content'] = $res[1];
+            //clean html
+            $this->news['reporter'] = strip_tags($this->news['reporter'],'<b></b><i></i>');
+            $this->news['content'] = strip_tags($this->news['content'],'<b></b><i></i><a></a><p></p><br>');
+        }
+        $this->news['url'] = $this->url;    # save url, will parse later
+        # its hard to really parse datetime from url, but easier done from news list, so if newslist provide one, we'll use it
+        $this->news['date'] = $this->unxdt;      # unix time, datetime of news detail (passed from param for RSS, from _REQUEST for others)
+        return $this;
+    }
+    function Parse () {
+        if ($this->already_parsed) return $this;
+        if ($this->GetSourceMode() == 'node')
+            return $this->ParseNode();
+        elseif ($this->GetDataMode() == 'list')
+            return $this->ParseList();
+        elseif ($this->GetDataMode() == 'detail')
+            return $this->ParseDetail();
+        return $this;
+    }
+    function ParseAds () {
+    /*
+    decorate @news with key "ads" containing advertisements data
+    */
+        global $app;
+        if (!$app['ads']) return $this;
+        $regex_ads = '|<a([^>]*)>(.*?)</a>|is';
+        $this->log->add(__LINE__, 'parser: ads: regex:"'.$regex_ads.'"');
+        if (!preg_match_all($regex_ads,$this->buffer,$ads_res,PREG_SET_ORDER)) {   // get all ad links
+            return $this;
+        }
+        $this->log->add(__LINE__, 'parser: ads: 1: success');
+        $this->news['ads'] = array();   # reset ads first
+        for ($i = 0; $i < count($ads_res); $i++) {
+            preg_match('|href="([^"]*)"|is',$ads_res[$i][1],$url_res);   //    get a href url
+            //hanya url dengan hostname ad.detik yg diambil
+            if (!preg_match('|http://ad\.detik\.com/link|is',$url_res[1])) continue;
+            unset($temp);
+            $temp['url'] = $url_res[1];
+            $name = trim(strip_tags($ads_res[$i][2]));
+            if ($name == '') {
+                //get name from url
+                preg_match('|/[^\-]*-([^/]*)\.ad|i',$ads_res[$i][1],$adsname_res);
+                $name = $adsname_res[1];
+            }
+            $temp['name'] = $name;
+            $this->news['ads'][] = $temp;
+        }
+        return $this;
+    }
+    function Render () {
+        if ($this->GetDataMode() == 'detail') {
+            return $this->RenderDetailNormal();
+        }
+        elseif ($this->GetDataMode() == 'list') {
+            if ($this->GetSourceMode() == 'node')
+                return $this->RenderNode();
+            return $this->RenderListNormal();
+        }
+        return $this;
+    }
+    function RenderDetailNormal ($complete=True,$with_header=True) {
+        /* renderer for news detail/body */
+        global $list_header_output,$url,$app;
+        $content = preg_replace('|<B>(.*?)<P>|is','<span style=font-size:larger><B>\\1</span><P>',$this->news['content']);    //specialized first paragraph
+        $content = preg_replace('|<a href=("?)http://www.detik.com|is',"<a href=\\1{$_SERVER['PHP_SELF']}?url=http://www.detik.com",$content);  //fix url berita terkait
+        if ($with_header) echo $list_header_output;
+
+        if ($complete) {
+            if ($this->news['date'] != '')
+                echo '<small>'.date('Y-m-d H:i:s',$this->news['date']).'</small>';
+            echo '<h3>'.$this->news['subtitle'].' '.$this->news['title'].'</h3>';
+            echo '<p class="u">'.$this->news['reporter'].'</p>';
+            $this->RenderAds();
+            echo '<span class="u">'.$content.'</span>';
+        }
+        else {
+            echo '<span class=u>'.$content.'</span>';
+        }
+        echo '<p><small><a href="'.$this->news['url'].'" style="color:#666">'.$this->news['url'].'</a></small></p>';
+        return $this;
+    }
+    function RenderNode ($uncompressed=0) {
+    /*
+    @uncompressed: set this to 1 if client requested uncompressed stream
+    support list and detail
+    */
+        set_magic_quotes_runtime(0); //to avoid null char be converted to \0
+        $news_serial = serialize($this->news);
+        if (!$this->zlib_support or $uncompressed) echo $news_serial;
+        else echo gzcompress($news_serial);
+        return $this;
+    }
+
+    function RenderDetailRss () {
+        return $this->RenderDetailNormal(True,False);
+    }
+    function CaptureStart () {
+        ob_end_clean();
+        ob_start();
+    }
+    function CaptureEnd () {
+        $ret = ob_get_contents();
+        ob_end_clean();
+        return $ret;
+    }
+    function RenderDetailWap () {
+        header('Content-Type: text/vnd.wap.wml');
+        $content = preg_replace('|<B>(.*?)<P>|is','<span style=font-size:larger><B>\\1</span><P>',$this->news['content']);    //specialized first paragraph
+        $content = preg_replace('|<a href=("?)http://www.detik.com|is',"<a href=\\1{$_SERVER['PHP_SELF']}?url=http://www.detik.com",$content);  //fix url berita terkait
+        echo '<?xml version="1.0"?><!DOCTYPE wml PUBLIC "-//WAPFORUM//DTD WML 1.1//EN" "http://www.wapforum.org/DTD/wml_1.1.xml"><wml><head></head><card id="main" title="'.htmlentities(strip_tags($this->news['subtitle'].' '.$this->news['title'])).'">';
+        echo '<p>'.htmlentities(strip_tags($this->news['content'])).'</p>';
+        echo '</card></wml>';
+    }
+    function RenderListRssComplete () {
+        return $this->RenderListRss(True);
+    }
+    function RenderListRss ($with_content = False) {
+    /* news list renderer for RSS
+    @with_content  True to include complete news body inside RSS
+    */
+        $this->log->add(__LINE__, 'using news list view rss');
+        global $list_header_output,$list_top_output2,$app,$no,$author_name,$author_email;
+        echo '<?xml version="1.0"?><rss version="2.0"><channel><title>Detik.Usable: berita cepat</title><link>'.($_SERVER['HTTPS'] == "on"? 'https': 'http').'://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'</link><description>'.htmlentities($app['version_description']).'</description><language>id</language><category>news</category><managingEditor>'.$author_email.'</managingEditor><webMaster>'.$author_email.'</webMaster><lastBuildDate>'.date('r').'</lastBuildDate><generator>'.$app['name'].' v'.$app['version'].'</generator>';
+        $this->log->add(__LINE__, 'dumping rss for headline');
+        foreach ($this->news['headline'] as $headline) {  // view headlines
+            $url = ($_SERVER['HTTPS'] == "on"? 'https': 'http').'://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?url='.urlencode($headline['url']);
+            if ($headline['subtitle'] != '') $headline['subtitle'] .= ' - ';
+            if ($with_content) {
+                $du = new DetikUsable($headline['url']); $du->SetModeDetail(); $du->SetDetailDate($headline['date']); $du->GetBuffer(); $du->Parse(); $du->CaptureStart(); $du->RenderDetailRss();
+                $description = htmlentities($du->CaptureEnd());
+            }
+            else $description = htmlentities($headline['summary']);
+            echo '<item><title>'.htmlentities(strip_tags($headline['subtitle'].$headline['title'])).'</title><link>'.$url.'</link><description>'.$description.'</description><guid>'.$headline['url'].'</guid><pubDate>'.date('r',$headline['date']).'</pubDate><category>Headlines</category></item>';
+        }
+        $this->log->add(__LINE__, 'dumping rss for previous news');
+        foreach ($this->news['prevnews'] as $headline) {  //  view prevnews
+            $url = ($_SERVER['HTTPS'] == "on"? 'https': 'http').'://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?url='.urlencode($headline['url']);
+            if ($headline['subtitle'] != '') $headline['subtitle'] .= ' - ';
+            if ($with_content) {
+                $du = new DetikUsable($headline['url']); $du->SetModeDetail(); $du->SetDetailDate($headline['date']); $du->GetBuffer(); $du->Parse(); $du->CaptureStart(); $du->RenderDetailRss();
+                $description = htmlentities($du->CaptureEnd());
+            }
+            else $description = '';
+            echo '<item><title>'.htmlentities(strip_tags($headline['subtitle'].$headline['title'])).'</title><link>'.$url.'</link><description>'.$description.'</description><guid>'.$headline['url'].'</guid><pubDate>'.date ('r',$headline['date']).'</pubDate><category>Previous News</category></item>';
+        }
+        $this->log->add(__LINE__, 'dumping rss for topic news');
+        foreach ($this->news['topic'] as $topic) {    //  view topic news
+            foreach ($topic['news'] as $headline) {
+                $url = ($_SERVER['HTTPS'] == "on"? 'https': 'http').'://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?url='.urlencode($headline['url']);
+                if ($headline['subtitle'] != '') $headline['subtitle'] .= ' - ';
+                if ($with_content) {
+                    $du = new DetikUsable($headline['url']); $du->SetModeDetail(); $du->SetDetailDate($headline['date']); $du->GetBuffer(); $du->Parse(); $du->CaptureStart(); $du->RenderDetailRss();
+                    $description = htmlentities($du->CaptureEnd());
+                }
+                else $description = '';
+                echo '<item><title>'.htmlentities(strip_tags($headline['subtitle'].$headline['title'])).'</title><link>'.$url.'</link><description>'.$description.'</description><guid>'.$headline['url'].'</guid><pubDate>'.date('r',$headline['date']).'</pubDate><category>'.$topic['title'].'</category></item>';
+            }
+        }
+        echo '</channel></rss>';
+        return $list;
+    }
+    function RenderListWap () {
+        header('Content-Type: text/vnd.wap.wml');
+        echo '<?xml version="1.0"?><wml><head></head><card id="main" title="detik.usable">';
+        foreach ($this->news['headline'] as $headline) {  // view headlines
+            $url = ($_SERVER['HTTPS'] == "on"? 'https': 'http').'://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?wap=1&amp;url='.urlencode($headline['url']);
+            if ($headline['subtitle'] != '') $headline['subtitle'] .= ' - ';
+            $description = htmlentities($headline['summary']);
+            $date_delta = str_time_delta($headline['date'],TRUE);
+            echo '<p><anchor>'.$date_delta.': '.htmlentities(strip_tags($headline['subtitle'].$headline['title'])).'<go href="'.$url.'"></go></anchor></p>';
+        }
+        foreach ($this->news['prevnews'] as $headline) {  //  view prevnews
+            $url = ($_SERVER['HTTPS'] == "on"? 'https': 'http').'://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?wap=1&amp;url='.urlencode($headline['url']);
+            if ($headline['subtitle'] != '') $headline['subtitle'] .= ' - ';
+            echo '<p><anchor>'.htmlentities(strip_tags($headline['subtitle'].$headline['title'])).'<go href="'.$url.'"></go></anchor></p>';
+        }
+        echo '</card></wml>';
+        return $this;
+    }
+    function RenderListNormal ($frame_target='m') {
+        if ($this->news['cache']) {
+            echo '<center><span style="font-size:x-small;font-weight:bold;color:c00;">list dari cache '.str_time_delta($this->news['cache']);
+            if ((time() - $this->news['cache'])>$this->newslist_cache_revalidate) {
+                if ($_REQUEST['pda']) echo ' lalu (press reload button for realtime update)</span></center>';
+                else echo ' lalu. Auto-loading berita baru di background.</span></center>';
+            }
+            else echo ' lalu</span></center>';
+        }
+        #~ print_r($this->news);
+        #~ $this->log->dump();
+        if ($this->news['headline']) {
+            foreach ($this->news['headline'] as $headline) {  // view headlines
+                $headline['url'] = $_SERVER['PHP_SELF'].'?unxdt='.urlencode($headline['date']).'&amp;url='.urlencode($headline['url']);
+                if ($headline['subtitle'] != '') $headline['subtitle'] .= ' - ';
+                $date = date('H:i',$headline['date']);
+                $date_delta = str_time_delta($headline['date']);
+                $alt = 3;
+                # time below title, slashdot style
+                echo '<p><span class="j"><a href="'.$headline['url'].'" target="'.$frame_target.'">'.strip_tags($headline['subtitle'].$headline['title']).'</a></span>';
+                echo '<br><span class="u">'.$headline['summary'].'</span>';
+                echo '<b><small><span class="d">--'.$date.', '.$date_delta.' lalu</span></small></b></p>';
+            }
+        }
+        else {
+            echo '<p><small>Sorry, top headline news are not available. If this persists, <a href="mailto:'.$author_email.'">contact author</a>.</small></p>';
+        }
+        echo '<p></p><table border="0" cellspacing="0" cellpadding="0" summary="">';
+        if ($this->news['prevnews']) {
+            foreach ($this->news['prevnews'] as $headline) {  //  view prevnews
+                $headline['url_orig'] = $headline['url'];
+                $headline['url'] = $_SERVER['PHP_SELF'].'?unxdt='.urlencode($headline['date']).'&amp;url='.urlencode($headline['url']);
+                if ($headline['subtitle'] != '') $headline['subtitle'] .= ' - ';
+                $date = date('H:i',$headline['date']);
+                $title_string = strip_tags($headline['subtitle'].$headline['title']);
+                echo '<tr><td valign="top">&bull;&nbsp;</td><td><span class="i"><a href="'.$headline['url'].'" target="'.$frame_target.'">'.$title_string.'</a></span><small><b><span class="d">--'.$date.'</span></b></small></td></tr>';
+            }
+        }
+        else {
+            echo '<p><small>Sorry, previous headline news are not available. If this persists, <a href="mailto:'.$author_email.'">contact author</a>.</small></p>';
+        }
+        echo '</table>';
+        if ($this->news['topic']) {
+            foreach ($this->news['topic'] as $topic) {    //  view topic news
+                echo '<p style="margin-bottom:0;"><span class="i">'.$topic['title'].'</span></p>';
+                if ($topic['news']) {
+                    echo '<table border="0" cellspacing="0" cellpadding="0" summary="">';
+                    foreach ($topic['news'] as $headline) {
+                        $headline['url'] = $_SERVER['PHP_SELF'].'?unxdt='.urlencode($headline['date']).'&amp;url='.urlencode($headline['url']);
+                        if ($headline['subtitle'] != '') $headline['subtitle'] .= ' - ';
+                        echo '<tr><td valign="top">&bull;&nbsp;</td><td><span class="i"><a href="'.$headline['url'].'" target="'.$frame_target.'">'.$headline['subtitle'].$headline['title'].'</a></span></td></tr>';
+                    }
+                    echo '</table>';
+                }
+                else {
+                    echo '<p><small>Sorry, this part of news are not available. If this persists, <a href="mailto:'.$author_email.'">contact author</a>.</small></p>';
+                }
+            }
+        }
+        else {
+            echo '<p><small>Sorry, topical news are not available. If this persists, <a href="mailto:'.$author_email.'">contact author</a>.</small></p>';
+        }
+        echo '<p align="center"><a href="'.$_SERVER['PHP_SELF'].'?x=w" target="m">Home &gt;</a></p>';
+        return $this;
+    }
+    function RenderAds () {
+        global $app;
+        if ($app['ads'] and $this->news['ads'] != '') {
+            echo '<table align=right bgcolor=#B4D0DC border=0 cellspacing=0 width=100><tr><td><table border=0 cellpadding=3 cellspacing=0 width=100%><tr><td bgcolor=#ECF8FF>';
+            echo '<p class=u><span class=i>Iklan</span>';
+            foreach ($this->news['ads'] as $ads) {
+                $url = $ads['url'];
+                $desc = $ads['name'];
+                if (strlen($desc)>10) $desc = substr($desc,0,10).'&gt;';
+                if ($desc == '') $desc = 'Iklan';
+                echo "<br><a href=\"$url\" target=m>$desc</a>";
+            }
+            echo '</td></tr></table></td></tr></table>';
+        }
+        return $this;
+    }
+    function ParseAnchor () {
+    /* We Got New Intelligent Algorithm to parse New list more reliable!
+    get dictionary of <a>...</a> links
+    */
+        if ($this->GetSourceMode() != 'orig') return False; # we expect buffer to be filled with original HTML version
+        $this->anchors = array();   # reset anchors
+        $source_url = parse_url($this->url);
+        $regex = "/<a\s+href=[\"']?([^\" >]*).*?>(.*?)<\/a>(.*?)(?=<a|$)/is";
+        if (preg_match_all($regex,$this->buffer,$groups,PREG_SET_ORDER)) {
+            foreach ($groups as $group) {
+                # we deal only with absolute href
+                $href = $group[1];
+                if (!stristr($href,'http://')) {
+                    # if href does not begin with '/', complete with fixpathnonslash
+                    if (substr($href,0,1) != '/') $href = $fixpathnonslash.'/'.$href;
+                    else $href = 'http://'.$source_url['host'].':'.$source_url['port'].$href;   //href begin with '/', absolutize with hostname
+                }
+                $this->anchors[] = array('href'=>$href, 'text'=>$group[2], 'data'=>$group[3]);
+            }
+        }
+        return True;
+    }
+    function GetAnchorText ($url) {
+        if (!$this->anchors) return '&lt;anchor has not been searched&gt;';
+        foreach ($this->anchors as $a) {
+            if (strstr($a['href'], $url) and trim(strip_tags($a['text'])) != '')  { # find in anchors
+                return $a['text'];
+            }
+        }
+        return '&lt;unknown title&gt;';    # give a default not-found value
+    }
+}
+$log->add(__LINE__, "{$app['name']} v{$app['version']} starting up from {$_SERVER['SERVER_ADDR']}/{$_SERVER['SERVER_PORT']}");
+// end libdetikusable
+
+# test to make sure folder is writeable
+if ($app['cache'] and !is_writeable('.')) {
+    $log->add(__LINE__, "cache is enabled, but folder is non-writeable. disabling cache...");
+    $app['cache'] = FALSE;
+    $list_footer = '<small><span style=\'color:red;\'><b>Optimization tips:</b> You would get better performance (via caching) by making sure this script can write in current folder to put the cache files. To do this, ssh/ftp to current folder, and do a <b>chmod 777 .</b></span></small>'.$list_footer;
+}
+if ($_REQUEST['pda']) { $x = 'i'; $no = 'frame'; }                      # PDA MODE EASY
+if (isset($url)) {                                                      # DU DETAIL PAGE
+    $du = new DetikUsable($url);
+    if ($app['proxy_mode']) { $du->SetModeNode(); $du->SetNodeServerUrl($app['proxy_url']); $du->SetModeDetail(); $du->GetBuffer($url); $du->Parse(); }
+    else { $du->SetModeDetail(); $du->GetBuffer($url); $du->Parse(); }
+    if ($as_node) $du->RenderNode($_REQUEST['cu']); //client set cu to 1 when requesting uncompressed stream
+    elseif ($_REQUEST['wap']) $du->RenderDetailWap();
+    else $du->Render();
+}
+elseif ($no=='x1') {    # experiment 1: Detik.Usable AI
+    $du = new DetikUsable($url);
+    $du->SetModeList(); $du->SetSourceOrig(); $du->GetBuffer(); $du->Parse();
+    echo '<ul>';
+    $ai = array();
+    foreach ($du->anchors as $a) {
+        $title = trim(strip_tags($a['text']));
+        $data_clean = trim(strip_tags($a['data']));
+        # split data via <..>, trim empty part, leave the rest
+        $data_arr = preg_split('/<[^>]*?>/',$a['data'],-1,PREG_SPLIT_NO_EMPTY);
+        $n_arr = array();
+        foreach ($data_arr as $piece) {
+            if (trim($piece) == '') continue;
+            $n_arr[] = htmlentities($piece);
+        }
+
+        # is correct
+        if (strstr($a['href'],'?url=') or strstr($a['href'],'ww.detikhot.com/index.php/tainment.read')) $correct = 1;
+        else $correct = 0;
+        #~ if (!$correct) continue;
+
+        # disassemble url
+        $purl = parse_url($a['href']);
+        echo '<li><a href="'.$a['href'].'">'.$title.'</a>';
+        #~ echo '<br><b>url</b>: '.htmlentities($a['href']);
+        #~ echo '<br><b>url path count</b>: '.strlen($purl['path']);
+        #~ echo '<br><b>url query count</b>: '.strlen($purl['query']);
+        #~ echo '<br><b>title</b>: '.htmlentities($title);
+        #~ echo '<br><b>title char count</b>: '.htmlentities(strlen($title));
+        #~ echo '<br><b>title word count</b>: '.htmlentities(count(explode(' ',$title)));
+        #~ echo '<br><b>data clean</b>: '.htmlentities($data_clean);
+        #~ echo '<br><b>data split</b>: '.implode('<br> - ',$n_arr);
+        #~ echo '<br><b>data split count</b>: '.count($n_arr);
+        #~ echo '<br>raw data: '.htmlentities($a['data']);
+
+        #~ $ai['title_count'][] = array(strlen($title),$correct);
+        $ai['title_count'][strlen($title)][$correct] += 1;
+        $ai['title_count_all'] += 1;
+    }
+    echo '</ul>';
+
+    # order
+    ksort($ai['title_count']);
+    $total_correct = 0;
+    echo '<table border=1>';
+    foreach ($ai['title_count'] as $k=>$v) {
+        $sure = ((($v[0]+$v[1])/$ai['title_count_all'])*100);
+        $sure = sprintf("%01.2f", $sure);
+        $correct_count = (int) $v[1];
+        $incorrect_count = (int) $v[0];
+        $total_correct += $correct_count;
+        #~ echo '<br>Title count ['.$k.'] is '.(($v[1]/($v[0]+$v[1]))*100).'% correct. I am '.$sure.'% sure.';
+        #~ echo '<tr><td>'.$k.'</td><td>'.(($v[1]/($v[0]+$v[1]))*100).'</td><td>'.$sure.'</td>';
+        echo '<tr><td>'.$k.'</td><td>&nbsp;'.$correct_count.'</td><td>&nbsp;'.$incorrect_count.'</td><td>'.$sure.'</td>';
+    }
+    echo '</table>';
+    if ($total_correct < ($ai['title_count_all']/2)) {
+        $n = (($ai['title_count_all']-$total_correct)/$ai['title_count_all'])*100;
+        echo '<p>In general, I say that '.sprintf("%01.2f", $n).'% is incorrect';
+    }
+
+    #~ print_r($ai);
+}
+elseif ($x=='i' or $no=='frame' or $no=='gm' or $no=='rss2' or $no=='wap') {    # DU LIST PAGE
+    $du = new DetikUsable();
+    if ($app['proxy_mode']) { $du->SetModeNode(); $du->SetNodeServerUrl($app['proxy_url']); $du->SetModeList(); $du->GetBuffer(); $du->Parse(); }   //retrieve serialized+processed html containing ready-to-view array from other detik.usable node.
+    else { $du->SetModeList(); if ($_REQUEST['cache_reload']) $du->SetSourceOrig(); $du->GetBuffer(); $du->Parse(); }   //retrieve raw html from detik, parse, and output as new detik.usable-style design
+    if ($as_node) $du->RenderNode($_REQUEST['cu']); //client set cu to 1 when requesting uncompressed stream
+    elseif ($no == 'rss2') $du->RenderListRss($_REQUEST['complete']);
+    elseif ($no == 'wap') { $du->RenderListWap(); }
+    else {
+        echo $list_header_output.$list_top_output;
+        if ($du->news['cache']) echo '<div id="cache_set">';
+        $du->Render();
+        flush();
+        if ($du->news['cache']) echo '</div>';
+        if ($du->news['cache'] and (time() - $du->news['cache'])>$du->newslist_cache_revalidate and !$_REQUEST['pda']) {
+            $du->SetSourceOrig(); $du->GetBuffer(); $du->Parse();  # force reload from original
+            echo '<div id="latest_set" style="display:none;">'; $du->Render(); echo '</div>';
+            echo '<script>document.getElementById("latest_set").style.display = "";document.getElementById("cache_set").style.display = "none";</script>';
+        }
+        // view footer
+        global $list_footer,$stream_compress,$location,$hostname;
+        $temp_orig = "http://$hostname/$location";
+        $temp_stream = 'Stream: '; if (!$app['proxy_mode']) $temp_stream .= 'N/A'; elseif ($stream_compress) $temp_stream .= 'Compressed'; else $temp_stream .= 'Uncompressed';
+        eval("\$list_footer = \"$list_footer\";");
+        echo $list_footer;
+
+    }
+}
+elseif ($x=='w') {  # WELCOME PAGE
+    $page = $_REQUEST['page'] == ''? '1': $_REQUEST['page'];
+    echo $header_ouput;
+    if ($page == '1') echo $welcomepage_output;
+    elseif ($page == '2') echo $welcomepage_output_2;
+}
+elseif ($x=='s') show_source(__FILE__);                                 # SOURCE PAGE
+elseif ($_REQUEST['au']) {                                              # AUTO-UPDATE PAGE
+    if (!$_REQUEST['commit']) {
+        $target_filename = basename(__FILE__);
+        echo $list_header_output;
+        echo '<h4>Detik.Usable Updates</h4>';
+        //check permission to write
+        $log->add(__LINE__, 'checking file write permission...');
+        if (!is_writable(__FILE__)) {
+            $log->add(__LINE__, 'fail. try chmod-ing...');
+            if (@!chmod(__FILE__,0777)) {    //test ubah permission
+                $log->add(__LINE__, 'fail. checking folder permission to create file...');
+                if (!is_writable(dirname(__FILE__))) {  // coba simpan ke file yg berbeda di folder yg sama
+                    $log->add(__LINE__, 'fail.');
+                    echo '<p>Sorry, I do not have write permission to  "'.__FILE__.'". Try changing file permission, eg: <b>chmod 777 '.__FILE__.'</b>.';
+                    echo "<p><a href={$_SERVER['PHP_SELF']}?x=w>Back to welcome page</a>";
+                    exit;
+                }
+                else {
+                    $target_filename = 'index2.php';
+                    echo '<b>Success, will be written to '.dirname(__FILE__).'/'.$target_filename.'</b>';
+                }
+            }
+            else {
+                $log->add(__LINE__, 'ok.');
+            }
+        }
+        else {
+            $log->add(__LINE__, 'ok.');
+        }
+        flush();
+
+        //compare version
+        $url_parsed = parse_url($app['update_url']);
+        $log->add(__LINE__, 'contacting repository...');
+        $sock = new MySocket($url_parsed['host'],$url_parsed['port']!=''? $url_parsed['port'] : 80);
+        if (!$sock->socket_open()) { $log->write_error('Cannot contact repository at '.$app['update_url']); exit; }
+        $sock->sock_send_request($url_parsed['path'].'?'.$url_parsed['query']);
+        $sock->sock_recv_header();
+        $buffers = $sock->sock_recv_all();
+        if ($buffers == '') {
+            echo '<h1>update url:'.$app['update_url'].' cannot be contacted!</h1>';
+            exit;
+        }
+
+        if (preg_match('/\$app\[\'version\'\]\s*=\s*"([^"]*)"/i',$buffers,$remote_res))
+            $remote_version = $remote_res[1];
+        else
+            $remote_version = '0.0';
+        list($remote_major, $remote_minor) = explode('.',$remote_version,2);    # split into major and minor version
+        list($local_major, $local_minor) = explode('.',$app['version'],2);
+
+        echo '<ul><li>Versi detik.usable ini: <b>'.$local_major.'.'.$local_minor.'</b><li>Versi detik.usable terbaru: <b>'.$remote_major.'.'.$remote_minor.'</b></ul>';
+        if ($remote_major > $local_major or ($remote_major == $local_major and $remote_minor > $local_minor))
+            echo "<p><form method=get action={$_SERVER['PHP_SELF']}><input type=hidden name=au value=1><input type=hidden name=commit value=1><input type=hidden name=target_filename value='".htmlentities($target_filename)."'><input type=submit value=\"Update ke $remote_version\"></form>";
+        else echo "<p>detik.usable ini sudah versi terbaru<p><form method=get action={$_SERVER['PHP_SELF']}><input type=hidden name=au value=1><input type=hidden name=commit value=1><input type=hidden name=target_filename value='".htmlentities($target_filename)."'><input type=submit value=\"Force update again\"></form>";
+        echo "<p><a href={$_SERVER['PHP_SELF']}?x=w>Back to welcome page</a>";
+    }
+    else {
+        $url_parsed = parse_url($app['update_url']);
+        $sock = new MySocket($url_parsed['host'],$url_parsed['port']!=''? $url_parsed['port'] : 80);
+        if (!$sock->socket_open()) die('Cannot contact repository at '.$app['update_url']);
+        $sock->sock_send_request($url_parsed['path'].'?'.$url_parsed['query']);
+        $sock->sock_recv_header();
+        $buffers = $sock->sock_recv_all();
+        if ($buffers == '') {
+            write_error("auto_update: Unable to get latest version at {$app['update_url']}");
+            echo "<p><a href={$_SERVER['PHP_SELF']}?x=w>Back to welcome page</a>";
+        }
+        else {
+            $target = dirname(__FILE__).'/'.$_REQUEST['target_filename'];
+            echo '<br>...writing to '.$target;
+            $fp = fopen($target,'w');
+            fwrite($fp,$buffers);
+            fclose($fp);
+            echo '<br><b>Success</b>';
+            echo $list_header_output;
+            echo '<h4>Update Berhasil</h4>';
+            $redirect = dirname($_SERVER['PHP_SELF']).'/'.$_REQUEST['target_filename'];
+            $redirect = str_replace('//','/',$redirect);
+            echo '<p><a href="'.$redirect.'" target="_top">Reload detik.usable</a>';
+        }
+    }
+}
+#=============== CACHE MANAGEMENT PAGE ===========================
+elseif ($_REQUEST['cm']) {
+    if (!$_REQUEST['commit'] or ($_REQUEST['confirm_text'] != $_REQUEST['confirm_text2'])) {
+        $dirsize = 0;
+        $dh = opendir('cache');
+        while (false !== ($filename = readdir($dh))) if (($file_name != '.' && $file_name != '..')) $dirsize += filesize('cache/'.$filename);
+        $cache_size = round($dirsize/1024,2);
+        echo $list_header_output;
+        echo '<h4>Pengaturan Cache</h4>';
+        echo '<p>Total space yang digunakan cache: '.$cache_size.' KB';
+        if ($cache_size) {
+            $crazy_number = rand(1000,9999);
+            if ($cache_size > 0) echo '<p><form action="'.$_SERVER['PHP_SELF'].'"><input type=hidden name=cm value="1"><input type=hidden name=commit value="1"><p>Untuk menghindari search engine spiderbot ngutak ngatik, tulis angka berikut ini untuk mengosongkan cache: <b>'.$crazy_number.'</b><br>';
+            if ($_REQUEST['confirm_text'] != $_REQUEST['confirm_text2']) {
+                echo '<span style="color:f00">Try again</span>';
+            }
+            echo '<input type=text name=confirm_text><input type=hidden name=confirm_text2 value="'.$crazy_number.'"><input type=submit></form>';
+        }
+        echo "<p><a href={$_SERVER['PHP_SELF']}?x=w>Back to welcome page</a>";
+    }
+    else {
+        $dh = opendir('cache');
+        while (false !== ($filename = readdir($dh))) if (($file_name != '.' && $file_name != '..')) @unlink('cache/'.$filename);
+        echo $list_header_output;
+        echo '<h4>Cache telah dikosongkan</h4>';
+        echo "<p><a href={$_SERVER['PHP_SELF']}?x=w>Back to welcome page</a>";
+    }
+}
+elseif ($no == 'bcache') {
+    $display = '';
+    # iterate cache file list
+    $dh = opendir('cache');
+    $cached_news = array();
+    while (false !== ($filename = readdir($dh))) {
+        if ($filename == '.' or $filename == '..') continue;
+        # open and unserialize into var
+        ob_start();
+        readfile('cache/'.$filename);
+        $buffer = ob_get_contents();
+        ob_end_clean();
+        $news = unserialize($buffer);
+        unset($news['content']); # preserve memory
+        # get date, title, url and append into list
+        if ($news['date'] == '')
+            $str_date = 'unknown';
+        else {
+            $tgl = getdate($news['date']);
+            $str_date = mktime(0,0,0,$tgl['mon'],$tgl['mday'],$tgl['year']);
+        }
+        $cached_news[$str_date][] = $news;  # memory hogging for large cache. should be parsed at display iteration.
+    }
+    if (!$cached_news) {
+        $display .= $list_header_output;
+        $display .= '<h3>Cache is empty</h3>'.$list_footer;
+        echo $display;
+        return;
+    }
+    # sort by date desc, group by same date
+    # - sort daily date first
+    # new: con
+    echo $list_header_output;
+    krsort($cached_news,SORT_NUMERIC);
+    foreach ($cached_news as $str_date=>$news_list) {
+        if ($str_date == 'unknown') continue;
+        $unx_date_group = $str_date;
+        $str_date = $hari[date('w',$unx_date_group)].',&nbsp;'.date('j',$unx_date_group).'&nbsp;'.$bulan[date('n',$unx_date_group)].date(' Y',$unx_date_group);
+        echo '<p><b>'.$str_date.'</b>';
+        echo '<small>';
+        foreach ($news_list as $news) {
+            $dateme = date('H:i',$news['date']);
+            if ($dateme == '00:00') $dateme = '';
+            else $dateme .= ' - ';
+            echo '<br>'.$dateme.'<a href="'.$_SERVER['PHP_SELF'].'?url='.urlencode($news['url']).'" target="m">'.$news['title'].'</a>';
+        }
+        echo '</small>';
+    }
+    if ($cached_news['unknown']) {
+        echo '<p><b>Unknown date</b>';
+        echo '<small>';
+        foreach ($cached_news['unknown'] as $news) {
+            echo '<br> - <a href="'.$_SERVER['PHP_SELF'].'?url='.urlencode($news['url']).'" target="m">'.$news['title'].'</a>';
+        }
+        echo '</small>';
+    }
+
+    echo '<p align="center"><a href="'.$_SERVER['PHP_SELF'].'?x=w" target="m">Home &gt;</a></p>';
+
+    # display
+    eval("\$list_footer = \"$list_footer\";");
+    echo $list_footer;
+}
+else echo $frameset_output;
+
+?>

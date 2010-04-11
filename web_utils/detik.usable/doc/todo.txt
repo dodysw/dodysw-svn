@@ -1,0 +1,10 @@
+Detik.Usable Project Todo
+Dody Suria Wijaya
+=========================
+7aug05
+- integrate webstemmer algorithm
+    - html parser
+    - chunker
+    - picker
+- put centralized news comment
+- implement ajax on something

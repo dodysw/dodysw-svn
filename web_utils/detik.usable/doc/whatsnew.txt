@@ -1,0 +1,6 @@
+Last Changes
+
+Detik.Usable 2.38:
+  - now correctly handle mod_gzipped page
+  - new detik.usable repository at http://miaw.compeng.org/~dody (thx to hapsara respati). new updates will be uploaded there
+  - check-update now active again, pointing to server http://miauw.compeng.org/detikusable-latest.php.txt

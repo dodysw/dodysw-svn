@@ -1,0 +1,56 @@
+Detik Usable Pages:
+- frameset
+- welcome page 1
+- welcome page 2
+- news list
+- news list pda (non javascript)
+- news list wap
+- news list rss2 feed
+- news list browse cache
+- news list ala gmail
+- news list from node
+- rss2 complete
+- news detail
+- news detail wap
+- news detail from node
+- cache manager
+- auto update
+- source viewer
+
+function groups
+* getter (takes url then retrieve either from original, cache, or other du node)
+    * list <get_news_list>
+        * from cache
+        * from original
+        * from other du node <getter_node>
+    * detail <get_news_detail>
+        * from cache
+        * from original
+        * from other du node <getter_node>
+* parser (takes html buffer-- save to cache if needed, return $news)
+    * list parser <parse_news_list>
+        * ads parser <ads_parse>
+    * detail parser <get_news_detail>
+        * ads parser <ads_parse>
+    * node parser
+renderer
+    news list renderer (takes $news var containing news list)
+        * normal
+        * normal pda (non javascript)
+        - ala gmail
+        * rss
+        * wap
+        * rss complete
+        * du node (php serialize+gzip)
+        ? xmlrpc server
+        ? javascript
+        ? email
+        ?
+    news detail renderer (takes $news var containing news element)
+        * normal
+        * du node (php serialize+gzip)
+        * wap
+        * body only (for ala gmail)
+        ? xmlrpc server
+        ? javascript
+        ? email

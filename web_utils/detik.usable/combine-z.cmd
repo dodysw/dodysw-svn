@@ -1,0 +1,1 @@
+combine.py -i src\detik_usable.php > detik_usable.php
