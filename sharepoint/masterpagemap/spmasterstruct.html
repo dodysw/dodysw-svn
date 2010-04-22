@@ -1,0 +1,300 @@
+<!--
+Copyright 2010 Dody Suria Wijaya <dodysw@gmail.com> for Public Domain.
+-->
+<html>
+<head>
+<style type="text/css">
+body {
+	font-family: Arial;
+	font-size:8pt;
+}
+table {
+	background-color:#eeeeee;
+	border:2px solid black;
+	font-size:8pt;
+}
+td {
+	border:1px solid #555555;
+	vertical-align:top;
+	padding:4;
+}
+.ph {
+	background-color:#aaaaff;
+}
+.sp {
+	background-color:#aaffff;
+}
+.form {
+	background-color:#ffaaff;
+}
+.body {
+	background-color:#90aa77;
+}
+.head {
+	background-color:#90ff77;
+}
+
+</style>
+</head>
+<body>
+
+<table><tr><td class="head">
+Head
+<table class="sp"><tr><td>SharePoint:RobotMetaTag</td></tr></table>
+<table class="ph"><tr><td>PH Page Title</td></tr></table>
+<table class="sp"><tr><td>SharePoint:CSSLink</td></tr></table>
+<table class="sp"><tr><td>SharePoint:Theme</td></tr></table>
+<table class="sp"><tr><td>SharePoint:ScriptLink</td></tr></table>
+<table class="sp"><tr><td>SharePoint:CustomJSUrl</td></tr></table>
+<table class="sp"><tr><td>SharePoint:SoapDiscoveryLink</td></tr></table>
+<table class="ph"><tr><td>PH AdditionalPageHead</td></tr></table>
+<table class="sp"><tr><td>SharePoint:DelegateControl (AdditionalPageHead)</td></tr></table>
+</td></tr>
+<tr><td class="body">
+	Body
+	<table class="form"><tr><td>
+		Form
+		
+		<table><tr><td>
+			table: ms-main
+			<table><tr><td>WebPartPages:SPWebPartManager</td></tr></table>
+			</td></tr>
+
+			<!-- ms-main new line -->
+			<tr><td>
+				<table width="100%" class="ph"><tr><td>PH Global Navigation
+				
+					<table width="100%"><tr><td>
+					td: ms-globalbreadcrumb
+					<br/>
+						<table align="left"><tr><td>
+							table: ms-globalleft
+							<br/>td: ms-globallinks
+							<table class="ph"><tr><td>PH Global Navigation SiteMap 
+								<table class="asp"><tr><td>SiteMapPath (GlobalNavigationSiteMap)</td></tr></table>
+							
+							</td></tr></table>
+						</td></tr></table>
+						
+						<table align="right"><tr><td>
+							table: ms-globalright, td: ms-globallinks
+							<table class="sp"><tr><td>DelegateControl (GlobalSiteLink0)</td></tr></table>
+						</td><td>
+							td: ms-globallinks
+							<table class="wssuc"><tr><td>wssuc:Welcome </td></tr></table>
+						</td><td>
+							td: ms-globallinks <br/> |
+						</td><td>
+							td: ms-globallinks
+							<table><tr><td>
+								<table class="sp"><tr><td>DelegateControl (GlobalSiteLink1) </td></tr></table>
+							</td><td>
+								<table class="sp"><tr><td>DelegateControl (GlobalSiteLink2) </td></tr></table>
+							</td></tr></table>
+						</td><td>
+							(?)
+						</td></tr></table>
+					
+					</td></tr></table>
+				
+				</td></tr></table>
+			</td></tr>
+
+			<!-- ms-main new line -->
+			<tr><td>
+			
+				<table width="100%"><tr><td>
+					td: ms-titleimagearea 
+				</td><td>
+					td: ms-sitetitle
+					<table class="ph"><tr><td>PH Site Name 
+						<table><tr><td>H1: ms-sitetitle
+							<table class="sp"><tr><td>SPLinkButton
+								<table class="sp"><tr><td>ProjectProperty (Title)</td></tr></table>
+							</td></tr></table>
+						</td></tr></table>
+					</td></tr></table>
+				</td><td>
+					td: ms-globalTitleArea
+					<table class="ph"><tr><td>PH Search Area </td></tr></table>
+				</td></tr></table>
+			
+			</td></tr>
+
+			
+			<!-- ms-main new line -->
+			<tr><td>
+				td: ms-bannercontainer
+				<table class="ph" width="100%"><tr><td>PH Top Nav Bar
+				
+					<table width="100%"><tr><td>
+					table: ms-bannerframe
+					</td><td>
+						td: ms-banner
+						<table class="ph"><tr><td>PH Horizontal Nav 
+							<table class="sp"><tr><td>AspMenu</td></tr></table>
+							<table class="sp"><tr><td>DelegateControl (TopNavigationDataSource)</td></tr></table>						
+						</td></tr></table>
+					</td><td>
+						td: ms-banner
+					</td><td>
+						<table><tr><td>
+							<table><tr><td>
+							table: ms-siteaction, td: ms-siteactionsmenu
+								<table class="sp"><tr><td>SharePoint:SiteActions </td></tr></table>
+							</td></tr></table>
+						</td></tr></table>
+						
+					</td></tr></table>
+				
+				</td></tr></table>
+			</td></tr>
+
+			
+			<!-- ms-main new line -->
+			<tr><td class="ph">
+			PH WSSDesignConsole
+				<table class="wssuc"><tr><td>DesignModeConsole</td></tr></table>
+			</td></tr>
+
+			<!-- ms-main new line -->
+			<tr><td class="ph">
+			PH SPNavigation
+				<table class="sp"><tr><td>DelegateControl (PublishingConsole)</td></tr></table>
+			
+			</td></tr>
+			
+			<!-- ms-main new line -->
+			<tr><td>
+			
+	<table>
+					<!--line 1-->
+					<tr><td>
+						table: noname, td: ms-titlearealeft
+						<table class="ph"><tr><td>PH Page Image</td></tr></table>
+					</td><td>
+						td: ms-titleareaframe
+						<table class="ph"><tr><td>PH Title Left Border
+							<table class="div"><tr><td>ms-titleareaframe</td></tr></table>
+						</td></tr></table>
+					</td><td>
+						td: ms-pagetitleareaframe
+						<table><tr><td>
+							td: ms-titlearea
+							<table class="ph"><tr><td>PH Title Breadcrumb
+								<table class="asp"><tr><td>SiteMapPath (SPContentMapProvider)</td></tr></table>
+							</td></tr></table>
+						</td></tr>
+						<tr><td>
+							td: ms-pagetitle
+							<table class="ph"><tr><td>PH Page Title In title Area</td></tr></table>
+						</td></tr></table>
+					</td><td>
+					td: ms-pagetitlearearight
+					<table class="ph"><tr><td>PH Mini Console</td></tr></table>
+					<table class="ph"><tr><td>PH Title Right Margin
+						<table class="div"><tr><td>ms-titleareaframe</td></tr></table>
+					</td></tr></table>
+					</td></tr>
+					
+					<!--line 2-->
+					<tr><td colspan="4">
+						<table class="ph"><tr><td>PH Title Area Separator</td></tr></table>
+					</td></tr>
+					
+					<!--line 3-->
+					<tr><td>
+					td: ms-leftareacell
+					<table><tr><td>
+						table: ms-nav
+						<table><tr><td>
+							table: ms-navframe
+							<table class="ph"><tr><td>PH Left Nav Bar DataSource</td></tr></table>
+							<table class="ph"><tr><td>PH Calendar Navigator</td></tr></table>
+							<table class="ph"><tr><td>PH Left Nav Bar Top</td></tr></table>
+							<table class="ph"><tr><td>PH Left Nav Bar
+								<table class="div"><tr><td>ms-quicklaunchouter
+									<table class="div"><tr><td>ms-quickLaunch
+										<table class="h3"><tr><td>ms-standardheader
+												<table class="label"><tr><td>ms-hidden
+													<table class="sp"><tr><td>EncodedLiteral (Quicklaunch title)</td></tr></table>
+												</td></tr></table>
+												<table class="sp"><tr><td>SecurityTrimmedControl
+													<table class="div"><tr><td>ms-quicklaunchheader
+														<table class="sp"><tr><td>SPLinkButton (all content) 
+														</td></tr></table>
+													</td></tr></table>
+												</td></tr></table>
+										</td></tr></table>										
+										<table class="sp"><tr><td>SPNavigationManager (QuickLaunch)
+											<table class="sp"><tr><td>DelegateControl (QuickLaunchDataSource)</td></tr></table>
+											<table class="sp"><tr><td>AspMenu </td></tr></table>
+										</td></tr></table>
+										<table class="sp"><tr><td>SPNavigationManager (TreeView)
+											<table><tr><td>table: ms-navSubMenu1
+												<table><tr><td>table: ms-navheader
+													<table class="sp"><tr><td>SPLinkButton (treeview header) </td></tr></table>
+												</td></tr></table>
+											</td></tr></table>
+											<table class="div"><tr><td>ms-treeviewouter 
+												<table class="sp"><tr><td>SPHierarchyDataSourceControl (TreeViewDataSource)</td></tr></table>
+												<table class="sp"><tr><td>SPRememberScroll
+													<table class="sp"><tr><td>SPTreeView
+													</td></tr></table>
+												</td></tr></table>												
+											</td></tr></table>											
+										</td></tr></table>
+										<table><tr><td>
+											<table><tr><td>table: ms-recyclebin 
+												<table class="sp"><tr><td>SPLinkButton (stsdefault_recyclebin)</td></tr></table>
+											</td></tr></table>
+										</td></tr></table>
+									</td></tr></table>
+								</td></tr></table>
+							</td></tr></table>
+							<table class="ph"><tr><td>PH Left Actions</td></tr></table>			
+						</td></tr></table>	
+					</td></tr></table>	
+					</td><td>
+						<table class="ph"><tr><td>
+							PH Body Left Border
+						</td></tr></table>
+					</td><td>
+						td: ms-bodyareacell
+						<table><tr><td>
+							table: ms-propertysheet
+							td: ms-bodyareaframe
+							<table class="ph"><tr><td>PH Page Description</td></tr></table>
+							<table class="ph"><tr><td>PH Main</td></tr></table>
+						</td></tr></table>
+					</td><td>
+						td: ms-rightareacell
+						<table class="ph"><tr><td>PH Body Right Margin</td></tr></table>
+					</td></tr>
+					
+					<!--line 4-->
+					<tr><td>
+					td: ms-pagebottommarginleft
+					</td><td>
+					td: ms-pagebottommargin
+					</td><td>
+					td: ms-bodyareapagemargin
+					</td><td>
+					td: ms-pagebottommarginright
+					</td></tr></table>
+				
+				</td></tr></table><!--ms-main-->
+
+		</td></tr>
+		<tr><td>
+		<table class="ph"><tr><td>PH Form Digest</td></tr></table>	
+		
+	</td></tr></table><!--form-->
+
+	<table class="ph"><tr><td>PH Utility Content</td></tr></table>
+	<table class="ph"><tr><td>PH Body Area Class</td></tr></table>
+	<table class="ph"><tr><td>PH Title Area Class</td></tr></table>
+</td></tr></table>
+
+</body>
+</html>
