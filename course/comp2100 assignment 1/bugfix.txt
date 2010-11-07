@@ -1,0 +1,6 @@
+1- dsw: on TOC feature, anchor name (<a name>) for heading should be the same as what specified on the targeting link (a href) 
+	- and it should be some kind of unique ID, not the heading text itself, except you care to make sure that every character in heading text is valid inside attribute's value
+2* dsw: TOC shouldnt be displayed just after <BODY>, not before <HTML> tag.
+	- put a new "id" attribute on XmlContainerElement class, set by TOC drawing routine with incremental number
+	- used the id as a suffix on each anchor tag drawing routine
+3* dsw: TOC, there should be a link at "part" back to corresponding TOC index

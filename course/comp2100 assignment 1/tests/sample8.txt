@@ -1,0 +1,55 @@
+A Short Paper
+
+Ian Barnes
+
+Australian National University
+
+Ann Other
+
+School of Hard Knocks
+
+This is the abstract. I need to write a bit more here so that
+you can see if it has the right margin moved in correctly. And a
+little bit more just in case, you never know.
+
+Categories and Subject Descriptors: Software Construction
+Assignment 2.
+
+This is a Primary Head 
+
+This is a paragraph of Initial Body Text. Here is a span in
+italics and here is a span in boldface.
+
+ 1.  This is a numbered list.
+
+ 2. Here is the second item.
+
+This is a  paragraph of Text body.
+
+This is a paragraph of Quoted Text. I need to make it long
+enough that you can see whether the right margin has been moved
+in correctly.
+
+More Text Body.
+
+  o This is an unordered list.
+
+  o Here is the second item.
+
+THIS IS A HEADING 1; SHOULD BE ALL CAPS IN THE .TXT FILE
+
+This is a Secondary Head
+
+Fig. 5. This is a figure caption.
+
+E = mc2
+
+Table II. This is a table head.
+
+Meyer, B. 1997.  Object-Oriented Software Construction, (Second
+Edition).
+
+[1]
+
+
+[1] This is a footnote.

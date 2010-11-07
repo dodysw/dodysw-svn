@@ -1,0 +1,79 @@
+My brilliant article
+
+John Smith & Jane Doe
+
+________________________________________________________________
+______
+
+
+This is the abstract of my article, which is a short summary. It
+usually appears at the top. People can read this quickly to see
+if they are interested enough to want to read the whole thing.
+Do you see how those ruled lines are too long?
+
+
+Categories and Subject Descriptors: Document formatting.
+
+General Terms: XML, preflight, word processing, article
+templates.
+
+Additional Key Words and Phrases: ACM journal
+
+________________________________________________________________
+______
+
+
+
+1. INTRODUCTION 
+
+This is the first paragraph of the introduction. It needs to be
+long enough to have more than one line, otherwise it looks
+funny.
+
+This is the second paragraph. According to the template, its
+first line should be indented, but the other lines should not.
+
+The third and subsequent paragraphs should be formatted the same
+as the second one.
+
+ 1. The second section
+
+Here is the text of the second section. It has a list of bullet
+points in it.
+
+  o This is the first point.
+
+  o This is the second point.
+
+    It has two paragraphs, of which this is the second.
+
+  o Here is the third, and last, point.
+
+    Here is some more text that follows the list
+
+ 2. The third section
+
+Here is the third section. It is just here to pad out the
+document so that it runs over the page. Notice how the footnote
+goes across the page break. That's really bad. Perhaps it was a
+proper footnote in Word and it's just
+
+
+[1]
+
+[2]
+
+[3]
+
+[4]
+
+Open Office that has stuffed it up. Notice how this paragraph is
+split too, just like the one in the other sample document.
+
+
+[1] This research was supported by the Funding Agency.
+[2] Authors&apos; addresses: Department of Computer Science, The Australian National
+University.
+[3] Permission to make digital/hard copy of part of this work for personal or classroom use is granted without fee provided that the copies are not made or distributed for profit or commercial advantage, the copyright notice, the title of the publication, and its date of appear, and notice is given that copying is by permission of the ACM, Inc. To copy otherwise, to republish, to post on servers, or to redistribute to lists, requires prior specific permission and/or a
+fee.
+[4] © 2001 ACM 1073-0516/01/0300-0034 $5.00

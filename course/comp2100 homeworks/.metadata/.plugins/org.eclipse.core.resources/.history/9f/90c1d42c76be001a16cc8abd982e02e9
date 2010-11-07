@@ -1,0 +1,19 @@
+
+public class Words {
+	
+	public static String threeDigitsAsWords(int n) {
+		String s;
+		
+		return s;
+	}
+
+	public static void main(String[] args) {
+		if (args.length == 1) {
+			int n = Integer.parseInt(args[0]);
+			if (n < 0 || n > 1000) {
+				System.out.println("Usage: words n (where 0 < n < 1000)");
+				System.exit(0);
+			}
+		}
+	}
+}

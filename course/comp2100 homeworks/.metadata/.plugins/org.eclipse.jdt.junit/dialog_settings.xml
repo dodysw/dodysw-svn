@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="JUnitWizards">
+		<item key="NewTestCaseCreationWizardPage.USE_TESTRUNNER" value="false"/>
+		<item key="NewTestCaseCreationWizardPage.GENERATE_MAIN" value="false"/>
+		<item key="NewTestCaseCreationWizardPage.TESTRUNNER_TYPE" value="0"/>
+	</section>
+	<section name="CompareResultDialogBounds">
+		<item key="width" value="620"/>
+		<item key="height" value="253"/>
+		<item key="y" value="205"/>
+		<item key="x" value="330"/>
+	</section>
+</section>

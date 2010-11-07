@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<item key="y" value="101"/>
+		<item key="selection" value="scanner"/>
+		<item key="wrap" value="false"/>
+		<item key="x" value="726"/>
+		<item key="casesensitive" value="false"/>
+		<list key="findhistory">
+			<item value="scanner"/>
+			<item value="footnoteData"/>
+			<item value="Footnote"/>
+			<item value="Children"/>
+			<item value="children"/>
+			<item value="footnote_orig"/>
+			<item value="gila"/>
+			<item value="target"/>
+		</list>
+		<list key="replacehistory" value="target">
+			<item value="Division"/>
+			<item value="Subtract"/>
+		</list>
+	</section>
+</section>

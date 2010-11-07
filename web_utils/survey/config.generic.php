@@ -1,0 +1,1 @@
+<?/*a:5:{i:0;b:0;s:7:"db_host";s:9:"localhost";s:11:"db_username";s:4:"root";s:11:"db_password";s:0:"";s:7:"db_name";s:11:"metrosurvey";}*/?>

@@ -1,0 +1,56 @@
+Contiguous ordered lists?
+(I don't think so)1[1]
+
+
+Ian Barnes and Alexei Khorev
+
+The Australian National University
+
+This sample document tests whether the processor handles two
+contiguous lists numbering correctly, ie, if the last item of
+the first list is separated by an empty paragraph from the first
+item of the second list, the first item on the second list must
+have a number which follows the number of the last item on the
+first list. 
+
+Now let's see how the two adjacent ordered lists are handled.
+
+ 1. Sun shine.
+
+ 2. Moon light.
+
+ 3. Good time.
+
+ 4. Boogie.
+
+__________________________________  
+
+ 1. The previous paragraph contained only white spaces.
+
+ 2. How will item of this list be numbered?
+
+Now we are out of the ordered list for good.
+
+How about weeding out hyphen-only paragraphs:
+
+--------------------------------------  
+
+and underscore-only paragraphs:
+
+_______________________________
+
+and a mixed one:
+
+_________________--------------------_______________
+
+and the last one (also tricky):
+
+_________________________________________
+
+so? what do you think? 
+
+
+
+
+
+[1] But who cares what you might think?

@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!-- ====================================================================== 
+     Mar 25, 2006 4:28:29 AM                                                        
+
+     Comp2100 Assignment1    
+     ant build.xml file
+                   
+     Dody Suria Wijaya                                                                
+     ====================================================================== -->
+<project name="Comp2100 Assignment1" default="test">
+    <description>
+            description
+    </description>
+
+    <!-- ================================= 
+          target: test              
+          This is the default target if target is not specified in ant parameter
+         ================================= -->
+    <target name="test" depends="oops">
+		<java classname="comp2100.oops.Converter">
+			<arg value="tests/sample*.sxw" />
+		</java>
+    </target>
+
+    <!-- ================================= 
+          target: oops
+          Compile all oops java files into .class files
+         ================================= -->
+    <target name="oops">
+        <javac srcdir="comp2100/oops/" ></javac>
+    </target>
+	
+	<!--
+	convert from this Makefile lines:
+	
+	docs: $(classes) Makefile
+	javadoc -d docs -classpath . -author -version \
+	-link http://java.sun.com/j2se/1.5.0/docs/api/ \
+	-linksource -private -use comp2100.oops.tree \
+	comp2100.oops.scanner comp2100.oops.visitor \
+	comp2100.oops
+	
+	-->
+    <target name="docs" description="generate javadoc for this class">
+    	<javadoc destdir="docs" classpath="." author="true" version="true" 
+    		link="http://java.sun.com/j2se/1.5.0/docs/api/"
+    		linksource="true" private="true">
+    		<classpath></classpath>
+    	</javadoc>
+    </target>
+	
+	<target name="jar" description="generate .jar file containing project's source files">
+		<jar destfile="a1.jar" basedir="." includes="*.java"></jar>
+	</target>
+
+	
+</project>
+

@@ -1,0 +1,23 @@
+Spaces removed that shouldn’t be
+
+Ian Barnes
+
+The Australian National University
+
+This sample document tests whether the processor removes data
+elements that consist only of white space correctly, or if it
+removes some that it shouldn’t.
+
+Plain italic bold plain.
+
+In that first paragraph, there should be a space between the
+words “italic�? and “bold�?.
+
+There should be no white space between the parts of the word
+“Unbelievable!�? Neither should there be spaces between the
+initial letters and the rest of the names: Bertrand Meyer, 
+Larry Wall, and Niklaus Wirth. (Of course it would have made
+much more sense to have the entire name in caps & small caps,
+like this: Bertrand Meyer, But that’s not the way the ACM
+template does it. Look at the reference list in sample2.sxw.)
+

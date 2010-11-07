@@ -1,0 +1,20 @@
+
+public class Words {
+	
+	public static String threeDigitsAsWords(int n) {
+		String s;
+		
+		return s;
+	}
+
+	public static void main(String[] args) {
+		int n;
+		if (args.length == 1 && (n = Integer.parseInt(args[0])) > 0 && n < 1000) {
+			System.out.println(threeDigitsAsWords(n));
+		}
+		else {
+			System.out.println("Usage: words n (where 0 < n < 1000)");
+			System.exit(0);
+		}
+	}
+}

@@ -1,0 +1,23 @@
+Contiguous ordered lists?
+
+Ian Barnes and Alexei Khorev
+
+The Australian National University
+
+This sample document tests whether the processor handles two
+contiguous lists numbering correctly, ie, if the last item of
+the first list is separated by an empty paragraph from the first
+item of the second list, the first item on the second list must
+have a number which follows the number of the last item on the
+first list. 
+
+Now let's see how the two adjacent ordered lists are handled.
+
+ 1. Sun shine.
+
+ 2. Moon light.
+
+ 3. Good time.
+
+ 4. Boogie.
+

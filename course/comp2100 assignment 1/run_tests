@@ -1,0 +1,40 @@
+#!/bin/bash
+
+for f in tests/*.sxw
+do
+  echo ${f}:
+  xml=${f/%\.sxw/.xml}
+  txt=${f/%\.sxw/.txt}
+  if [ -f ${xml} ]
+      then
+      cp ${xml} ${xml}.old
+  fi
+  if [ -f ${txt} ]
+      then
+      cp ${txt} ${txt}.old
+  fi
+
+  ./oops ${f}
+  
+  if [ -f ${xml}.old ]
+      then 
+      if diff ${xml} ${xml}.old > /dev/null
+	  then
+	  echo XML OK
+      else
+	  echo XML FAILED
+	  diff -u ${xml} ${xml}.old
+      fi
+  fi
+  if [ -f ${txt}.old ]
+      then
+      if diff ${txt} ${txt}.old > /dev/null
+	  then
+	  echo TXT OK
+      else
+	  echo TXT FAILED
+	  diff -u ${txt} ${txt}.old
+      fi
+  fi
+  rm -f ${xml}.old ${txt}.old
+done

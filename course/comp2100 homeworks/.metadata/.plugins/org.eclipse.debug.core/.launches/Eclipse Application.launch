@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launchConfiguration type="org.eclipse.pde.ui.RuntimeWorkbench">
+<stringAttribute key="product" value="org.eclipse.sdk.ide"/>
+<booleanAttribute key="clearws" value="false"/>
+<booleanAttribute key="usefeatures" value="false"/>
+<booleanAttribute key="useProduct" value="true"/>
+<stringAttribute key="progargs" value=""/>
+<booleanAttribute key="askclear" value="true"/>
+<booleanAttribute key="default" value="true"/>
+<stringAttribute key="vmargs" value=""/>
+<stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.pde.ui.workbenchClasspathProvider"/>
+<stringAttribute key="location0" value="C:\svn\anu\runtime-EclipseApplication"/>
+</launchConfiguration>

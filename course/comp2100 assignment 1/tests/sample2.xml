@@ -1,0 +1,518 @@
+<office:document-content xmlns:office="http://openoffice.org/2000/office"
+                         xmlns:chart="http://openoffice.org/2000/chart"
+                         xmlns:script="http://openoffice.org/2000/script"
+                         xmlns:fo="http://www.w3.org/1999/XSL/Format"
+                         xmlns:dr3d="http://openoffice.org/2000/dr3d"
+                         xmlns:table="http://openoffice.org/2000/table"
+                         office:version="1.0"
+                         xmlns:style="http://openoffice.org/2000/style"
+                         xmlns:math="http://www.w3.org/1998/Math/MathML"
+                         xmlns:draw="http://openoffice.org/2000/drawing"
+                         xmlns:text="http://openoffice.org/2000/text"
+                         xmlns:xlink="http://www.w3.org/1999/xlink"
+                         xmlns:number="http://openoffice.org/2000/datastyle"
+                         office:class="text"
+                         xmlns:form="http://openoffice.org/2000/form"
+                         xmlns:svg="http://www.w3.org/2000/svg">
+   <office:script/>
+   <office:font-decls>
+      <style:font-decl style:font-pitch="variable"
+                       fo:font-family="&apos;Arial Unicode MS&apos;"
+                       style:name="Arial Unicode MS"/>
+      <style:font-decl style:font-pitch="variable"
+                       fo:font-family="&apos;HG Mincho Light J&apos;"
+                       style:name="HG Mincho Light J"/>
+      <style:font-decl style:font-pitch="variable"
+                       style:font-family-generic="roman"
+                       fo:font-family="Thorndale"
+                       style:name="Thorndale"/>
+      <style:font-decl style:font-pitch="variable"
+                       style:font-family-generic="roman"
+                       fo:font-family="&apos;Times New Roman&apos;"
+                       style:name="Times New Roman"/>
+      <style:font-decl style:font-pitch="variable"
+                       style:font-family-generic="roman"
+                       fo:font-family="&apos;Tms Rmn&apos;"
+                       style:name="Tms Rmn"/>
+      <style:font-decl style:font-pitch="variable"
+                       style:font-family-generic="swiss"
+                       fo:font-family="Albany"
+                       style:name="Albany"/>
+      <style:font-decl style:font-pitch="variable"
+                       style:font-family-generic="swiss"
+                       fo:font-family="Helvetica"
+                       style:name="Helvetica"/>
+   </office:font-decls>
+   <office:automatic-styles>
+      <style:style style:family="paragraph"
+                   style:parent-style-name="Author&apos;s Name"
+                   style:name="P1">
+         <style:properties fo:text-indent="0cm"
+                           style:auto-text-indent="false"
+                           fo:margin-left="0cm"
+                           fo:margin-right="0cm"/>
+      </style:style>
+      <style:style style:family="paragraph"
+                   style:parent-style-name="Affiliation"
+                   style:name="P2">
+         <style:properties fo:text-indent="0cm"
+                           style:auto-text-indent="false"
+                           fo:margin-left="0cm"
+                           fo:margin-right="0cm"/>
+      </style:style>
+      <style:style style:family="paragraph"
+                   style:parent-style-name="Affiliation"
+                   style:name="P3">
+         <style:properties fo:text-indent="0cm"
+                           style:auto-text-indent="false"
+                           fo:margin-left="0cm"
+                           style:font-name="Tms Rmn"
+                           fo:margin-right="0cm"/>
+      </style:style>
+      <style:style style:family="paragraph"
+                   style:parent-style-name="Abstract"
+                   style:name="P4">
+         <style:properties fo:text-indent="0cm"
+                           style:auto-text-indent="false"
+                           fo:margin-left="0cm"
+                           fo:margin-right="0cm"/>
+      </style:style>
+      <style:style style:family="paragraph"
+                   style:parent-style-name="Affiliation"
+                   style:name="P5">
+         <style:properties style:font-size-asian="9pt"
+                           fo:margin-right="0cm"
+                           fo:margin-left="0cm"
+                           fo:text-align="justify"
+                           style:auto-text-indent="false"
+                           fo:font-size="9pt"
+                           style:font-name="Tms Rmn"
+                           fo:text-indent="0cm"
+                           style:justify-single-word="false"/>
+      </style:style>
+      <style:style style:family="paragraph"
+                   style:parent-style-name="Categories"
+                   style:name="P6">
+         <style:properties fo:text-indent="0cm"
+                           style:auto-text-indent="false"
+                           fo:margin-left="0cm"
+                           fo:margin-right="0cm"/>
+      </style:style>
+      <style:style style:family="paragraph"
+                   style:parent-style-name="Affiliation"
+                   style:name="P7">
+         <style:properties fo:text-indent="0cm"
+                           style:auto-text-indent="false"
+                           fo:margin-left="0cm"
+                           style:font-name="Tms Rmn"
+                           style:justify-single-word="false"
+                           fo:text-align="justify"
+                           fo:margin-right="0cm"/>
+      </style:style>
+      <style:style style:family="paragraph"
+                   style:parent-style-name="Text body"
+                   style:name="P8">
+         <style:properties fo:text-indent="0.508cm"
+                           style:auto-text-indent="false"
+                           fo:margin-left="0cm"
+                           fo:margin-right="0cm"/>
+      </style:style>
+      <style:style style:family="paragraph"
+                   style:parent-style-name="Quoted Text"
+                   style:name="P9">
+         <style:properties fo:text-indent="0.508cm"
+                           style:auto-text-indent="false"
+                           fo:margin-left="0.635cm"
+                           fo:margin-right="0cm"/>
+      </style:style>
+      <style:style style:family="paragraph"
+                   style:parent-style-name="Numbered List"
+                   style:name="P10">
+         <style:properties fo:text-indent="0cm"
+                           style:auto-text-indent="false"
+                           fo:margin-left="-0.635cm"
+                           fo:margin-right="0cm"/>
+      </style:style>
+      <style:style style:family="paragraph"
+                   style:parent-style-name="Numbered List"
+                   style:name="P11">
+         <style:properties fo:text-indent="0cm"
+                           style:auto-text-indent="false"
+                           fo:margin-left="0cm"
+                           fo:margin-right="0cm"/>
+      </style:style>
+      <style:style style:family="paragraph"
+                   style:parent-style-name="Footnote"
+                   style:name="P12">
+         <style:properties fo:text-indent="0cm"
+                           style:auto-text-indent="false"
+                           fo:margin-left="0cm"
+                           fo:margin-right="0cm"/>
+      </style:style>
+      <style:style style:family="paragraph"
+                   style:parent-style-name="Figure Caption"
+                   style:name="P13">
+         <style:properties fo:text-indent="0.508cm"
+                           style:auto-text-indent="false"
+                           fo:margin-left="0cm"
+                           fo:margin-right="0cm"/>
+      </style:style>
+      <style:style style:family="paragraph"
+                   style:parent-style-name="Table Head"
+                   style:name="P14">
+         <style:properties fo:text-indent="0.508cm"
+                           style:auto-text-indent="false"
+                           fo:margin-left="0cm"
+                           fo:margin-right="0cm"/>
+      </style:style>
+      <style:style style:family="paragraph"
+                   style:parent-style-name="References"
+                   style:name="P15">
+         <style:properties fo:text-indent="0cm"
+                           style:auto-text-indent="false"
+                           fo:margin-left="0cm"
+                           fo:margin-right="0cm"/>
+      </style:style>
+      <style:style style:family="text"
+                   style:name="T1">
+         <style:properties style:font-weight-asian="bold"
+                           fo:font-weight="bold"/>
+      </style:style>
+      <style:style style:family="text"
+                   style:name="T2">
+         <style:properties style:font-style-asian="italic"
+                           fo:font-style="italic"/>
+      </style:style>
+      <style:style style:family="text"
+                   style:name="T3">
+         <style:properties style:font-style-asian="italic"
+                           style:letter-kerning="true"
+                           fo:font-style="italic"/>
+      </style:style>
+      <style:style style:family="text"
+                   style:name="T4">
+         <style:properties style:font-style-asian="normal"
+                           style:text-position="sub 58%"
+                           fo:font-style="normal"/>
+      </style:style>
+      <style:style style:family="text"
+                   style:name="T5">
+         <style:properties style:font-style-asian="normal"
+                           fo:font-style="normal"/>
+      </style:style>
+      <style:style style:family="text"
+                   style:name="T6">
+         <style:properties fo:font-variant="small-caps"/>
+      </style:style>
+   </office:automatic-styles>
+   <office:body>
+      <text:sequence-decls>
+         <text:sequence-decl text:display-outline-level="0"
+                             text:name="Illustration"/>
+         <text:sequence-decl text:display-outline-level="0"
+                             text:name="Table"/>
+         <text:sequence-decl text:display-outline-level="0"
+                             text:name="Text"/>
+         <text:sequence-decl text:display-outline-level="0"
+                             text:name="Drawing"/>
+      </text:sequence-decls>
+      <text:p text:style-name="Title">
+         "This Is the Title of the Paper"
+      </text:p>
+      <text:p text:style-name="P1">
+         "AUTHOR 1"
+      </text:p>
+      <text:p text:style-name="P2">
+         "Affiliation 1"
+      </text:p>
+      <text:p text:style-name="P2">
+         "and"
+      </text:p>
+      <text:p text:style-name="P1">
+         "AUTHOR 2 AND AUTHOR 3"
+      </text:p>
+      <text:p text:style-name="P2">
+         "Affiliation 2"
+      </text:p>
+      <text:p text:style-name="P2"/>
+      <text:p text:style-name="P3">
+         "________________________________________________________________________"
+      </text:p>
+      <text:p text:style-name="P3"/>
+      <text:p text:style-name="P4">
+         "This research investigates the role of interface manipulation style on reflective cognition and concept learning through comparison of the effectiveness of three versions of a software application for learning two-dimensional transformation geometry. The three versions, respectively, utilize a Direct Object Manipulation (DOM) interface - in which the user manipulates the visual representation of objects being transformed; a Direct Concept Manipulation (DCM) interface - in which the user manipulates the visual representation of the transfroamtion being applied to the object; and a Reflective Direct Concept Manipulation (RDCM) interface - in which the DCM approach is extended with scaffolding."
+      </text:p>
+      <text:p text:style-name="P5"/>
+      <text:p text:style-name="P6">
+         "Categories and Subject Descriptors: G.4 ["
+         <text:span text:style-name="T1">
+            "Mathematics of Computing"
+         </text:span>
+         "]: Mathematical Software - "
+         <text:span text:style-name="T2">
+            "User Interfaces"
+         </text:span>
+         "; H5.2 ["
+         <text:span text:style-name="T1">
+            "Information Interfaces and Presentation"
+         </text:span>
+         "]: User Interfaces - "
+         <text:span text:style-name="T2">
+            "User-centered design"
+         </text:span>
+         "; "
+         <text:span text:style-name="T2">
+            "Interaction styles"
+         </text:span>
+         "; "
+         <text:span text:style-name="T2">
+            "Theory and methods"
+         </text:span>
+         "; K.3 ["
+         <text:span text:style-name="T1">
+            "Computing Milieux"
+         </text:span>
+         "]: Computers and Education"
+      </text:p>
+      <text:p text:style-name="P6">
+         "General Terms: Design, Experimentation, Human Factors"
+      </text:p>
+      <text:p text:style-name="P6">
+         "Additional Key Words and Phrases: Human-computer interaction, direct manipulation, reflection, education, learning, cognition, learnware, transformation geometry, problem solving"
+      </text:p>
+      <text:p text:style-name="P7">
+         "________________________________________________________________________"
+      </text:p>
+      <text:p text:style-name="P4"/>
+      <text:p text:style-name="P4"/>
+      <text:p text:style-name="Primary Head">
+         "1. INTRODUCTION "
+      </text:p>
+      <text:p text:style-name="Initial Body Text">
+         "A great deal of interface design research has been devoted to determining mechanisms for making productivity tools ( e.g., word processors and drawing tools) easy to use and intuitive so that users can perform a given task more smoothly and efficiently. "
+      </text:p>
+      <text:p text:style-name="P8">
+         "Hutchins et al. [1986] outline different aspects of &quot;directness.&quot; "
+         <text:s/>
+         "They state:"
+      </text:p>
+      <text:p text:style-name="Quoted Text">
+         "The Gulf of Execution is bridged by making the commands and mechanisms of the system match the thoughts and goals of the user as much as possible. The Gulf of Evaluation is bridged by making the output displays present a good Conceptual Model of the system that is readily perceived, interpreted, and evaluated."
+      </text:p>
+      <text:p text:style-name="P9"/>
+      <text:p text:style-name="P8">
+         "The research presented in this paper addresses the following questions arising in the preceding discussion:"
+      </text:p>
+      <text:ordered-list text:style-name="WW8Num1">
+         <text:list-item>
+            <text:p text:style-name="P10">
+               "Is a shift from DOM to DCM conducive to effective learning?"
+            </text:p>
+         </text:list-item>
+         <text:list-item>
+            <text:p text:style-name="P10">
+               "Does DCM afford more reflective cognition and concious processing of concepts?"
+            </text:p>
+         </text:list-item>
+      </text:ordered-list>
+      <text:p text:style-name="P12">
+         "This research was supported by the Funding Agency."
+      </text:p>
+      <text:p text:style-name="P12">
+         "Authors&apos; addresses: Author 1, Department of ..., The University of ..., State Zip Code; Author 2, Department of ..., The University of "
+         <text:s/>
+         "..., State Zip Code; Author 3, Department of ... , The University of ..., State Zip Code."
+      </text:p>
+      <text:p text:style-name="P12">
+         "Permission to make digital/hard copy of part of this work for personal or classroom use is granted without fee provided that the copies are not made or distributed for profit or commercial advantage, the copyright notice, the title of the publication, and its date of appear, and notice is given that copying is by permission of the ACM, Inc. To copy otherwise, to republish, to post on servers, or to redistribute to lists, requires prior specific permission and/or a fee."
+      </text:p>
+      <text:p text:style-name="P12">
+         "© 2001 ACM 1073-0516/01/0300-0034 $5.00"
+      </text:p>
+      <text:ordered-list text:continue-numbering="true"
+                         text:style-name="WW8Num1">
+         <text:list-item>
+            <text:p text:style-name="P10">
+               "How can the interface support reflective cognition, and are there scaffolding strategies that would support and enhance the DCM metaphor?"
+            </text:p>
+         </text:list-item>
+      </text:ordered-list>
+      <text:p text:style-name="Primary Head">
+         "2. PRIMARY HEAD"
+      </text:p>
+      <text:p text:style-name="Secondary Head">
+         "2.1 Secondary Head"
+      </text:p>
+      <text:p text:style-name="Initial Body Text">
+         "In the DOM version, the user manipulates the geometric shapes directly. Buttons on the side allow users to select drag, clockwise rotate, counter-clockwise rotate, horizontal flip, or vertical flip mode (see Figure 5)."
+      </text:p>
+      <text:p text:style-name="P8"/>
+      <text:p text:style-name="P13">
+         "Fig. 5. Figure caption is set underneath the illustration."
+      </text:p>
+      <text:p text:style-name="P13"/>
+      <text:p text:style-name="P8">
+         <text:span text:style-name="T3">
+            "2.1.1 Tertiary Head"
+         </text:span>
+         <text:span text:style-name="T2">
+            "."
+         </text:span>
+         " This can be illustrated by the following equation:"
+      </text:p>
+      <text:p text:style-name="Displayed Equation">
+         <text:tab-stop/>
+         "T"
+         <text:span text:style-name="T4">
+            "Attempt"
+         </text:span>
+         " "
+         <text:span text:style-name="T5">
+            "("
+         </text:span>
+         "m"
+         <text:span text:style-name="T5">
+            ")"
+         </text:span>
+         " = T"
+         <text:span text:style-name="T4">
+            "Overread"
+         </text:span>
+         <text:span text:style-name="T5">
+            "("
+         </text:span>
+         "m"
+         <text:span text:style-name="T5">
+            ")"
+         </text:span>
+         " + R"
+         <text:span text:style-name="T5">
+            "("
+         </text:span>
+         "m"
+         <text:span text:style-name="T5">
+            ")"
+         </text:span>
+         " . T"
+         <text:span text:style-name="T4">
+            "Intput"
+         </text:span>
+         <text:span text:style-name="T5">
+            "("
+         </text:span>
+         "m"
+         <text:span text:style-name="T5">
+            ")"
+         </text:span>
+         <text:tab-stop/>
+         <text:tab-stop/>
+         <text:tab-stop/>
+         " "
+         <text:s text:c="9"/>
+         <text:tab-stop/>
+         <text:span text:style-name="T5">
+            " "
+            <text:s text:c="9"/>
+            "(2)"
+         </text:span>
+      </text:p>
+      <text:p text:style-name="P8">
+         "Table II shows mean pretest scores were at about the same level for all the groups. However, the results show large gains for the RDCM treatment group."
+      </text:p>
+      <text:p text:style-name="P8"/>
+      <text:p text:style-name="P14">
+         "Table II. Table Head Sits on Top of the Table"
+      </text:p>
+      <text:p text:style-name="P8"/>
+      <text:p text:style-name="Primary Head">
+         "ACKNOWLEDGMENTS"
+      </text:p>
+      <text:p text:style-name="Initial Body Text">
+         "Many thanks to my former colleagues at the University of Illinois who developed the earlier prototypes of the system described here."
+      </text:p>
+      <text:p text:style-name="P8"/>
+      <text:p text:style-name="Primary Head">
+         "REFERENCES"
+      </text:p>
+      <text:p text:style-name="P15">
+         "A"
+         <text:span text:style-name="T6">
+            "BDELBAR"
+         </text:span>
+         ", A.M., AND H"
+         <text:span text:style-name="T6">
+            "EDETNIEMI"
+         </text:span>
+         ", S.M. 1998. Approximating MAPs for belief networks in NP-hard and other theorems. "
+         <text:span text:style-name="T2">
+            "Artificial Intelligence 102"
+         </text:span>
+         ", 21-38."
+      </text:p>
+      <text:p text:style-name="P15">
+         "G"
+         <text:span text:style-name="T6">
+            "INSBERG"
+         </text:span>
+         ", M. 1987. "
+         <text:span text:style-name="T2">
+            "Readings in Nonmonotonic Reasoning"
+         </text:span>
+         ". Morgan Kaufmann, Los Altos, CA."
+      </text:p>
+      <text:p text:style-name="P15">
+         "G"
+         <text:span text:style-name="T6">
+            "REINER"
+         </text:span>
+         ", R. 1999. Explanation-based learning. In "
+         <text:span text:style-name="T2">
+            "The Encyclopedia of Cognitive Science"
+         </text:span>
+         ", R. "
+         <text:span text:style-name="T6">
+            "WILSON AND"
+         </text:span>
+         " F. K"
+         <text:span text:style-name="T6">
+            "EIL"
+         </text:span>
+         ", Eds. MIT Press, Cambridge, MA, 301-303. "
+      </text:p>
+      <text:p text:style-name="P15">
+         "M"
+         <text:span text:style-name="T6">
+            "AREK"
+         </text:span>
+         ", W., "
+         <text:span text:style-name="T6">
+            "AND"
+         </text:span>
+         " T"
+         <text:span text:style-name="T6">
+            "RUSZCZYNSKI"
+         </text:span>
+         ", M. 1989. Relating autoepistemic and default logics. In "
+         <text:span text:style-name="T2">
+            "Proceedings of the 1st International Conference on Principles of Knowledge Representation and Reasoning"
+         </text:span>
+         ", Toronto, Canada, May 1989, H. B"
+         <text:span text:style-name="T6">
+            "RACHMAN"
+         </text:span>
+         " "
+         <text:span text:style-name="T6">
+            "AND"
+         </text:span>
+         " R. R"
+         <text:span text:style-name="T6">
+            "EITER"
+         </text:span>
+         ", Eds. Morgan Kaufmann, San Mateo, CA, 276-288. "
+      </text:p>
+      <text:p text:style-name="P15"/>
+      <text:p text:style-name="Footnote">
+         "Received August 2000; revised March 2001; accepted May 2001."
+      </text:p>
+   </office:body>
+</office:document-content>

@@ -1,0 +1,152 @@
+This Is the Title of the Paper
+
+AUTHOR 1
+
+Affiliation 1
+
+and
+
+AUTHOR 2 AND AUTHOR 3
+
+Affiliation 2
+
+
+________________________________________________________________
+_______
+
+
+This research investigates the role of interface manipulation
+style on reflective cognition and concept learning through
+comparison of the effectiveness of three versions of a software
+application for learning two-dimensional transformation
+geometry. The three versions, respectively, utilize a Direct
+Object Manipulation (DOM) interface - in which the user
+manipulates the visual representation of objects being
+transformed; a Direct Concept Manipulation (DCM) interface - in
+which the user manipulates the visual representation of the
+transfroamtion being applied to the object; and a Reflective
+Direct Concept Manipulation (RDCM) interface - in which the DCM
+approach is extended with scaffolding.
+
+
+Categories and Subject Descriptors: G.4 [Mathematics of
+Computing]: Mathematical Software - User Interfaces; H5.2
+[Information Interfaces and Presentation]: User Interfaces -
+User-centered design; Interaction styles; Theory and methods;
+K.3 [Computing Milieux]: Computers and Education
+
+General Terms: Design, Experimentation, Human Factors
+
+Additional Key Words and Phrases: Human-computer interaction,
+direct manipulation, reflection, education, learning, cognition,
+learnware, transformation geometry, problem solving
+
+________________________________________________________________
+_______
+
+
+
+1. INTRODUCTION 
+
+A great deal of interface design research has been devoted to
+determining mechanisms for making productivity tools ( e.g.,
+word processors and drawing tools) easy to use and intuitive so
+that users can perform a given task more smoothly and
+efficiently. 
+
+Hutchins et al. [1986] outline different aspects of
+"directness."  They state:
+
+The Gulf of Execution is bridged by making the commands and
+mechanisms of the system match the thoughts and goals of the
+user as much as possible. The Gulf of Evaluation is bridged by
+making the output displays present a good Conceptual Model of
+the system that is readily perceived, interpreted, and
+evaluated.
+
+
+The research presented in this paper addresses the following
+questions arising in the preceding discussion:
+
+ 1. Is a shift from DOM to DCM conducive to effective
+    learning?
+
+ 2. Does DCM afford more reflective cognition and concious
+    processing of concepts?
+
+[1]
+
+[2] [3]
+
+[4]
+
+[5]
+
+ 3. How can the interface support reflective cognition, and
+    are there scaffolding strategies that would support and
+    enhance the DCM metaphor?
+
+2. PRIMARY HEAD
+
+2.1 Secondary Head
+
+In the DOM version, the user manipulates the geometric shapes
+directly. Buttons on the side allow users to select drag,
+clockwise rotate, counter-clockwise rotate, horizontal flip, or
+vertical flip mode (see Figure 5).
+
+
+Fig. 5. Figure caption is set underneath the illustration.
+
+
+2.1.1 Tertiary Head. This can be illustrated by the following
+equation:
+
+TAttempt (m) = TOverread(m) + R(m) . TIntput(m)    (2)
+
+Table II shows mean pretest scores were at about the same level
+for all the groups. However, the results show large gains for
+the RDCM treatment group.
+
+
+Table II. Table Head Sits on Top of the Table
+
+
+ACKNOWLEDGMENTS
+
+Many thanks to my former colleagues at the University of
+Illinois who developed the earlier prototypes of the system
+described here.
+
+
+REFERENCES
+
+ABDELBAR, A.M., AND HEDETNIEMI, S.M. 1998. Approximating MAPs
+for belief networks in NP-hard and other theorems. Artificial
+Intelligence 102, 21-38.
+
+GINSBERG, M. 1987. Readings in Nonmonotonic Reasoning. Morgan
+Kaufmann, Los Altos, CA.
+
+GREINER, R. 1999. Explanation-based learning. In The
+Encyclopedia of Cognitive Science, R. WILSON AND F. KEIL, Eds.
+MIT Press, Cambridge, MA, 301-303. 
+
+MAREK, W., AND TRUSZCZYNSKI, M. 1989. Relating autoepistemic and
+default logics. In Proceedings of the 1st International
+Conference on Principles of Knowledge Representation and
+Reasoning, Toronto, Canada, May 1989, H. BRACHMAN AND R. REITER,
+Eds. Morgan Kaufmann, San Mateo, CA, 276-288. 
+
+
+[6]
+
+
+[1] This research was supported by the Funding Agency.
+[2] Authors&apos; addresses: Author 1, Department of ..., The University of ..., State Zip Code; Author 2, Department of ..., The University of
+[3] ..., State Zip Code; Author 3, Department of ... , The University of ..., State Zip
+Code.
+[4] Permission to make digital/hard copy of part of this work for personal or classroom use is granted without fee provided that the copies are not made or distributed for profit or commercial advantage, the copyright notice, the title of the publication, and its date of appear, and notice is given that copying is by permission of the ACM, Inc. To copy otherwise, to republish, to post on servers, or to redistribute to lists, requires prior specific permission and/or a
+fee.
+[5] © 2001 ACM 1073-0516/01/0300-0034 $5.00
+[6] Received August 2000; revised March 2001; accepted May 2001.

@@ -1,0 +1,48 @@
+/**
+ * Homework 7
+ * @author Dody Suria Wijaya
+ *
+ */
+public class Words {
+	private static String[] digits = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+	private static String[] teens = {"ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
+	private static String[] tens = {"", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"};
+	private static String[] large = {"billion", "million", "thousand", "hundred"};
+	private static int[] large_mult = {1000000000, 1000000, 1000, 100};
+	
+	public static String integerAsWords(int n) {
+		String s_all[];
+		for (int l=0; l < large.length; l++) {
+			if ((n / large_mult[l]) > 0) {
+				String s = digits[n/large_mult[l]] + " " + large[l];
+				n %= large_mult[l];
+			}
+		}		
+		
+		if (n > 0 && n < 10) {
+			s += digits[n];
+		}
+		else if (n < 20) {
+			s += teens[n-10];			
+		}
+		else {
+			s += tens[n/10];
+			if (n%10 != 0) {
+				s += "-" + digits[n - (n/10)*10];
+			}
+		}		
+		return s;
+	}
+
+	
+	public static void main(String[] args) {
+		int n;
+		if (args.length == 1 && (n = Integer.parseInt(args[0])) > 0 && n <= 2147483647) {
+			System.out.println(threeDigitsAsWords(n));
+		}
+		else {
+			System.out.println("Usage: words n (where 0 < n < 2147483647)");			
+		}
+		System.exit(0);
+	}
+}

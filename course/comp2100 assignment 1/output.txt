@@ -1,0 +1,348 @@
+javac ./comp2100/oops/Assert.java ./comp2100/oops/Comp2100Ass1Tests.java ./comp2100/oops/Converter.java ./comp2100/oops/StringOps.java ./comp2100/oops/scanner/CommentFilter.java ./comp2100/oops/scanner/Data.java ./comp2100/oops/scanner/DoctypeDeclarationFilter.java ./comp2100/oops/scanner/ProcessingInstructionFilter.java ./comp2100/oops/scanner/Scanner.java ./comp2100/oops/scanner/Tag.java ./comp2100/oops/scanner/TestScanner.java ./comp2100/oops/scanner/Token.java ./comp2100/oops/scanner/WhiteSpaceFilter.java ./comp2100/oops/strategies/AnchorStrategy.java ./comp2100/oops/strategies/AutomaticStyleStrategy.java ./comp2100/oops/strategies/BodyStrategy.java ./comp2100/oops/strategies/DocumentStrategy.java ./comp2100/oops/strategies/HeadingStrategy.java ./comp2100/oops/strategies/LineBreakStrategy.java ./comp2100/oops/strategies/ListItemStrategy.java ./comp2100/oops/strategies/OrderedListStrategy.java ./comp2100/oops/strategies/ParagraphStrategy.java ./comp2100/oops/strategies/SpaceStrategy.java ./comp2100/oops/strategies/SpanStrategy.java ./comp2100/oops/strategies/StylePropertiesStrategy.java ./comp2100/oops/strategies/StyleStrategy.java ./comp2100/oops/strategies/UnorderedListStrategy.java ./comp2100/oops/strategies/XmlContainerStrategy.java ./comp2100/oops/tree/AttributeList.java ./comp2100/oops/tree/XmlContainerElement.java ./comp2100/oops/tree/XmlDataElement.java ./comp2100/oops/tree/XmlElement.java ./comp2100/oops/visitor/HTMLRenderer.java ./comp2100/oops/visitor/HeadingsDecoder.java ./comp2100/oops/visitor/MetadataExtractor.java ./comp2100/oops/visitor/OrderListMerger.java ./comp2100/oops/visitor/StyleDecoder.java ./comp2100/oops/visitor/TextRenderer.java ./comp2100/oops/visitor/TreeFixer.java ./comp2100/oops/visitor/Visitor.java
+./run_tests
+tests/headings.sxw:
+This is Oops - the Open Office Publishing System
+Creating the scanner which feeds on the input stream
+Parsing the input and creating the root element
+Gathering style information
+Style information gathered:
+
+Removing bad paragraphs
+Removing empty tags and merging ordered list
+Extracting metadata
+Metadata information collected:
+Title         = 
+Author's Name = 
+Affiliation   = 
+Creating TOC
+Opening tests/headings.txt for plain text output
+Creating the text renderer.
+Writing the plain text file
+Finished writing the plain text file
+Opening tests/headings.xml for XML output
+Writing the XML file
+Finished writing the XML file
+Heading in document! Opening TOC tests/headings.html for HTML output
+Creating the HTML renderer.
+Writing the HTML file
+Finished writing the HTML file
+Opening tests/headings_0.html for HTML output
+Creating the HTML renderer.
+Writing the HTML file
+Finished writing the HTML file
+Opening tests/headings_1.html for HTML output
+Creating the HTML renderer.
+Writing the HTML file
+Finished writing the HTML file
+Opening tests/headings_2.html for HTML output
+Creating the HTML renderer.
+Writing the HTML file
+Finished writing the HTML file
+Opening tests/headings_3.html for HTML output
+Creating the HTML renderer.
+Writing the HTML file
+Finished writing the HTML file
+Opening tests/headings_4.html for HTML output
+Creating the HTML renderer.
+Writing the HTML file
+Finished writing the HTML file
+Opening tests/headings_5.html for HTML output
+Creating the HTML renderer.
+Writing the HTML file
+Finished writing the HTML file
+Opening tests/headings_6.html for HTML output
+Creating the HTML renderer.
+Writing the HTML file
+Finished writing the HTML file
+tests/sample1.sxw:
+This is Oops - the Open Office Publishing System
+Creating the scanner which feeds on the input stream
+Parsing the input and creating the root element
+Gathering style information
+Style information gathered:
+ P1 --> Author&apos;s Name
+ P7 --> Footnote
+ P6 --> Affiliation
+ P5 --> Categories
+ P4 --> Affiliation
+ P3 --> Abstract
+ P2 --> Affiliation
+
+Removing bad paragraphs
+Footnote: "This research was supported by the Funding Agency."
+Footnote: "Authors&apos; addresses: "
+Footnote: "Permission to make digital/hard copy of part of this work for personal or classroom use is granted without fee provided that the copies are not made or distributed for profit or commercial advantage, the copyright notice, the title of the publication, and its date of appear, and notice is given that copying is by permission of the ACM, Inc. To copy otherwise, to republish, to post on servers, or to redistribute to lists, requires prior specific permission and/or a fee."
+Footnote: "© 2001 ACM 1073-0516/01/0300-0034 $5.00"
+Removing empty tags and merging ordered list
+Extracting metadata
+Metadata information collected:
+Title         = "Title "
+Author's Name = "AUTHOR "
+Affiliation   = "________________________________________________________________________", "________________________________________________________________________"
+Creating TOC
+Opening tests/sample1.txt for plain text output
+Creating the text renderer.
+Writing the plain text file
+Finished writing the plain text file
+Opening tests/sample1.xml for XML output
+Writing the XML file
+Finished writing the XML file
+Heading in document! Opening TOC tests/sample1.html for HTML output
+Creating the HTML renderer.
+Writing the HTML file
+Finished writing the HTML file
+Opening tests/sample1_0.html for HTML output
+Creating the HTML renderer.
+Writing the HTML file
+Finished writing the HTML file
+tests/sample10.sxw:
+This is Oops - the Open Office Publishing System
+Creating the scanner which feeds on the input stream
+Parsing the input and creating the root element
+Gathering style information
+Style information gathered:
+ P1 --> Author&apos;s Name
+ P3 --> Abstract
+ P2 --> Affiliation
+
+Removing bad paragraphs
+Removing empty tags and merging ordered list
+Extracting metadata
+Metadata information collected:
+Title         = "Spaces removed that shouldn’t be"
+Author's Name = "Ian Barnes"
+Affiliation   = "The Australian National University"
+Creating TOC
+Opening tests/sample10.txt for plain text output
+Creating the text renderer.
+Writing the plain text file
+Finished writing the plain text file
+Opening tests/sample10.xml for XML output
+Writing the XML file
+Finished writing the XML file
+Heading not in document! Opening normal HTML file tests/sample10.html for HTML output
+Creating the HTML renderer.
+Writing the HTML file
+Finished writing the HTML file
+tests/sample11.sxw:
+This is Oops - the Open Office Publishing System
+Creating the scanner which feeds on the input stream
+Parsing the input and creating the root element
+Gathering style information
+Style information gathered:
+ P1 --> Author&apos;s Name
+ P9 --> Initial Body Text
+ P8 --> Initial Body Text
+ P7 --> Initial Body Text
+ P6 --> Initial Body Text
+ P5 --> Initial Body Text
+ P4 --> Initial Body Text
+ P3 --> Footer
+ P2 --> Affiliation
+
+Removing bad paragraphs
+Removing empty tags and merging ordered list
+Extracting metadata
+Metadata information collected:
+Title         = "Contiguous ordered lists?", "(I don&apos;t think so)"
+Author's Name = "Ian Barnes and Alexei Khorev"
+Affiliation   = "The Australian National University"
+Creating TOC
+Opening tests/sample11.txt for plain text output
+Creating the text renderer.
+Writing the plain text file
+Finished writing the plain text file
+Opening tests/sample11.xml for XML output
+Writing the XML file
+Finished writing the XML file
+Heading not in document! Opening normal HTML file tests/sample11.html for HTML output
+Creating the HTML renderer.
+Writing the HTML file
+tests/sample12.sxw:
+This is Oops - the Open Office Publishing System
+Creating the scanner which feeds on the input stream
+Parsing the input and creating the root element
+Gathering style information
+Style information gathered:
+ P1 --> Author&apos;s Name
+ P8 --> Initial Body Text
+ P7 --> Initial Body Text
+ P6 --> Initial Body Text
+ P5 --> Initial Body Text
+ P4 --> Initial Body Text
+ P3 --> Initial Body Text
+ P2 --> Affiliation
+
+Removing bad paragraphs
+Footnote: "But who cares what you might think?"
+Removing empty tags and merging ordered list
+Extracting metadata
+Metadata information collected:
+Title         = "Contiguous ordered lists?", "(I don&apos;t think so)", "1", "But who cares what you might think?"
+Author's Name = "Ian Barnes and Alexei Khorev"
+Affiliation   = "The Australian National University"
+Creating TOC
+Opening tests/sample12.txt for plain text output
+Creating the text renderer.
+Writing the plain text file
+Finished writing the plain text file
+Opening tests/sample12.xml for XML output
+Writing the XML file
+Finished writing the XML file
+Heading not in document! Opening normal HTML file tests/sample12.html for HTML output
+Creating the HTML renderer.
+Writing the HTML file
+tests/sample13.sxw:
+This is Oops - the Open Office Publishing System
+Creating the scanner which feeds on the input stream
+Parsing the input and creating the root element
+Gathering style information
+Style information gathered:
+ P1 --> Author&apos;s Name
+ P5 --> Initial Body Text
+ P4 --> Initial Body Text
+ P3 --> Initial Body Text
+ P2 --> Affiliation
+
+Removing bad paragraphs
+Removing empty tags and merging ordered list
+Extracting metadata
+Metadata information collected:
+Title         = "Contiguous ordered lists?"
+Author's Name = "Ian Barnes and Alexei Khorev"
+Affiliation   = "The Australian National University"
+Creating TOC
+Opening tests/sample13.txt for plain text output
+Creating the text renderer.
+Writing the plain text file
+Finished writing the plain text file
+Opening tests/sample13.xml for XML output
+Writing the XML file
+Finished writing the XML file
+Heading not in document! Opening normal HTML file tests/sample13.html for HTML output
+Creating the HTML renderer.
+Writing the HTML file
+Finished writing the HTML file
+tests/sample2.sxw:
+This is Oops - the Open Office Publishing System
+Creating the scanner which feeds on the input stream
+Parsing the input and creating the root element
+Gathering style information
+Style information gathered:
+ P15 --> References
+ P1 --> Author&apos;s Name
+ P14 --> Table Head
+ P13 --> Figure Caption
+ P12 --> Footnote
+ P11 --> Numbered List
+ P10 --> Numbered List
+ P9 --> Quoted Text
+ P8 --> Text body
+ P7 --> Affiliation
+ P6 --> Categories
+ P5 --> Affiliation
+ P4 --> Abstract
+ P3 --> Affiliation
+ P2 --> Affiliation
+
+Removing bad paragraphs
+Footnote: "This research was supported by the Funding Agency."
+Footnote: "Authors&apos; addresses: Author 1, Department of ..., The University of ..., State Zip Code; Author 2, Department of ..., The University of "
+Footnote: "..., State Zip Code; Author 3, Department of ... , The University of ..., State Zip Code."
+Footnote: "Permission to make digital/hard copy of part of this work for personal or classroom use is granted without fee provided that the copies are not made or distributed for profit or commercial advantage, the copyright notice, the title of the publication, and its date of appear, and notice is given that copying is by permission of the ACM, Inc. To copy otherwise, to republish, to post on servers, or to redistribute to lists, requires prior specific permission and/or a fee."
+Footnote: "© 2001 ACM 1073-0516/01/0300-0034 $5.00"
+Footnote: "Received August 2000; revised March 2001; accepted May 2001."
+Removing empty tags and merging ordered list
+Extracting metadata
+Metadata information collected:
+Title         = "This Is the Title of the Paper"
+Author's Name = "AUTHOR 1", "AUTHOR 2 AND AUTHOR 3"
+Affiliation   = "Affiliation 1", "and", "Affiliation 2", "________________________________________________________________________", "________________________________________________________________________"
+Creating TOC
+Opening tests/sample2.txt for plain text output
+Creating the text renderer.
+Writing the plain text file
+Found list continuation!!
+Finished writing the plain text file
+Opening tests/sample2.xml for XML output
+Writing the XML file
+Finished writing the XML file
+Heading in document! Opening TOC tests/sample2.html for HTML output
+Creating the HTML renderer.
+Writing the HTML file
+Finished writing the HTML file
+Opening tests/sample2_0.html for HTML output
+Creating the HTML renderer.
+Writing the HTML file
+Finished writing the HTML file
+Opening tests/sample2_1.html for HTML output
+Creating the HTML renderer.
+Writing the HTML file
+Finished writing the HTML file
+Opening tests/sample2_2.html for HTML output
+Creating the HTML renderer.
+Writing the HTML file
+Finished writing the HTML file
+Opening tests/sample2_3.html for HTML output
+Creating the HTML renderer.
+Writing the HTML file
+Finished writing the HTML file
+Opening tests/sample2_4.html for HTML output
+Creating the HTML renderer.
+Writing the HTML file
+Finished writing the HTML file
+tests/sample3.sxw:
+This is Oops - the Open Office Publishing System
+Creating the scanner which feeds on the input stream
+Parsing the input and creating the root element
+Gathering style information
+Style information gathered:
+ P1 --> Author&apos;s Name
+ P11 --> Footnote
+ P10 --> Text body
+ P9 --> Initial Body Text
+ P8 --> Primary Head
+ P7 --> Text body
+ P6 --> Affiliation
+ P5 --> Categories
+ P4 --> Affiliation
+ P3 --> Abstract
+ P2 --> Affiliation
+
+Removing bad paragraphs
+Footnote: "This research was supported by the Funding Agency."
+Footnote: "Authors&apos; addresses: Department of Computer Science, The Australian National University."
+Footnote: "Permission to make digital/hard copy of part of this work for personal or classroom use is granted without fee provided that the copies are not made or distributed for profit or commercial advantage, the copyright notice, the title of the publication, and its date of appear, and notice is given that copying is by permission of the ACM, Inc. To copy otherwise, to republish, to post on servers, or to redistribute to lists, requires prior specific permission and/or a fee."
+Footnote: "© 2001 ACM 1073-0516/01/0300-0034 $5.00"
+Removing empty tags and merging ordered list
+Extracting metadata
+Metadata information collected:
+Title         = "My brilliant article"
+Author's Name = "John Smith &amp; Jane Doe"
+Affiliation   = "_______________________________________________________________________", "_______________________________________________________________________"
+Creating TOC
+Opening tests/sample3.txt for plain text output
+Creating the text renderer.
+Writing the plain text file
+Found list continuation!!
+Finished writing the plain text file
+Opening tests/sample3.xml for XML output
+Writing the XML file
+Finished writing the XML file
+Heading in document! Opening TOC tests/sample3.html for HTML output
+Creating the HTML renderer.
+Writing the HTML file
+Finished writing the HTML file
+Opening tests/sample3_0.html for HTML output
+Creating the HTML renderer.
+Writing the HTML file
+Finished writing the HTML file
+Opening tests/sample3_1.html for HTML output
+Creating the HTML renderer.
+Writing the HTML file
+Finished writing the HTML file
+Opening tests/sample3_2.html for HTML output
+Creating the HTML renderer.
+Writing the HTML file
+Finished writing the HTML file
+tests/sample4.sxw:

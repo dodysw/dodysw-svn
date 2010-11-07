@@ -1,0 +1,175 @@
+<office:document-content xmlns:office="http://openoffice.org/2000/office"
+                         xmlns:chart="http://openoffice.org/2000/chart"
+                         xmlns:script="http://openoffice.org/2000/script"
+                         xmlns:fo="http://www.w3.org/1999/XSL/Format"
+                         xmlns:dr3d="http://openoffice.org/2000/dr3d"
+                         xmlns:table="http://openoffice.org/2000/table"
+                         office:version="1.0"
+                         xmlns:style="http://openoffice.org/2000/style"
+                         xmlns:math="http://www.w3.org/1998/Math/MathML"
+                         xmlns:draw="http://openoffice.org/2000/drawing"
+                         xmlns:text="http://openoffice.org/2000/text"
+                         xmlns:xlink="http://www.w3.org/1999/xlink"
+                         xmlns:number="http://openoffice.org/2000/datastyle"
+                         office:class="text"
+                         xmlns:form="http://openoffice.org/2000/form"
+                         xmlns:svg="http://www.w3.org/2000/svg">
+   <office:script/>
+   <office:font-decls>
+      <style:font-decl style:font-pitch="variable"
+                       fo:font-family="&apos;Arial Unicode MS&apos;"
+                       style:name="Arial Unicode MS"/>
+      <style:font-decl style:font-pitch="variable"
+                       fo:font-family="&apos;HG Mincho Light J&apos;"
+                       style:name="HG Mincho Light J"/>
+      <style:font-decl style:font-pitch="variable"
+                       style:font-family-generic="roman"
+                       fo:font-family="Thorndale"
+                       style:name="Thorndale"/>
+      <style:font-decl style:font-pitch="variable"
+                       style:font-family-generic="roman"
+                       fo:font-family="&apos;Times New Roman&apos;"
+                       style:name="Times New Roman"/>
+      <style:font-decl style:font-pitch="variable"
+                       style:font-family-generic="roman"
+                       fo:font-family="&apos;Tms Rmn&apos;"
+                       style:name="Tms Rmn"/>
+      <style:font-decl style:font-pitch="variable"
+                       style:font-family-generic="swiss"
+                       fo:font-family="Albany"
+                       style:name="Albany"/>
+      <style:font-decl style:font-pitch="variable"
+                       style:font-family-generic="swiss"
+                       fo:font-family="Helvetica"
+                       style:name="Helvetica"/>
+   </office:font-decls>
+   <office:automatic-styles>
+      <style:style style:family="paragraph"
+                   style:parent-style-name="Author&apos;s Name"
+                   style:name="P1">
+         <style:properties fo:text-indent="0cm"
+                           style:auto-text-indent="false"
+                           fo:margin-left="0cm"
+                           fo:margin-right="0cm"/>
+      </style:style>
+      <style:style style:family="paragraph"
+                   style:parent-style-name="Affiliation"
+                   style:name="P2">
+         <style:properties fo:text-indent="0cm"
+                           style:auto-text-indent="false"
+                           fo:margin-left="0cm"
+                           style:font-name="Tms Rmn"
+                           fo:margin-right="0cm"/>
+      </style:style>
+      <style:style style:family="paragraph"
+                   style:parent-style-name="Abstract"
+                   style:name="P3">
+         <style:properties fo:text-indent="0cm"
+                           style:auto-text-indent="false"
+                           fo:margin-left="0cm"
+                           fo:margin-right="0cm"/>
+      </style:style>
+      <style:style style:family="paragraph"
+                   style:parent-style-name="Affiliation"
+                   style:name="P4">
+         <style:properties style:font-size-asian="9pt"
+                           fo:margin-right="0cm"
+                           fo:margin-left="0cm"
+                           fo:text-align="justify"
+                           style:auto-text-indent="false"
+                           fo:font-size="9pt"
+                           style:font-name="Tms Rmn"
+                           fo:text-indent="0cm"
+                           style:justify-single-word="false"/>
+      </style:style>
+      <style:style style:family="paragraph"
+                   style:parent-style-name="Categories"
+                   style:name="P5">
+         <style:properties fo:text-indent="0cm"
+                           style:auto-text-indent="false"
+                           fo:margin-left="0cm"
+                           fo:margin-right="0cm"/>
+      </style:style>
+      <style:style style:family="paragraph"
+                   style:parent-style-name="Affiliation"
+                   style:name="P6">
+         <style:properties fo:text-indent="0cm"
+                           style:auto-text-indent="false"
+                           fo:margin-left="0cm"
+                           style:font-name="Tms Rmn"
+                           style:justify-single-word="false"
+                           fo:text-align="justify"
+                           fo:margin-right="0cm"/>
+      </style:style>
+      <style:style style:family="paragraph"
+                   style:parent-style-name="Footnote"
+                   style:name="P7">
+         <style:properties fo:text-indent="0cm"
+                           style:auto-text-indent="false"
+                           fo:margin-left="0cm"
+                           fo:margin-right="0cm"/>
+      </style:style>
+   </office:automatic-styles>
+   <office:body>
+      <text:sequence-decls>
+         <text:sequence-decl text:display-outline-level="0"
+                             text:name="Illustration"/>
+         <text:sequence-decl text:display-outline-level="0"
+                             text:name="Table"/>
+         <text:sequence-decl text:display-outline-level="0"
+                             text:name="Text"/>
+         <text:sequence-decl text:display-outline-level="0"
+                             text:name="Drawing"/>
+      </text:sequence-decls>
+      <text:p text:style-name="Title">
+         "Title "
+      </text:p>
+      <text:p text:style-name="P1">
+         "AUTHOR "
+      </text:p>
+      <text:p text:style-name="P2">
+         "________________________________________________________________________"
+      </text:p>
+      <text:p text:style-name="P2"/>
+      <text:p text:style-name="P3">
+         "This is where the abstarct of the paper goes"
+      </text:p>
+      <text:p text:style-name="P4"/>
+      <text:p text:style-name="P5">
+         "Categories and Subject Descriptors: "
+      </text:p>
+      <text:p text:style-name="P5">
+         "General Terms: "
+      </text:p>
+      <text:p text:style-name="P5">
+         "Additional Key Words and Phrases: "
+      </text:p>
+      <text:p text:style-name="P6">
+         "________________________________________________________________________"
+      </text:p>
+      <text:p text:style-name="P3"/>
+      <text:p text:style-name="P3"/>
+      <text:p text:style-name="Primary Head">
+         "1. INTRODUCTION "
+      </text:p>
+      <text:p text:style-name="Initial Body Text">
+         "This is the Initial Body Text"
+      </text:p>
+      <text:p text:style-name="Text body">
+         "This is the Body Text"
+      </text:p>
+      <text:p text:style-name="P7">
+         "This research was supported by the Funding Agency."
+      </text:p>
+      <text:p text:style-name="P7">
+         "Authors&apos; addresses: "
+      </text:p>
+      <text:p text:style-name="P7">
+         "Permission to make digital/hard copy of part of this work for personal or classroom use is granted without fee provided that the copies are not made or distributed for profit or commercial advantage, the copyright notice, the title of the publication, and its date of appear, and notice is given that copying is by permission of the ACM, Inc. To copy otherwise, to republish, to post on servers, or to redistribute to lists, requires prior specific permission and/or a fee."
+      </text:p>
+      <text:p text:style-name="P7">
+         "© 2001 ACM 1073-0516/01/0300-0034 $5.00"
+      </text:p>
+      <text:p text:style-name="Footnote"/>
+   </office:body>
+</office:document-content>

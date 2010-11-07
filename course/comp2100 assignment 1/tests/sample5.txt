@@ -1,0 +1,42 @@
+Sample for deepening the structure
+
+Ian Barnes
+
+The Australian National University
+
+This document has some primary and secondary headings so that
+you can test your structure-deepening code.
+
+Section 1
+
+This is the first section.
+
+This is the second paragraph of the first section.
+
+Section 2
+
+This is the introduction to the second section. This section has
+some subsections.
+
+Subsection 2.1
+
+This is the first paragraph in the first subsection of section
+2.
+
+This is the second paragraph of subsection 2.1.
+
+Subsection 2.2
+
+This is the first paragraph in the second subsection of section
+2.
+
+This is the second paragraph of subsection 2.2.
+
+This is the third paragraph of subsection 2.2.
+
+Section 3
+
+Here is the third section. It does not have subsections.
+
+This is the second paragraph in Section 3.
+

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="org.eclipse.jdt.ui.lastextjar" value="C:\svn\anu\comp2100asgn1"/>
+	<item key="CallHierarchyViewPart.ratio1" value="500"/>
+	<item key="Abstract" value="true"/>
+	<item key="CallHierarchyViewPart.call_mode" value="0"/>
+	<item key="TypeHierarchyViewPart.orientation" value="0"/>
+	<item key="Public" value="true"/>
+	<item key="Comments" value="true"/>
+	<item key="Replace" value="true"/>
+	<item key="CallHierarchyViewPart.orientation" value="3"/>
+	<item key="TypeHierarchyViewPart.hierarchyview" value="2"/>
+	<item key="SearchScopeActionGroup.search_scope_type" value="1"/>
+	<item key="org.eclipse.jdt.ui.last.external.project" value="C:\svn\anu\comp2100asgn1"/>
+	<item key="CallHierarchyViewPart.ratio3" value="500"/>
+	<list key="SearchScopeActionGroup.working_set">
+	</list>
+	<section name="CallHierarchySearchScope">
+	</section>
+	<section name="JavaElementSearchActions">
+	</section>
+	<section name="BuildPathsPropertyPage">
+		<item key="pageIndex" value="2"/>
+	</section>
+	<section name="NewClassWizardPage">
+		<item key="create_main" value="true"/>
+		<item key="create_unimplemented" value="true"/>
+		<item key="create_constructor" value="false"/>
+	</section>
+	<section name="org.eclipse.jdt.internal.ui.dialogs.TypeSelectionComponent">
+		<item key="show_status_line" value="true"/>
+		<item key="fully_qualify_duplicates" value="true"/>
+	</section>
+	<section name="hierarchy_presenter_bounds">
+	</section>
+	<section name="JavaBuildConfigurationBlock">
+		<item key="expanded2" value="true"/>
+		<item key="expanded1" value="true"/>
+		<item key="expanded0" value="true"/>
+	</section>
+	<section name="outline_presenter_bounds">
+	</section>
+	<section name="org.eclipse.jdt.ui.internal.packageExplorer">
+		<item key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;packageexplorer layout=&quot;2&quot; org.eclipse.jdt.ui.packages.linktoeditor=&quot;0&quot; rootMode=&quot;1&quot; workingSetName=&quot;&quot;&gt;&#x0D;&#x0A;&lt;customFilters userDefinedPatternsEnabled=&quot;false&quot;&gt;&#x0D;&#x0A;&lt;xmlDefinedFilters&gt;&#x0D;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.FieldsFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0D;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer_patternFilterId_.*&quot; isEnabled=&quot;true&quot;/&gt;&#x0D;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.LocalTypesFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0D;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer_patternFilterId_*$*.class&quot; isEnabled=&quot;true&quot;/&gt;&#x0D;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.NonPublicFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0D;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.internal.ui.PackageExplorer.EmptyPackageFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0D;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.LibraryFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0D;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.NonJavaProjectsFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0D;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.ImportDeclarationFilter&quot; isEnabled=&quot;true&quot;/&gt;&#x0D;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.StaticsFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0D;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.NonSharedProjectsFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0D;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.internal.ui.PackageExplorer.EmptyInnerPackageFilter&quot; isEnabled=&quot;true&quot;/&gt;&#x0D;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.SyntheticMembersFilter&quot; isEnabled=&quot;true&quot;/&gt;&#x0D;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.NonJavaElementFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0D;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.ClosedProjectsFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0D;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.CuAndClassFileFilter&quot; isEnabled=&quot;false&quot;/&gt;&#x0D;&#x0A;&lt;child filterId=&quot;org.eclipse.pde.ui.BinaryProjectFilter1&quot; isEnabled=&quot;false&quot;/&gt;&#x0D;&#x0A;&lt;child filterId=&quot;org.eclipse.jdt.ui.PackageExplorer.PackageDeclarationFilter&quot; isEnabled=&quot;true&quot;/&gt;&#x0D;&#x0A;&lt;/xmlDefinedFilters&gt;&#x0D;&#x0A;&lt;/customFilters&gt;&#x0D;&#x0A;&lt;/packageexplorer&gt;"/>
+	</section>
+	<section name="JavaSearchPage">
+		<item key="HISTORY_SIZE" value="7"/>
+		<item key="CASE_SENSITIVE" value="false"/>
+		<section name="HISTORY4">
+			<item key="searchFor" value="4"/>
+			<item key="isCaseSensitive" value="false"/>
+			<item key="javaElement" value=""/>
+			<item key="scope" value="0"/>
+			<item key="pattern" value="markedForDeletion"/>
+			<item key="limitTo" value="3"/>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY0">
+			<item key="searchFor" value="0"/>
+			<item key="isCaseSensitive" value="false"/>
+			<item key="javaElement" value=""/>
+			<item key="scope" value="0"/>
+			<item key="pattern" value="children"/>
+			<item key="limitTo" value="2"/>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY5">
+			<item key="searchFor" value="4"/>
+			<item key="isCaseSensitive" value="false"/>
+			<item key="javaElement" value=""/>
+			<item key="scope" value="0"/>
+			<item key="pattern" value="MULTIPLICATION"/>
+			<item key="limitTo" value="2"/>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY2">
+			<item key="searchFor" value="1"/>
+			<item key="isCaseSensitive" value="false"/>
+			<item key="javaElement" value=""/>
+			<item key="scope" value="0"/>
+			<item key="pattern" value="setStrategy"/>
+			<item key="limitTo" value="2"/>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY3">
+			<item key="searchFor" value="0"/>
+			<item key="isCaseSensitive" value="false"/>
+			<item key="javaElement" value=""/>
+			<item key="scope" value="0"/>
+			<item key="pattern" value="HeadingStrategy"/>
+			<item key="limitTo" value="2"/>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY6">
+			<item key="searchFor" value="0"/>
+			<item key="isCaseSensitive" value="false"/>
+			<item key="javaElement" value=""/>
+			<item key="scope" value="0"/>
+			<item key="pattern" value="Addition"/>
+			<item key="limitTo" value="2"/>
+			<list key="workingSets">
+			</list>
+		</section>
+		<section name="HISTORY1">
+			<item key="searchFor" value="4"/>
+			<item key="isCaseSensitive" value="true"/>
+			<item key="javaElement" value="=comp2100asgn1/&lt;comp2100.oops.visitor{HTMLRenderer.java[HTMLRenderer^listItemNumber"/>
+			<item key="scope" value="0"/>
+			<item key="pattern" value="comp2100.oops.visitor.HTMLRenderer.listItemNumber"/>
+			<item key="limitTo" value="2"/>
+			<list key="workingSets">
+			</list>
+		</section>
+	</section>
+	<section name="OptionalMessageDialog.hide.">
+		<item key="org.eclipse.jdt.ui.typecomment.deprecated" value="true"/>
+	</section>
+	<section name="">
+		<item key="expanded2" value="false"/>
+		<item key="expanded4" value="false"/>
+		<item key="expanded1" value="false"/>
+		<item key="expanded0" value="true"/>
+		<item key="expanded5" value="false"/>
+		<item key="expanded3" value="false"/>
+	</section>
+	<section name="completion_proposal_size">
+	</section>
+</section>

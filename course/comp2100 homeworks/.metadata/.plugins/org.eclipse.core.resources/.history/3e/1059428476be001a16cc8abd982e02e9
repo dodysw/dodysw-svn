@@ -1,0 +1,25 @@
+
+public class Words {
+	private static String[] digits = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+	
+    B "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"
+    C "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"
+
+	
+	public static String threeDigitsAsWords(int n) {
+		String s;
+		
+		return s;
+	}
+
+	public static void main(String[] args) {
+		int n;
+		if (args.length == 1 && (n = Integer.parseInt(args[0])) > 0 && n < 1000) {
+			System.out.println(threeDigitsAsWords(n));
+		}
+		else {
+			System.out.println("Usage: words n (where 0 < n < 1000)");			
+		}
+		System.exit(0);
+	}
+}

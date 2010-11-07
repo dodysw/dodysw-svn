@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Generated-from: 1141006100000;type=10
+Bundle-ManifestVersion: 2
+Bundle-Name: Subclipse
+Bundle-SymbolicName: org.tigris.subversion.subclipse
+Bundle-Version: 0.9.108
+Bundle-Vendor: tigris.org
+Bundle-Localization: plugin

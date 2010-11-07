@@ -1,0 +1,13 @@
+3:56 planning
+
+4:00 design
+
+4:05 coding
+
+4:33 compliing
+
+4:33 testing
+    - bug @ coding 1 minute
+    - bug @ coding 1 minute
+
+4:40 postmortem

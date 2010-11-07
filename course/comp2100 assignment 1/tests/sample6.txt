@@ -1,0 +1,60 @@
+A Short Paper
+
+Ian Barnes
+
+Australian National University
+
+Ann Other
+
+School of Hard Knocks
+
+________________________________________________________________
+
+This is the abstract. I need to write a bit more here so that
+you can see if it has the right margin moved in correctly. And a
+little bit more just in case, you never know.
+
+Categories and Subject Descriptors: XML, preflight systems,
+document processing, electronic publishing, recursive data
+structures, graphical user interface programming.
+
+________________________________________________________________
+_______
+
+1. INTRODUCTION 
+
+This is the first paragraph of this section. Style is Initial
+Body Text.
+
+This is the second paragraph of the same section. Style is Text
+body.
+
+This is some quoted text. I need to make it long enough that you
+can see whether the right margin has been moved in correctly.
+
+This is another ordinary paragraph. I need to make it long
+enough that you can see where the normal right margin would be.
+Also I'd better test some entities like an ampersand: &. (There
+was an apostrophe in the previous sentence.)
+
+[1]
+
+[2]
+
+2.1 Secondary Head
+
+Fig. 5. This is a figure caption.
+
+E = mc2
+
+Table II. This is a table head.
+
+MEYER, B. 1997.  Object-Oriented Software Construction,(Second
+Edition),
+
+[3]
+
+
+[1] This is the first footnote.
+[2] © 2001 ANU (Second footnote.)
+[3] Third and last footnote.

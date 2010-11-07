@@ -1,0 +1,253 @@
+<office:document-content xmlns:office="http://openoffice.org/2000/office"
+                         xmlns:chart="http://openoffice.org/2000/chart"
+                         xmlns:script="http://openoffice.org/2000/script"
+                         xmlns:fo="http://www.w3.org/1999/XSL/Format"
+                         xmlns:dr3d="http://openoffice.org/2000/dr3d"
+                         xmlns:table="http://openoffice.org/2000/table"
+                         office:version="1.0"
+                         xmlns:style="http://openoffice.org/2000/style"
+                         xmlns:math="http://www.w3.org/1998/Math/MathML"
+                         xmlns:draw="http://openoffice.org/2000/drawing"
+                         xmlns:text="http://openoffice.org/2000/text"
+                         xmlns:xlink="http://www.w3.org/1999/xlink"
+                         xmlns:number="http://openoffice.org/2000/datastyle"
+                         office:class="text"
+                         xmlns:form="http://openoffice.org/2000/form"
+                         xmlns:svg="http://www.w3.org/2000/svg">
+   <office:script/>
+   <office:font-decls>
+      <style:font-decl style:font-charset="x-symbol"
+                       fo:font-family="StarSymbol"
+                       style:name="StarSymbol"/>
+      <style:font-decl fo:font-family="&apos;Nimbus Roman No9 L&apos;"
+                       style:name="Nimbus Roman No9 L1"/>
+      <style:font-decl style:font-pitch="variable"
+                       fo:font-family="&apos;HG Mincho Light J&apos;"
+                       style:name="HG Mincho Light J"/>
+      <style:font-decl style:font-pitch="variable"
+                       fo:font-family="&apos;Luxi Sans&apos;"
+                       style:name="Luxi Sans"/>
+      <style:font-decl style:font-pitch="variable"
+                       style:font-family-generic="roman"
+                       fo:font-family="&apos;Nimbus Roman No9 L&apos;"
+                       style:name="Nimbus Roman No9 L"/>
+      <style:font-decl style:font-pitch="variable"
+                       style:font-family-generic="roman"
+                       fo:font-family="&apos;Times New Roman&apos;"
+                       style:name="Times New Roman"/>
+      <style:font-decl style:font-pitch="variable"
+                       style:font-family-generic="roman"
+                       fo:font-family="&apos;Tms Rmn&apos;"
+                       style:name="Tms Rmn"/>
+      <style:font-decl style:font-pitch="variable"
+                       style:font-family-generic="swiss"
+                       fo:font-family="Helvetica"
+                       style:name="Helvetica"/>
+   </office:font-decls>
+   <office:automatic-styles>
+      <style:style style:master-page-name="Standard"
+                   style:family="paragraph"
+                   style:parent-style-name="Title"
+                   style:name="P1">
+         <style:properties fo:margin-bottom="0.1252inch"
+                           fo:margin-top="0inch"
+                           style:page-number="0"/>
+      </style:style>
+      <style:style style:family="paragraph"
+                   style:parent-style-name="Author&apos;s Name"
+                   style:name="P2">
+         <style:properties fo:text-indent="0inch"
+                           style:auto-text-indent="false"
+                           fo:margin-left="0inch"
+                           fo:margin-right="0inch"/>
+      </style:style>
+      <style:style style:family="paragraph"
+                   style:parent-style-name="Affiliation"
+                   style:name="P3">
+         <style:properties fo:text-indent="0inch"
+                           style:auto-text-indent="false"
+                           fo:margin-left="0inch"
+                           style:font-name="Tms Rmn"
+                           fo:margin-right="0inch"/>
+      </style:style>
+      <style:style style:family="paragraph"
+                   style:parent-style-name="Abstract"
+                   style:name="P4">
+         <style:properties fo:text-indent="0inch"
+                           style:auto-text-indent="false"
+                           fo:margin-left="0inch"
+                           fo:margin-right="0inch"/>
+      </style:style>
+      <style:style style:family="paragraph"
+                   style:parent-style-name="Affiliation"
+                   style:name="P5">
+         <style:properties style:font-size-asian="9pt"
+                           fo:margin-right="0inch"
+                           fo:margin-left="0inch"
+                           fo:text-align="justify"
+                           style:auto-text-indent="false"
+                           fo:font-size="9pt"
+                           style:font-name="Tms Rmn"
+                           fo:text-indent="0inch"
+                           style:justify-single-word="false"/>
+      </style:style>
+      <style:style style:family="paragraph"
+                   style:parent-style-name="Categories"
+                   style:name="P6">
+         <style:properties fo:text-indent="0inch"
+                           style:auto-text-indent="false"
+                           fo:margin-left="0inch"
+                           fo:margin-right="0inch"/>
+      </style:style>
+      <style:style style:family="paragraph"
+                   style:parent-style-name="Affiliation"
+                   style:name="P7">
+         <style:properties fo:text-indent="0inch"
+                           style:auto-text-indent="false"
+                           fo:margin-left="0inch"
+                           style:font-name="Tms Rmn"
+                           style:justify-single-word="false"
+                           fo:text-align="justify"
+                           fo:margin-right="0inch"/>
+      </style:style>
+      <style:style style:family="paragraph"
+                   style:parent-style-name="Text body"
+                   style:name="P8">
+         <style:properties fo:text-indent="0.2inch"
+                           style:auto-text-indent="false"
+                           fo:margin-left="0inch"
+                           fo:margin-right="0.0102inch"/>
+      </style:style>
+      <style:style style:family="paragraph"
+                   style:parent-style-name="Primary Head"
+                   style:name="P9">
+         <style:properties fo:text-indent="0inch"
+                           style:auto-text-indent="false"
+                           fo:margin-left="0inch"
+                           fo:margin-right="0inch">
+            <style:tab-stops/>
+         </style:properties>
+      </style:style>
+      <style:style style:family="paragraph"
+                   style:list-style-name="WW8Num2"
+                   style:parent-style-name="Initial Body Text"
+                   style:name="P10">
+         <style:properties fo:text-indent="0inch"
+                           style:auto-text-indent="false"
+                           fo:margin-left="0inch"
+                           fo:margin-right="0inch">
+            <style:tab-stops/>
+         </style:properties>
+      </style:style>
+      <style:style style:family="paragraph"
+                   style:parent-style-name="Footnote"
+                   style:name="P11">
+         <style:properties fo:text-indent="0inch"
+                           style:auto-text-indent="false"
+                           fo:margin-left="0inch"
+                           fo:margin-right="0inch"/>
+      </style:style>
+   </office:automatic-styles>
+   <office:body>
+      <text:sequence-decls>
+         <text:sequence-decl text:display-outline-level="0"
+                             text:name="Illustration"/>
+         <text:sequence-decl text:display-outline-level="0"
+                             text:name="Table"/>
+         <text:sequence-decl text:display-outline-level="0"
+                             text:name="Text"/>
+         <text:sequence-decl text:display-outline-level="0"
+                             text:name="Drawing"/>
+      </text:sequence-decls>
+      <text:p text:style-name="P1">
+         "My brilliant article"
+      </text:p>
+      <text:p text:style-name="P2">
+         "John Smith &amp; Jane Doe"
+      </text:p>
+      <text:p text:style-name="P3">
+         "_______________________________________________________________________"
+      </text:p>
+      <text:p text:style-name="P3"/>
+      <text:p text:style-name="P4">
+         "This is the abstract. It usually appears at the top. Do you see how those ruled lines are too long?"
+      </text:p>
+      <text:p text:style-name="P5"/>
+      <text:p text:style-name="P6">
+         "Categories and Subject Descriptors: Document formatting."
+      </text:p>
+      <text:p text:style-name="P6">
+         "General Terms: XML, preflight, word processing, article templates."
+      </text:p>
+      <text:p text:style-name="P6">
+         "Additional Key Words and Phrases: ACM journal"
+      </text:p>
+      <text:p text:style-name="P7">
+         "_______________________________________________________________________"
+      </text:p>
+      <text:p text:style-name="P4"/>
+      <text:p text:style-name="P4"/>
+      <text:p text:style-name="Primary Head">
+         "1. INTRODUCTION "
+      </text:p>
+      <text:p text:style-name="Initial Body Text">
+         "This is the first paragraph of the introduction. It needs to be long enough to have more than one line, otherwise it looks funny."
+      </text:p>
+      <text:p text:style-name="P8">
+         "This is the second paragraph. According to the template, its first line should be indented, but the other lines should not."
+      </text:p>
+      <text:p text:style-name="P8">
+         "The third and subsequent paragraphs should be formatted the same as the second one."
+      </text:p>
+      <text:p text:style-name="P9">
+         "2. The second section"
+      </text:p>
+      <text:p text:style-name="Initial Body Text">
+         "Here is the text of the second section. It has a list of bullet points in it."
+      </text:p>
+      <text:unordered-list text:style-name="WW8Num2">
+         <text:list-item>
+            <text:p text:style-name="P10">
+               "This is the first point."
+            </text:p>
+         </text:list-item>
+         <text:list-item>
+            <text:p text:style-name="P10">
+               "This is the second point."
+            </text:p>
+            <text:p text:style-name="P10">
+               "This bullet point has two paragraphs, of which this is the second."
+            </text:p>
+         </text:list-item>
+         <text:list-item>
+            <text:p text:style-name="P10">
+               "Here is the third, and last, point."
+            </text:p>
+         </text:list-item>
+      </text:unordered-list>
+      <text:p text:style-name="P8">
+         "Here is some more text that follows the list. The first line of this paragraph should not be indented."
+      </text:p>
+      <text:p text:style-name="P9">
+         "3. The third section"
+      </text:p>
+      <text:p text:style-name="Initial Body Text">
+         "This section is just here to pad out the document so that it runs over the page. Notice how the footnote goes across the page break. Perhaps it was a "
+      </text:p>
+      <text:p text:style-name="P11">
+         "This research was supported by the Funding Agency."
+      </text:p>
+      <text:p text:style-name="P11">
+         "Authors&apos; addresses: Department of Computer Science, The Australian National University."
+      </text:p>
+      <text:p text:style-name="P11">
+         "Permission to make digital/hard copy of part of this work for personal or classroom use is granted without fee provided that the copies are not made or distributed for profit or commercial advantage, the copyright notice, the title of the publication, and its date of appear, and notice is given that copying is by permission of the ACM, Inc. To copy otherwise, to republish, to post on servers, or to redistribute to lists, requires prior specific permission and/or a fee."
+      </text:p>
+      <text:p text:style-name="P11">
+         "© 2001 ACM 1073-0516/01/0300-0034 $5.00"
+      </text:p>
+      <text:p text:style-name="Initial Body Text">
+         "proper footnote in Word and it&apos;s just Open Office that has stuffed it up. Notice how this paragraph is split too, when it should be all part of the one paragraph. We cannot fix that here."
+      </text:p>
+   </office:body>
+</office:document-content>

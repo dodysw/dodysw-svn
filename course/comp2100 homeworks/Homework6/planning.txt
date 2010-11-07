@@ -1,0 +1,36 @@
+2:52 planning
+
+2:54 design
+
+- build arrays
+    A "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"
+    B "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"
+    C "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"
+
+
+
+
+- x0 = value
+- divide by 100 -> get the integer value of the result (x1)
+- if larger than 0, match to array A, + hundred
+    - if the remaining is not 0, add "and"
+    - x2 = x0 - x1 * 100
+- x2 < 10: match to A[x2]
+- x2 < 20: match to B[x2]
+- else
+    - x3 = int(x2 /10)
+    - C[x3]
+    - if x3 remaining != 0, + "-" A[x3 remaining]
+
+
+3:10 coding
+
+3:28 compliing
+
+3:29 testing
+    - bug @ coding 1 minute
+    - bug @ coding 1 minute
+    - bug @ coding 1 minute
+
+3:33 postmortem
+

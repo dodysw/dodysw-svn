@@ -1,0 +1,63 @@
+/**
+ * Homework 7
+ * @author Dody Suria Wijaya
+ *
+ */
+
+import java.util.Vector;
+
+public class Words {
+	private static String[] digits = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+	private static String[] teens = {"ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
+	private static String[] tens = {"", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"};
+	private static String[] large = {"billion", "million", "thousand", "hundred"};
+	private static int[] large_mult = {1000000000, 1000000, 1000, 100};
+	
+	public static String integerAsWords(int n) {
+		Vector<String> Words;
+		for (int l=0; l < large.length; l++) {
+			if ((n / large_mult[l]) > 0) {				
+				Words.add(integerAsWords(n/large_mult[l]) + " " + large[l]);
+				n %= large_mult[l];
+			}
+		}
+		
+		if (n > 0 && n < 10) {
+			Words.add(digits[n]);
+		}
+		else if (n < 20) {
+			Words.add(teens[n-10]);
+		}
+		else {
+			Words.add();
+			String s = tens[n/10];
+			if (n%10 != 0) {
+				s += "-" + digits[n%10];
+			}
+		}
+		String s = "";
+		for (int k=0; k < Words.size(); k++) {
+			s += Words.get(k);
+			//if there still next element, and next element is not the last
+			if (Words.size() > 2 && k < Words.size()-2) {
+				s += ", ";
+			}
+			else if (Words.size() > 1 && k < Words.size()-1) {
+				s += "and ";
+			}
+		}
+		return s;
+	}
+
+	
+	public static void main(String[] args) {
+		int n;
+		if (args.length == 1 && (n = Integer.parseInt(args[0])) > 0 && n <= 2147483647) {
+			System.out.println(threeDigitsAsWords(n));
+		}
+		else {
+			System.out.println("Usage: words n (where 0 < n < 2147483647)");			
+		}
+		System.exit(0);
+	}
+}

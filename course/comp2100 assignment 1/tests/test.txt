@@ -1,0 +1,62 @@
+A Short Paper
+
+Ian Barnes
+
+Australian National University
+
+________________________________________________________________
+
+This is the abstract. This article should test everything in the
+assignment.
+
+Categories and Subject Descriptors: Software Construction in
+2005 Assignment 1.
+
+----------------------------------------------------------------
+---------------------------------------------------------------------
+
+This is a Primary Head
+
+This is a paragraph of Initial Body Text. Here is a span in
+italics and here is a span in boldface. This paragraph is long
+so that we can check that the line breaking algorithm works
+correctly in the text renderer. Here is an ordered list with an
+interruption and continuation.
+
+ 1. Item one of the list.
+
+This is an interruption in the middle of the list.
+
+ 2. Item two of the list.
+
+ 3. Item three of the list.
+
+Back to normal body text again.
+
+Here is a line break.
+Here is an italic span containing only underscores (should not
+be removed): ___ and here is a bold span containing only hyphens
+(also should not be removed): -----. Here is a hyperlink to the
+COMP2100 Home Page.
+
+  o This is an unordered list.
+
+  o Here is the second item.
+
+THIS IS A HEADING 1 (ALL CAPS IN THE .TXT FILE)
+
+This is a Secondary Head
+
+Fig. 5. This is a figure caption.
+
+E = mc2
+
+Table II. This is a table head.
+
+Meyer, B. 1997.  Object-Oriented Software Construction, (Second
+Edition).
+
+[1]
+
+
+[1] This is a footnote.

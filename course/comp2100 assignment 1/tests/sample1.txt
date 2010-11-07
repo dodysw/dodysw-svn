@@ -1,0 +1,43 @@
+Title 
+
+AUTHOR 
+
+________________________________________________________________
+_______
+
+
+This is where the abstarct of the paper goes
+
+
+Categories and Subject Descriptors: 
+
+General Terms: 
+
+Additional Key Words and Phrases: 
+
+________________________________________________________________
+_______
+
+
+
+1. INTRODUCTION 
+
+This is the Initial Body Text
+
+This is the Body Text
+
+[1]
+
+[2]
+
+[3]
+
+[4]
+
+
+
+[1] This research was supported by the Funding Agency.
+[2] Authors&apos; addresses: 
+[3] Permission to make digital/hard copy of part of this work for personal or classroom use is granted without fee provided that the copies are not made or distributed for profit or commercial advantage, the copyright notice, the title of the publication, and its date of appear, and notice is given that copying is by permission of the ACM, Inc. To copy otherwise, to republish, to post on servers, or to redistribute to lists, requires prior specific permission and/or a
+fee.
+[4] © 2001 ACM 1073-0516/01/0300-0034 $5.00

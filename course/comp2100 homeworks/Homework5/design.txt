@@ -1,0 +1,36 @@
+12:15 planning
+
+- count all lines of all files in args[]
+- remove these characters from line:
+	whitespace characters (spaces and tabs)
+    left or right braces: ‘{’ or ‘}’
+    Comment start, finish or continuation markers: ‘/*’, ‘/**’, ‘*’, ‘*/’ or ‘//’
+- if there are still characters in it, count it in
+- handle file not exists
+- output like
+   7 Addition4.java
+   6 Constant4.java
+  16 Expression4.java
+  32 ExpressionEvaluator.java
+  30 ExpressionFormatter.java
+   5 ExpressionVisitor.java
+   7 Multiplication4.java
+   6 Negation4.java
+
+8 classes, 109 lines of code
+- 4 width right justified number
+
+12:32 design
+
+- iterate all file names from args
+- initialize all files's file_num, loc_all
+- for each file name
+	- check if file exists, if not show error on continue to next file
+	- initialize line counter loc and scanner class
+	- iterate file's line
+	- remove tabs, {, }, /**, */, /*, *, //, then spaces and eol
+	- if len>0 loc++
+- afterward, print the result
+
+12:45 coding
+13:50 testing

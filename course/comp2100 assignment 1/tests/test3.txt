@@ -1,0 +1,59 @@
+A Longer Paper
+
+Ian Barnes
+
+Australian National University
+
+Ann Other
+
+The University of Hard Knocks
+
+
+This is the abstract. This article should test everything in the
+assignment. This article has a much longer abstract than the
+other one did. Much, much, much longer. Itâ€™s really, really
+long. Who would have thought that an abstract could be this
+long?
+
+
+Categories and Subject Descriptors: Software Construction in
+2005 Assignment 2.
+
+
+Introduction
+
+This is a paragraph with style â€œInitial Body Textâ€?. Here is
+a span in italics and here is a span in boldface. This paragraph
+is long so that we can check that the line breaking algorithm
+works correctly in the text renderer.
+
+This is a paragraph with style â€œText Bodyâ€?. The first line
+should be indented by 2ems, but near enough is good enough. Here
+is a span in italics and here is a span in boldface. This
+paragraph is long so that we can check that the line breaking
+algorithm works correctly in the text renderer.
+
+Here is a hyperlink to the COMP2100 Home Page. Here is an inline
+quotation in â€œcurly quotesâ€?.
+
+Here is a block quotation that should be in a separate paragraph
+with narrower margins. Letâ€™s make it quite a long quotation so
+we can see those margins in action.
+
+THIS IS A HEADING 1
+
+This is a Secondary Head
+
+Fig. 5. This is a figure caption.
+
+E = mc2
+
+Table II. This is a table head.
+
+Meyer, B. 1997.  Object-Oriented Software Construction, (Second
+Edition).
+
+[1]
+
+
+[1] This is a footnote.

@@ -1,0 +1,83 @@
+<html><head><title>detik.usable.web.id: berita cepat</title>
+<style>
+body{font-family:arial;}
+h1{font-family:verdana;}
+.l {font-size:20pt;}
+.o {font-family:times new roman;font-size:12pt;}
+.p {font-family:times new roman;font-size:14pt;}
+.t {font-family:arial;font-size:18pt;font-weight:bold;}
+.s{color:#991111;font-weight:bold;}
+</style>
+</head>
+<body bgcolor=#ffffff>
+<center><h1><a href=http://detik.usable.web.id title="detik.usable home" target=_top style=text-decoration:none;>
+<span style=color:#991111;>detik</span>.<span style=color:#119911;>usable</span></a>: berita <i>cepat</i></h1>
+<p>by <a href=http://usable.web.id>Dody Suria Wijaya's Software House</a></p></center>
+<hr>
+
+<h3>Download</h3>
+
+<span style="color: #FF0000"><b>Baru</b></span><span style=color:red><b>!</b></span> Detik.Usable v2.03. <a href="http://detik.usable.web.id/detikusable-latest.php.txt">Download</a>. 
+(19aug03)<p><i>Cara Instalasi</i>: copy n paste source-code tsb dan pasang di hosting/webserver apapun yg mendukung php. Nama file terserah, lokasi terserah, tidak ada konfigurasi lain yang harus dilakukan, dan dapat langsung jalan.
+</p>
+
+<h3>Catatan Release</h3>
+<h4>Detik.Usable v2.0</h4>
+<p><a href="images/index.2.jpg">
+<img border="0" src="images/index.1.jpg" alt="screen shot detik.usable v2.0" width="200" height="116"></a><p>Versi ini dicetus oleh Marriot Bombing (semoga para korbannya dimudahkan dalam kesulitan), karena sejak momen tsb detik.usable agak error akibat perubahan format tampilan. Fitur baru yang diperkenalkan oleh versi ini:
+<ul>
+<li><font color="#FF0000"><b>Baru</b></font><b><font color="#FF0000">!</font> 
+Cached News</b>: detik.usable sekarang secara default meng-cache isi berita ke 
+dalam filesystem. Permintaan berita yang sama berikutnya akan mengambil dari 
+cache, sehingga secara dramatis mempercepat tampilan dan mengurangi beban CPU 
+karena isi cache sudah hasil parsing yang siap tampil. Fungsi untuk 
+mengkosongkan cache juga disediakan.<li><b>Auto-Update</b>: detik.usable dapat memeriksa versi terbaru di
+<a href="http://detik.usable.web.id/detikusable-latest.php.txt">detik.usable 
+repository</a>, dan bila lebih baru, user tinggal meng-click untuk mendownload 
+sekaligus meng-apply ke detik.usable pribadi user.<li><b>Proxy Mode</b>: semua detik.usable sekarang otomatis mampu menjadi proxy server. Data yang dikirim oleh proxy server sudah merupakan hasil parsing, dan dicompress menggunakan algoritma GZip, sehingga dapat secara signifikan mempercepat akses semua detik.usable yang menggunakan proxy server.
+	<br>
+<img src=images/du_proxy_mode.gif alt="flowchart detik.usable sebagai proxy" width="601" height="133">
+	<br><i>Configuration</i>: Pada detik.usable client, rubah variabel $app['proxy_mode'] = TRUE, dan $app['proxy_url'] = 'http://hostname/detik.php', di mana <i>http://hostname/detik.php</i> mengacu pada proxy server detik.usable (proxy server tidak perlu dikonfigurasi).
+<li><b>Ads Display</b>: berita di detik.com disupport oleh iklan. untuk lebih fair, link-link iklan di detik.com juga ditampilkan di detik.usable. 
+	<br><i>Configuration</i>: rubah variabel $app['ads'] = FALSE untuk mematikan ads.
+<li><b>Arrayized Data</b>: semua data berita hasil parsing dimasukkan dalam array $news. Sehingga mudah diberi tambahan feature oleh siapapun, misal menampilkan dalam XML, send-by-email, send-by-sms, dan behaviour2 baru lain. Cukup dengan memanipulasi looping dari variabel $news.</ul>
+
+<h4>Features and Bug Fixes</h4>
+<ul>
+  <li>14aug03: (1) Penggunaan fungsi gzcompress/uncompress sekarang <b>memeriksa 
+  dukungan zlib</b> lebih dulu (Thx <a href="mailto:henry@tokogunungagung.com">
+  henry@tokogunungagung.com</a>), dan bila tidak dukung, request data ke Proxy 
+  diminta tdk dicompressed. (2) Bug ads view pada Proxy Mode. (3) <b>Informasi 
+  Proxy Mode</b>, kompresi stream input, dan username hosting, pada footer. (4) 
+  Link berita terkait sekarang juga membuka di Detik.Usable. (5) <b>Auto-update</b>, 
+  detik.usable dapat memeriksa versi terbaru, dan bila ada, bisa langsung 
+  meng-apply ke detik.usable anda.<br>
+  <img border="0" src="images/newfooter.jpg" alt="panel baru di footer detik.usable" width="543" height="64"></li>
+</ul>
+
+<h3>Lisensi</h3>
+
+<p>Semua software dan source code detik.usable <b>milik umum</b> (Public 
+Domain).</p>
+<h3>Termin Penggunaan</h3>
+<p>Penggunaan dari detik.usable diatur oleh hak-hak kekayaan intelektual yang dimiliki oleh detik.com, sedemikian rupa sehingga, pengguna detik.usable diharuskan untuk tidak menggunakan software ini kecuali untuk keperluan pribadi. 
+Kami tidak bertanggung jawab pada masalah-masalah yang mungkin timbul di masa datang akibat dari penggunaan detik.usable.<p>
+<a href="letter_warning.htm">Surat peringatan dari Detikcom</a></html><h3>Links</h3>
+<ul>
+  <li><a href="http://www.detik.com">Detikcom</a></li>
+  <li><a href="http://www.usable.web.id">Dody Suria Wijaya's Software House</a></li>
+</ul>
+<p>Script ini mungkin juga bisa ditemukan di:
+</p>
+<ul>
+  <li>
+<a href="http://php.resourceindex.com">The PHP Resource Index</a></li>
+  <li><a href="http://www.phpbuilder.com/snippet/browse.php?by=cat&cat=9">
+  PHPBuilder</a></li>
+  <li><a href="http://www.hotscripts.com">HotScripts</a></li>
+</ul>
+<hr>
+<small>Hosting di <a href="http://www.masterwebnet.com">
+<img border=0 src="http://id.masterwebnet.com/images/mwn_small_emblem11.gif" width="47" height="21" alt="Masterwebnet"></a> 
+(thx 
+<a href="http://www.google.com/search?q=steven+haryanto&sourceid=opera&num=0&ie=utf-8&oe=utf-8">steve</a>!)</small></body>
