@@ -1,0 +1,72 @@
+<html>
+<head>
+    <title>Dody Suria Wijaya's Software House Directory</title>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="shortcut icon" href="../img/favicon.ico">
+</head>
+<body>
+
+<div id="gads">
+<script type="text/javascript"><!--
+google_ad_client = "pub-3455550406457432";
+google_ad_width = 160;
+google_ad_height = 600;
+google_ad_format = "160x600_as";
+google_ad_type = "text";
+google_ad_channel ="";
+google_color_border = "CCCCCC";
+google_color_bg = "FFFFFF";
+google_color_link = "000000";
+google_color_url = "666666";
+google_color_text = "333333";
+//--></script>
+<script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<div class="main">
+<h1>Popok: webmail to pop3/smtp proxy daemon<br>UNMAINTAINED!</h1>
+<h3>In short</h3>
+<p>Is a daemon script that act as a pop3/smtp gateway to a specific Communigate Pro Webmail. Last known to be quite usable at <a href="http://webmail.plasa.com">Plasacom Webmail</a> and <a href="http://mail.telkom.net">Telkomnet Webmail</a>, both are Indonesian webmail. I used this a lot to access emails from my pop3 client, instead of using their shabby webmail interface.
+<p>A <a href="https://sourceforge.net/projects/popok/">project with CVS repository has been set up at sourceforge.net</a>, mostly for hosting the CVS. If somehow you want to take a look at the codes, checkout using cvs client like this:
+<pre>
+cvs -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/popok login
+cvs -z3 -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/popok co -P popok
+</pre>
+<p>If you only interested in prepackaged windows installation, <a href="#download">pick the newest one from the list below</a>.
+
+<h3>Description</h3>
+
+<P>Popok was created because downloading and composing email on web is such a tedious and slow task compared to interactive with our own personal favourite email client (such as Outlook, Eudora, The Bat, etc), and most POP3 account is either limited to specific internet provider, or simply not-free. You can compare the time-saving capability of popok by looking at these figures:</P>
+
+<p><img src="img/index.1.gif" name="graphic1" alt="multiple wait-step needed, without popok" align=bottom border=0 width="545" height="225">
+<BR>Before popok, wow, many wait-steps</p>
+
+<p><img src="img/index.2.gif" name="graphic2" alt="2 step needed, with popok" align=bottom border=0 width="330" height="99">
+<BR>Using Popok, two wait-steps.</P>
+
+<P>Popok achieve this by emulating web browser, interacting with webmail's web server as if it were any naive users doing their everyday task of checking, reading, and send email. Technically, popok is <B>fully multi-threaded</B>--that is, every new connection will launch a new thread, and has code base which support <B>multiplatform</B>.</P>
+
+<H3>Installation</H3>
+<P>Extract the compressed file to an empty directory, and execute
+<span class="code">popok.exe</span> to run popok using all default configuration. To change some configuration, do <span class="code">popok.exe --help</span>.</P>
+<P>Next, configure your POP3 email client:</P>
+<ul>
+    <li><B>Username:</B><I>your full email address</I>
+	<li><B>Password:</B><I>your webmail account password</I>
+    <li><B>POP3 server hostname:</B>localhost
+    <li><B>POP3 server port:</B></P>110
+    <li><B>SMTP server hostname:</B>localhost (usually the default)
+    <li><B>SMTP server port</B></P>25 (usually the default)
+</ul>
+<P>You should adapt the above parameters to your specific configuration. Use your email address as username, ie: <a href="mailto:popok@plasa.com">popok@plasa.com</A>. This is required as popok needs to know which webmail server you're talking about.
+<P>SMTP is optional, that is you can choose to use your ISP's SMTP server. But if you do intend to use popok as SMTP server, lookout:
+<ol>
+	<LI>You have to do &quot;POP before SMTP&quot; authentication method. That is, do a quick email check, before sending.
+	<LI>Make sure the <span style="code">From:</span> field on your email equal to your full email address provided as POP3's username.&nbsp; This is the only way popok can understand which HTTP 	session to continue (notice popok does not ask password for SMTP?)
+</ol>
+
+<a name="download"></a><h3>Downloads</h3>
+
+</div>
