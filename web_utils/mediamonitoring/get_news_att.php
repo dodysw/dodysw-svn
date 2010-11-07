@@ -1,0 +1,1 @@
+<? include 'admin/config.inc.php'; include 'admin/include/func.inc.php'; include_once('auth.php');?><? $news = instantiate_module('news'); echo $news->get_news_att($_REQUEST['id'],$_REQUEST['attid'],$_SESSION['mmclient_login_user']) ?>
