@@ -8,7 +8,7 @@
 # Licence:     GNU
 #-----------------------------------------------------------------------------
 
-__version__ = "0.10"
+__version__ = "0.17"
 
 import smtp,pop,web,SocketServer,socket,time
 import sys, string, threading, email

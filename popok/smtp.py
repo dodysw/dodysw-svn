@@ -1,13 +1,16 @@
 import threading,SocketServer,sys,time,web,socket,string,re
 
-__version__ = '0.8'
-
 debug = False
 
 class SMTPRequestHandler(SocketServer.StreamRequestHandler):
     sys_version = "Python/" + sys.version.split()[0]
-    server_version = "popokSMTP/" + __version__
+    server_version = "popokSMTP/"
     requestline = ''
+
+    #~ def __init__(self):
+        #~ # init variables
+        #~ self.rcptto_emails = []
+        #~ self.mailfrom_email = ''
 
     def parse_request(self):
         """Parse a request (internal).
@@ -18,6 +21,8 @@ class SMTPRequestHandler(SocketServer.StreamRequestHandler):
         """
         self.command = None  # set in case of error on the first line
         requestline = self.raw_requestline
+        if debug:
+            print 'Request:',requestline.__repr__()
         if requestline[-2:] == '\r\n':
             requestline = requestline[:-2]
         elif requestline[-1:] == '\n':
@@ -27,11 +32,11 @@ class SMTPRequestHandler(SocketServer.StreamRequestHandler):
             self.send_error(500, "Command unrecognized: Empty")
             return False
         words = map(string.upper,requestline.split())
-        command = words[0]
+        command = words[0]  # we would only interested the first word (esp. RPCT TO, MAIL FROM)
         params = []
         if len(words)>1:
-            params = words[1:]            
-        self.command,self.params = command,params        
+            params = words[1:]
+        self.command,self.params = command,params
         return True
 
 
@@ -50,54 +55,69 @@ class SMTPRequestHandler(SocketServer.StreamRequestHandler):
         method()
 
     def handle(self):
-        """Handle multiple requests if necessary."""
+        """Handle multiple requests if necessary.
+        started the first time
+        """
+        # init variables
         self.close_connection = False
-        self.send_response(220, "popok %s, Assalamualaikum" % __version__)
+        self.rcptto_emails = []
+        self.mailfrom_email = ''
+        self.send_response(220, "popok, Assalamualaikum")
         while not self.close_connection:
             self.handle_one_request()
 
     def do_HELO(self):
         self.send_response(250,"Welcome %s" % self.address_string())
-        self.send_response(250,'-localhost')
-        self.send_response(250,'AUTH PLAIN')
-        
+        #~ self.send_response(250,'-localhost')
+        #~ self.send_response(250,'AUTH PLAIN')
+
     def do_MAIL(self):
         #ignored, parse from mail header later
         m = re.search("<([^>]*)",self.requestline)
         if not m:
             self.send_error(500,'From email address not found')
             return
-        emailaddress = m.group(1)
-        self.webclient = web.HTTPMaildrop(emailaddress)
-        self.send_response(250)      
+        self.mailfrom_email = m.group(1)
+        self.send_response(250)
 
     def do_RCPT(self):
         #ignored, parse from mail header later
+        #now not ignored, since Bcc: emails insert email here, not at letter header
+        m = re.search("<([^>]*)",self.requestline)
+        if not m:
+            self.send_error(500,'To email address not found')
+            return
+        self.rcptto_emails.append(m.group(1))
         self.send_response(250)
 
-    def do_NOOP(self):     
+    def do_NOOP(self):
         self.send_response(250)
 
     def do_RSET(self):
+        """reset rcpt to list
+        """
         #ignored, parse from mail header later
-        self.send_response(250)      
+        self.rcptto_emails = []
+        self.send_response(250)
 
     def do_DATA(self):
         self.send_response(354)
-        bytes = ""
+        buffer = ""
         while 1:
             line = self.rfile.readline()
-            bytes = bytes + line
+            buffer = buffer + line
             if line == '.\r\n':
-                break            
-        bytes = bytes[:-3]        
+                break
+        buffer = buffer[:-3]
         #start posting to HTTP
-        ret = self.webclient.compose(bytes)
+        webclient = web.HTTPMaildrop(self.mailfrom_email)
+        webclient.rcptto_emails = self.rcptto_emails  #notify webclient instance, so they can get an idea which emails is the Bcc
+        ret = webclient.compose(buffer)
         if ret is not None:
             self.send_response(*ret)
         else:
-            self.send_response(250)        
-        
+            self.send_response(250)
+
     def do_QUIT(self):
         self.send_response(221)
         self.close_connection = True
@@ -111,14 +131,14 @@ class SMTPRequestHandler(SocketServer.StreamRequestHandler):
         output has been generated), logs the error, and finally sends
         a piece of HTML explaining the error to the user.
         """
-        
+
         try:
             short = self.responses[code]
         except KeyError:
             short = '???'
         if message is None:
             message = short
-        
+
         self.log_error("code %d, message %s", code, message)
         self.send_response(code, message)
 
@@ -128,10 +148,12 @@ class SMTPRequestHandler(SocketServer.StreamRequestHandler):
         self.log_request(code)
         if message is None:
             if code in self.responses:
-                message = self.responses[code][0]
+                message = self.responses[code]
             else:
                 message = ''
-        self.wfile.write("%d %s\r\n" % (code, message))
+        line = "%d %s\r\n" % (code, message)
+        if debug: print line
+        self.wfile.write(line)
 
     def log_request(self, code='-', size='-'):
         self.log_message('"%s" %s %s', self.requestline, str(code), str(size))
@@ -141,7 +163,7 @@ class SMTPRequestHandler(SocketServer.StreamRequestHandler):
 
     def log_message(self, format, *args):
         #sys.stderr.write("%s - - [%s] %s\n" % (self.address_string(), self.log_date_time_string(), format%args))
-	pass
+        pass
 
     def version_string(self):
         """Return the server software version string."""
@@ -177,7 +199,7 @@ class SMTPRequestHandler(SocketServer.StreamRequestHandler):
         return socket.getfqdn(host)
 
     responses = {
-        220: ('Popok %s, Assalamualaikum' % __version__),
+        220: ('Popok, Assalamualaikum'),
         221: ('Wassalamualaikum'),
         250: ('OK'),
         354: ('Start mail input; end with <CRLF>.<CRLF>'),

@@ -1,13 +1,11 @@
 import threading,SocketServer,sys,time,string,socket
-import web
-
-__version__ = '0.9'
+import web, popok
 
 debug = False
 
 class POPRequestHandler(SocketServer.StreamRequestHandler):
     sys_version = "Python/" + sys.version.split()[0]
-    server_version = "popokSMTP/" + __version__
+    server_version = "popokSMTP/" + popok.__version__
 
     AUTHORIZATION_USER=0
     AUTHORIZATION_PASS=1
@@ -26,13 +24,17 @@ class POPRequestHandler(SocketServer.StreamRequestHandler):
         self.command = None  # set in case of error on the first line
         requestline = self.raw_requestline.strip()
         if debug:
-            print requestline.__repr__()
+            print 'Request:',requestline.__repr__()
         self.requestline = requestline
         if self.requestline == '':
             self.send_error('Null command')
             return False
-        words = map(string.upper,requestline.split())
-        command = words[0]
+        # problem for password, since it's case sensitive
+        #~ print 'XX>', requestline.split()
+        #~ words = map(string.upper,requestline.split())
+        words = requestline.split()
+        #~ print 'XX>', words
+        command = words[0].upper()
         params = []
         if len(words)>1:
             params = words[1:]
@@ -72,10 +74,17 @@ class POPRequestHandler(SocketServer.StreamRequestHandler):
     def handle(self):
         """Handle multiple requests if necessary."""
         self.close_connection = False
-        self.send_ok("popok %s, Assalamualaikum" % __version__)
+        self.send_ok("popok %s, Assalamualaikum" % popok.__version__)
         self.state = self.AUTHORIZATION_USER
         while not self.close_connection:
             self.handle_one_request()
+
+    def do_AUTH(self):
+        if self.state not in (self.AUTHORIZATION_USER,self.AUTHORIZATION_PASS):
+            self.send_error("Unknown state command")
+            return
+        self.send_ok("Supported authentication mechanism:")
+        self.send_body("LOGIN\r\n.\r\n")
 
     def do_USER(self,username):
         if self.state not in (self.AUTHORIZATION_USER,self.AUTHORIZATION_PASS):
@@ -90,7 +99,7 @@ class POPRequestHandler(SocketServer.StreamRequestHandler):
         if self.state != self.AUTHORIZATION_PASS:
             self.send_error("Unknown state command")
             return
-        if self.username == 'DETIKCOM':
+        if self.username.lower() == 'detikcom':
             import web_detik as web
         else:
             import web
@@ -99,6 +108,7 @@ class POPRequestHandler(SocketServer.StreamRequestHandler):
         if resp == 1:
             self.state = self.TRANSACTION
             self.send_ok("Password accepted")
+            self.last_get_msg_count = None
         elif resp == -1:
             self.send_error("Invalid user/password")
         else:
@@ -109,7 +119,10 @@ class POPRequestHandler(SocketServer.StreamRequestHandler):
         if self.state != self.TRANSACTION:
             self.send_error("Unknown state command")
             return
-        msg_count = self.webclient.get_msg_count()
+        if self.last_get_msg_count == None or (time.time() - self.last_get_msg_count) > 10:  # only check new message after 10 second after previous attempt
+            msg_count = self.webclient.get_msg_count()
+            # save last time we do get_msg_count()
+            self.last_get_msg_count = time.time()
         if type(msg_count) == int and msg_count >= 0:
             msg_size = self.webclient.get_msg_size_total()
             self.send_ok("%d %d" % (msg_count,msg_size))
@@ -122,6 +135,11 @@ class POPRequestHandler(SocketServer.StreamRequestHandler):
         if self.state != self.TRANSACTION:
             self.send_error("Unknown state command")
             return
+        if self.last_get_msg_count == None or (time.time() - self.last_get_msg_count) > 10:  # only check new message after 10 second after previous attempt
+            msg_count = self.webclient.get_msg_count()
+            # save last time we do get_msg_count()
+            self.last_get_msg_count = time.time()
+
         if msgno != None:
             try:
                 msgno = int(msgno)-1
@@ -196,6 +214,11 @@ class POPRequestHandler(SocketServer.StreamRequestHandler):
         if self.state != self.TRANSACTION:
             self.send_error("Unknown state command")
             return
+        if self.last_get_msg_count == None or (time.time() - self.last_get_msg_count) > 10:  # only check new message after 10 second after previous attempt
+            msg_count = self.webclient.get_msg_count()
+            # save last time we do get_msg_count()
+            self.last_get_msg_count = time.time()
+
         if msgno != None:
             try:
                 msgno = int(msgno)-1
@@ -222,20 +245,21 @@ class POPRequestHandler(SocketServer.StreamRequestHandler):
 
     def send_error(self, message=''):
         self.log_error(message)
-        self.wfile.write("+ERR %s\r\n" % message)
+        line = "-ERR %s\r\n" % message
+        self.wfile.write(line)
 
     def send_ok(self, message=''):
         """Send the response header and log the response code.
         """
         msg = "+OK %s\r\n" % message
-        if debug: print msg.__repr__(),
+        if debug: print msg,
         self.wfile.write(msg)
 
     def send_body(self, message):
         """Send the response body
         """
         msg = "%s\r\n" % message
-        if debug: print msg.__repr__(),
+        if debug: print msg,
         self.wfile.write(msg)
 
     def log_request(self, message):

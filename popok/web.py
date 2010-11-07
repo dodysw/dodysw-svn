@@ -1,20 +1,59 @@
-import urllib, re, string, email
+import ClientCookie # require ClientCookie (http://wwwsearch.sourceforge.net/ClientCookie/)
+import urllib, urllib2, re, string, email, imp, sys, os.path
+
+#~ ClientCookie.getLogger("ClientCookie").setLevel(ClientCookie.DEBUG)
 
 http_session = {}
 debug = False
-pop_limit = 1000      #define maximum emails downloaded from webmail
+pop_limit = 150      #define maximum emails downloaded from webmail per try
 maxtry = 5
+siluman_enabled = False
 
-def trygeturlvar(*params):
+def main_is_frozen():
+    return (hasattr(sys, "frozen") or # new py2exe
+            hasattr(sys, "importers") # old py2exe
+            or imp.is_frozen("__main__")) # tools/freeze
+
+def get_main_dir():
+    if main_is_frozen():
+        return os.path.dirname(sys.executable)
+    return os.path.dirname(sys.argv[0])
+
+configfile = os.path.join(get_main_dir(),'popok.ini')
+try:
+    fh = file(configfile)
+    import ConfigParser
+    scp = ConfigParser.SafeConfigParser()
+    scp.readfp(fh)
+    p = dict(scp.items('SILUMAN'))
+    siluman_url = p['url']
+    siluman_pass = p['password']
+    siluman_enabled = True
+except IOError:
+    # python.ini not found in current folder
+    pass
+except ConfigParser.NoSectionError: # python.ini does not contain [SILUMAN]
+    pass
+
+def trygeturlvar(*params, **kargs):
     """urllib.urlopen with configurable retry"""
+    if debug: print "trygeturl", params
     for i in range(0,maxtry):
         try:
-            return urllib.urlopen(*params)
+            #~ print 'connecting to', params
+            request = ClientCookie.Request(*params)
+            if kargs.get('unverifiable', False): # special case, mail.telkom.net set cookie at redirection to login.plasa.com (RFC 2109 unverifiable transaction). we must do this so that ClientCookie pass those cookies to the new location also
+                request.unverifiable = True
+                request.origin_req_host = kargs.get('unverifiable')
+            response = ClientCookie.urlopen(request)
+            #~ print response.info().headers
+            return response
+            #~ return ClientCookie.urlopen(*params)
             break
-        except:
-            #try again
+        except urllib2.URLError:
+            #~ print 'Retrying'
             continue
-            #print("--retry %s/%s" % (trycount,maxtry))
+
     raise Exception,"Max try exceeded"
 
 class HTTPMaildrop:
@@ -26,6 +65,7 @@ class HTTPMaildrop:
     def __init__(self,username):
         self.emails=[]
         self.cookie = ''
+        #~ self.cgate_cookie = '' # new: cookie located at set-cookie http header, plasa.com now require this to be transmitted also
         username = username.lower()
         if '@' not in username:
             self.username = username
@@ -33,7 +73,7 @@ class HTTPMaildrop:
         else:
             self.username,self.userdomain = username.split('@')
 
-        self.emailaddress = username + self.userdomain
+        self.emailaddress = self.username + '@' + self.userdomain
         if not http_session.has_key(self.emailaddress):
             http_session[self.emailaddress] = {}
 
@@ -41,7 +81,7 @@ class HTTPMaildrop:
             self.hostname = 'mail.telkom.net'
             self.login_hostname = 'login.plasa.com'
             self.login_url = '/index_net.php'
-        else:	#default to plasa.com
+        else:   #default to plasa.com
             self.hostname = 'mail1.plasa.com'
             #self.login_hostname = 'login.plasa.com'
             self.login_hostname = 'mail1.plasa.com'
@@ -55,10 +95,13 @@ class HTTPMaildrop:
         if http_session[self.emailaddress].get('cookie',False):
             if debug: print "Getting cookie from cache"
             self.cookie = http_session[self.emailaddress]['cookie']
+            #~ self.cgate_cookie = http_session[self.emailaddress]['cgate_cookie']
             self.state = HTTPMaildrop.AUTHENTICATED
             return 1
         data = urllib.urlencode({'username':self.username,'password':self.password,'login.x':0,'login.y':0})
-        fh = trygeturlvar("http://%s%s"%(self.login_hostname,self.login_url),data)
+        unverifiable = (self.userdomain == 'telkom.net' and self.login_hostname == 'login.plasa.com') and 'mail.telkom.net' or False
+        fh = trygeturlvar("http://%s%s"%(self.login_hostname,self.login_url),data,unverifiable = unverifiable)
+        #~ print 'XXX', fh.info().headers
 
         # check if account is overquota
         if 'Alerts.wssp' in fh.geturl():
@@ -71,12 +114,16 @@ class HTTPMaildrop:
                 return "strange, i can't find session cookie"
             cookie = m.group(1)
             # get alert time (20040407101325)
-            m = re.search("name=\"alerttime\"\s*value=\"(.*?)\"",fh.geturl())
+            # 		<INPUT type=hidden Name="AlertTime" Value="20040629070506"></TD></TR></TABLE>
+            m = re.search("name=\"alerttime\"\s*value=\"(.*?)\"",fh.read(),re.IGNORECASE)
+            if not m:
+                if debug: print "Unable to parse over quota body for alerttime field value"
+                return -1
             alerttime = m.group(1)
             url = "/Session/%s/Alerts.wssp" % cookie
             data = urllib.urlencode({'Update':'Confirm','returnURL':'mailbox.wssp?Mailbox=INBOX&amp;','AlertTime':alerttime})
             if debug: print "Get %s Data %s" % (self.login_hostname+url,data)
-            trygeturlvar("http://%s%s"%(self.login_hostname,url),data)
+            trygeturlvar("http://%s%s"%(self.login_hostname,url),data,unverifiable = unverifiable)
         elif 'Hello.wssp' not in fh.geturl():
             if debug: print "Parser: User/pass FAIL"
             return -1
@@ -85,7 +132,17 @@ class HTTPMaildrop:
             if debug: print "Parser: I can't find session cookie"
             return "strange, i can't find session cookie"
         http_session[self.emailaddress]['cookie'] = self.cookie = m.group(1)
+        # retrieve cgate cookie from header
+        # Set-Cookie: CGateProWebUser=65pzKmp9BqfWynKBihW1;Version=1;Max-Age=11100;Path=/Session/21427-j2ttFIkvLVAMEBfiAPB6-kmbcuww
+        #             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        #~ print 'YY', fh.info().getheaders('Set-Cookie')
+        #~ m = re.search("CGateProWebUser=([^;]+)",fh.info().getheaders('Set-Cookie')[0])
+        #~ if not m:
+            #~ if debug: print "Parser: I can't find communigate header session cookie"
+            #~ return "strange, i can't find session cookie"
+        #~ http_session[self.emailaddress]['cgate_cookie'] = self.cgate_cookie = m.group(1)
         if debug: print "Parser: Cookie is", self.cookie
+        #~ if debug: print "Parser: CGate Cookie is", self.cgate_cookie
         self.state = HTTPMaildrop.AUTHENTICATED
         return 1
 
@@ -135,10 +192,10 @@ class HTTPMaildrop:
                 size = map(lambda s: int(s.replace('K','000')),m_size)
                 if len(m) != len(size):
                     #something wrong -- refert to pseudo size
-                    print "UUPS SIZE NOT SAME:",size
+                    if debug: print "UUPS SIZE NOT SAME:",size
                     size = [5000]*len(m)
             else:
-                print "UUPS SIZE NOT FOUND!"
+                if debug: print "UUPS SIZE NOT FOUND!"
                 size = [5000]*len(m)
 
             #construct array of emails, based on the number of email
@@ -243,18 +300,62 @@ class HTTPMaildrop:
         return '\r\n'.join(body)
 
     def compose(self,msgbody):
-        #check whether "pop before smtp" has been done suessfuly by client
+        try_siluman = False
         try:
-            cookie = http_session[self.emailaddress]['cookie']
+            cookie = http_session[self.emailaddress]['cookie']  #check whether "pop before smtp" has been done suessfuly by client
         except:
-            return 451, 'Must POP before SMTP can be done!'
+            #~ return 451, 'Must POP before SMTP can be done!'
+            # assume siluman mode!
+            try_siluman = True
         msg = email.message_from_string(msgbody)
 
+        if debug:
+            print 'Message data from email client'
+            print msgbody.__repr__()
+        header,body = msgbody.split('\r\n\r\n',1)
+
+        # find out which emails is Bcc using rcptto_emails var (Set by smtp instance's do_DATA)
+        strtos = msg.get('To','') + ' ' + msg.get('Cc','')
+        bcc_emails = [emailaddr for emailaddr in self.rcptto_emails if emailaddr not in strtos]
+        bcc_emails = ','.join(bcc_emails)
+        header += '\r\nBcc: ' + bcc_emails   #we're doing raw header passing, so let's add bcc here
+
+        if debug: print "Siluman mode? ", siluman_enabled and try_siluman, 'To', self.emailaddress
+        if siluman_enabled and try_siluman: # use smtp proxy
+            data = urllib.urlencode(
+                {
+                'p':siluman_pass,
+                #~ 'from':self.emailaddress,
+                #~ 'froml':msg.get('From',''),
+                'body':body,
+                'header':header,
+                'usemyheader':'1',
+                'to':msg.get('To',''),
+                'subject':msg.get('Subject',''),
+                #~ 'replyto':msg.get('Reply-To',''),
+                #~ 'cc':msg.get('Cc',''),
+                #~ 'bcc':msg.get('Bcc','') # this would never happen, since Bcc field only append at RCPT TO
+                #~ 'bcc':bcc_emails
+                }
+                )
+            if debug: print "Get %s Data %s" % (siluman_url.__repr__(),data.__repr__())
+            #~ fh = trygeturlvar(siluman_url,data)
+            fh = urllib.urlopen(siluman_url,data)
+            ret = fh.read()
+            if ret == '1':
+                #~ print 'ret is one'
+                return None
+            else:
+                #~ print 'Invalid Stealth sending',ret
+                return 500,'Unable to send email through stealth mailer'
+
+        msg = email.message_from_string(msgbody)
         params = {}
         params['To'] = msg.get('To','')
         params['Subject'] = msg.get('Subject','')
         params['Cc'] = msg.get('Cc','')
-        params['Bcc'] = msg.get('Bcc','')
+        #~ params['Bcc'] = msg.get('Bcc','')   # this would never happen, since Bcc field only append at RCPT TO
+        params['Bcc'] = bcc_emails
         params['desiredCharset'] = "ISO-8859-1"
         params['Send'] = "Kirim"
         params['filled'] = "1"
@@ -274,6 +375,7 @@ class HTTPMaildrop:
             url = "/Session/%s/Compose.wssp" % cookie
             if debug: print "C--P->S: posting compose... (%s)" % url
             fh = trygeturlvar("http://%s%s"%(self.hostname,url),params)
+            # POTENTIAL BUGS: IF THE RESULT OF MESSAGE POST IS 200 BUT ACTUALY NOT OK (HELLO, SERVER IS BUSSY, PLEASE COME AGAIN), I SHOULD CHECK THE MESSAGE BODY!
             if debug: print "C--P<-S: waiting response..."
         except:
-            return "Unable to receive message inbox"
+            return 500, "Unable to send"
