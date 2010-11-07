@@ -1,0 +1,416 @@
+10/22/04 15:23:14,475 [1140] DEBUG Table Manager - start method final_init.....111
+10/22/04 15:23:14,479 [1140] DEBUG Table Manager - panggil POST HANDLER ,......................
+10/22/04 15:23:14,483 [1140] DEBUG Table Manager - Starting post_handler......152
+10/22/04 15:23:14,488 [1140] DEBUG Table Manager - starting function import2ds...606
+10/22/04 15:23:14,492 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:23:14,495 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:23:14,498 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:23:14,502 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:23:14,505 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:23:14,509 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:23:14,512 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:23:14,516 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:23:14,520 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:23:14,523 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:23:14,532 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:23:14,536 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:23:14,539 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:23:14,542 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:23:14,547 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:23:14,550 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:23:14,553 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:23:14,557 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:23:14,562 [1140] DEBUG Table Manager - pass basic row validation
+10/22/04 15:23:14,565 [1140] DEBUG Table Manager - action adalah 177 new
+10/22/04 15:23:14,569 [1140] DEBUG Table Manager - Checking insert row.......
+10/22/04 15:23:14,574 [1140] DEBUG Table Manager - row not exist
+10/22/04 15:23:14,578 [1140] DEBUG Table Manager - pass check_insert
+10/22/04 15:23:14,581 [1140] DEBUG Table Manager - pass preview mode branch
+10/22/04 15:24:03,539 [1140] DEBUG Table Manager - start method final_init.....111
+10/22/04 15:24:03,543 [1140] DEBUG Table Manager - panggil POST HANDLER ,......................
+10/22/04 15:24:03,547 [1140] DEBUG Table Manager - Starting post_handler......152
+10/22/04 15:24:03,551 [1140] DEBUG Table Manager - starting function import2ds...606
+10/22/04 15:24:03,554 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:03,558 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:03,561 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:03,565 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:03,568 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:03,571 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:03,575 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:03,578 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:03,582 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:03,585 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:03,589 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:03,593 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:03,596 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:03,599 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:03,602 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:03,611 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:03,615 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:03,618 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:03,624 [1140] DEBUG Table Manager - end method final_init.....144
+10/22/04 15:24:03,634 [1140] DEBUG Table Manager - Starting basic_handler......264new
+10/22/04 15:24:03,639 [1140] DEBUG Table Manager - Masuk ke Showform......279
+10/22/04 15:24:03,662 [1140] DEBUG Table Manager - end basic_handler......364
+10/22/04 15:24:08,932 [1140] DEBUG Table Manager - start method final_init.....111
+10/22/04 15:24:08,938 [1140] DEBUG Table Manager - panggil POST HANDLER ,......................
+10/22/04 15:24:08,942 [1140] DEBUG Table Manager - Starting post_handler......152
+10/22/04 15:24:08,946 [1140] DEBUG Table Manager - starting function import2ds...606
+10/22/04 15:24:08,949 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:08,953 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:08,957 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:08,961 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:08,964 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:08,968 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:08,971 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:08,975 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:08,978 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:08,981 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:08,986 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:08,990 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:08,993 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:08,996 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:09,001 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:09,004 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:09,013 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:09,018 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:09,023 [1140] DEBUG Table Manager - pass basic row validation
+10/22/04 15:24:09,027 [1140] DEBUG Table Manager - action adalah 177 new
+10/22/04 15:24:09,030 [1140] DEBUG Table Manager - Checking insert row.......
+10/22/04 15:24:09,037 [1140] DEBUG Table Manager - row not exist
+10/22/04 15:24:09,041 [1140] DEBUG Table Manager - pass check_insert
+10/22/04 15:24:09,044 [1140] DEBUG Table Manager - pass preview mode branch
+10/22/04 15:24:41,513 [1140] DEBUG Table Manager - start method final_init.....111
+10/22/04 15:24:41,518 [1140] DEBUG Table Manager - panggil POST HANDLER ,......................
+10/22/04 15:24:41,523 [1140] DEBUG Table Manager - Starting post_handler......152
+10/22/04 15:24:41,526 [1140] DEBUG Table Manager - starting function import2ds...606
+10/22/04 15:24:41,530 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:41,533 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:41,536 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:41,540 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:41,543 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:41,546 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:41,560 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:41,564 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:41,567 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:41,570 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:41,573 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:41,577 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:41,580 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:41,584 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:41,587 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:41,591 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:41,594 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:41,597 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:41,603 [1140] DEBUG Table Manager - end method final_init.....144
+10/22/04 15:24:41,614 [1140] DEBUG Table Manager - Starting basic_handler......264new
+10/22/04 15:24:41,617 [1140] DEBUG Table Manager - Masuk ke Showform......279
+10/22/04 15:24:41,712 [1140] DEBUG Table Manager - end basic_handler......364
+10/22/04 15:24:45,455 [1140] DEBUG Table Manager - start method final_init.....111
+10/22/04 15:24:45,469 [1140] DEBUG Table Manager - panggil POST HANDLER ,......................
+10/22/04 15:24:45,473 [1140] DEBUG Table Manager - Starting post_handler......152
+10/22/04 15:24:45,477 [1140] DEBUG Table Manager - starting function import2ds...606
+10/22/04 15:24:45,481 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:45,484 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:45,488 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:45,491 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:45,494 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:45,498 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:45,501 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:45,504 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:45,508 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:45,511 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:45,514 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:45,518 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:45,521 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:45,524 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:45,527 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:45,531 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:45,534 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:45,538 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:45,544 [1140] DEBUG Table Manager - pass basic row validation
+10/22/04 15:24:45,547 [1140] DEBUG Table Manager - action adalah 177 new
+10/22/04 15:24:45,551 [1140] DEBUG Table Manager - Checking insert row.......
+10/22/04 15:24:45,556 [1140] DEBUG Table Manager - row exist!!
+10/22/04 15:24:45,563 [1140] DEBUG Table Manager - end method final_init.....144
+10/22/04 15:24:45,658 [1140] DEBUG Table Manager - Starting basic_handler......264new
+10/22/04 15:24:45,667 [1140] DEBUG Table Manager - Masuk ke Showform......279
+10/22/04 15:24:45,682 [1140] DEBUG Table Manager - end basic_handler......364
+10/22/04 15:24:52,761 [1140] DEBUG Table Manager - start method final_init.....111
+10/22/04 15:24:52,765 [1140] DEBUG Table Manager - panggil POST HANDLER ,......................
+10/22/04 15:24:52,773 [1140] DEBUG Table Manager - Starting post_handler......152
+10/22/04 15:24:52,778 [1140] DEBUG Table Manager - starting function import2ds...606
+10/22/04 15:24:52,784 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:52,790 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:52,794 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:52,801 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:52,804 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:52,816 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:52,822 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:52,826 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:52,832 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:52,835 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:52,839 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:52,843 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:52,847 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:52,850 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:52,854 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:52,858 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:52,861 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:52,865 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:52,870 [1140] DEBUG Table Manager - pass basic row validation
+10/22/04 15:24:52,881 [1140] DEBUG Table Manager - action adalah 177 new
+10/22/04 15:24:52,885 [1140] DEBUG Table Manager - Checking insert row.......
+10/22/04 15:24:52,890 [1140] DEBUG Table Manager - row exist!!
+10/22/04 15:24:52,894 [1140] DEBUG Table Manager - end method final_init.....144
+10/22/04 15:24:52,908 [1140] DEBUG Table Manager - Starting basic_handler......264new
+10/22/04 15:24:52,911 [1140] DEBUG Table Manager - Masuk ke Showform......279
+10/22/04 15:24:52,952 [1140] DEBUG Table Manager - end basic_handler......364
+10/22/04 15:24:56,999 [1140] DEBUG Table Manager - start method final_init.....111
+10/22/04 15:24:57,004 [1140] DEBUG Table Manager - panggil POST HANDLER ,......................
+10/22/04 15:24:57,007 [1140] DEBUG Table Manager - Starting post_handler......152
+10/22/04 15:24:57,012 [1140] DEBUG Table Manager - starting function import2ds...606
+10/22/04 15:24:57,015 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:57,019 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:57,022 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:57,026 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:57,030 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:57,033 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:57,036 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:57,040 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:57,043 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:57,046 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:57,050 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:57,059 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:57,062 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:57,065 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:57,069 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:57,072 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:57,082 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:57,085 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:24:57,091 [1140] DEBUG Table Manager - pass basic row validation
+10/22/04 15:24:57,094 [1140] DEBUG Table Manager - action adalah 177 new
+10/22/04 15:24:57,098 [1140] DEBUG Table Manager - Checking insert row.......
+10/22/04 15:24:57,102 [1140] DEBUG Table Manager - row not exist
+10/22/04 15:24:57,106 [1140] DEBUG Table Manager - pass check_insert
+10/22/04 15:24:57,110 [1140] DEBUG Table Manager - pass preview mode branch
+10/22/04 15:24:57,120 [1140] DEBUG Table Manager - start method final_init.....111
+10/22/04 15:24:57,124 [1140] DEBUG Table Manager - end method final_init.....144
+10/22/04 15:24:57,130 [1140] DEBUG Table Manager - go tidak sama dengan kosong http://localhost/ciscopip/adm/index.php?m=partner&act=browse&cursor=12&orderby=&sortdir=
+10/22/04 15:24:57,286 [1140] DEBUG Table Manager - start method final_init.....111
+10/22/04 15:24:57,291 [1140] DEBUG Table Manager - end method final_init.....144
+10/22/04 15:24:57,331 [1140] DEBUG Table Manager - Starting basic_handler......264browse
+10/22/04 15:24:57,336 [1140] DEBUG Table Manager - sql query select partner_tab.`rowid`,`partner_tab`.`partner_id`,`partner_tab`.`name`,`partner_tab`.`password`,`partner_tab`.`email`,`partner_tab`.`address_1`,`partner_tab`.`address_2`,`partner_tab`.`city`,`partner_tab`.`state`,`partner_tab`.`website`,`partner_tab`.`phone_1_area`,`partner_tab`.`phone_1`,`partner_tab`.`phone_2_area`,`partner_tab`.`phone_2`,`partner_tab`.`fax_1_area`,`partner_tab`.`fax_1`,`partner_tab`.`fax_2_area`,`partner_tab`.`fax_2`,`partner_tab`.`author`,`partner_tab`.`create_date` from partner_tab
+10/22/04 15:24:57,407 [1140] DEBUG Table Manager - end basic_handler......364
+10/22/04 15:27:19,370 [1140] DEBUG Table Manager - start method final_init.....111
+10/22/04 15:27:19,375 [1140] DEBUG Table Manager - panggil POST HANDLER ,......................
+10/22/04 15:27:19,381 [1140] DEBUG Table Manager - Starting post_handler......152
+10/22/04 15:27:19,384 [1140] DEBUG Table Manager - starting function import2ds...606
+10/22/04 15:27:19,388 [1140] DEBUG Table Manager - end post_handler......257
+10/22/04 15:27:19,391 [1140] DEBUG Table Manager - end method final_init.....144
+10/22/04 15:27:19,402 [1140] DEBUG Table Manager - Starting basic_handler......264duplicate
+10/22/04 15:27:19,407 [1140] DEBUG Table Manager - sql query select partner_tab.`rowid`,`partner_tab`.`partner_id`,`partner_tab`.`name`,`partner_tab`.`password`,`partner_tab`.`email`,`partner_tab`.`address_1`,`partner_tab`.`address_2`,`partner_tab`.`city`,`partner_tab`.`state`,`partner_tab`.`website`,`partner_tab`.`phone_1_area`,`partner_tab`.`phone_1`,`partner_tab`.`phone_2_area`,`partner_tab`.`phone_2`,`partner_tab`.`fax_1_area`,`partner_tab`.`fax_1`,`partner_tab`.`fax_2_area`,`partner_tab`.`fax_2`,`partner_tab`.`author`,`partner_tab`.`create_date` from partner_tab where rowid in ('20')
+10/22/04 15:27:19,412 [1140] DEBUG Table Manager - Masuk ke Showform......279
+10/22/04 15:27:19,453 [1140] DEBUG Table Manager - end basic_handler......364
+10/22/04 15:27:21,960 [1140] DEBUG Table Manager - start method final_init.....111
+10/22/04 15:27:21,964 [1140] DEBUG Table Manager - panggil POST HANDLER ,......................
+10/22/04 15:27:21,969 [1140] DEBUG Table Manager - Starting post_handler......152
+10/22/04 15:27:21,973 [1140] DEBUG Table Manager - starting function import2ds...606
+10/22/04 15:27:21,976 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:21,979 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:21,985 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:21,988 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:21,991 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:21,995 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:21,998 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:22,002 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:22,005 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:22,009 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:22,012 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:22,016 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:22,019 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:22,023 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:22,026 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:22,029 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:22,033 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:22,036 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:22,041 [1140] DEBUG Table Manager - end method final_init.....144
+10/22/04 15:27:22,053 [1140] DEBUG Table Manager - Starting basic_handler......264new
+10/22/04 15:27:22,057 [1140] DEBUG Table Manager - Masuk ke Showform......279
+10/22/04 15:27:22,135 [1140] DEBUG Table Manager - end basic_handler......364
+10/22/04 15:27:26,504 [1140] DEBUG Table Manager - start method final_init.....111
+10/22/04 15:27:26,509 [1140] DEBUG Table Manager - panggil POST HANDLER ,......................
+10/22/04 15:27:26,513 [1140] DEBUG Table Manager - Starting post_handler......152
+10/22/04 15:27:26,517 [1140] DEBUG Table Manager - starting function import2ds...606
+10/22/04 15:27:26,522 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:26,525 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:26,529 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:26,532 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:26,535 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:26,539 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:26,542 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:26,545 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:26,550 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:26,553 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:26,556 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:26,560 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:26,563 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:26,567 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:26,570 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:26,573 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:26,577 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:26,581 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:26,588 [1140] DEBUG Table Manager - pass basic row validation
+10/22/04 15:27:26,596 [1140] DEBUG Table Manager - action adalah 177 new
+10/22/04 15:27:26,601 [1140] DEBUG Table Manager - end method final_init.....144
+10/22/04 15:27:26,612 [1140] DEBUG Table Manager - Starting basic_handler......264new
+10/22/04 15:27:26,616 [1140] DEBUG Table Manager - Masuk ke Showform......279
+10/22/04 15:27:26,703 [1140] DEBUG Table Manager - end basic_handler......364
+10/22/04 15:27:33,670 [1140] DEBUG Table Manager - start method final_init.....111
+10/22/04 15:27:33,675 [1140] DEBUG Table Manager - panggil POST HANDLER ,......................
+10/22/04 15:27:33,679 [1140] DEBUG Table Manager - Starting post_handler......152
+10/22/04 15:27:33,682 [1140] DEBUG Table Manager - starting function import2ds...606
+10/22/04 15:27:33,686 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:33,689 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:33,693 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:33,702 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:33,706 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:33,709 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:33,713 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:33,716 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:33,720 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:33,723 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:33,727 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:33,730 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:33,734 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:33,737 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:33,741 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:33,744 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:33,747 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:33,751 [1140] DEBUG Table Manager - moving into foreach...and if 611Arrayds =
+10/22/04 15:27:33,757 [1140] DEBUG Table Manager - pass basic row validation
+10/22/04 15:27:33,760 [1140] DEBUG Table Manager - action adalah 177 new
+10/22/04 15:27:33,765 [1140] DEBUG Table Manager - pass check_insert
+10/22/04 15:27:33,769 [1140] DEBUG Table Manager - pass preview mode branch
+10/22/04 15:27:33,779 [1140] DEBUG Table Manager - start method final_init.....111
+10/22/04 15:27:33,783 [1140] DEBUG Table Manager - end method final_init.....144
+10/22/04 15:27:33,790 [1140] DEBUG Table Manager - go tidak sama dengan kosong http://localhost/ciscopip/adm/index.php?m=partner&act=browse&cursor=12&orderby=&sortdir=
+10/22/04 15:27:33,963 [1140] DEBUG Table Manager - start method final_init.....111
+10/22/04 15:27:33,967 [1140] DEBUG Table Manager - end method final_init.....144
+10/22/04 15:27:34,056 [1140] DEBUG Table Manager - Starting basic_handler......264browse
+10/22/04 15:27:34,061 [1140] DEBUG Table Manager - sql query select partner_tab.`rowid`,`partner_tab`.`partner_id`,`partner_tab`.`name`,`partner_tab`.`password`,`partner_tab`.`email`,`partner_tab`.`address_1`,`partner_tab`.`address_2`,`partner_tab`.`city`,`partner_tab`.`state`,`partner_tab`.`website`,`partner_tab`.`phone_1_area`,`partner_tab`.`phone_1`,`partner_tab`.`phone_2_area`,`partner_tab`.`phone_2`,`partner_tab`.`fax_1_area`,`partner_tab`.`fax_1`,`partner_tab`.`fax_2_area`,`partner_tab`.`fax_2`,`partner_tab`.`author`,`partner_tab`.`create_date` from partner_tab
+10/22/04 15:27:34,081 [1140] DEBUG Table Manager - end basic_handler......364
+10/22/04 15:27:36,283 [1140] DEBUG Table Manager - start method final_init.....111
+10/22/04 15:27:36,288 [1140] DEBUG Table Manager - end method final_init.....144
+10/22/04 15:27:36,403 [1140] DEBUG Table Manager - Starting basic_handler......264browse
+10/22/04 15:27:36,408 [1140] DEBUG Table Manager - sql query select partner_tab.`rowid`,`partner_tab`.`partner_id`,`partner_tab`.`name`,`partner_tab`.`password`,`partner_tab`.`email`,`partner_tab`.`address_1`,`partner_tab`.`address_2`,`partner_tab`.`city`,`partner_tab`.`state`,`partner_tab`.`website`,`partner_tab`.`phone_1_area`,`partner_tab`.`phone_1`,`partner_tab`.`phone_2_area`,`partner_tab`.`phone_2`,`partner_tab`.`fax_1_area`,`partner_tab`.`fax_1`,`partner_tab`.`fax_2_area`,`partner_tab`.`fax_2`,`partner_tab`.`author`,`partner_tab`.`create_date` from partner_tab
+10/22/04 15:27:36,495 [1140] DEBUG Table Manager - end basic_handler......364
+10/22/04 15:32:48,480 [1140] DEBUG Table Manager - start method final_init.....111
+10/22/04 15:32:48,484 [1140] DEBUG Table Manager - end method final_init.....144
+10/22/04 15:32:48,563 [1140] DEBUG Table Manager - Starting basic_handler......264browse
+10/22/04 15:32:48,568 [1140] DEBUG Table Manager - sql query select partner_tab.`rowid`,`partner_tab`.`partner_id`,`partner_tab`.`name`,`partner_tab`.`password`,`partner_tab`.`email`,`partner_tab`.`address_1`,`partner_tab`.`address_2`,`partner_tab`.`city`,`partner_tab`.`state`,`partner_tab`.`website`,`partner_tab`.`phone_1_area`,`partner_tab`.`phone_1`,`partner_tab`.`phone_2_area`,`partner_tab`.`phone_2`,`partner_tab`.`fax_1_area`,`partner_tab`.`fax_1`,`partner_tab`.`fax_2_area`,`partner_tab`.`fax_2`,`partner_tab`.`author`,`partner_tab`.`create_date` from partner_tab
+10/22/04 15:32:48,667 [1140] DEBUG Table Manager - end basic_handler......364
+10/22/04 15:32:49,427 [1140] DEBUG Table Manager - start method final_init.....111
+10/22/04 15:32:49,431 [1140] DEBUG Table Manager - end method final_init.....144
+10/22/04 15:32:49,514 [1140] DEBUG Table Manager - Starting basic_handler......264browse
+10/22/04 15:32:49,519 [1140] DEBUG Table Manager - sql query select partner_tab.`rowid`,`partner_tab`.`partner_id`,`partner_tab`.`name`,`partner_tab`.`password`,`partner_tab`.`email`,`partner_tab`.`address_1`,`partner_tab`.`address_2`,`partner_tab`.`city`,`partner_tab`.`state`,`partner_tab`.`website`,`partner_tab`.`phone_1_area`,`partner_tab`.`phone_1`,`partner_tab`.`phone_2_area`,`partner_tab`.`phone_2`,`partner_tab`.`fax_1_area`,`partner_tab`.`fax_1`,`partner_tab`.`fax_2_area`,`partner_tab`.`fax_2`,`partner_tab`.`author`,`partner_tab`.`create_date` from partner_tab
+10/22/04 15:32:49,597 [1140] DEBUG Table Manager - end basic_handler......364
+10/22/04 22:16:26,038 [1492] DEBUG Table Manager - start method final_init.....111
+10/22/04 22:16:26,056 [1492] DEBUG Table Manager - end method final_init.....144
+10/22/04 22:16:26,057 [1492] DEBUG Table Manager - start method final_init.....111
+10/22/04 22:16:26,057 [1492] DEBUG Table Manager - end method final_init.....144
+10/22/04 22:16:26,080 [1492] DEBUG Table Manager - Starting basic_handler......264browse
+10/22/04 22:16:26,081 [1492] DEBUG Table Manager - sql query select user_tab.`rowid`,`user_tab`.`username`,`user_tab`.`password`,`user_tab`.`level`,`user_tab`.`group`,`user_tab`.`email` from user_tab where `group`='PO' limit 0,10
+10/22/04 22:16:26,254 [1492] DEBUG Table Manager - show grid 
+10/22/04 22:16:26,257 [1492] DEBUG Table Manager - sql query select count(1) from user_tab where `group`='PO'
+10/22/04 22:16:26,291 [1492] DEBUG Table Manager - show new record 
+10/22/04 22:16:26,291 [1492] DEBUG Table Manager - end basic_handler......364
+10/22/04 22:16:28,889 [1492] DEBUG Table Manager - start method final_init.....111
+10/22/04 22:16:28,893 [1492] DEBUG Table Manager - end method final_init.....144
+10/22/04 22:16:28,924 [1492] DEBUG Table Manager - Starting basic_handler......264browse
+10/22/04 22:16:28,925 [1492] DEBUG Table Manager - sql query select partner_tab.`rowid`,`partner_tab`.`partner_id`,`partner_tab`.`name`,`partner_tab`.`password`,`partner_tab`.`email`,`partner_tab`.`address_1`,`partner_tab`.`address_2`,`partner_tab`.`city`,`partner_tab`.`state`,`partner_tab`.`website`,`partner_tab`.`phone_1_area`,`partner_tab`.`phone_1`,`partner_tab`.`phone_2_area`,`partner_tab`.`phone_2`,`partner_tab`.`fax_1_area`,`partner_tab`.`fax_1`,`partner_tab`.`fax_2_area`,`partner_tab`.`fax_2`,`partner_tab`.`author`,`partner_tab`.`create_date` from partner_tab limit 0,10
+10/22/04 22:16:29,073 [1492] DEBUG Table Manager - show grid 
+10/22/04 22:16:29,075 [1492] DEBUG Table Manager - end basic_handler......364
+10/22/04 22:16:34,070 [1492] DEBUG Table Manager - start method final_init.....111
+10/22/04 22:16:34,072 [1492] DEBUG Table Manager - end method final_init.....144
+10/22/04 22:16:34,072 [1492] DEBUG Table Manager - start method final_init.....111
+10/22/04 22:16:34,073 [1492] DEBUG Table Manager - end method final_init.....144
+10/22/04 22:16:34,151 [1492] DEBUG Table Manager - Starting basic_handler......264browse
+10/22/04 22:16:34,152 [1492] DEBUG Table Manager - sql query select user_tab.`rowid`,`user_tab`.`username`,`user_tab`.`password`,`user_tab`.`level`,`user_tab`.`group`,`user_tab`.`email` from user_tab limit 0,10
+10/22/04 22:16:34,154 [1492] DEBUG Table Manager - show grid 
+10/22/04 22:16:34,158 [1492] DEBUG Table Manager - sql query select count(1) from user_tab
+10/22/04 22:16:34,160 [1492] DEBUG Table Manager - show new record 
+10/22/04 22:16:34,161 [1492] DEBUG Table Manager - end basic_handler......364
+10/22/04 22:16:35,327 [1492] DEBUG Table Manager - start method final_init.....111
+10/22/04 22:16:35,328 [1492] DEBUG Table Manager - end method final_init.....144
+10/22/04 22:16:35,328 [1492] DEBUG Table Manager - start method final_init.....111
+10/22/04 22:16:35,329 [1492] DEBUG Table Manager - end method final_init.....144
+10/22/04 22:16:35,401 [1492] DEBUG Table Manager - Starting basic_handler......264browse
+10/22/04 22:16:35,412 [1492] DEBUG Table Manager - sql query select user_tab.`rowid`,`user_tab`.`username`,`user_tab`.`password`,`user_tab`.`level`,`user_tab`.`group`,`user_tab`.`email` from user_tab order by group ASC limit 0,10
+10/22/04 22:16:39,945 [1492] DEBUG Table Manager - start method final_init.....111
+10/22/04 22:16:39,947 [1492] DEBUG Table Manager - end method final_init.....144
+10/22/04 22:16:40,040 [1492] DEBUG Table Manager - Starting basic_handler......264browse
+10/22/04 22:16:40,042 [1492] DEBUG Table Manager - sql query select partner_tab.`rowid`,`partner_tab`.`partner_id`,`partner_tab`.`name`,`partner_tab`.`password`,`partner_tab`.`email`,`partner_tab`.`address_1`,`partner_tab`.`address_2`,`partner_tab`.`city`,`partner_tab`.`state`,`partner_tab`.`website`,`partner_tab`.`phone_1_area`,`partner_tab`.`phone_1`,`partner_tab`.`phone_2_area`,`partner_tab`.`phone_2`,`partner_tab`.`fax_1_area`,`partner_tab`.`fax_1`,`partner_tab`.`fax_2_area`,`partner_tab`.`fax_2`,`partner_tab`.`author`,`partner_tab`.`create_date` from partner_tab limit 0,10
+10/22/04 22:16:40,045 [1492] DEBUG Table Manager - show grid 
+10/22/04 22:16:40,047 [1492] DEBUG Table Manager - end basic_handler......364
+10/22/04 22:16:41,185 [1492] DEBUG Table Manager - start method final_init.....111
+10/22/04 22:16:41,187 [1492] DEBUG Table Manager - end method final_init.....144
+10/22/04 22:16:41,210 [1492] DEBUG Table Manager - Starting basic_handler......264browse
+10/22/04 22:16:41,211 [1492] DEBUG Table Manager - sql query select partner_tab.`rowid`,`partner_tab`.`partner_id`,`partner_tab`.`name`,`partner_tab`.`password`,`partner_tab`.`email`,`partner_tab`.`address_1`,`partner_tab`.`address_2`,`partner_tab`.`city`,`partner_tab`.`state`,`partner_tab`.`website`,`partner_tab`.`phone_1_area`,`partner_tab`.`phone_1`,`partner_tab`.`phone_2_area`,`partner_tab`.`phone_2`,`partner_tab`.`fax_1_area`,`partner_tab`.`fax_1`,`partner_tab`.`fax_2_area`,`partner_tab`.`fax_2`,`partner_tab`.`author`,`partner_tab`.`create_date` from partner_tab order by phone_1_area ASC limit 0,10
+10/22/04 22:16:41,215 [1492] DEBUG Table Manager - show grid 
+10/22/04 22:16:41,218 [1492] DEBUG Table Manager - end basic_handler......364
+10/22/04 22:16:42,062 [1492] DEBUG Table Manager - start method final_init.....111
+10/22/04 22:16:42,063 [1492] DEBUG Table Manager - end method final_init.....144
+10/22/04 22:16:42,083 [1492] DEBUG Table Manager - Starting basic_handler......264browse
+10/22/04 22:16:42,084 [1492] DEBUG Table Manager - sql query select partner_tab.`rowid`,`partner_tab`.`partner_id`,`partner_tab`.`name`,`partner_tab`.`password`,`partner_tab`.`email`,`partner_tab`.`address_1`,`partner_tab`.`address_2`,`partner_tab`.`city`,`partner_tab`.`state`,`partner_tab`.`website`,`partner_tab`.`phone_1_area`,`partner_tab`.`phone_1`,`partner_tab`.`phone_2_area`,`partner_tab`.`phone_2`,`partner_tab`.`fax_1_area`,`partner_tab`.`fax_1`,`partner_tab`.`fax_2_area`,`partner_tab`.`fax_2`,`partner_tab`.`author`,`partner_tab`.`create_date` from partner_tab order by phone_1_area DESC limit 0,10
+10/22/04 22:16:42,088 [1492] DEBUG Table Manager - show grid 
+10/22/04 22:16:42,090 [1492] DEBUG Table Manager - end basic_handler......364
+10/22/04 22:16:43,416 [1492] DEBUG Table Manager - start method final_init.....111
+10/22/04 22:16:43,417 [1492] DEBUG Table Manager - end method final_init.....144
+10/22/04 22:16:43,524 [1492] DEBUG Table Manager - Starting basic_handler......264browse
+10/22/04 22:16:43,526 [1492] DEBUG Table Manager - sql query select partner_tab.`rowid`,`partner_tab`.`partner_id`,`partner_tab`.`name`,`partner_tab`.`password`,`partner_tab`.`email`,`partner_tab`.`address_1`,`partner_tab`.`address_2`,`partner_tab`.`city`,`partner_tab`.`state`,`partner_tab`.`website`,`partner_tab`.`phone_1_area`,`partner_tab`.`phone_1`,`partner_tab`.`phone_2_area`,`partner_tab`.`phone_2`,`partner_tab`.`fax_1_area`,`partner_tab`.`fax_1`,`partner_tab`.`fax_2_area`,`partner_tab`.`fax_2`,`partner_tab`.`author`,`partner_tab`.`create_date` from partner_tab order by name DESC limit 0,10
+10/22/04 22:16:43,530 [1492] DEBUG Table Manager - show grid 
+10/22/04 22:16:43,532 [1492] DEBUG Table Manager - end basic_handler......364
+10/22/04 22:16:44,414 [1492] DEBUG Table Manager - start method final_init.....111
+10/22/04 22:16:44,415 [1492] DEBUG Table Manager - end method final_init.....144
+10/22/04 22:16:44,489 [1492] DEBUG Table Manager - Starting basic_handler......264browse
+10/22/04 22:16:44,491 [1492] DEBUG Table Manager - sql query select partner_tab.`rowid`,`partner_tab`.`partner_id`,`partner_tab`.`name`,`partner_tab`.`password`,`partner_tab`.`email`,`partner_tab`.`address_1`,`partner_tab`.`address_2`,`partner_tab`.`city`,`partner_tab`.`state`,`partner_tab`.`website`,`partner_tab`.`phone_1_area`,`partner_tab`.`phone_1`,`partner_tab`.`phone_2_area`,`partner_tab`.`phone_2`,`partner_tab`.`fax_1_area`,`partner_tab`.`fax_1`,`partner_tab`.`fax_2_area`,`partner_tab`.`fax_2`,`partner_tab`.`author`,`partner_tab`.`create_date` from partner_tab order by name ASC limit 0,10
+10/22/04 22:16:44,494 [1492] DEBUG Table Manager - show grid 
+10/22/04 22:16:44,510 [1492] DEBUG Table Manager - end basic_handler......364
+10/24/04 09:47:05,137 [1492] DEBUG Table Manager - start method final_init.....111
+10/24/04 09:47:05,204 [1492] DEBUG Table Manager - end method final_init.....144
+10/24/04 09:47:05,222 [1492] DEBUG Table Manager - Starting basic_handler......264browse
+10/24/04 09:47:05,224 [1492] DEBUG Table Manager - sql query select project_tab.`rowid`,`project_tab`.`partner_id`,`project_tab`.`project_id`,`project_tab`.`cu_name`,`project_tab`.`cu_address_1`,`project_tab`.`cu_address_2`,`project_tab`.`cu_state`,`project_tab`.`cu_city`,`project_tab`.`cu_website`,`project_tab`.`cu_phone_1_area`,`project_tab`.`cu_phone_1`,`project_tab`.`cu_phone_2_area`,`project_tab`.`cu_phone_2`,`project_tab`.`cu_fax_1_area`,`project_tab`.`cu_fax_1`,`project_tab`.`cu_fax_2_area`,`project_tab`.`cu_fax_2`,`project_tab`.`cc1_name`,`project_tab`.`cc1_title`,`project_tab`.`cc1_phone_area`,`project_tab`.`cc1_phone`,`project_tab`.`cc1_phone_ext`,`project_tab`.`cc1_cell`,`project_tab`.`cc1_email`,`project_tab`.`cc2_name`,`project_tab`.`cc2_title`,`project_tab`.`cc2_phone_area`,`project_tab`.`cc2_phone`,`project_tab`.`cc2_phone_ext`,`project_tab`.`cc2_cell`,`project_tab`.`cc2_email`,`project_tab`.`name`,`project_tab`.`total`,`project_tab`.`list_price`,`project_tab`.`pc1_name`,`project_tab`.`pc1_title`,`project_tab`.`pc1_phone_area`,`project_tab`.`pc1_phone`,`project_tab`.`pc1_phone_ext`,`project_tab`.`pc1_cell`,`project_tab`.`pc1_email`,`project_tab`.`pc2_name`,`project_tab`.`pc2_title`,`project_tab`.`pc2_phone_area`,`project_tab`.`pc2_phone`,`project_tab`.`pc2_phone_ext`,`project_tab`.`pc2_cell`,`project_tab`.`pc2_email`,`project_tab`.`author`,`project_tab`.`create_date`,`project_tab`.`status`,`project_tab`.`po_id`,`project_tab`.`po1_exp_date`,`project_tab`.`po2_exp_date`,`project_tab`.`po_stage`,`project_tab`.`po_accept_date`,`project_tab`.`email_cookie` from project_tab
+10/24/04 09:47:05,463 [1492] DEBUG Table Manager - end basic_handler......364
+10/24/04 09:47:09,449 [1492] DEBUG Table Manager - start method final_init.....111
+10/24/04 09:47:09,450 [1492] DEBUG Table Manager - end method final_init.....144
+10/24/04 09:47:09,498 [1492] DEBUG Table Manager - Starting basic_handler......264browse
+10/24/04 09:47:09,500 [1492] DEBUG Table Manager - sql query select partner_tab.`rowid`,`partner_tab`.`partner_id`,`partner_tab`.`name`,`partner_tab`.`password`,`partner_tab`.`email`,`partner_tab`.`address_1`,`partner_tab`.`address_2`,`partner_tab`.`city`,`partner_tab`.`state`,`partner_tab`.`website`,`partner_tab`.`phone_1_area`,`partner_tab`.`phone_1`,`partner_tab`.`phone_2_area`,`partner_tab`.`phone_2`,`partner_tab`.`fax_1_area`,`partner_tab`.`fax_1`,`partner_tab`.`fax_2_area`,`partner_tab`.`fax_2`,`partner_tab`.`author`,`partner_tab`.`create_date` from partner_tab limit 0,10
+10/24/04 09:47:09,552 [1492] DEBUG Table Manager - show grid 
+10/24/04 09:47:09,555 [1492] DEBUG Table Manager - end basic_handler......364
+10/24/04 09:47:12,578 [1492] DEBUG Table Manager - start method final_init.....111
+10/24/04 09:47:12,580 [1492] DEBUG Table Manager - end method final_init.....144
+10/24/04 09:47:12,608 [1492] DEBUG Table Manager - Starting basic_handler......264browse
+10/24/04 09:47:12,610 [1492] DEBUG Table Manager - sql query select partner_tab.`rowid`,`partner_tab`.`partner_id`,`partner_tab`.`name`,`partner_tab`.`password`,`partner_tab`.`email`,`partner_tab`.`address_1`,`partner_tab`.`address_2`,`partner_tab`.`city`,`partner_tab`.`state`,`partner_tab`.`website`,`partner_tab`.`phone_1_area`,`partner_tab`.`phone_1`,`partner_tab`.`phone_2_area`,`partner_tab`.`phone_2`,`partner_tab`.`fax_1_area`,`partner_tab`.`fax_1`,`partner_tab`.`fax_2_area`,`partner_tab`.`fax_2`,`partner_tab`.`author`,`partner_tab`.`create_date` from partner_tab
+10/24/04 09:47:12,779 [1492] DEBUG Table Manager - end basic_handler......364
+10/24/04 09:47:23,500 [1492] DEBUG Table Manager - start method final_init.....111
+10/24/04 09:47:23,501 [1492] DEBUG Table Manager - end method final_init.....144
+10/24/04 09:47:23,586 [1492] DEBUG Table Manager - Starting basic_handler......264browse
+10/24/04 09:47:23,587 [1492] DEBUG Table Manager - sql query select partner_tab.`rowid`,`partner_tab`.`partner_id`,`partner_tab`.`name`,count(1) from partner_tab  left join project_tab on (partner_tab.partner_id=project_tab.partner_id) group by partner_tab.partner_id limit 0,10
+10/24/04 09:47:23,675 [1492] DEBUG Table Manager - show grid 
+10/24/04 09:47:23,677 [1492] DEBUG Table Manager - end basic_handler......364
+10/24/04 09:47:25,672 [1492] DEBUG Table Manager - start method final_init.....111
+10/24/04 09:47:25,675 [1492] DEBUG Table Manager - end method final_init.....144
+10/24/04 09:47:25,821 [1492] DEBUG Table Manager - Starting basic_handler......264browse
+10/24/04 09:47:25,823 [1492] DEBUG Table Manager - sql query select project_tab.`rowid`,`project_tab`.`partner_id`,`project_tab`.`project_id`,`project_tab`.`cu_name`,`project_tab`.`cu_address_1`,`project_tab`.`cu_address_2`,`project_tab`.`cu_state`,`project_tab`.`cu_city`,`project_tab`.`cu_website`,`project_tab`.`cu_phone_1_area`,`project_tab`.`cu_phone_1`,`project_tab`.`cu_phone_2_area`,`project_tab`.`cu_phone_2`,`project_tab`.`cu_fax_1_area`,`project_tab`.`cu_fax_1`,`project_tab`.`cu_fax_2_area`,`project_tab`.`cu_fax_2`,`project_tab`.`cc1_name`,`project_tab`.`cc1_title`,`project_tab`.`cc1_phone_area`,`project_tab`.`cc1_phone`,`project_tab`.`cc1_phone_ext`,`project_tab`.`cc1_cell`,`project_tab`.`cc1_email`,`project_tab`.`cc2_name`,`project_tab`.`cc2_title`,`project_tab`.`cc2_phone_area`,`project_tab`.`cc2_phone`,`project_tab`.`cc2_phone_ext`,`project_tab`.`cc2_cell`,`project_tab`.`cc2_email`,`project_tab`.`name`,`project_tab`.`total`,`project_tab`.`list_price`,`project_tab`.`pc1_name`,`project_tab`.`pc1_title`,`project_tab`.`pc1_phone_area`,`project_tab`.`pc1_phone`,`project_tab`.`pc1_phone_ext`,`project_tab`.`pc1_cell`,`project_tab`.`pc1_email`,`project_tab`.`pc2_name`,`project_tab`.`pc2_title`,`project_tab`.`pc2_phone_area`,`project_tab`.`pc2_phone`,`project_tab`.`pc2_phone_ext`,`project_tab`.`pc2_cell`,`project_tab`.`pc2_email`,`project_tab`.`author`,`project_tab`.`create_date`,`project_tab`.`status`,`project_tab`.`po_id`,`project_tab`.`po1_exp_date`,`project_tab`.`po2_exp_date`,`project_tab`.`po_stage`,`project_tab`.`po_accept_date`,`project_tab`.`email_cookie` from project_tab where po_id='' and po1_exp_date > '2004-10-24 09:47:26'
+10/24/04 09:47:25,887 [1492] DEBUG Table Manager - end basic_handler......364
+10/24/04 09:47:34,565 [1492] DEBUG Table Manager - start method final_init.....111
+10/24/04 09:47:34,569 [1492] DEBUG Table Manager - end method final_init.....144
+10/24/04 09:47:34,604 [1492] DEBUG Table Manager - Starting basic_handler......264browse
+10/24/04 09:47:34,605 [1492] DEBUG Table Manager - sql query select partner_tab.`rowid`,`partner_tab`.`partner_id`,`partner_tab`.`name`,`partner_tab`.`password`,`partner_tab`.`email`,`partner_tab`.`address_1`,`partner_tab`.`address_2`,`partner_tab`.`city`,`partner_tab`.`state`,`partner_tab`.`website`,`partner_tab`.`phone_1_area`,`partner_tab`.`phone_1`,`partner_tab`.`phone_2_area`,`partner_tab`.`phone_2`,`partner_tab`.`fax_1_area`,`partner_tab`.`fax_1`,`partner_tab`.`fax_2_area`,`partner_tab`.`fax_2`,`partner_tab`.`author`,`partner_tab`.`create_date` from partner_tab where partner_id='pa1'
+10/24/04 09:47:34,757 [1492] DEBUG Table Manager - start method final_init.....111
+10/24/04 09:47:34,759 [1492] DEBUG Table Manager - end method final_init.....144
+10/24/04 09:47:34,762 [1492] DEBUG Table Manager - colname for logical-parent.....416 partner_id
+10/24/04 09:47:34,789 [1492] DEBUG Table Manager - sql query select project_tab.`rowid`,`project_tab`.`partner_id`,`project_tab`.`project_id`,`project_tab`.`cu_name`,`project_tab`.`cu_address_1`,`project_tab`.`cu_address_2`,`project_tab`.`cu_state`,`project_tab`.`cu_city`,`project_tab`.`cu_website`,`project_tab`.`cu_phone_1_area`,`project_tab`.`cu_phone_1`,`project_tab`.`cu_phone_2_area`,`project_tab`.`cu_phone_2`,`project_tab`.`cu_fax_1_area`,`project_tab`.`cu_fax_1`,`project_tab`.`cu_fax_2_area`,`project_tab`.`cu_fax_2`,`project_tab`.`cc1_name`,`project_tab`.`cc1_title`,`project_tab`.`cc1_phone_area`,`project_tab`.`cc1_phone`,`project_tab`.`cc1_phone_ext`,`project_tab`.`cc1_cell`,`project_tab`.`cc1_email`,`project_tab`.`cc2_name`,`project_tab`.`cc2_title`,`project_tab`.`cc2_phone_area`,`project_tab`.`cc2_phone`,`project_tab`.`cc2_phone_ext`,`project_tab`.`cc2_cell`,`project_tab`.`cc2_email`,`project_tab`.`name`,`project_tab`.`total`,`project_tab`.`list_price`,`project_tab`.`pc1_name`,`project_tab`.`pc1_title`,`project_tab`.`pc1_phone_area`,`project_tab`.`pc1_phone`,`project_tab`.`pc1_phone_ext`,`project_tab`.`pc1_cell`,`project_tab`.`pc1_email`,`project_tab`.`pc2_name`,`project_tab`.`pc2_title`,`project_tab`.`pc2_phone_area`,`project_tab`.`pc2_phone`,`project_tab`.`pc2_phone_ext`,`project_tab`.`pc2_cell`,`project_tab`.`pc2_email`,`project_tab`.`author`,`project_tab`.`create_date`,`project_tab`.`status`,`project_tab`.`po_id`,`project_tab`.`po1_exp_date`,`project_tab`.`po2_exp_date`,`project_tab`.`po_stage`,`project_tab`.`po_accept_date`,`project_tab`.`email_cookie` from project_tab where partner_id='pa1' and partner_id='pa1' limit 0,10
+10/24/04 09:47:34,823 [1492] DEBUG Table Manager - show grid 
+10/24/04 09:47:34,828 [1492] DEBUG Table Manager - end basic_handler......364

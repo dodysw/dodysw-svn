@@ -1,0 +1,45 @@
+<style>
+body {
+    background-color: #ffffff;
+    font-size: 11pt;
+    color: #000000;
+    font-family: Arial, Verdana, Helvetica, sans-serif;
+    scrollbar-face-color: #C40;
+    scrollbar-shadow-color: #884;
+    scrollbar-highlight-color: #DDC;
+    scrollbar-track-color: #F60;
+    scrollbar-arrow-color: #000000;
+    scrollbar-3dlight-color: #DDC;
+    scrollbar-darkshadow-color: #884;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    padding: 0px;
+}
+dl,p,ul,li,blockquote,address,dt,dd,th,td,div {font-family:arial,sans-serif;color:#000;}
+address,dt,dd,dl {margin-left:1em;}
+h1,h2,h3,h4,h5,h6{font-family:arial,sans-serif;color:#005a9c}
+small{font-family:arial;}
+h3{margin-left:1em;}
+h4{margin-left:2em;}
+h5{margin-left:3em;}
+th{font-size:80%;font-weight:bold;}
+td{font-size:75%;}
+//.greyformtitle { padding: 3px;  border: 1px solid #BBBBBB; background-color: #C5C5D5; }
+//.greyformlight { padding: 3px;  border: 1px solid #BBBBBB; background-color: #EEEEEE; }
+//.greyformdark { padding: 3px; border: 1px solid #BBBBBB; background-color: #DDDDDD; }
+.error { padding: 3px; border: 1px solid #BBBBBB; background-color: #F6aaaa; }
+.asterix { color:#f00; }
+
+//TH, TH a{	font-family:arial, helvetica, sans-serif;	font-size: 12px;	color: #FFFFFF;	background: #4F79A3 url('images/th.jpg') repeat-x top left;	text-align: center;    text-decoration: none;}
+
+//TH.heading {    font-size: 16px;}
+//.greyformlight {background: #dddddd url('images/td0.jpg') repeat-x top left;}
+//.greyformdark {background: #eeeeee url('images/td1.jpg') repeat-x top left;}
+.greygridlight {background: #dddddd url('images/td0.jpg') repeat-x top left;}
+.greygriddark {background: #eeeeee url('images/td1.jpg') repeat-x top left;}
+
+
+.contenttitlealt {font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#336666;text-decoration:none;font-weight:bold;}
+</style>
