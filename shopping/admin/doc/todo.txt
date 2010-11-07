@@ -1,0 +1,72 @@
+Al-Admin Todo
+=============
+Note:
+not all feature is applicable since al-admin is targeted for:
+    - all GUI based browser with probably...
+    - different javascript implementation
+    - no activeX
+    - no java applet
+    - multiplatform
+    - slow/high delay internet link
+    - no image
+    - phpmyadmin style requirement. since phpmyadmin is used by a lot of people, by setting phpmyadmin as benchmark, we could duplicate something it's doing right.
+
+From tsunami:
+- red-color callback
+- single/multiple jargon replacement for form/table
+- better welcome page
+- replace combo-style nav menu with horizontal tab-style menu
+X "multi-program instance" concept <- naah, will be slow, since "task changing" requires a req/resp. better to open two browser.
+- main menu on top, next to logo, support
+- log out on top right
+- when opening program, by default, on new mode
+- date lov button for date field
+- date mask
+- single mode: delete button
+- single mode: refresh button
+- single mode: new button
+- change mode button
+- change all task combo-style into button
+- single: red background on error field
+- multiple: red background on error cell
+- multiple: pink background on error row
+- "processing request" dialog box with hour glass animated gif, when user click
+- multiple: on hover on row, change colour
+- first open program behaviour di-attach ke menu item property, instead of directly on program. first open program behaviour:
+    - single/multiple view
+    - new/populate/query/
+- additional menu item property
+    - hidden on welcome menu
+    - hidden on menubar
+    - hidden on browser client
+    - hidden on windows client
+- defered combo content: combo value is populated the first time it's used
+- field masking should be enabled, please please...
+- good idea on a "Transaction" components:
+    - Transaction
+        - Region (Has many types: Frame, VerticalTile, HorizontalTile, RegionNotebook, InstanceNotebook, InstanceNavigator, SingleRegion, StandardGrid, TransposedGrid, HyperGrid)
+            - Fields
+            - Buttons
+- context-help ala wiki !!!!
+    - need more details here...
+X checkbox widget should not be forced to be bool datatype. Naah. Tsunami force value to be char 'Y' or 'N'
+- GraphicField widget. display graphic jpg/bmp/gif/png.if datatype is char, treat it as path to file. if datatype blob, treat it as the content of the graphic file.
+- AnyFile widget.
+    - on normal mode: show filename+extension, right click show Insert.., Open, Delete
+    - on insert mode: show empty, right click show Insert...
+    - Insert action: pop file browser, get path, depending on file datatype:
+        - character: save file path, display the filename+Extension component (and on windows, get the associated icon of the extension and display it next to the filename)
+        - blob: save file
+- application abbrevation is used as table prefix.
+    - good idea to differentiate multi application.
+    - tsunami store application specific tables in "tsunami_appl" database
+    - good idea, to avoid adding a column to store application abbrevation on ALL table
+- store internal tables used by tsunami in separate database, so user do not mess with the db
+    -
+- store default internal column for each table:
+    - creation_date_time
+    - created_by -> int, conserve space
+    - last_update_date_time
+    - last_updated_by -> int, conserve space
+    - last_updating_process
+    - id_id -> similar to rowid

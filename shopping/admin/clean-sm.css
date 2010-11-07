@@ -1,0 +1,29 @@
+<style>
+body, a, td, input, textarea, select {font-size: 9pt; font-family: Arial, Verdana, Helvetica, sans-serif; padding: 0px; margin: 0px;}
+dl,p,ul,li,blockquote,address,dt,dd,th,td,div {font-family:verdana,tahoma,arial,sans-serif;color:#000;}
+address,dt,dd,dl {margin-left:1em;}
+h1,h2,h3,h4,h5,h6{font-family:arial,sans-serif;color:#005a9c}
+small{font-family:Tahoma,arial;}
+pre{font-size: 9pt}
+h3{margin-left:1em;}
+h4{margin-left:2em;}
+h5{margin-left:3em;}
+th{font-size:80%;font-weight:bold;}
+td{font-size:75%;}
+.greyformtitle { padding: 3px;  border: 1px solid #BBBBBB; background-color: #C5C5D5; }
+.error { padding: 3px; border: 1px solid #BBBBBB; background-color: #F6aaaa; }
+.asterix { color:#f00; }
+
+th,th a{font-family:arial, helvetica, sans-serif;font-size:9pt;	color: #FFFFFF;	background: #4F79A3 url('images/th.jpg') repeat-x top left;	text-align: center; text-decoration: none;}
+.greyformlight { background: #dddddd url('images/td0.jpg') repeat-x top left; }
+.greyformdark { background: #eeeeee url('images/td1.jpg') repeat-x top left; }
+.greygridlight { background: #dddddd url('images/td0.jpg') repeat-x top left;}
+.greygriddark {background: #eeeeee url('images/td1.jpg') repeat-x top left;}
+
+
+input, textarea, select { border: solid 1px rgb(192,192,192);}   /* Windows XP like flat input field look */
+td.ttwm { padding:0px 0px 0px 7px;border-top:solid 1px; border-left:solid 1px; border-color:black; color:black; background-color:rgb(255,250,234);}
+td.ttcdwm {padding:0px; font-size:6pt;border-collapse:collapse; border-right:solid 1px; border-color:black; background-color:rgb(255,250,234);}
+td.mwrap { padding:10px;border:solid 1px; border-color:rgb(97,76,109); background-color: rgb(241,243,245);}
+input.required, textarea.required, select.required, img.required{ background-color:rgb(223,247,255);}
+</style>
