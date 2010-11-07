@@ -1,0 +1,88 @@
+- browse
+    - no _request processing
+    - populate >1 rows to this->ds
+    - show this->ds->tcXyz[0], [1], [2], ...
+- show 1
+    - _request processing: rowid
+    - populate 1 rowid to this->ds
+    - show this->ds->tcXyz[0]
+- show multi
+    - _request processing: rowid, rowid, rowid
+    - populate >1 rows to this->ds
+    - show this->ds->tcXyz[0], [1], [2], ...
+- del 1
+    - check delete
+        - _request processing: rowid
+        - populate 1 row (optional) to this->ds
+        - access this->ds->tcXyz[0] (optional)
+    - delete
+        - _request processing: rowid
+        - populate 1 row (optional) to this->ds
+        - access this->ds->tcXyz[0] (optional)
+- del multi
+    - check delete
+        - _request processing: rowid, rowid, rowid
+        - populate >1 rows (optional) to this->ds
+        - access this->ds->tcXyz[0], [1], [2], ... (optional)
+    - delete
+        - _request processing: rowid
+        - populate >1 rows (optional) to this->ds
+        - access this->ds->tcXyz[0], [1], [2], ... (optional)
+- edit 1
+    - prepare
+        - _request processing: rowid
+        - populate 1 row to this->ds
+        - access this->ds->tcXyz[0], [1], [2], ... (optional)
+    - prepare again
+        - _request processing: rowid, field1, field2, ...
+        - populate 1 row (still needed for non-posted fields, such as non-updatable field) to this->ds
+        - overwrite _request to this->ds
+
+note: special for web, we do not trust _request! so we still want to use our populate as the trusted, and fill-up the updatable from _request!
+
+        - access this->ds->tcXyz[0], [1], [2], ... (optional)
+    - check edit
+        - _request processing: rowid, field1, field2, ...
+        - populate 1 row (optional) to this->ds
+        - overwrite _request to this->ds
+        - access this->ds->tcXyz[0], [1], [2], ... (optional)
+    - edit
+        - _request processing: rowid, field1, field2, ...
+        - populate 1 row to this->ds
+        - overwrite _request to this->ds
+        - access this->ds->tcXyz[0], [1], [2], ... (optional)
+- edit multi
+    - prepare
+    - prepare again
+    - check edit
+    - edit
+- new 1
+    - prepare
+        - access this->ds->tcXyz[0]
+    - prepare again
+        - _request processing: field1, field2, ...
+        - copy _request to this->ds
+        - access this->ds->tcXyz[0]
+    - check new
+        - _request processing: field1, field2, ...
+        - copy _request to this->ds
+        - access this->ds->tcXyz[0]
+    - new
+        - _request processing: field1, field2, ...
+        - copy _request to this->ds
+        - access this->ds->tcXyz[0]
+- new multi
+    - prepare
+        - access this->ds->tcXyz[0], [1], [2], ...
+    - prepare again
+        - _request processing: field1, field2, ...
+        - copy _request to this->ds
+        - access this->ds->tcXyz[0], [1], [2], ...
+    - check new
+        - _request processing: field1, field2, ...
+        - copy _request to this->ds
+        - access this->ds->tcXyz[0], [1], [2], ...
+    - new
+        - _request processing: field1, field2, ...
+        - copy _request to this->ds
+        - access this->ds->tcXyz[0], [1], [2], ...

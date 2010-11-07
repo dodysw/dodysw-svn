@@ -1,0 +1,95 @@
+<html>
+<head>
+<title><phpdig:title_message/></title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+body { font-family: arial,helvetica; text-align: center; background-color: #00A47F; }
+.phpdigHighlight { font-style: oblique; font-weight: bold; background-color: #B8FAE1; }
+.greenTable { border: 0px; border-collapse: collapse; margin: 5px; background-color: #A6E7CF; }
+.greenCell { text-align: justify; border: 0px; margin: 0px; padding: 0px; background-color: #A6E7CF; }
+.greenCellHead { font-size: 10pt; text-align: justify; border: 0px; margin: 0px; padding: 2px; padding-left: 30px; background-color: #A6E7CF; background-image: url(./tpl_img/barre-verte.gif); background-repeat: no-repeat; }
+.greenSmallCellHead { font-size: 10pt; text-align: justify; border: 0px; margin: 0px; padding: 2px; padding-left: 30px; background-color: #A6E7CF; background-image: url(./tpl_img/barre-verte-courte.gif); background-repeat: no-repeat; }
+.greenSmallCell { font-size: 12px; text-align: justify; border: 0px; margin: 0px; padding: 2px; background-color: #A6E7CF; }
+.greenFormCell { text-align: center; border: 0px; margin: 0px; padding: 2px; background-color: #A6E7CF; }
+.phpdiginputtext { padding: 2px; border: 1px black solid; background-color: #B8FAE1; }
+.phpdiginputsubmit { background-color: #00C397; }
+.greenFormCell { text-align: center; border: 0px; margin: 0px; padding: 2px; background-color: #A6E7CF; }
+a.phpdig { text-decoration: none; font-weight: bold; color: #072A21; }
+a.phpdig:hover { text-decoration: underline; color: #285F52; background-color: #B8FAE1; }
+.phpdigTitle { font-weight: bold; color: #144E41; }
+</style>
+<phpdig:js_for_clicks/>
+</head>
+<body>
+<div align="center">
+<p><phpdig:templates_links/></p>
+
+<table class="greenTable" width="350">
+<tr>
+<td class="greenSmallCellHead" colspan="2">
+<span class="phpdigTitle"><phpdig:form_title/></span>
+</td>
+</tr>
+<tr>
+<td class="greenFormCell">
+<a href="http://www.phpdig.net/" target="_blank"><img src="phpdig_powered_2.gif" width="88" height="31" border="0" alt="Powered by PhpDig" align="top"/></a>
+</td>
+<td class="greenFormCell">
+<phpdig:form_head/>
+  <phpdig:form_field/>
+  <phpdig:form_button/>
+  <br><phpdig:form_dropdown/><br>
+<phpdig:form_foot/>
+</td>
+</tr>
+<tr>
+<td class="greenCell" colspan="2"><img src="tpl_img/barre-verte-bas-courte.gif" width="350" height="5"/></td>
+</tr>
+</table>
+
+<b><phpdig:result_message/></b>
+<br /><i><phpdig:ignore_message/></i>
+<br /><i><phpdig:ignore_commess/></i>
+
+<phpdig:results>
+<br />
+<table class="greenTable" width="500">
+<tr>
+<td class="greenCellHead"><phpdig:n/>. <phpdig:page_link/></td>
+</tr>
+<tr>
+<td class="greenCell"><img src="tpl_img/orbar-left.gif" width="7" height="16"><img src="tpl_img/orbar-center.gif" width="<phpdig:weight/>" alt="<phpdig:weight/> %" height="16"><img src="tpl_img/orbar-right.gif" width="7" height="16"></td>
+</tr>
+<tr>
+<td class="greenSmallCell"><phpdig:text/></td>
+</tr>
+<tr>
+<td class="greenSmallCell"><phpdig:filesize/> k</td>
+</tr>
+<tr>
+<td class="greenCell"><img src="tpl_img/barre-verte-bas.gif" width="500" height="5"/></td>
+</tr>
+</table>
+</phpdig:results>
+
+<br />
+<table class="greenTable" width="350">
+<tr>
+<td class="greenCell"><img src="tpl_img/barre-verte-courte.gif" width="350" height="20"/></td>
+</tr>
+<tr>
+<td class="greenFormCell">
+<phpdig:nav_bar/>
+</td>
+</tr>
+<tr>
+<td class="greenCell"><img src="tpl_img/barre-verte-bas-courte.gif" width="350" height="5"/></td>
+</tr>
+</table>
+
+</div>
+<div align="center">
+<phpdig:powered_by_link/>
+</div>
+</body>
+</html>

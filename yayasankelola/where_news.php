@@ -1,0 +1,1 @@
+<? $mdl = instantiate_module('news'); $mdl->show_search_result() ?>

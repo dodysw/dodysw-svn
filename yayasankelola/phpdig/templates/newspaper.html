@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title><phpdig:title_message/></title>
+<style type="text/css">
+body { font-family: times new roman,times,serif;
+       background-color: #FFFBF5;
+       margin-left: 15%;
+       margin-right: 15%; }
+a { font-family: times new roman,times,serif;
+    color: #444444; text-decoration: none; }
+a:hover { background-color: #D8D8D8; }
+.bigTitle { font-size: 18px;
+            font-weight: bold;
+            font-variant: small-caps;
+            letter-spacing: 2px;
+            margin-top: 10px;
+            margin-left: 10px; margin-right: 10px; }
+.mediumTitle { font-size: 14px; font-weight: bold; margin-left: 10px; margin-right: 10px; }
+.smallTitle { font-size: 12px; font-weight: bold; margin-left: 10px; margin-right: 10px; }
+.ctText { font-size: 14px; text-align: justify;
+          margin-left: 40px; margin-right: 50px;
+          margin-bottom: 10px; margin-top: 5px; }
+.ctText:first-letter { font-size: 30px; color: #444444; float: left; font-weight: bold; margin-right: 2px; }
+.phpdigHighlight { font-weight: bold; font-style: italic; }
+.phpdiginputtext { height: 25px; padding: 3px; border: 1px solid black; background-color: #DDDDDD; }
+.phpdigselect { border: 1px solid black; height: 23px; padding: 3px; background-color: #DDDDDD; }
+.separator { border-bottom: 1px solid black;
+             margin-left: 100px;
+             margin-right: 100px;
+             margin-top: 2px;
+             margin-bottom: 10px;
+             height: 1px; }
+.searchbox { text-align: center;
+             font-size: 12px;
+             width: 100%;
+             border: 1px dotted gray;
+             height: 30px;
+             padding: 5px;
+             background-color: #EEEEEE; }
+</style>
+<phpdig:js_for_clicks/>
+</head>
+<body>
+<table class="searchbox">
+<tr><td>
+<phpdig:templates_links/>
+</td></tr>
+</table>
+<phpdig:form_head/>
+<table class="searchbox" border="0">
+<tr><td><b class="bigTitle"><phpdig:form_title/></b></td><td>
+<phpdig:form_field/> <phpdig:form_button/>
+</td><td>
+<phpdig:form_select/>
+ </td><td>
+ <phpdig:radio/>
+ </td></tr>
+ <tr><td colspan="3" align="right">
+ <phpdig:form_dropdown/>
+ </td></tr>
+</table>
+<phpdig:form_foot/>
+
+<table class="searchbox">
+<tr><td class="mediumTitle">
+<span class="bigTitle"><phpdig:result_message/></span>
+<br><b>
+<phpdig:nav_bar/>
+</b></td></tr>
+</table>
+
+<phpdig:results>
+<div class="bigTitle">
+<phpdig:page_link/>
+</div>
+<div class="smallTitle"><phpdig:update_date/> (<phpdig:filesize/> kb)</div>
+<div class="ctText">
+<phpdig:text/>
+</div>
+<div class="separator"></div>
+</phpdig:results>
+
+</table></form><table class="searchbox">
+<tr><td class="mediumTitle"><b>
+<phpdig:nav_bar/>
+</b></td></tr>
+</table>
+<div align="center">
+<phpdig:powered_by_link/>
+</div>
+</body>
+</html>

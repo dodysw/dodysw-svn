@@ -1,0 +1,415 @@
+PhpDig is a light indexing robot/search engine written in Php
+It provides full text indexing.
+This program is provided under the GNU/GPL license.
+See LICENSE file for more informations
+
+CHANGELOG
+---------
+
+Note of version numbering :
+M.m.n[p]
+M : Major version number. Will mean major changes in code,
+    logic and features.
+m : Minor version number. Means important new features, ehance of
+    existing ones, and bugfixes.
+n : Sub-minor number. Means some new minor features and/or bugfixes
+p : Patch letter (b,c,d,...). Means fix of serious bugs without
+    any other changes
+
+Version 1.8.3
+--------------
+2004-07-14
+
+Fix chunk encoding transfer issue with GET requests (thanks to Nad).
+Correct typo in defined variable (thanks to davenewt).
+Improve limit to directory option so it is consistent across options.
+Allow links per depth to be set on a site by site basis.
+Various edits to files.
+
+Version 1.8.2
+--------------
+2004-07-12
+
+Magic quotes issue fixed when magic_quotes_runtime is on (thanks to majestique).
+Authentication method based on cookies fixed (thanks to pki, RobM, manfred).
+Variable edits for when register_globals is off (thanks to RobM).
+Option to show hosts with dirs added to search menu.
+Backwards order of search terms fixed.
+Limit spider to specific directory.
+
+Version 1.8.1
+--------------
+2004-07-06
+
+Click tracking now available (thanks to alivin70 and JÿGius³).
+Cron job text file management (thanks to alivin70 and JÿGius³).
+Search has 'did you mean X instead' fuzzy (thanks to Rolandks).
+GET request modification to pass cookies (thanks to fredh).
+Reading of robots.txt file updated (thanks to Carl Mikkelsen).
+PPT support using external binaries (thanks to Carl Mikkelsen).
+Limit spider to max of Y number of links per depth per site.
+Different authentication method based on cookies.
+Multiple session IDs and var names removable.
+Now reads base href tags for indexing.
+Some extra characters allowed in URLs.
+Plurality of some phrases updated.
+RSS feeds by search available.
+Search by site or directory.
+Can remove '-' index pages.
+Support for TIS-620 added.
+Different keyword storage.
+Various edits to files.
+Some bug fixes.
+
+Version 1.6.5
+--------------
+2003-12-03
+
+Escaping added to path and file if necessary (thanks to ullone for pointing this out).
+Highlight fixed when keyword is followed by period (thanks to mark for pointing this out).
+Regex relaxed to allow for more characters (thanks to RedThypon for pointing this out).
+Max number of results per site changed to allow all results in limit to searches.
+Search depth of level zero enabled for index.
+Option to bypass renice command added.
+
+Version 1.6.4
+--------------
+2003-11-16
+
+Display fix in result message (thanks to 123av for pointing this out).
+Regex applied to path and title (thanks to manfred for pointing this out).
+Option to bypass is_executable added (thanks to manfred for pointing this out).
+Option to specify temp filename length added (thanks to manfred for pointing this out).
+Empty temp files no longer in temp directory (thanks to manfred for pointing this out).
+Extension options and external binary process modified.
+Option to set max number of results per site added.
+Exact match word highlighting fixed again.
+
+Version 1.6.3
+--------------
+2003-11-09
+
+End of line marker fixed and added to config file (thanks to Rolandks for pointing this out).
+Search box size and maxlength options added to config file (thanks to Rolandks for suggesting this).
+Snippet display length option added to config file (thanks to plodz for inquiring).
+Missing l_time column added to logs table (thanks to Iltud and others for pointing this out).
+The PHP strip_tags replaced with regular expression (thanks to Rolandks and manute for helping).
+The PHP mysql_create_db replaced with mysql_query (thanks to rayvd for pointing this out).
+The PHPDIG_INCLUDE_COMMENT excluded from index (thanks to Iltud for pointing this out).
+Extension options for external binaries added to config file (thanks to those for helping).
+Exact match word highlighting fixed (thanks to those for pointing this out).
+
+Version 1.6.2
+--------------
+2003-04-06
+
+Add support of others charsets than 8859-1, encoding 8859-2 added (Jan Kincl).
+PhpDig handles meta http-equiv cookie.
+Function phpdigTestUrl fixed.
+Css classes for classic mode fixed.
+Bug on noindex and nofollow fixed (Michael Chapman).
+Small API doc added.
+Error on database creation script on some versions of MySql fixed.
+
+Version 1.6.1
+--------------
+2003-03-15
+
+Experimental handle of cookies added
+Experimental removing of Session ids
+Better handling of javascript window.open
+Handle default indexes as option
+Considers '+' as possible character in Urls
+Add average search time in logs
+All MySql connection parameters are now constants
+Update in install script fixed
+
+
+Version 1.6
+--------------
+2003-03-09
+
+PhpDig could now index PDF, MS-Word and MS-Excel files using external binaries.
+Locking system : An host is locked from concurrent indexings.
+Localization of all remaining hard-coded messages complete (Eric Chauvin).
+Optimized queries and template parsing.
+Admin interface and template "PhpDig" xhtml compliancy added (Eric Chauvin).
+Install web interface could update exising databases.
+Parts of html pages could be excluded from indexing with special formatted comments.
+Handling of mysql connections improved.
+Statistics on searchs are collected to know what the visitors want first in the website.
+New ranking system added, lowering ranking of pages with a lot of same words.
+More explanations of how phpdig works added in documentation.
+
+
+Version 1.4.8
+--------------
+2003-03-01
+
+Text snipets now match search mode (start/any/exact).
+Results extracts are more customizable.
+spider can read a file containing urls' list to explore.
+Delete more than one host at once from index is possible.
+New design for admin interface.
+Resume and force indexing fixed.
+Templates parsing fixed.
+Cleanup scripts fixed.
+
+Version 1.4.7
+--------------
+2003-02-26
+
+MySql tables can be prefixed by an user-defined string.
+Spidering an entire domain is now possible.
+Better handling of redirections.
+Doc spelling corrections (John Zastrow)
+Updated german locale file (Matthias Strohmaier)
+New Norwegian locale file (Martin Kristiansen)
+New Czech locale file (Dan Barta)
+Remaining E_ALL errors fixed (i tried to hunt all of them...)
+
+
+Version 1.4.6
+--------------
+2003-02-22
+
+PhpDig works with register_globals = off and/or Error_reporting = E_ALL
+Restore starting indexing by other path than /
+Using only <?php ?> tags now
+An option makes search function returning an array
+All functions renamed and prefixed by "phpdig"
+Using two specific CSS classes for results links and highlighting
+Some code improvement where made
+If an error message occurs while indexing, please download the
+
+
+Version 1.4.5c
+--------------
+2003-02-18
+
+Patch to correct content retrieval due to php bug.
+See Bug #22008 for more explanations.
+
+
+Version 1.4.5b
+--------------
+2003-02-17
+
+Broken indexation of hosts bound to another port than 80 repaired.
+
+
+Version 1.4.5
+--------------
+2003-02-16
+
+Note : Upgrade of database is needed, use the update_db_to_1_4_5.sql file.
+Search is now a function, making integration easier. (template could be only a part of a page.)
+Highlight fixed.
+Using a CSS instead "style.php" file.
+Configuration directives are now constants, except for arrays.
+Exclude a path at robot side is possible now.
+
+
+Version 1.4.4c
+--------------
+2003-02-09
+
+PhpDig works with PHP 4.3.0 (still register_globals=on).
+Spidering whith shell command (php-cli) fixed.
+Templates fixed.
+
+
+1.4.4b
+--------------
+2001-12-03
+Fixed doubles inserted in the sites table.
+
+
+Version 1.4.4
+--------------
+2001-12-02
+
+PhpDig can now spider a site binded to another port than 80.
+PhpDig can also spider a password protected site (please read the documentation warning).
+Ehanced directory view in admin mode.
+Islandic (!) special characters are now supported.
+Working on a E_ALL error_reporting level fixed.
+Bad Last-Modified HTTP header parsing fixed.
+
+
+Version 1.4.3
+--------------
+2001-11-27
+
+Improved templates system
+Field added in keywords table optimize search queries
+Some queries causing error fixed
+Code part causing php core dump fixed
+Not updated textual content fixed
+Update of branch/files fixed
+
+
+Version 1.4.2
+--------------
+2001-11-24
+
+Complete english documentation added.
+Best robots.txt file parsing : The wildcard * is now supported, and files can be specified (with complete path).
+The special character "ß" is included in indexing, some german words were not reconized. Thanks Christof Fritz for bug report.
+
+
+Version 1.4.1
+--------------
+2001-11-11
+
+Complete french documentation added (Need help on english translation)
+Simple http authentification added
+A bug in relative links parsing fixed.
+A bug in the test_url() function fixed.
+Thanks to Florian Perrichot for the bug report
+
+
+Version 1.4
+--------------
+2001-11-06
+
+Both spidering and indexing are proceeded in the same time.
+Much less charge on indexed servers with a cache system.
+The results page show now extracts of the doccuments with the search keys occurences.
+The admin, libs and configuration scripts are now in
+separate directories, allowing protect it by some .htaccess files.
+The results page is highly customizable by a simple template system (samples provided).
+Ehanced CGI mode for total automatic updates with a cron task.
+Great thanks to Florian Perrichot for cache and templates system.
+Portugese locale file provided by Carlos Serrão.
+
+
+Version 1.0.4
+--------------
+2001-06-04
+
+Bug which causes PhpDig send an http request on each link it finds in pages
+regardless it already make it fixed.
+
+
+Version 1.0.3
+--------------
+2001-05-28
+
+Italian locale file provided by Mirko Maischberger.
+
+
+Version 1.0.2
+--------------
+2001-05-27
+
+Http and cgi versions of indexing merged.
+Lot of more comments in source code.
+
+
+Version 1.0.1
+--------------
+2001-05-22
+
+Missing field fixed in init_db.sql.
+Excluding words in search queries fixed.
+Quotes and double quotes in search form fixed.
+
+
+Version 1.0
+--------------
+2001-05-19
+
+Spanish locale file provided by Geffrey Velásquez.
+Bug fixed in parsing of "alt" attributes in img tags.
+"description" metatag is included in search results page.
+
+
+Version 0.99
+--------------
+2001-05-14
+
+Fixed bug which inserts doubles in database.
+Fixed bugged queries in update_cgi script.
+Fixed bug which cause phpdig fails in detect description and keywords metatatags.
+Fixed bug in html entities parsing.
+Fixed bug in reconizing some words in html_to_plain_text() function.
+Last-modified header is supported now. Don't forget to update your database with the update_db_0_99.sql script !
+Metatag 'Revisit after' is supported now.
+Sub-directories in robots.txt file are reconized.
+Delete an entire site from database is supported now.
+
+
+Version 0.98b
+--------------
+2001-05-10
+
+German locale file provided by Gregor Mucha.
+German stop-words added by the same person.
+External domains names in Hrefs are indexed (i.e. www.gnu.org) an can be retrieved by search queries.
+Some classic files added : COPYING, README and LICENSE.
+
+
+Version 0.97b
+--------------
+2001-05-08
+
+robots.txt file and META ROBOTS are reconized. See The Web Robots Page to obtain more informations.
+Increase speed in indexing text files.
+Files without extension are indexed now.
+Indexes and primary key in the database are a bit different. Check the init_db.sql file to see changes.
+
+
+Version 0.96b
+--------------
+2001-05-06
+
+Some files corrected by Brien Louque : documentation_en.html, search.php, en-language.php
+Greek locale file provided by Sofoklis Magoulas.
+An auto-update script was added. You must have access to the crontab and to an executable cgi of php in order to use it.
+Expire time for pages are used by indexing scripts.
+
+
+Version 0.95b
+--------------
+2001-05-05
+
+PhpDig is now avaible in both english and french.
+Localized search forms are provided with archive.
+
+
+Version 0.93b
+--------------
+2001-05-03
+
+English doc was added to the archive.
+I changed the search algorithm. Less SQL, more php.
+Localization in some languages in progress.
+You can now exclude search keys.
+The occurence is based on a product, not more on a sum.
+Search form and results page are provided in english.
+
+
+Version 0.92b
+--------------
+2001-05-02
+
+Results page now keeps filters.
+news: links are not more followed.
+Some SQL queries are optimized.
+SQL_BIG_SELECT is set to 1 for search queries.
+No more IE user_agent string send ;-).
+
+
+Version 0.91b
+--------------
+2001-05-01
+
+Long texts bug which freezes PhpDig is fixed.
+
+
+Version 0.9b
+
+2001-04-30
+--------------
+Initial release

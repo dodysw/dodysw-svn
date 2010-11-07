@@ -1,0 +1,77 @@
+<html>
+<head>
+<title><phpdig:title_message/></title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+.phpdiginputtext { background-color: #DDDDAA; color: #003333; font-family: times; font-size: 12pt; }
+.phpdigHighlight { color: #330000; background-color: #D0D0A0; font-weight: bold; }
+a.phpdig { text-decoration: undeline; }
+a.phpdig:hover { text-decoration: none; }
+</style>
+<phpdig:js_for_clicks/>
+</head>
+
+<body bgcolor="#DDDDAA" text="#003333" link="#993300" vlink="#003333" alink="#009933">
+<p align="center"><b><phpdig:templates_links/></b></p>
+<table width="40%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#DDDDAA">
+  <tr>
+    <td valign="middle" align="center" bgcolor="#DDDDAA">
+    &nbsp;<br />
+    <phpdig:form_head/>
+    <b><font size="4"><phpdig:form_title/> :</font></b>
+    <phpdig:form_field/><phpdig:form_button/>
+    <br><br><phpdig:form_dropdown/><br>
+    <phpdig:form_foot/>
+      </td>
+  </tr>
+</table>
+<table width="60%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#DDDDAA">
+  <tr>
+    <td valign="middle" align="center" bgcolor="#DDDDAA">
+    <b><phpdig:result_message/></b> <br />
+  <i><phpdig:ignore_message/></i> <br />
+  <i><phpdig:ignore_commess/></i>
+  </td>
+  </tr>
+</table>
+<br />
+<table width="75%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#DDDDAA">
+ <phpdig:results>
+  <tr bgcolor="#CCCCCC">
+    <td rowspan="3" width="1" align="right" nowrap bgcolor="#DDDDAA"><img src="tpl_img/vertfeuil.gif" width="37" height="150"></td>
+    <td width="100%" bgcolor="#DDDDAA">
+      <div align="center"><font size="5"><phpdig:n/>. <b><font size="4"><phpdig:page_link/></font></b>.</font> <font size="1"><phpdig:weight/> %</font></div>
+    </td>
+  </tr>
+  <tr>
+    <td width="100%" height="99" valign="middle" align="center" bgcolor="#DDDDAA">
+      <table width="90%" cellpadding="10" cellspacing="0"><tr>
+        <td><phpdig:text/></td>
+      </tr></table>
+    </td>
+  </tr>
+
+  <tr>
+    <td width="100%" valign="middle" bgcolor="#DDDDAA"><img src="tpl_img/horzfeuil.gif" width="150" height="33" align="middle">
+    <font size="1">
+    <phpdig:limit_links/>
+    </font></td>
+  </tr>
+  <tr>
+    <td align="right" nowrap bgcolor="#DDDDAA" colspan="2">&nbsp;</td>
+  </tr>
+  </phpdig:results>
+</table>
+<br />
+<table width="40%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#DDDDAA">
+  <tr>
+    <td valign="middle" align="center" bgcolor="#DDDDAA">
+    <phpdig:nav_bar/>
+    </td>
+  </tr>
+</table>
+<div align="center">
+<phpdig:powered_by_link/>
+</div>
+</body>
+</html>

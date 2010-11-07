@@ -1,0 +1,41 @@
+As of 1.6.2:
+
+PhpDig is a http spider / php search engine
+with a MySql database in backend.
+Indexing after indexing, PhpDig builds a glossary with
+the key words found in indexed pages.
+On a search query, it displays a result page with documents
+which contains the search keys, ranked by occurence.
+
+HTTP Spidering : PhpDig follows links as it was any web browser within
+a web server, to build the pages list to index. Links can be in
+AreaMap, or frames, and some simple javascripts. PhpDig supports relocations.
+Any syntax of HREF attribute is followed by Phpdig.
+PhpDig doesn't go out the root site you define for the indexing.
+Spidering depth is choosen by user.
+All html content is listed, both static and dynamic pages.
+PhpDig searches the Mime-Type of the document, or tests existence
+of an <HTML> tag at the beginning of it.
+
+Full Text indexing : PhpDig indexes all words of a document,
+excepting small words (less than 3 letters) and common words,
+those are definded in a text file.
+Lone numbers are not inded, but those included in words.
+Underscores make part of a word.
+Occurences of a word in a document is saved.
+Words in the title can have a more important weight in
+ranking results.
+
+System of templates :
+A very simple system of templates is included to custom
+the results page.
+
+Limits :
+PhpDig can't perform an exact expression search.
+Because of the time consuming indexing process,
+the Apache/PHP web server which performs the process
+must not be safe_mode configured. It doesn't matter for the
+search queries. (distant indexing is possible with a server not
+safe_mode configured)
+Spidering and indexing is a bit slow. In the other hand,
+search queries are fast, even in an extended content.

@@ -1,0 +1,33 @@
+    function final_init() {
+        /* called just after constructor, usually to provide first-time post handler, before outputting
+        rule:
+            - you may not output anything in this function
+        */
+    function post_handler() {
+        /* called aumatically by final_init to provide post request handling*/
+    function basic_handler() {
+        /* called by go() */
+    function populate($rowid='',$merge=False, $sql='') {
+        /* construct sql query given field property, query database, fetch, and fill up datasource instance
+        in case edit-prepare post when merge True and  _request['field'] var is set and it's an updatable field, then populate will use that value instead
+
+        @sql = string, custom sql statement. if you define this, please complete $this->_mapping_index
+        */
+    function showview() {
+    /* show row in a readonly view-style */
+    function showquery() {
+    /* show text + combo box for query form */
+    function showerror() {
+    /* display errors in form submitation */
+    function showgrid($action='') {
+    /* show data grid, for query, multi edit, and multi new */
+    function shownewrecord() {
+    /* show "add X records below grid" */
+
+    function showform() {
+    /* display row one by one in a form-style */
+
+    function show_childgrid() {
+    /*  if this datasource has detail, and in update/show mode, show it as grid */
+    function check_del($rowindex) {
+    /* called on row delete validation */

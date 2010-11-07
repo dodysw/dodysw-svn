@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title><phpdig:title_message/></title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<style type="text/css">
+body { font-family: Verdana, Arial, Helvetica, sans-serif; color: #000000; background-color: #E7E7E7; font-size: 10pt; }
+table { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; }
+td { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; }
+tr { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; }
+a { font-family: Verdana, Arial, Helvetica, sans-serif; color: #555576; text-decoration: none; }
+a:hover { font-family: Verdana, Arial, Helvetica, sans-serif; color: #FFFFFF; background-color: #7384B5; }
+a.high { font-family: Verdana, Arial, Helvetica, sans-serif; color: #000000; background-color: #FFCC55; text-decoration: none; font-weight: bold;}
+a.high:hover { font-family: Verdana, Arial, Helvetica, sans-serif; color: #FFFFDD; background-color: #7384B5; }
+div { text-align:center; font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10pt; }
+p { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10pt; }
+i { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10pt; }
+input { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; }
+textarea { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; }
+select { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; }
+h1 { font-family: Verdana, Arial, Helvetica, sans-serif; color: #666686; font-size: 18pt; font-weight: normal; }
+h2 { font-family: Verdana, Arial, Helvetica, sans-serif; color: #666686; font-size: 14pt; font-weight: normal; }
+h3 { font-family: Verdana, Arial, Helvetica, sans-serif; color: #666686; font-size: 10pt; }
+.phpdigHighlight { color: #000000;
+                   background-color: #ADB5CE;
+                   font-weight: bold; }
+.grey { padding: 5px;
+        margin-top: 8px;
+        margin-bottom: 18px;
+        margin-right: 32px;
+        border: 2px dotted #666686;
+        background-color: #EEEEEE;
+        font-size: 10px; }
+.blue { background-color: #EEEEFF;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        margin-right: 32px;
+        padding: 3px;
+        border-top: 1px solid #5B4A86;
+        border-bottom: 1px solid #5B4A86; }
+.greyForm { padding: 3px;
+            border: 1px solid #666686;
+            background-color: #EEEEEE;
+            font-size: 10px; }
+.blueForm { background-color: #EEEEFF;
+            text-align: center;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 3px;
+            border: 1px solid #5B4A86; }
+.borderCollapse { border-collapse: collapse; }
+.phpdigMessage { padding: 1px; background-color: #7384B5; color: white; }
+.smallLink { font-size: 10px; background-color: #BBCCEE; }
+</style>
+<phpdig:js_for_clicks/>
+</head>
+<body>
+<div align="center">
+<p><phpdig:templates_links/></p>
+<table align="center">
+<tr>
+<td>
+<img src="phpdig_logo_2.gif" width="200" height="114" alt="PhpDig <phpdig:phpdig_version/>" border="0" />
+</td>
+<td>
+<phpdig:form_head/>
+<table class="borderCollapse">
+ <tr>
+  <td class="blueForm">
+  <phpdig:form_title/>
+  </td>
+ </tr>
+ <tr>
+  <td class="greyForm">
+  <phpdig:form_field/>
+  <phpdig:form_button/>
+  <phpdig:form_select/>
+  </td>
+ </tr>
+ <tr>
+ <td class="greyForm">
+ <phpdig:form_radio/>
+ </td>
+ </tr>
+ <tr>
+ <td class="greyForm">
+ <phpdig:form_dropdown/>
+ </td>
+ </tr>
+</table>
+<phpdig:form_foot/>
+</td>
+</tr>
+</table>
+<h3><span class="phpdigMessage"><phpdig:result_message/></span>
+<br /><phpdig:ignore_message/>
+<br /><phpdig:ignore_commess/>
+</h3>
+</div>
+<phpdig:results>
+             <p class='blue'>
+             <b><phpdig:n/>. <span style='font-size:10px;'>[<phpdig:weight/> %]</span>&nbsp;&nbsp;<phpdig:page_link/></b><br />
+             <span class="smallLink"><phpdig:limit_links/></span><br />
+             </p>
+             <blockquote class='grey'>
+             <phpdig:text/>
+             </blockquote>
+</phpdig:results>
+<p class="blue">
+<phpdig:nav_bar/>
+</p>
+<div align="center">
+<a href="http://www.phpdig.net/" target="_blank"><img src="phpdig_powered_2.gif" width="88" height="31" border="0" alt="Powered by PhpDig" /></a><br>
+<phpdig:powered_by_link/>
+</div>
+</body>
+</html>

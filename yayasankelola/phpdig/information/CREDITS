@@ -1,0 +1,60 @@
+PhpDig is a light indexing robot / search engine written in Php
+It provides full text indexing.
+This program is provided under the GNU/GPL license.
+See LICENSE file for more information.
+Version : 1.6.2
+Update : 2003-04-06
+
+ORIGINAL AUTHOR
+
+Antoine Bajolet - fr - bajolet@toiletoine.net
+Copyright (C) 2001 - 2003  Antoine Bajolet, France
+
+CODE CONTRIBUTIONS
+
+- xhtml compliancy, complete localization
+Eric Chauvin - fr
+
+- Cache and Templates system concepts :
+Florian Perrichot - fr
+
+- iso-8859-2 support :
+Jan Kincl - cs
+
+LOCALIZATION FILES, DOCUMENTATION
+
+- English locales & first documentation translation :
+Brien Louque - en
+- Corrections on documentation :
+John Zastrow
+
+- Languages locales :
+Sofoklis Magoulas - gr
+Gregor Mucha, Matthias Strohmaier - de
+Robert Moteka - pl
+Geffrey Velásquez, Manuel Talens - es
+Carlos Serrão - pt
+Martin Kristiansen - no
+Dan Barta, Jan Kincl - cs
+Søren Thing Pedersen - da
+Lecompte Pieter - nl
+
+OTHER CONTRIBUTIONS
+
+- Good Feedbacks and bug reports :
+Bruno Manach - fr
+David Debono
+Søren Thing Pedersen - da
+Michael Chapman
+
+- Suggests :
+Loic Anterroches
+
+FOREIGN CODE
+
+- Authentification script :
+Nicolat Biot - fr
+
+-------------------
+Someone forgotten ?
+Remember me at http://www.phpdig.net/contact.php

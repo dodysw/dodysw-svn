@@ -1,0 +1,76 @@
+<html>
+<head>
+<title><phpdig:title_message/></title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+.phpdiginputtext { border: 1 #FFCC66 solid;
+                   background-color: #333333;
+                   color: #FFCC66;
+                   font-family: arial,helvetica; }
+.phpdiginputsubmit { border: 1 #FFCC66 solid;
+                     background-color: #333333;
+                     color: #FFCC66;
+                     font-family: arial,helvetica;
+                     font-weight:bold; }
+.phpdigselect { border: 1 #FFCC66 solid;
+                background-color: #333333;
+                color: #FFCC66;
+                font-family:arial,helvetica; }
+.phpdigHighlight { color: black;
+                   background-color: #FFBB33;
+                   font-weight: bold; }
+a.phpdig { text-decoration: none; }
+a.phpdig:hover { text-decoration: underline; }
+</style>
+<phpdig:js_for_clicks/>
+</head>
+<body bgcolor="#333333" link="#CCCCFF" vlink="#FFCCFF" alink="#FF3333">
+<div align="center">
+  <p><phpdig:templates_links/></p>
+  <p><a href='http://www.phpdig.net/' target='_blank'><img src='phpdig_powered_2.gif' width='88' height='31' border='1' alt='Powered by PhpDig'></a></p>
+  <p><font face='arial,helvetica'><font color="#FFCC66"><br />
+    </font></font> </p>
+  <table width="50%" border="0" bgcolor="#333333">
+    <tr bgcolor="#333333" align="center">
+      <td><font face="arial,helvetica" color="#FFCC66" size="2"><phpdig:form_head/>
+        <b><phpdig:form_title/></b> <phpdig:form_field/> <phpdig:form_button/> <phpdig:form_select/>
+        <br />
+        <phpdig:form_radio/>
+        <br />
+        <phpdig:form_dropdown/>
+        <phpdig:form_foot/>
+        </font><font face="arial,helvetica" color="#009900" size="1"> </font></td>
+    </tr>
+  </table>
+  <font face="arial,helvetica" color="#FFCC66"><br />
+  <b><phpdig:result_message/></b> <br />
+  <i><phpdig:ignore_message/></i> <br />
+  <i><phpdig:ignore_commess/></i><br />
+  <br />
+  </font> </div>
+<table width="75%" border="0" align="center">
+  <phpdig:results>
+  <tr bgcolor="#333333">
+    <td><font face="Arial, Helvetica, sans-serif" color="#FFCC66"><b><phpdig:n/>.
+      <font size='1'>[<phpdig:weight/> %]</font>&nbsp;&nbsp;<phpdig:page_link/></b></font>
+      <br /><phpdig:img_tag/></td>
+    <td><font size="1" face="Arial, Helvetica, sans-serif" color="#FFCC66"><phpdig:limit_links/></font></td>
+  </tr>
+  <tr bgcolor="#333333">
+    <td colspan="2"><font size="2" face="Arial, Helvetica, sans-serif" color="#FFCC66"><phpdig:text/></font></td>
+  </tr>
+  <tr bgcolor="#CC9900">
+    <td colspan="2"><font color="#FFCC66"></font></td>
+  </tr>
+  </phpdig:results>
+</table>
+<div align="center"><font face="arial,helvetica" size="2" color="#FFCC66"> <phpdig:nav_bar/>
+  </font></div>
+<font face='arial,helvetica'>
+<p align='center'>&nbsp; </p>
+</font>
+<div align="center">
+<phpdig:powered_by_link/>
+</div>
+</body>
+</html>

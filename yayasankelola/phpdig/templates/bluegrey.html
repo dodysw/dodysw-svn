@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><TITLE><phpdig:title_message/></TITLE>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<style type="text/css">
+BODY {
+        FONT-SIZE: 10pt; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+}
+TABLE {
+        FONT-SIZE: 8pt; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+}
+TD {
+        FONT-SIZE: 8pt; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+}
+TR {
+        FONT-SIZE: 8pt; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+}
+A {
+        COLOR: #FFFFFF; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: underline;
+}
+A:hover {
+        COLOR: #FF0000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; text-decoration: none;
+}
+A.high {
+        FONT-WEIGHT: bold; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #ffcc55; TEXT-DECORATION: none;
+}
+A.high:hover {
+        COLOR: #ffffdd; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; BACKGROUND-COLOR: #003060;
+}
+DIV {
+        FONT-SIZE: 10pt; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+}
+P {
+        FONT-SIZE: 10pt; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+}
+I {
+        FONT-SIZE: 10pt; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+}
+INPUT {
+        FONT-SIZE: 8pt; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+}
+TEXTAREA {
+        FONT-SIZE: 8pt; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+}
+SELECT {
+        FONT-SIZE: 8pt; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+}
+H1 {
+        FONT-WEIGHT: normal; FONT-SIZE: 18pt; COLOR: #006699; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+}
+H2 {
+        FONT-WEIGHT: normal; FONT-SIZE: 14pt; COLOR: #006699; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+}
+H3 {
+        FONT-SIZE: 10pt; COLOR: #006699; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+}
+.phpdigHighlight {
+        color: white; background-color: #220044; font-weight: bold;
+}
+a.phpdig {
+        text-decoration:none;
+}
+a.phpdig:hover {
+        text-decoration:none;
+}
+</style>
+<phpdig:js_for_clicks/>
+</head>
+<body bgColor=#CCAAFF>
+<center>
+  <p><phpdig:templates_links/></p>
+  <phpdig:form_head/>
+  <table cellSpacing=0 cellPadding=1 width="500">
+    <tbody>
+    <tr>
+    <td bgColor=#220044>
+        <table cellSpacing=1 cellPadding=2>
+          <tbody>
+          <tr align="center">
+            <td bgcolor="#dfdfdf" width="100" rowspan="3"><a href="http://www.phpdig.net/"><img src="phpdig_powered_2.gif" width="88" height="31" border="0" alt="Powered by PhpDig"></a></td>
+            <td bgcolor="#b0b0b0" width="400"><b><font color=#ffffff size=2><phpdig:form_title/></font></b></td>
+          </tr>
+          <tr align="center">
+            <td bgcolor="#dfdfdf" width="357"><phpdig:form_field/>&nbsp;<phpdig:form_button/>&nbsp;<phpdig:form_select/></td>
+          </tr>
+          <tr align="center">
+            <td bgcolor="#efefef" width="357"><phpdig:form_radio/></td>
+          </tr>
+          <tr>
+          <td colspan="2" align="center" bgcolor="#c0c0c0">
+          <phpdig:form_dropdown/>
+          </td>
+          </tr>
+          </tbody>
+        </table>
+      </td></tr></tbody></table>
+  <phpdig:form_foot/>
+  <p>
+  <b><phpdig:result_message/></b><br />
+  <i><phpdig:ignore_message/></i><br />
+  <i><phpdig:ignore_commess/></i><br />
+  </p>
+  <table cellspacing=0 cellpadding=1 width="581">
+    <tbody>
+    <tr>
+      <td bgcolor=#220044>
+        <table cellspacing=1 cellpadding=2>
+          <tbody>
+          <phpdig:results>
+          <tr>
+            <td align=left bgcolor=#220044 width="129"><b><font color=#ffffff
+            size=2><phpdig:n/> - <font size="1">[<phpdig:weight/>&nbsp;%]</font></font></b></td>
+            <td align=left bgcolor=#220044 width="467">
+              <div align="left"><b><font color=#ffffff
+            size=2><phpdig:page_link/></font></b></div>
+            </td>
+          </tr>
+          <tr bgcolor="b0b0b0">
+            <td width="129" align="left">Refine search</td>
+            <td width="467" align="left"><phpdig:limit_links/></td>
+          </tr>
+          <tr bgcolor="#c0c0c0" valign="top">
+            <td width="129" align="left">Summary</td>
+            <td width="467" align="left"><phpdig:text/></td>
+          </tr>
+          <tr bgcolor="#d0d0d0">
+            <td width="129" align="left">Page address</td>
+            <td width="467" align="left"><phpdig:complete_path/></td>
+          </tr>
+          <tr bgcolor="#e0e0e0">
+            <td width="129" align="left">Page size</td>
+            <td width="467" align="left"><phpdig:filesize/>&nbsp;kb</td>
+          </tr>
+          <tr bgcolor="#f0f0f0">
+            <td width="129" align="left">Page date</td>
+            <td width="467" align="left"><phpdig:update_date/></td>
+          </tr>
+          </phpdig:results>
+          <tr align="center">
+            <td colspan="2"
+            bgcolor=#220044><b><font color="#000000" size="2"><phpdig:nav_bar/></font></b></td>
+          </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  </center>
+<div align="center">
+<phpdig:powered_by_link/>
+</div>
+</body>
+</html>

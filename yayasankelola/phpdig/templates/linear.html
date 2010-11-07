@@ -1,0 +1,76 @@
+<html>
+<head>
+<title><phpdig:title_message/></title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+.linearTop { font-family: Arial,Helvetica; font-size: 10pt; border-top: 3px solid gray; background-color: #DFDFDF; padding: 4px; }
+.linearGrey { font-family: Arial,Helvetica; font-size: 10pt; border: 1px solid gray; padding: 2px; }
+.linearCenter { font-family: Arial,Helvetica; text-align: center; }
+.linearText { font-family: Arial,Helvetica; text-align: justify; border-bottom: 3px solid gray; }
+.linearSmall { font-family: Arial,Helvetica; font-size: 8pt; }
+.linearBig { font-family: Arial,Helvetica; font-size: 11pt; }
+.phpdigHighlight { font-weight: bold; text-decoration: underline; }
+a.phpdig { font-weight: bold; }
+a.phpdig:hover { font-weight: bold; }
+</style>
+<phpdig:js_for_clicks/>
+</head>
+<body bgcolor="#EEEEDD" text="#000033" link="#0033AA" vlink="#003333" alink="#003399">
+<div align="center" class="linearCenter">
+<p><phpdig:templates_links/></p>
+<phpdig:form_head/>
+<table class="linearGrey">
+ <tr>
+  <td class="linearTop">
+  <a href='http://www.phpdig.net/' target='_blank'>
+<img src='phpdig_powered_2.gif' width='88' height='31' border='0' alt='Powered by PhpDig' align='right'></a>
+  <b class="linearBig"><phpdig:form_title/></b>
+  </td>
+ </tr>
+ <tr>
+  <td class="linearGrey">
+   <span class="linearCenter">
+  <phpdig:form_field/>
+  <phpdig:form_button/>
+  <phpdig:form_select/>
+   </span>
+  </td>
+ </tr>
+ <tr>
+ <td class="linearGrey">
+ <phpdig:form_radio/>
+ </td>
+ </tr>
+ <tr>
+ <td class="linearGrey">
+ <phpdig:form_dropdown/>
+ </td>
+ </tr>
+</table>
+<phpdig:form_foot/>
+<b style='linearBlack'><phpdig:result_message/></b>
+<br /><phpdig:ignore_message/>
+<br /><phpdig:ignore_commess/>
+</div>
+<phpdig:results>
+             <p class="linearTop">
+             <b class="linearBig"><phpdig:n/>. <font class="linearSmall">[<phpdig:weight/> %]</font>&nbsp;&nbsp;<phpdig:page_link/></b><br />
+             <font class="linearSmall"><phpdig:limit_links/></font><br />
+             </p>
+             <div class="linearText">
+             <span class="linearSmall">
+             <phpdig:text/>
+             </span>
+             </div>
+</phpdig:results>
+<div align="center" class="linearCenter">
+<p class="linearTop">
+<phpdig:nav_bar/>
+</p>
+</div>
+<hr />
+<div align="center">
+<phpdig:powered_by_link/>
+</div>
+</body>
+</html>

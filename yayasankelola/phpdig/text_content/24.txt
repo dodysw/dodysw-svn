@@ -1,0 +1,6 @@
+ Warning: main fe_article.inc.php : failed to open stream: No such file or
+directory in C:\cvs\yayasankelola\article.php on line 2 Warning: main :
+Failed opening 'fe_article.inc.php' for inclusion
+include_path='.;c:\php4\pear' in C:\cvs\yayasankelola\article.php on line
+2 Contoh Halaman Detail Fatal error: Call to a member function on a
+non-object in C:\cvs\yayasankelola\article.php on line 12 

@@ -1,0 +1,90 @@
+body { font-family: Verdana, Arial, Helvetica, sans-serif;
+       color: #000000;
+       font-size: 10pt; }
+table { font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 8pt; }
+td { font-family: Verdana, Arial, Helvetica, sans-serif;
+     font-size: 8pt; }
+tr { font-family: Verdana, Arial, Helvetica, sans-serif;
+     font-size: 8pt; }
+a { font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: #003366;
+    text-decoration: none; }
+a:hover { font-family: Verdana, Arial, Helvetica, sans-serif;
+          color: #FFFFFF;
+          background-color: #003366; }
+a.high { font-family: Verdana, Arial, Helvetica, sans-serif;
+         color: #000000;
+         background-color: #FFCC55;
+         text-decoration: none;
+         font-weight: bold; }
+a.high:hover { font-family: Verdana, Arial, Helvetica, sans-serif;
+               color: #FFFFDD;
+               background-color: #003060; }
+div { font-family: Verdana, Arial, Helvetica, sans-serif;
+      font-size: 10pt; }
+p { font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10pt; }
+i { font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10pt; }
+input { font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 8pt; }
+textarea { font-family: Verdana, Arial, Helvetica, sans-serif;
+           font-size: 8pt; }
+select { font-family: Verdana, Arial, Helvetica, sans-serif;
+         font-size: 8pt; }
+h1 { font-family: Verdana, Arial, Helvetica, sans-serif;
+     color: #006699;
+     font-size: 18pt;
+     font-weight: normal; }
+h2 { font-family: Verdana, Arial, Helvetica, sans-serif;
+     color: #006699;
+     font-size: 14pt;
+     font-weight: normal; }
+h3 { font-family: Verdana, Arial, Helvetica, sans-serif;
+     color: #006699;
+     font-size: 10pt; }
+.phpdigHighlight { color: #000000;
+                   background-color: #FFBB00;
+                   font-weight: bold; }
+.phpdigMsg { background-color: #000066;
+             color: white;
+             font-weight: bold; }
+.phpdigAlert { color: red;
+               font-style: italic; }
+.phpdig a { text-decoration: underline; }
+.phpdig a:hover { text-decoration: none; }
+.grey { padding: 5px;
+        margin-top: 8px;
+        margin-bottom: 18px;
+        margin-right: 8px;
+        border: 2px dotted #BBBBBB;
+        background-color: #EEEEEE;
+        font-size: 10px; }
+.blue { background-color: #CCDDFF;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        margin-right: 8px;
+        padding: 3px;
+        border-top: 1px solid #7688A7;
+        border-bottom: 1px solid #7688A7; }
+.phpdigSelect { background-color: #F5F5F5; }
+.greyForm { padding: 3px;
+            border: 1px solid #BBBBBB;
+            background-color: #EEEEEE;
+            font-size: 10px; }
+.greyFormDark { padding: 3px;
+                border: 1px solid #BBBBBB;
+                background-color: #E0E0E0;
+                font-size: 10px; }
+.greyFormLight { padding: 3px;
+                 border: 1px solid #BBBBBB;
+                 background-color: #F8F8F8;
+                 font-size: 10px; }
+.blueForm { background-color: #CCDDFF;
+            text-align: center;
+            font-weight: bold;
+            padding: 3px;
+            border: 1px solid #7688A7;
+            font-size: 12px; }
+.borderCollapse { border-collapse: collapse; }

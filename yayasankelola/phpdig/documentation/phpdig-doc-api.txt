@@ -1,0 +1,1233 @@
+
+
+==========================
+PhpDig API documentation version 1.6.2
+==========================
+
+
+Last update : 2003-03-31
+
+
+1. phpDigMakeCookies
+2. phpDigSetHeaders
+3. phpdigAddLog
+4. phpdigCheckTables
+5. phpdigCleanHtml
+6. phpdigComWords
+7. phpdigCompareDomains
+8. phpdigCreateSubstArrays
+9. phpdigDelSpiderRow
+10. phpdigDelText
+11. phpdigDetectDir
+12. phpdigEpureText
+13. phpdigExplore
+14. phpdigFormatMetaTags
+15. phpdigFtpClose
+16. phpdigFtpConnect
+17. phpdigFtpKeepAlive
+18. phpdigGetHttpEquiv
+19. phpdigGetLogs
+20. phpdigGetSiteFromUrl
+21. phpdigGetSpiderRow
+22. phpdigHighlight
+23. phpdigHttpVars
+24. phpdigIndexFile
+25. phpdigMakeForm
+26. phpdigMsg
+27. phpdigMySelect
+28. phpdigParseTemplate
+29. phpdigPregQuotes
+30. phpdigPrnMsg
+31. phpdigReadHttpDate
+32. phpdigReadRobots
+33. phpdigReadRobotsTags
+34. phpdigReadRobotsTxt
+35. phpdigRevisitAfter
+36. phpdigRewriteUrl
+37. phpdigSearch
+38. phpdigSpiderAddSite
+39. phpdigStripAccents
+40. phpdigTempFile
+41. phpdigTestDouble
+42. phpdigTestUrl
+43. phpdigTimer
+44. phpdigUpdSpiderRow
+45. phpdigWriteText
+
+1. phpDigMakeCookies
+==============================
+
+
+1.1. Description :
+-------------------------
+
+
+Makes a string for cookies
+
+
+1.2. Parameters :
+-------------------------
+
+
+	$cookiesToSend
+	$path
+
+1.3. In file :
+-------------------------
+
+
+robot_functions.php
+
+
+2. phpDigSetHeaders
+==============================
+
+
+2.1. Description :
+-------------------------
+
+
+Set headers for a cookie
+
+
+2.2. Parameters :
+-------------------------
+
+
+	$cookiesToSend :	array()
+	$path
+
+2.3. In file :
+-------------------------
+
+
+robot_functions.php
+
+
+3. phpdigAddLog
+==============================
+
+
+3.1. Description :
+-------------------------
+
+
+Insert an entry in logs
+
+
+3.2. Parameters :
+-------------------------
+
+
+	$id_connect
+	$option :	'start'
+	$includes :	array()
+	$excludes :	array()
+	$num_results
+	$time
+
+3.3. In file :
+-------------------------
+
+
+phpdig_functions.php
+
+
+4. phpdigCheckTables
+==============================
+
+
+4.1. Description :
+-------------------------
+
+
+Verify phpdig_tables
+
+
+4.2. Parameters :
+-------------------------
+
+
+	$id_connect
+	$tables :	array()
+
+4.3. In file :
+-------------------------
+
+
+mysql_functions.php
+
+
+5. phpdigCleanHtml
+==============================
+
+
+5.1. Description :
+-------------------------
+
+
+Advanced striptags function.
+Returns text and title
+
+
+5.2. Parameters :
+-------------------------
+
+
+	$text
+
+5.3. In file :
+-------------------------
+
+
+robot_functions.php
+
+
+6. phpdigComWords
+==============================
+
+
+6.1. Description :
+-------------------------
+
+
+Load the common words in an array
+
+
+6.2. Parameters :
+-------------------------
+
+
+	$file
+
+6.3. In file :
+-------------------------
+
+
+phpdig_functions.php
+
+
+7. phpdigCompareDomains
+==============================
+
+
+7.1. Description :
+-------------------------
+
+
+Find if an url is same domain than another
+
+
+7.2. Parameters :
+-------------------------
+
+
+	$url1
+	$url2
+
+7.3. In file :
+-------------------------
+
+
+robot_functions.php
+
+
+8. phpdigCreateSubstArrays
+==============================
+
+
+8.1. Description :
+-------------------------
+
+
+Create Useful arrays for different encodings
+
+
+8.2. Parameters :
+-------------------------
+
+
+	$subststrings
+
+8.3. In file :
+-------------------------
+
+
+phpdig_functions.php
+
+
+9. phpdigDelSpiderRow
+==============================
+
+
+9.1. Description :
+-------------------------
+
+
+Delete a spider reccord and content file
+
+
+9.2. Parameters :
+-------------------------
+
+
+	$id_connect
+	$spider_id
+	$ftp_id
+
+9.3. In file :
+-------------------------
+
+
+robot_functions.php
+
+
+10. phpdigDelText
+==============================
+
+
+10.1. Description :
+-------------------------
+
+
+Delete a content_text from a spider_id
+
+
+10.2. Parameters :
+-------------------------
+
+
+	$relative_script_path
+	$spider_id
+	$ftp_id
+
+10.3. In file :
+-------------------------
+
+
+robot_functions.php
+
+
+11. phpdigDetectDir
+==============================
+
+
+11.1. Description :
+-------------------------
+
+
+Test a link, search if is a file or dir, exclude robots.txt directives
+
+
+11.2. Parameters :
+-------------------------
+
+
+	$link
+	$exclude
+	$cookies :	array()
+
+11.3. In file :
+-------------------------
+
+
+robot_functions.php
+
+
+12. phpdigEpureText
+==============================
+
+
+12.1. Description :
+-------------------------
+
+
+Epure a string from all non alnum words (words can contain &__&ßðþ character)
+
+
+12.2. Parameters :
+-------------------------
+
+
+	$text
+	$min_word_length
+	$encoding
+
+12.3. In file :
+-------------------------
+
+
+phpdig_functions.php
+
+
+13. phpdigExplore
+==============================
+
+
+13.1. Description :
+-------------------------
+
+
+Retrieve links from a file
+
+
+13.2. Parameters :
+-------------------------
+
+
+	$tempfile
+	$url
+	$path
+	$file
+
+13.3. In file :
+-------------------------
+
+
+robot_functions.php
+
+
+14. phpdigFormatMetaTags
+==============================
+
+
+14.1. Description :
+-------------------------
+
+
+Metatags in lowercase
+
+
+14.2. Parameters :
+-------------------------
+
+
+	$file
+
+14.3. In file :
+-------------------------
+
+
+robot_functions.php
+
+
+15. phpdigFtpClose
+==============================
+
+
+15.1. Description :
+-------------------------
+
+
+Close the ftp if exists
+
+
+15.2. Parameters :
+-------------------------
+
+
+	$ftp_id
+
+15.3. In file :
+-------------------------
+
+
+robot_functions.php
+
+
+16. phpdigFtpConnect
+==============================
+
+
+16.1. Description :
+-------------------------
+
+
+Connect to the ftp if the ftp is on and the connection ok.
+The content files are stored locally and could be uploaded
+Manually later.
+
+
+16.2. In file :
+-------------------------
+
+
+robot_functions.php
+
+
+17. phpdigFtpKeepAlive
+==============================
+
+
+17.1. Description :
+-------------------------
+
+
+Reconnect to ftp if the connexion fails or in case of timout
+
+
+17.2. Parameters :
+-------------------------
+
+
+	$ftp_id
+	$relative_script_path
+
+17.3. In file :
+-------------------------
+
+
+robot_functions.php
+
+
+18. phpdigGetHttpEquiv
+==============================
+
+
+18.1. Description :
+-------------------------
+
+
+Read meta http-equiv
+
+
+18.2. Parameters :
+-------------------------
+
+
+	$file
+
+18.3. In file :
+-------------------------
+
+
+robot_functions.php
+
+
+19. phpdigGetLogs
+==============================
+
+
+19.1. Description :
+-------------------------
+
+
+Returns a table of 30 lines of logs
+Type is the type of logs in mostkeys, mostpages, lastqueries,
+Mostterms, largestresults, mostempty, lastqueries, responsebyhour.
+
+
+19.2. Parameters :
+-------------------------
+
+
+	$id_connect
+	$type :	'lastqueries'
+
+19.3. In file :
+-------------------------
+
+
+robot_functions.php
+
+
+20. phpdigGetSiteFromUrl
+==============================
+
+
+20.1. Description :
+-------------------------
+
+
+Add or retrieve a site from an URI
+Returns array($site_id,$exclude)
+
+
+20.2. Parameters :
+-------------------------
+
+
+	$id_connect
+	$url
+
+20.3. In file :
+-------------------------
+
+
+robot_functions.php
+
+
+21. phpdigGetSpiderRow
+==============================
+
+
+21.1. Description :
+-------------------------
+
+
+List a spider reccord
+
+
+21.2. Parameters :
+-------------------------
+
+
+	$id_connect
+	$site_id
+	$path
+	$file
+
+21.3. In file :
+-------------------------
+
+
+robot_functions.php
+
+
+22. phpdigHighlight
+==============================
+
+
+22.1. Description :
+-------------------------
+
+
+Highlight a string part
+
+
+22.2. Parameters :
+-------------------------
+
+
+	$ereg
+	$string
+
+22.3. In file :
+-------------------------
+
+
+phpdig_functions.php
+
+
+23. phpdigHttpVars
+==============================
+
+
+23.1. Description :
+-------------------------
+
+
+Extract _POST or _GET variables from a list varname => vartype
+Useful for error_reporting E_ALL too, init variables
+Usage in script : extract(phpdigHttpVars(array('foobar'=>'string')));
+
+
+23.2. Parameters :
+-------------------------
+
+
+	$varray :	array()
+
+23.3. In file :
+-------------------------
+
+
+phpdig_functions.php
+
+
+24. phpdigIndexFile
+==============================
+
+
+24.1. Description :
+-------------------------
+
+
+Index a file and returns a spider_id
+
+
+24.2. Parameters :
+-------------------------
+
+
+	$id_connect
+	$tempfile
+	$tempfilesize
+	$site_id
+	$origine
+	$localdomain
+	$path
+	$file
+	$content_type
+	$upddate
+	$last_modified
+	$tags
+	$ftp_id
+
+24.3. In file :
+-------------------------
+
+
+robot_functions.php
+
+
+25. phpdigMakeForm
+==============================
+
+
+25.1. Description :
+-------------------------
+
+
+Form for the search query.
+$query_string is the previous query if exists
+$option is search option
+$limite is the num results per page
+$result_page is path to the search.php script
+$site is the site to limit the results
+$path as the same purpose
+
+
+25.2. Parameters :
+-------------------------
+
+
+	$query_string
+	$option :	"start"
+	$limite
+	$result_page :	"index.php"
+	$site
+	$path
+	$mode :	'classic'
+	$template
+
+25.3. In file :
+-------------------------
+
+
+function_phpdig_form.php
+
+
+26. phpdigMsg
+==============================
+
+
+26.1. Description :
+-------------------------
+
+
+Returns a localized string
+
+
+26.2. Parameters :
+-------------------------
+
+
+	$string
+
+26.3. In file :
+-------------------------
+
+
+phpdig_functions.php
+
+
+27. phpdigMySelect
+==============================
+
+
+27.1. Description :
+-------------------------
+
+
+Executes a select and returns a whole resultset
+
+
+27.2. Parameters :
+-------------------------
+
+
+	$id_connect
+	$query_select
+
+27.3. In file :
+-------------------------
+
+
+mysql_functions.php
+
+
+28. phpdigParseTemplate
+==============================
+
+
+28.1. Description :
+-------------------------
+
+
+Parse a phpdig template
+
+
+28.2. Parameters :
+-------------------------
+
+
+	$template
+	$t_strings
+	$table_results
+
+28.3. In file :
+-------------------------
+
+
+function_phpdig_form.php
+
+
+29. phpdigPregQuotes
+==============================
+
+
+29.1. Description :
+-------------------------
+
+
+Create a ereg for highlighting
+
+
+29.2. Parameters :
+-------------------------
+
+
+	$chaine
+	$encoding
+
+29.3. In file :
+-------------------------
+
+
+phpdig_functions.php
+
+
+30. phpdigPrnMsg
+==============================
+
+
+30.1. Description :
+-------------------------
+
+
+Print a localized string
+
+
+30.2. Parameters :
+-------------------------
+
+
+	$string
+
+30.3. In file :
+-------------------------
+
+
+phpdig_functions.php
+
+
+31. phpdigReadHttpDate
+==============================
+
+
+31.1. Description :
+-------------------------
+
+
+Converts an iso date to a mysql date
+
+
+31.2. Parameters :
+-------------------------
+
+
+	$date
+
+31.3. In file :
+-------------------------
+
+
+robot_functions.php
+
+
+32. phpdigReadRobots
+==============================
+
+
+32.1. Description :
+-------------------------
+
+
+Parse if path is in exclude
+
+
+32.2. Parameters :
+-------------------------
+
+
+	$exclude
+	$path
+
+32.3. In file :
+-------------------------
+
+
+robot_functions.php
+
+
+33. phpdigReadRobotsTags
+==============================
+
+
+33.1. Description :
+-------------------------
+
+
+Parse result of getmetatags to extract those concerning Robots
+
+
+33.2. Parameters :
+-------------------------
+
+
+	$tags
+
+33.3. In file :
+-------------------------
+
+
+robot_functions.php
+
+
+34. phpdigReadRobotsTxt
+==============================
+
+
+34.1. Description :
+-------------------------
+
+
+Search robots.txt in a site
+
+
+34.2. Parameters :
+-------------------------
+
+
+	$site
+
+34.3. In file :
+-------------------------
+
+
+robot_functions.php
+
+
+35. phpdigRevisitAfter
+==============================
+
+
+35.1. Description :
+-------------------------
+
+
+Parse the revisit-after tag
+
+
+35.2. Parameters :
+-------------------------
+
+
+	$revisit_after
+	$limit_days
+
+35.3. In file :
+-------------------------
+
+
+robot_functions.php
+
+
+36. phpdigRewriteUrl
+==============================
+
+
+36.1. Description :
+-------------------------
+
+
+Purify urls from relative components like ./ or ../ and return an array
+
+
+36.2. Parameters :
+-------------------------
+
+
+	$eval
+
+36.3. In file :
+-------------------------
+
+
+robot_functions.php
+
+
+37. phpdigSearch
+==============================
+
+
+37.1. Description :
+-------------------------
+
+
+Do the search and display the results
+Can be called in any page
+
+
+37.2. Parameters :
+-------------------------
+
+
+	$id_connect
+	$query_string
+	$option :	'start'
+	$refine
+	$refine_url
+	$lim_start
+	$limite
+	$browse
+	$site
+	$path
+	$relative_script_path :	'.'
+	$template
+	$templates_links
+
+37.3. In file :
+-------------------------
+
+
+search_function.php
+
+
+38. phpdigSpiderAddSite
+==============================
+
+
+38.1. Description :
+-------------------------
+
+
+Add a site while spidering and returns an array
+With informations of $list_sites array
+
+
+38.2. Parameters :
+-------------------------
+
+
+	$id_connect
+	$url
+
+38.3. In file :
+-------------------------
+
+
+robot_functions.php
+
+
+39. phpdigStripAccents
+==============================
+
+
+39.1. Description :
+-------------------------
+
+
+Replace all characters with an accent
+
+
+39.2. Parameters :
+-------------------------
+
+
+	$chaine
+	$encoding
+
+39.3. In file :
+-------------------------
+
+
+phpdig_functions.php
+
+
+40. phpdigTempFile
+==============================
+
+
+40.1. Description :
+-------------------------
+
+
+Retrieves an url and returns temp file parameters
+
+
+40.2. Parameters :
+-------------------------
+
+
+	$uri
+	$result_test
+	$prefix :	'temp/'
+	$suffix :	'.tmp'
+
+40.3. In file :
+-------------------------
+
+
+robot_functions.php
+
+
+41. phpdigTestDouble
+==============================
+
+
+41.1. Description :
+-------------------------
+
+
+Tests if the reccord of spider_id is a double.
+
+
+41.2. Parameters :
+-------------------------
+
+
+	$id_connect
+	$site_id
+	$md5
+	$new_upddate
+	$last_modified
+
+41.3. In file :
+-------------------------
+
+
+robot_functions.php
+
+
+42. phpdigTestUrl
+==============================
+
+
+42.1. Description :
+-------------------------
+
+
+Test presence and type of an url
+
+
+42.2. Parameters :
+-------------------------
+
+
+	$url
+	$mode :	'simple'
+	$cookies :	array()
+
+42.3. In file :
+-------------------------
+
+
+robot_functions.php
+
+
+43. phpdigTimer
+==============================
+
+
+43.1. Description :
+-------------------------
+
+
+Timer for profiling
+
+
+43.2. Parameters :
+-------------------------
+
+
+	$mode :	'html'
+
+43.3. In file :
+-------------------------
+
+
+phpdig_functions.php
+
+
+44. phpdigUpdSpiderRow
+==============================
+
+
+44.1. Description :
+-------------------------
+
+
+Update a spider row
+
+
+44.2. Parameters :
+-------------------------
+
+
+	$id_connect
+	$site_id
+	$path
+	$file
+	$first_words
+	$upddate
+	$md5
+	$lastmodified
+	$num_words
+	$filesize
+
+44.3. In file :
+-------------------------
+
+
+robot_functions.php
+
+
+45. phpdigWriteText
+==============================
+
+
+45.1. Description :
+-------------------------
+
+
+Store a content_text from a spider_id
+
+
+45.2. Parameters :
+-------------------------
+
+
+	$relative_script_path
+	$spider_id
+	$text
+	$ftp_id
+
+45.3. In file :
+-------------------------
+
+
+robot_functions.php
+
+
